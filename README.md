@@ -1,1 +1,1 @@
-Thank you for purchasing and downloading our unique Cinema Booking EXPERIENCE
+Thank you for purchasing and downloading our unique Cinema Booking EXPERIENCE.
