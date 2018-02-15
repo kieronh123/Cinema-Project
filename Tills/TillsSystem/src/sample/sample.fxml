@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<GridPane alignment="center" vgap="11.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox GridPane.rowIndex="1">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleAction" text="Cancel">
-               <HBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Purchase" />
-         </children>
-      </HBox>
-      <Label fx:id="label" text="Label" />
+      <CheckBox layoutX="28.0" layoutY="191.0" mnemonicParsing="false" text="NHS Discount" />
+      <CheckBox layoutX="28.0" layoutY="226.0" mnemonicParsing="false" text="CheckBox" />
+      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="583.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <RadioButton layoutX="28.0" layoutY="253.0" mnemonicParsing="false" text="Apply Vip Screening" />
+      <Label layoutX="28.0" layoutY="150.0" text="Adult:" />
+      <Label layoutX="28.0" layoutY="89.0" prefHeight="25.0" prefWidth="168.0" text="Ticket" />
+      <Separator layoutX="298.0" layoutY="81.0" orientation="VERTICAL" prefHeight="259.0" prefWidth="6.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a446b" height="200.0" layoutX="357.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="357.0" layoutY="81.0" text="Screen" />
+      <Label layoutX="28.0" layoutY="118.0" text="Screenings:" />
    </children>
-</GridPane>
+</AnchorPane>
