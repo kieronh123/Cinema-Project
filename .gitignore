@@ -1,0 +1,5 @@
+#compiler output
+**/*.class
+
+#intellij files
+.idea/*
