@@ -1,4 +1,4 @@
-package Tills.TillSystem.sample;
+package Tills.TillsSystem.sample;
 
 
 import javafx.application.Application;
