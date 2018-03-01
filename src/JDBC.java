@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 public class JDBC {
 
@@ -20,13 +21,14 @@ public class JDBC {
             System.out.println("Connection established.");
 
             // TODO: Insert data into Book table
-            String sql = "CREATE TABLE test(col1 int, col2 int, col3 int)";
-            Statement statement = connection.createStatement();
-            int count = statement.executeUpdate(sql);
-
+            String sql = "INSERT INTO testing(col1, col2, col3) VALUES(?,?,?);";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, 2);
+            statement.setInt(2, 3);
+            statement.setInt(3, 4);
+            statement.executeUpdate();
 
             // Close connection
-
             connection.close();
             System.out.println("Connection closed.");
         } catch (SQLException error) {
