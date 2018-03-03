@@ -4,38 +4,33 @@ import java.util.List;
 
 public class Movie {
     //fields
-    private int ID;
-    private String name;
-    private int rating;
-    private int runtime;
+    public int ID;
+    public String name;
+    public int rating;
+    public int runtime;
 
     private String director;
-    private List<String> leadActors;
+    public List<String> leadActors;
 
     private String blurb;
     private String imageFilename;
 
-    public Movie(int ID, String name, int rating, int runtime, String director,
-                 List<String> leadActors, String blurb, String imageFilename)
-    {
-        this.ID = ID;
-        this.name = name;
-        this.rating = rating;
-        this.runtime = runtime;
-        this.director = director;
-        this.leadActors = leadActors;
-        this.blurb = blurb;
-        this.imageFilename = imageFilename;
-    }
+    public Movie()
+    {}
 
     @Override
     public String toString(){
+        String actors = null;
+        for(String actor: leadActors){
+            actors += (leadActors + ",");
+        }
         return "ID: " + ID + "\n" +
                "Name: " + name  + "\n" +
-               "Name: " + name  + "\n" +
-               "Name: " + name  + "\n" +
-               "Name: " + name  + "\n" +
-               "Name: " + name  + "\n" +
-               "Name: " + name;
+               "Rating: " + name  + "\n" +
+               "Runtime: " + name  + "\n" +
+               "Director: " + name  + "\n" +
+               "Lead Actors: " + leadActors + "\n" +
+               "Blurb: " + name  + "\n" +
+               "Image filename: " + name;
     }
 }
