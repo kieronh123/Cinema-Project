@@ -44,6 +44,15 @@ def users(key):
         query = "SELECT * FROM Users WHERE User_ID = " + str(key) + ";"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
+#Function for getting one particular user by name
+@app.route('/users/name/', methods=['GET'])
+def users_by_name():
+    if request.method == 'GET':
+        data = str(request.data.get('data', ''))
+        query = "SELECT * FROM Users WHERE Username = " + data + ";"
+        return Response(execute_query(query, request.method), status=200, mimetype='application/json')
+
+
 ##Get the database
 def get_db():
     db = getattr(g, '_database', None)
