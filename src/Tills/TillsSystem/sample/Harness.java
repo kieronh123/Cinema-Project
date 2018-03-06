@@ -1,4 +1,4 @@
-package Tills.TillSystem.sample;
+package Tills.TillsSystem.sample;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -13,8 +13,7 @@ import java.util.List;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import Tills.TillSystem.sample.Movie;
-import Tills.TillSystem.sample.Movie;
+import Tills.TillsSystem.sample.Movie;
 
 import javax.net.ssl.HttpsURLConnection;
 
