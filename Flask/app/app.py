@@ -4,7 +4,7 @@ from flask_api import FlaskAPI, status, exceptions
 import sqlite3
 import json
 
-DATABASE = 'database/test.db'
+DATABASE = 'database/cinema.db'
 
 
 app = FlaskAPI(__name__)
