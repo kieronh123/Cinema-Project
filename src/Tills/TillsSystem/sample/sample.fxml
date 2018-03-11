@@ -9,40 +9,71 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="sample.Controller">
-    <TextField fx:id="nameField" onKeyReleased="#releasedKey" prefWidth="60" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-    <Button fx:id="login" onAction="#buttonClicked" text="Log in" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-    <Button fx:id="logOut" onAction="#buttonClicked" text="logout" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-    <Button text="first Movie" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@/img/CivilWar.png" />
-        </image>
-    </ImageView>
-    <Button text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#goToTicketPage"/>
-    <Button text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
-    <Button text=" 20:00 " GridPane.columnIndex="3" GridPane.rowIndex="1" />
-    <Button text=" 21:15 " GridPane.columnIndex="4" GridPane.rowIndex="1" />
-    <Button text="Second Movie" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="nameField" onKeyReleased="#releasedKey" prefWidth="60" GridPane.columnIndex="6" GridPane.rowIndex="6"/>
+    <Button fx:id="login" onAction="#buttonClicked" text="Log in" GridPane.columnIndex="7" GridPane.rowIndex="6"/>
+    <Button fx:id="logOut" onAction="#buttonClicked" text="logout" GridPane.columnIndex="8" GridPane.rowIndex="6"/>
+    <Button text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <graphic>
+                <ImageView fitWidth="113" fitHeight="160">
+                    <Image url="@img/civilWar.png"/>
+                </ImageView>
+            </graphic>
+    </Button>
+    <Button fx:id="event" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#goToTicketPage"/>
+    <Button text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    <Button text=" 20:00 " GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <Button text=" 21:15 " GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+    <Button text="" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <graphic>
+            <ImageView fitWidth="113" fitHeight="160">
+                <Image url="@img/BP.jpg"/>
+            </ImageView>
+        </graphic>
+    </Button>
     <Button text=" 13:00 " GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <Button text=" 13:35 " GridPane.columnIndex="2" GridPane.rowIndex="2" />
     <Button text=" 18:45 " GridPane.columnIndex="3" GridPane.rowIndex="2" />
     <Button text=" 21:35 " GridPane.columnIndex="4" GridPane.rowIndex="2" />
-    <Button text="Third Movie" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Button text="" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <graphic>
+            <ImageView fitWidth="113" fitHeight="160">
+                <Image url="@img/conjuring.jpg"/>
+            </ImageView>
+        </graphic>
+    </Button>
     <Button text=" 12:00 " GridPane.columnIndex="1" GridPane.rowIndex="3" />
     <Button text=" 13:20 " GridPane.columnIndex="2" GridPane.rowIndex="3" />
     <Button text=" 19:50 " GridPane.columnIndex="3" GridPane.rowIndex="3" />
     <Button text=" 23:15 " GridPane.columnIndex="4" GridPane.rowIndex="3" />
-    <Button text="forth Movie" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+    <Button text="" GridPane.columnIndex="5" GridPane.rowIndex="1">
+        <graphic>
+            <ImageView fitWidth="113" fitHeight="160">
+                <Image url="@img/earlyM.jpg"/>
+            </ImageView>
+        </graphic>
+    </Button>
     <Button text=" 16:00 " GridPane.columnIndex="6" GridPane.rowIndex="1" />
     <Button text=" 16:35 " GridPane.columnIndex="7" GridPane.rowIndex="1" />
     <Button text=" 20:00 " GridPane.columnIndex="8" GridPane.rowIndex="1" />
     <Button text=" 21:15 " GridPane.columnIndex="9" GridPane.rowIndex="1" />
-    <Button text="Fifth Movie" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+    <Button text="" GridPane.columnIndex="5" GridPane.rowIndex="2">
+        <graphic>
+            <ImageView fitWidth="113" fitHeight="160">
+                <Image url="@img/pacificRim.jpg"/>
+            </ImageView>
+        </graphic>
+    </Button>
     <Button text=" 13:00 " GridPane.columnIndex="6" GridPane.rowIndex="2" />
     <Button text=" 13:35 " GridPane.columnIndex="7" GridPane.rowIndex="2" />
     <Button text=" 18:45 " GridPane.columnIndex="8" GridPane.rowIndex="2" />
     <Button text=" 21:35 " GridPane.columnIndex="9" GridPane.rowIndex="2" />
-    <Button text="Sixth Movie" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+    <Button text="" GridPane.columnIndex="5" GridPane.rowIndex="3">
+        <graphic>
+            <ImageView fitWidth="113" fitHeight="160">
+                <Image url="@img/tombR.jpg"/>
+            </ImageView>
+        </graphic>
+    </Button>
     <Button text=" 12:00 " GridPane.columnIndex="6" GridPane.rowIndex="3" />
     <Button text=" 13:20 " GridPane.columnIndex="7" GridPane.rowIndex="3" />
     <Button text=" 19:50 " GridPane.columnIndex="8" GridPane.rowIndex="3" />
