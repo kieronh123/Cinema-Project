@@ -37,10 +37,4 @@
     </java>
   </target>
 
-  <target name="testjson" depends="compile" description="Run JSON file to test parsing">
-    <java classname="JSON.JSON">
-      <classpath refid="project.classpath"/>
-    </java>
-  </target>
-
 </project>
