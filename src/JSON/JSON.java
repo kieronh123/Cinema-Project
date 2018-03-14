@@ -1,29 +1,29 @@
 package JSON;
 
 import com.google.gson.*;
-import com.google.gson.reflect.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 import Tills.TillsSystem.sample.Movie;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JSON {
     public static Movie[] getMovies(String json){
         Gson gson = new Gson();
         Movie[] movies = gson.fromJson(json, Movie[].class);
         return movies;
-//        Gson gson = new Gson();
-//        int[] vals = gson.fromJson(json, int[].class);
-//        return vals;
+    }
+
+    public static void addMovies(){
+        Gson gson = new Gson();
+        Movie[] movies = {new Movie(1, "movie 1", 5, 120, "director1", new ArrayList<String>(Arrays.asList("Actor1", "Actor 2")), "blurb1", "image1"), new Movie(2, "movie 2", 6, 110, "director2", new ArrayList<String>(Arrays.asList("Actor3", "Actor4")), "blurb2", "image2")};
+        String json =  gson.toJson(movies);
+        System.out.println(json);
     }
 
     public static void main(String[] args) {
-        Movie[] parsed = JSON.getMovies("[{\"ID\":1, \"rating\":2, \"name\":name, \"runtime\":3, \"director\":director, \"leadActors\":[actor1, actor2], \"blurb\":blurb1, \"imageFilename\":image1}," +
-                "{\"ID\":45, \"rating\":55, \"name\":name2, \"runtime\":67, \"director\":director2, \"leadActors\":[actor3, actor4], \"blurb\":blurb2, \"imageFilename\":image2}]");
-        for(Movie movie : parsed){
-            System.out.println(movie.toString());
-        }
+        JSON.addMovies();
     }
 }
