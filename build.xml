@@ -32,7 +32,7 @@
   </target>
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
-    <java classname="Tills.TillSystem.sample.Harness">
+    <java classname="Tills.TillsSystem.sample.Harness">
       <classpath refid="project.classpath"/>
     </java>
   </target>

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import JSON.JSON;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -26,7 +27,6 @@ public class Harness {
         Harness http = new Harness();
 
         System.out.println("Testing 1 - Send Http GET request");
-        http.sendGet("Select_*_FROM_test1");
 
         //System.out.println("\nTesting 2 - Send Http POST request");
         //http.sendPost();
@@ -36,7 +36,7 @@ public class Harness {
     // HTTP GET request
     private void sendGet(String command) throws Exception {
 
-        String url = "http://localhost:5000/post/"+command;
+        String url = "http://localhost:5000/users/";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -61,28 +61,10 @@ public class Harness {
         }
         in.close();
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-            // Convert JSON string to Object
-            String jsonInString = "{\"age\":33,\"messages\":[\"msg 1\",\"msg 2\"],\"name\":\"mkyong\"}";
-            Movie user1 = mapper.readValue(jsonInString, Movie.class);
-            System.out.println(user1);
-
-
-
-            // Convert JSON string to Object
-            //Movie movies = mapper.readValue(response, Movie.class);
-            //System.out.println(movies);
-
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        User[] users = JSON.usersFromJson(response.toString());
+        for(User user: users){
+            System.out.println(user.toString());
         }
-
 
         //print result
         System.out.println(response.toString());

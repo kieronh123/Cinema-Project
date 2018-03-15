@@ -6,4 +6,10 @@ public class User {
     private String Password;
 
     public User(){}
+
+    @Override
+    public String toString(){
+        return User_ID + ", " + Username + ", " + Password;
+
+    }
 }
