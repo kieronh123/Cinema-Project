@@ -33,8 +33,14 @@ def get_and_add_Users():
         query = "SELECT * FROM Users"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
     elif request.method == 'POST':
+        conn = get_db()
+        c = conn.cursor()
+        number_of_rows = len(c.execute("SELECT * from Users;").fetchall())
+        print("")
+        print(number_of_rows)
+        print("")
         data = str(request.data.get('data', ''))
-        query = "INSERT INTO Users VALUES(" + data + ");"
+        query = "INSERT INTO Users VALUES(" + str(number_of_rows + 1) + ", " + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
 #Function for getting one particular user of a specific User_ID
@@ -52,6 +58,24 @@ def users_by_name():
         query = "SELECT * FROM Users WHERE Username = " + data + ";"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
+
+##MOVIES
+#Add a movie
+@app.route('/movies/', methods=['GET', 'POST'])
+def get_and_add_Movies():
+        if request.method == 'GET':
+            query = "SELECT * FROM Movies"
+            return Response(execute_query(query, request.method), status=200, mimetype='application/json')
+        elif request.method == 'POST':
+            conn = get_db()
+            c = conn.cursor()
+            number_of_rows = len(c.execute("SELECT * from Movies;").fetchall())
+            print("")
+            print(number_of_rows)
+            print("")
+            data = str(request.data.get('data', ''))
+            query = "INSERT INTO Movies VALUES(" + str(number_of_rows + 1) + ", " + data + ");"
+            return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
 ##Get the database
 def get_db():

@@ -20,13 +20,17 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Harness {
 
-    private final String USER_AGENT = "Mozilla/5.0";
+    private static final String USER_AGENT = "Mozilla/5.0";
 
-    public static void main(String[] args) throws Exception {
+    private static void main(String[] args) throws Exception {
 
         Harness http = new Harness();
 
         System.out.println("Testing 1 - Send Http GET request");
+<<<<<<< HEAD
+=======
+        sendGet("");
+>>>>>>> bb84fcd2d90fd4c29713dc793ced3cf4a1714a48
 
         //System.out.println("\nTesting 2 - Send Http POST request");
         //http.sendPost();
@@ -34,8 +38,13 @@ public class Harness {
     }
 
     // HTTP GET request
+<<<<<<< HEAD
     private void sendGet(String command) throws Exception {
 
+=======
+    private static void sendGet(String command) throws Exception {
+        System.out.println("here");
+>>>>>>> bb84fcd2d90fd4c29713dc793ced3cf4a1714a48
         String url = "http://localhost:5000/users/";
 
         URL obj = new URL(url);
