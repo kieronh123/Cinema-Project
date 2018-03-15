@@ -1,5 +1,4 @@
-package Tills.TillSystem.sample;
-
+package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,16 +21,31 @@ public class Controller {
   private Button logOut;
 
 
-    @FXML
-  public void goToTicketPage(ActionEvent event) throws IOException {
-    Parent ticketParent = FXMLLoader.load(getClass().getResource("selectedTicket.fxml"));
-    Scene ticketSceneChild = new Scene(ticketParent);
-
+  @FXML
+  public void stayOnPage(ActionEvent event) throws IOException {
+    Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    Scene homeScene = new Scene(homePage, 1000, 800);
     Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-    userInterface.setScene(ticketSceneChild);
-    userInterface.show();
+    userInterface.setScene(homeScene);
   }
+
+  @FXML
+  public void timesOfFilm(ActionEvent event) throws IOException {
+    Parent homePage = FXMLLoader.load(getClass().getResource("firstFilm.fxml"));
+    Scene homeScene = new Scene(homePage, 1000, 800);
+    Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
+    userInterface.setScene(homeScene);
+  }
+
+  @FXML
+  public void backTohomePage(ActionEvent event) throws IOException {
+    Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    Scene homeScene = new Scene(homePage, 1000, 800);
+    Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
+    userInterface.setScene(homeScene);
+  }
+
+
   @FXML
   public void buttonClicked(ActionEvent e){
    if (e.getSource().equals(login)){
