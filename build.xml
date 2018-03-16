@@ -36,4 +36,10 @@
       <classpath refid="project.classpath"/>
     </java>
   </target>
+  
+  <target name="testTills" depends="compile" description="Runs Main file for Tills to test connection">
+    <java classname="Tills.TillsSystem.sample.Main">
+      <classpath refid="project.classpath"/>
+    </java>
+  </target>
 </project>
