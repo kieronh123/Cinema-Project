@@ -8,7 +8,7 @@
 
   <path id="project.classpath">
     <pathelement location="${build.dir}"/>
-    <pathelement location="/usr/java/latest/jre/lib/ext/jfxrt.jar"/>
+    <pathelement location="/usr/java/jdk1.8.0_141/jre/lib/ext/jfxrt.jar"/>
     <pathelement location="${lib.dir}/sqlite-jdbc-3.21.0.jar"/>
     <pathelement location="${lib.dir}/gson-2.8.3-SNAPSHOT.jar"/>
     <pathelement location="${lib.dir}/junit-4.12.jar"/>
@@ -33,6 +33,12 @@
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
     <java classname="Tills.TillsSystem.sample.Harness">
+      <classpath refid="project.classpath"/>
+    </java>
+  </target>
+  
+  <target name="testTills" depends="compile" description="Runs Main file for Tills to test connection">
+    <java classname="Tills.TillsSystem.sample.Main">
       <classpath refid="project.classpath"/>
     </java>
   </target>
