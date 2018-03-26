@@ -24,6 +24,7 @@
     <javac srcdir="${src.dir}" destdir="${build.dir}"
       includeantruntime="false">
       <classpath refid="project.classpath"/>
+
     </javac>
   </target>
 
@@ -32,14 +33,18 @@
   </target>
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
-    <java classname="Tills.TillsSystem.sample.Harness">
+    <java classname="Tills.TillsSystem.sample.loginPage">
       <classpath refid="project.classpath"/>
     </java>
   </target>
   
   <target name="testTills" depends="compile" description="Runs Main file for Tills to test connection">
-    <java classname="Tills.TillsSystem.sample.Main">
+      <copy todir="../quail/bin/Tills/TillsSystem/sample">
+          <fileset dir="../quail/src/Tills/TillsSystem/sample/resources"/>
+      </copy>
+      <java classname="Tills.TillsSystem.sample.Main">
       <classpath refid="project.classpath"/>
     </java>
+
   </target>
 </project>
