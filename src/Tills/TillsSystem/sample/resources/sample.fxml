@@ -16,16 +16,16 @@
     <Button fx:id="login" onAction="#buttonClicked" text="Log in" GridPane.columnIndex="7" GridPane.rowIndex="6" />
     <Button fx:id="logOut" onAction="#buttonClicked" text="logout" GridPane.columnIndex="8" GridPane.rowIndex="6" />
     <Button onAction="#timesOfFilm" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <graphic>
-                <ImageView fitHeight="160" fitWidth="113">
-                    <Image url="@img/civilWar.png" />
-                </ImageView>
-            </graphic>
+        <graphic>
+            <ImageView fitHeight="160" fitWidth="113">
+                <Image url="@img/civilWar.png" />
+            </ImageView>
+        </graphic>
     </Button>
     <Label text="QUAIL HOME PAGE">
-      <font>
-         <Font size="20.0"/>
-      </font></Label>
+        <font>
+            <Font size="20.0"/>
+        </font></Label>
     <Button fx:id="event" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <Button text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
     <Button text=" 20:00 " GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -85,25 +85,25 @@
     <Button text=" 13:20 " GridPane.columnIndex="7" GridPane.rowIndex="3" />
     <Button text=" 19:50 " GridPane.columnIndex="8" GridPane.rowIndex="3" />
     <Button text=" 23:15 " GridPane.columnIndex="9" GridPane.rowIndex="3" />
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
 </GridPane>

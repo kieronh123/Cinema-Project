@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Controller {
   @FXML
   private TextField nameField;
-    @FXML
+  @FXML
   private Button login;
   @FXML
   private Button logOut;
@@ -48,12 +48,12 @@ public class Controller {
 
   @FXML
   public void buttonClicked(ActionEvent e){
-   if (e.getSource().equals(login)){
-     System.out.println( nameField.getText()+" is logged in");
-   }
-   else if (e.getSource().equals(logOut)) {
-     System.out.println( nameField.getText()+ " is logged out");
-   }
+    if (e.getSource().equals(login)){
+      System.out.println( nameField.getText()+" is logged in");
+    }
+    else if (e.getSource().equals(logOut)) {
+      System.out.println( nameField.getText()+ " is logged out");
+    }
   }
 
   @FXML
