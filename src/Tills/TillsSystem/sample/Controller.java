@@ -1,4 +1,4 @@
-package Tills.TillsSystem.sample;
+package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ public class Controller {
 
   @FXML
   public void stayOnPage(ActionEvent event) throws IOException {
-    Parent homePage = FXMLLoader.load(getClass().getResource("resources/sample.fxml"));
+    Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
     Scene homeScene = new Scene(homePage, 1000, 800);
     Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
     userInterface.setScene(homeScene);
@@ -31,7 +31,7 @@ public class Controller {
 
   @FXML
   public void timesOfFilm(ActionEvent event) throws IOException {
-    Parent homePage = FXMLLoader.load(getClass().getResource("resources/firstFilm.fxml"));
+    Parent homePage = FXMLLoader.load(getClass().getResource("firstFilm.fxml"));
     Scene homeScene = new Scene(homePage, 1000, 800);
     Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
     userInterface.setScene(homeScene);
@@ -39,7 +39,7 @@ public class Controller {
 
   @FXML
   public void backTohomePage(ActionEvent event) throws IOException {
-    Parent homePage = FXMLLoader.load(getClass().getResource("resources/sample.fxml"));
+    Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
     Scene homeScene = new Scene(homePage, 1000, 800);
     Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
     userInterface.setScene(homeScene);
