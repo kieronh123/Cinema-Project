@@ -25,8 +25,8 @@
         <font>
             <Font size="20.0"/>
         </font></Label>
-    <Button fx:id="event" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <Button fx:id="button1" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button fx:id="button2" text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
     <Button text=" 20:00 " GridPane.columnIndex="3" GridPane.rowIndex="1" />
     <Button text=" 21:15 " GridPane.columnIndex="4" GridPane.rowIndex="1" />
     <Button text="" GridPane.columnIndex="0" GridPane.rowIndex="2">

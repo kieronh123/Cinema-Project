@@ -28,7 +28,7 @@ public class Harness {
 
         System.out.println("Testing 1 - Send Http GET request");
 
-        //sendGet("users");
+        //sendGet("");
 
         //System.out.println("\nTesting 2 - Send Http POST request");
         //http.sendPost();
@@ -37,8 +37,7 @@ public class Harness {
 
     // HTTP GET request
 
-    public StringBuffer sendGet(String command) throws Exception {
-        System.out.println("here");
+    public static StringBuffer sendGet(String command) throws Exception {
         String url = "http://localhost:5000/" + command;
 
         URL obj = new URL(url);
@@ -63,6 +62,7 @@ public class Harness {
             response.append(inputLine);
         }
         in.close();
+        con.disconnect();
         return response;
 
 
