@@ -24,6 +24,7 @@
     <javac srcdir="${src.dir}" destdir="${build.dir}"
       includeantruntime="false" fork="true">
       <classpath refid="project.classpath"/>
+
     </javac>
   </target>
 
@@ -32,7 +33,7 @@
   </target>
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
-    <java classname="Tills.TillsSystem.sample.Harness">
+    <java classname="Tills.TillsSystem.sample.filmTimesPage">
       <classpath refid="project.classpath"/>
     </java>
   </target>
@@ -41,5 +42,6 @@
     <java classname="sample.Main" fork="true">
       <classpath refid="project.classpath"/>
     </java>
+
   </target>
 </project>
