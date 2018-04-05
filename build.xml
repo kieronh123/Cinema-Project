@@ -29,7 +29,9 @@
   </target>
 
   <target name="clean" description="Remove compiled code">
-    <delete dir="${build.dir}"/>
+    <delete>
+      <fileset dir="${build.dir}" includes="**/*.class"/>
+    </delete>
   </target>
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
@@ -42,6 +44,6 @@
     <java classname="sample.Main" fork="true">
       <classpath refid="project.classpath"/>
     </java>
-
   </target>
+
 </project>
