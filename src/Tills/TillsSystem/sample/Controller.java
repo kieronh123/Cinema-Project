@@ -36,7 +36,7 @@ public class Controller {
       //  Window owner = login.getScene().getWindow();
         System.out.println("here");
 
-        String username = "calkey";
+        String username = Username.getText();
         String password = "password";
         System.out.println(username);
         boolean logIn = loginPage.loginButton(username, password);
