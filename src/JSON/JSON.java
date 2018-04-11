@@ -1,12 +1,13 @@
 package JSON;
 
+import Tills.Movie;
+import Tills.Seat;
+import Tills.Ticket;
+import Tills.User;
 import com.google.gson.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
-
-import Tills.TillsSystem.sample.*;
+import Tills.*;
 
 public class JSON {
     public static Movie[] moviesFromJson(String json){
