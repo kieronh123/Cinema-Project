@@ -1,25 +1,17 @@
-package sample;
+package Tills;
 
 import JSON.JSON;
-import Tills.TillsSystem.sample.Movie;
-import Tills.TillsSystem.sample.filmTimesPage;
-import Tills.TillsSystem.sample.loginPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Controller {
   @FXML
@@ -37,8 +29,8 @@ public class Controller {
         System.out.println("here");
 
         String username = Username.getText();
-        String password = "password";
         System.out.println(username);
+        String password = "password";
         boolean logIn = loginPage.loginButton(username, password);
         if (logIn == false){
           System.out.println("Try again");

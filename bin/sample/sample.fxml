@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controller">
     <TextField fx:id="nameField" onKeyReleased="#releasedKey" prefWidth="60" GridPane.columnIndex="6" GridPane.rowIndex="6" />
     <Button fx:id="login" onAction="#buttonClicked" text="Log in" GridPane.columnIndex="7" GridPane.rowIndex="6" />
     <Button fx:id="logOut" onAction="#buttonClicked" text="logout" GridPane.columnIndex="8" GridPane.rowIndex="6" />
@@ -25,8 +25,8 @@
         <font>
             <Font size="20.0"/>
         </font></Label>
-    <Button fx:id="event" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <Button fx:id="button1" text=" 16:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button fx:id="button2" text=" 16:35 " GridPane.columnIndex="2" GridPane.rowIndex="1" />
     <Button text=" 20:00 " GridPane.columnIndex="3" GridPane.rowIndex="1" />
     <Button text=" 21:15 " GridPane.columnIndex="4" GridPane.rowIndex="1" />
     <Button text="" GridPane.columnIndex="0" GridPane.rowIndex="2">

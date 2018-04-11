@@ -10,7 +10,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="Tills.Controller">
     <Button text = "log in" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#stayOnPage"/>
     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2"/>

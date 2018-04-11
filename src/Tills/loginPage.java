@@ -1,17 +1,10 @@
-package Tills.TillsSystem.sample;
+package Tills;
 
 import JSON.JSON;
 
-/**
- * Created by sc16km on 26/03/18.
- */
 public class loginPage {
     public String UsernameLogIn;
     public String PasswordLogIn;
-
-    public static void main(String[] args) throws Exception {
-
-    }
 
     public static boolean loginButton(String username, String password) {
         Harness harness = new Harness();
