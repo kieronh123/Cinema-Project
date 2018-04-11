@@ -1,9 +1,5 @@
-package Tills.TillsSystem.sample;
+package Tills.Controllers;
 
-import JSON.JSON;
-import Tills.TillsSystem.sample.Movie;
-import Tills.TillsSystem.sample.filmTimesPage;
-import Tills.TillsSystem.sample.loginPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,11 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Controller {
   @FXML
@@ -32,31 +25,31 @@ public class Controller {
 
     @FXML
     public void stayOnPage(ActionEvent event) throws IOException {
-      //  Window owner = login.getScene().getWindow();
-        System.out.println("here");
-
-        String username = "calkey";
-        String password = "password";
-        System.out.println(username);
-        boolean logIn = loginPage.loginButton(username, password);
-        if (logIn == false){
-            System.out.println("Try again");
-        }else{
-            StringBuffer movies =  filmTimesPage.filmNamesTimes();
-            Movie[] films = JSON.moviesFromJson(movies.toString());
-
-
-
-            for(Movie movie: films){
-
-            }
-
-            Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            Scene homeScene = new Scene(homePage, 1000, 800);
-            Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
-            userInterface.setScene(homeScene);
-
-           }
+//      //  Window owner = login.getScene().getWindow();
+//        System.out.println("here");
+//
+//        String username = "calkey";
+//        String password = "password";
+//        System.out.println(username);
+//        boolean logIn = loginPage.loginButton(username, password);
+//        if (logIn == false){
+//            System.out.println("Try again");
+//        }else{
+//            StringBuffer movies =  filmTimesPage.filmNamesTimes();
+//            Movie[] films = JSON.moviesFromJson(movies.toString());
+//
+//
+//
+//            for(Movie movie: films){
+//
+//            }
+//
+//            Parent homePage = FXMLLoader.load(getClass().getResource("sample.fxml"));
+//            Scene homeScene = new Scene(homePage, 1000, 800);
+//            Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
+//            userInterface.setScene(homeScene);
+//
+//           }
       }
 
       @FXML
@@ -65,6 +58,7 @@ public class Controller {
         loader.setLocation(getClass().getResource("ticketType.fxml")) ;
         loader.setController(this);
         Parent homePage = loader.load();
+
         Scene homeScene = new Scene(homePage, 1000, 800);
         Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
 

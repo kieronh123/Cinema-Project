@@ -1,4 +1,4 @@
-package Tills.TillsSystem.sample;
+package Tills;
 
 public class Seat {
     private String Column;
