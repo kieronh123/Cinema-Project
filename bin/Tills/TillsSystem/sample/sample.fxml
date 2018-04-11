@@ -14,7 +14,7 @@
     <TextField fx:id="nameField" onKeyReleased="#releasedKey" prefWidth="60" GridPane.columnIndex="6" GridPane.rowIndex="6" />
     <Button fx:id="login" onAction="#buttonClicked" text="Log in" GridPane.columnIndex="7" GridPane.rowIndex="6" />
     <Button fx:id="logOut" onAction="#buttonClicked" text="logout" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-    <Button onAction="#timesOfFilm" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <Button onAction="#bookTickets" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <graphic>
             <ImageView fitHeight="160" fitWidth="113">
                 <Image url="@img/civilWar.png" />

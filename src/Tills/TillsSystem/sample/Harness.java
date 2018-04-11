@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import JSON.JSON;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import Tills.TillsSystem.sample.Movie;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -27,12 +24,6 @@ public class Harness {
         Harness http = new Harness();
 
         System.out.println("Testing 1 - Send Http GET request");
-
-        //sendGet("");
-
-        //System.out.println("\nTesting 2 - Send Http POST request");
-        //http.sendPost();
-
     }
 
     // HTTP GET request

@@ -34,7 +34,15 @@
     </delete>
   </target>
 
-  <target name="testHarness" depends="compile" description="Run harness file to test connection">
+  <target name="testHarness" depends="compile" description="Run unit test for Harness">
+    <junit fork="true">
+      <classpath refid="project.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <test name="Tills.TillsSystem.sample.HarnessTest"/>
+    </junit>
+  </target>
+
+  <target name="Harness" depends="compile" description="Run harness file to test connection">
     <java classname="Tills.TillsSystem.sample.filmTimesPage">
       <classpath refid="project.classpath"/>
     </java>

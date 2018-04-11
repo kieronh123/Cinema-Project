@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -30,6 +27,8 @@ public class Controller {
   private Button login;
   @FXML
   private Button logOut;
+  @FXML
+  public Label FilmName;
 
     @FXML
     public void stayOnPage(ActionEvent event) throws IOException {
@@ -61,12 +60,16 @@ public class Controller {
       }
 
       @FXML
-      public void timesOfFilm(ActionEvent event) throws IOException {
-
-        Parent homePage = FXMLLoader.load(getClass().getResource("firstFilm.fxml"));
+      public void bookTickets(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ticketType.fxml")) ;
+        loader.setController(this);
+        Parent homePage = loader.load();
         Scene homeScene = new Scene(homePage, 1000, 800);
         Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
+
         userInterface.setScene(homeScene);
+        FilmName.setText("Infinity war");
       }
 
       @FXML

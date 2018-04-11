@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" >
+    <children>
+    <HBox GridPane.columnIndex="3" GridPane.rowIndex="3">
+        <ComboBox GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Seats to choose from" />
+            </value>
+        </ComboBox>
+    </HBox>
+    <Label id="FilmName" fx:id="FilmName" text="Film name" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="0" />
+    </children>
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="25" GridPane.hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="25" GridPane.hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="25" GridPane.hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="25" GridPane.hgrow="ALWAYS"/>
+   </columnConstraints>
+   <rowConstraints>
+        <RowConstraints percentHeight="25" GridPane.vgrow="ALWAYS"/>
+       <RowConstraints percentHeight="25" GridPane.vgrow="ALWAYS"/>
+       <RowConstraints percentHeight="25" GridPane.vgrow="ALWAYS"/>
+       <RowConstraints percentHeight="25" GridPane.vgrow="ALWAYS"/>
+
+   </rowConstraints>
+    <!--<VBox GridPane.columnSpan="0" GridPane.rowIndex="0">-->
+        <!--<CheckBox text="VIP"/>-->
+    <!--</VBox>-->
+
+</GridPane>
