@@ -1,4 +1,4 @@
-package sample;
+package Tills.TillsSystem.sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
