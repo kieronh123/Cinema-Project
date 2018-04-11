@@ -43,8 +43,6 @@
   </target>
 
   <target name="Harness" depends="compile" description="Run harness file to test connection">
-    <java classname="Tills.TillsSystem.sample.filmTimesPage">
-  <target name="testHarness" depends="compile" description="Run harness file to test connection">
     <java classname="Tills.filmTimesPage">
       <classpath refid="project.classpath"/>
     </java>
