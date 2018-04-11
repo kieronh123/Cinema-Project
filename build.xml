@@ -54,4 +54,10 @@
     </java>
   </target>
 
+  <target name="testTicket" depends="compile" description="Run ticket page to test connection">
+    <java classname="Tills.LaunchTicketPage" fork="true">
+      <classpath refid="project.classpath"/>
+    </java>
+  </target>
+
 </project>

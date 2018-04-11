@@ -63,7 +63,7 @@ public class Controller {
         Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         userInterface.setScene(homeScene);
-        FilmName.setText("Infinity war");
+
       }
 
       @FXML
