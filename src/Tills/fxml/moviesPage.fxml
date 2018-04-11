@@ -12,10 +12,10 @@
 
 
 <?import javafx.scene.layout.HBox?>
-<GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.Controller">
+<GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.MoviePageController">
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label fx:id="label1" alignment="center" text="Movie 1"/>
+            <Label fx:id="movie1" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
@@ -26,7 +26,7 @@
 
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label alignment="center" text="Movie 1"/>
+            <Label fx:id="movie2"  alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
@@ -37,7 +37,7 @@
 
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label alignment="center" text="Movie 1"/>
+            <Label fx:id="movie3" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
@@ -48,7 +48,7 @@
 
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label alignment="center" text="Movie 1"/>
+            <Label fx:id="movie4" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
@@ -59,7 +59,7 @@
 
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label alignment="center" text="Movie 1"/>
+            <Label fx:id="movie5" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
@@ -70,7 +70,7 @@
 
     <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label alignment="center" text="Movie 1"/>
+            <Label fx:id="movie6" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Button text="button 1"/>
