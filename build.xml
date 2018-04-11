@@ -35,13 +35,13 @@
   </target>
 
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
-    <java classname="Tills.TillsSystem.sample.filmTimesPage">
+    <java classname="Tills.filmTimesPage">
       <classpath refid="project.classpath"/>
     </java>
   </target>
 
   <target name="testTills" depends="compile" description="Run Tills file to test connection">
-    <java classname="Tills.TillsSystem.sample.Main" fork="true">
+    <java classname="Tills.Main" fork="true">
       <classpath refid="project.classpath"/>
     </java>
   </target>
