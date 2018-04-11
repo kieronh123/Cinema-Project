@@ -1,4 +1,4 @@
-package sample;
+package Tills.TillsSystem.sample;
 
 import JSON.JSON;
 import Tills.TillsSystem.sample.Movie;
@@ -41,10 +41,12 @@ public class Controller {
         System.out.println(username);
         boolean logIn = loginPage.loginButton(username, password);
         if (logIn == false){
-          System.out.println("Try again");
+            System.out.println("Try again");
         }else{
             StringBuffer movies =  filmTimesPage.filmNamesTimes();
             Movie[] films = JSON.moviesFromJson(movies.toString());
+
+
 
             for(Movie movie: films){
 
