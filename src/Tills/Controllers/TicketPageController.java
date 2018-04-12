@@ -1,13 +1,18 @@
 package Tills.Controllers;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -33,13 +38,17 @@ public class TicketPageController {
     GridPane ButtonsSeats;
     @FXML
     Button returnHome;
+    @FXML
+    ComboBox<String> age;
+    @FXML
+    ComboBox<String> vip;
 
 
     String time = null;
     String name = null;
 
     private int Age = 0;
-    public boolean VIP;
+    public boolean VIP = false;
     public String column;
     public String row;
 
@@ -52,11 +61,10 @@ public class TicketPageController {
     private void initialize(){
         FilmName.setText(name);
         FilmTime.setText(time);
-
+        returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnHome.setOnAction((Event) ->{
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
-
                 Parent parent = (Parent)loader.load();
                 Stage window = (Stage)((Node)Event.getSource()).getScene().getWindow();
                 window.setScene(new Scene(parent));
@@ -64,10 +72,14 @@ public class TicketPageController {
             }catch(IOException e){
                 System.err.println("Could not load page");
             }
-
-
         });
 
+        age.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println(age.getValue());
+            }
+        });
 
         if(Age >=16){
             Child.setText("Child not available");
@@ -117,9 +129,4 @@ public class TicketPageController {
 
     }
 
-    public void returnHome(ActionEvent event) {
-
-     }
-
-
-    }
+}
