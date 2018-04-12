@@ -12,70 +12,71 @@
 
 
 <?import javafx.scene.layout.HBox?>
+
 <GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.MoviePageController">
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <GridPane fx:id="movie1Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie1" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="12:15" onAction="#submitMovieChoice"/>
+            <Button text="12:30" onAction="#submitMovieChoice"/>
+            <Button text="12:45" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <GridPane fx:id="movie2Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie2"  alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="13:00" onAction="#submitMovieChoice"/>
+            <Button text="13:15" onAction="#submitMovieChoice"/>
+            <Button text="13:30" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+    <GridPane fx:id="movie3Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie3" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="13:45" onAction="#submitMovieChoice"/>
+            <Button text="14:00" onAction="#submitMovieChoice"/>
+            <Button text="14:15" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    <GridPane fx:id="movie4Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie4" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="14:30" onAction="#submitMovieChoice"/>
+            <Button text="14:45" onAction="#submitMovieChoice"/>
+            <Button text="15:00" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <GridPane fx:id="movie5Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie5" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="15:15" onAction="#submitMovieChoice"/>
+            <Button text="15:30" onAction="#submitMovieChoice"/>
+            <Button text="15:45" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 
-    <GridPane alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+    <GridPane fx:id="movie6Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie6" alignment="center" text="Movie 1"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <Button text="button 1"/>
-            <Button text="button 2"/>
-            <Button text="button 3"/>
+            <Button text="16:00" onAction="#submitMovieChoice"/>
+            <Button text="16:15" onAction="#submitMovieChoice"/>
+            <Button text="16:30" onAction="#submitMovieChoice"/>
         </HBox>
     </GridPane>
 </GridPane>
