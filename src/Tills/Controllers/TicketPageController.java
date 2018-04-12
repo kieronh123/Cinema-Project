@@ -4,6 +4,7 @@ import JSON.JSON;
 import Tills.Harness;
 import Tills.LaunchTicketPage;
 import Tills.Seat;
+import Tills.Ticket;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,12 +24,20 @@ public class TicketPageController {
     @FXML
     GridPane ButtonsSeats;
 
+    String time = null;
+
     private int Age = 0;
     public boolean VIP;
+
+    public TicketPageController(String time){
+        this.time = time;
+    }
+
     @FXML
     private void initialize(){
+        System.out.println(time);
         FilmName.setText("Infinity war");
-        FilmTime.setText("16:00");
+        FilmTime.setText(time);
         if(Age >=16){
             Child.setText("Child not available");
         }else {
@@ -65,11 +74,6 @@ public class TicketPageController {
                 ButtonsSeats.add(buttonCreate, i, j);
             }
         }
-
-
-
-
     }
-
 
 }
