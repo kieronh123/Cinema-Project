@@ -22,7 +22,7 @@ public class MoviePageController {
     private Label movie5;
     @FXML
     private Label movie6;
-
+    
     @FXML
     private void initialize(){
         Harness harness = new Harness();
