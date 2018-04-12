@@ -20,6 +20,8 @@ public class Controller {
   private Button login;
   @FXML
   private Button logOut;
+  @FXML
+  public Label FilmName;
 
     @FXML
     public void stayOnPage(ActionEvent event) throws IOException {
@@ -51,12 +53,17 @@ public class Controller {
       }
 
       @FXML
-      public void timesOfFilm(ActionEvent event) throws IOException {
+      public void bookTickets(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ticketType.fxml")) ;
+        loader.setController(this);
+        Parent homePage = loader.load();
 
-        Parent homePage = FXMLLoader.load(getClass().getResource("fxml/firstFilm.fxml"));
         Scene homeScene = new Scene(homePage, 1000, 800);
         Stage userInterface = (Stage)((Node)event.getSource()).getScene().getWindow();
+
         userInterface.setScene(homeScene);
+
       }
 
       @FXML
