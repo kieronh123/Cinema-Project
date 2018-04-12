@@ -12,8 +12,12 @@ import javafx.scene.layout.GridPane;
 /**
  * Created by sc16km on 11/04/18.
  */
-public class TicketPageController {
 
+/**
+ * Controller class for the ticketType.fxml page
+ */
+public class TicketPageController {
+    //Set FXML variables that match those in ticketType.fxml
     @FXML
     Label FilmName;
     @FXML
