@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import JSON.JSON;
 import Tills.Harness;
 import Tills.Movie;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,33 +55,21 @@ public class MoviePageController {
 
     public void submitMovieChoice(ActionEvent event){
         Button button = (Button)event.getSource();
+        GridPane movie = (GridPane)button.getParent().getParent();
+        String name = null;
 
-        switch (button.getParent().getParent().getId()){
-            case "movie1Grid":
-                System.out.println(movie1.getText());
-                break;
-            case "movie2Grid":
-                System.out.println(movie2.getText());
-                break;
-            case "movie3Grid":
-                System.out.println(movie3.getText());
-                break;
-            case "movie4Grid":
-                System.out.println(movie4.getText());
-                break;
-            case "movie5Grid":
-                System.out.println(movie5.getText());
-                break;
-            case "movie6Grid":
-                System.out.println(movie6.getText());
-                break;
-        }
+        //retrieve the name of the selected movie
+        HBox hbox = (HBox)movie.getChildren().get(0);
+        Label label = (Label)hbox.getChildren().get(0);
+        name = label.getText();
+
 
         try {
+            //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
-            TicketPageController controller = new TicketPageController(button.getText());
+            TicketPageController controller = new TicketPageController(button.getText(), name);
             loader.setController(controller);
-            Parent parent = (Parent)loader.load();
+            Parent parent = loader.load();
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(parent));
             window.show();

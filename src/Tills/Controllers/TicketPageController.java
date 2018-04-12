@@ -25,18 +25,19 @@ public class TicketPageController {
     GridPane ButtonsSeats;
 
     String time = null;
+    String name = null;
 
     private int Age = 0;
     public boolean VIP;
 
-    public TicketPageController(String time){
+    public TicketPageController(String time, String filmName){
         this.time = time;
+        this.name = filmName;
     }
 
     @FXML
     private void initialize(){
-        System.out.println(time);
-        FilmName.setText("Infinity war");
+        FilmName.setText(name);
         FilmTime.setText(time);
         if(Age >=16){
             Child.setText("Child not available");
