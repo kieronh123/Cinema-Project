@@ -75,23 +75,6 @@ public class Controller {
       }
 
 
-      @FXML
-      public void buttonClicked(ActionEvent e){
-        if (e.getSource().equals(login)){
-          System.out.println( nameField.getText()+" is logged in");
-        }
-        else if (e.getSource().equals(logOut)) {
-          System.out.println( nameField.getText()+ " is logged out");
-        }
-      }
-
-      @FXML
-      public void releasedKey(){
-        String text = nameField.getText();
-        boolean disabledButton = text.isEmpty() || text.trim().isEmpty();
-        login.setDisable(disabledButton);
-        logOut.setDisable(disabledButton);
-      }
 
       @FXML
       public void useReleasedKeyMethod(){
