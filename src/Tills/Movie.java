@@ -15,38 +15,6 @@ public class Movie {
     private String Movie_Blurb;
     private String Movie_ImageFilename;
 
-    public int getMovie_ID() {
-        return Movie_ID;
-    }
-
-    public String getMovie_Name() {
-        return Movie_Name;
-    }
-
-    public String getMovie_Rating() {
-        return Movie_Rating;
-    }
-
-    public String getMovie_Runtime() {
-        return Movie_Runtime;
-    }
-
-    public String getMovie_Director() {
-        return Movie_Director;
-    }
-
-    public List<String> getMovie_LeadActors() {
-        return Movie_LeadActors;
-    }
-
-    public String getMovie_Blurb() {
-        return Movie_Blurb;
-    }
-
-    public String getMovie_ImageFilename() {
-        return Movie_ImageFilename;
-    }
-
     public Movie(int ID, String name, String rating, String runtime, String director, List<String> leadActors, String blurb, String imageFilename) {
         this.Movie_ID = ID;
         this.Movie_Name = name;
@@ -60,17 +28,14 @@ public class Movie {
 
     @Override
     public String toString(){
-//        String actors = null;
-//        for(String actor: Movie_LeadActors){
-//            actors += (Movie_LeadActors + ",");
-//        }
         return "ID: " + Movie_ID + "\n" +
                "Name: " + Movie_Name  + "\n" +
                "Rating: " + Movie_Rating  + "\n" +
                "Runtime: " + Movie_Runtime  + "\n" +
                "Director: " + Movie_Director  + "\n" +
-               //"Lead Actors: " + Movie_LeadActors + "\n" +
                "Blurb: " + Movie_Blurb  + "\n" +
                "Image filename: " + Movie_ImageFilename;
     }
+
+    public String getMovie_Name(){return Movie_Name;}
 }
