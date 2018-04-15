@@ -12,22 +12,23 @@ password2 = 'password2'
 movieid1 = 1
 moviename1 = 'batman'
 movierating1 = '12A'
-movieruntime1 = '2h20m'
+movieruntime1 = 7200
 movieinfo1 = 'Man dresses as bat and beats up the mentally ill'
 movieimage1 = 'image_url1'
 
 movieid2 = 2
 moviename2 = 'superman'
 movierating2 = '15'
-movieruntime2 = '2h30m'
+movieruntime2 = 8400
 movieinfo2 = 'is it a bird? is it a plane?'
 movieimage2 = 'image_url2'
 
 screenid1 = 1
-seatbooked1 = 'A4'
+column1 = 0
+row1 = 1
 
-screenid2 = 2
-seatbooked2 = 'b2'
+column2 = 2
+row2 = 2
 
 
 cursor.execute('''INSERT INTO Users(User_ID,Username,Password)
