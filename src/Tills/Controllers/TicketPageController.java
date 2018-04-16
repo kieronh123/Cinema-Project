@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,36 +34,48 @@ public class TicketPageController {
     @FXML
     Label FilmTime;
     @FXML
-    Label Child;
+    GridPane vip;
     @FXML
     GridPane ButtonsSeats;
     @FXML
     Button returnHome;
     @FXML
-    ComboBox<String> age;
-    @FXML
-    ComboBox<String> vip;
+    GridPane Ticket;
 
 
-    String time = null;
-    String name = null;
-
+    //Variables that will be used throughout this controller
+    public String time = null;
+    public String name = null;
     private int Age = 0;
     public boolean VIP = false;
     public String column;
     public String row;
+    public String ticket;
 
+
+    /**
+     * Constructor for this controller
+     * @param time The film time selected on the previous page
+     * @param filmName
+     */
     public TicketPageController(String time, String filmName){
         this.time = time;
         this.name = filmName;
     }
 
+    /**
+     * Method that initializes values of labels and creates combo boxes and
+     * buttons to be displayed on the tickets and seating page.
+     */
     @FXML
     private void initialize(){
+        //Set these labels to the film name and time previously selected
         FilmName.setText(name);
         FilmTime.setText(time);
         returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        //Set action of the button return home
         returnHome.setOnAction((Event) ->{
+            //Try and load the movie screen page
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
                 Parent parent = (Parent)loader.load();
@@ -73,19 +86,49 @@ public class TicketPageController {
                 System.err.println("Could not load page");
             }
         });
+        //Set button to maximum possible size
+        returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-        age.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.println(age.getValue());
-            }
-        });
+        //Create a combo box that allows employee to select the age ticket
+        final ComboBox<String> ticketType = new ComboBox<>();
+        //If the age rating of the film is >16 then children can not go to watch it
 
         if(Age >=16){
-            Child.setText("Child not available");
+            ticketType.getItems().addAll("Adult", "Senior");
+        //Otherwise allow children tickets to be purchased
         }else {
-            Child.setText("Child");
+            ticketType.getItems().addAll("Adults", "Senior", "Child");
         }
+        //Maximise size of combo box
+        ticketType.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        //When the employee selects the ticket type, set the variable ticket to the selection
+        ticketType.setOnAction(e->{
+            ticket = ticketType.getValue();
+            System.out.println(ticket);
+        });
+        //Add the combobox to the fxml page
+        Ticket.add(ticketType,0,0);
+
+        //Create a combo box that allows employee to select the VIP or not
+        final ComboBox<String> vipTicket = new ComboBox<>();
+
+            vipTicket.getItems().addAll("Yes", "No");
+
+        vipTicket.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        //When the employee selects VIP or not set boolean variable to true or false respectively
+        vipTicket.setOnAction(e->{
+            String response = vipTicket.getValue();
+            System.out.println(response);
+            if(response.equals("Yes")){
+                VIP = true;
+            }else if(response.equals("No")){
+                VIP = false;
+            }
+        });
+        //Add the combobox to the fxml page
+        vip.add(vipTicket,0,0);
+
+
 
 //        Harness harness = new Harness();
 //        StringBuffer response = null;

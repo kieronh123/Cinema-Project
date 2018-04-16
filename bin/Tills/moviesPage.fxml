@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="40" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="40" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Tills.Controllers.MoviePageController">
+<GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.MoviePageController" >
     <GridPane fx:id="movie1Grid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie1" alignment="center" text="Movie 1" />
@@ -116,16 +116,12 @@
          <RowConstraints />
       </rowConstraints>
     </GridPane>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
+
+    <!--<columnConstraints>-->
+        <!--<ColumnConstraints />-->
+        <!--<ColumnConstraints percentWidth="50.0" />-->
+        <!--<ColumnConstraints percentWidth="50.0" />-->
+
+    <!--</columnConstraints>-->
+
 </GridPane>
