@@ -6,9 +6,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+<<<<<<< HEAD:src/Tills/Harness.java
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+=======
+import JSON.JSON;
+
+>>>>>>> 7ddb7d136459d647cf6182d14323f5c4a4842b5e:src/Tills/Harness.java
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -21,12 +26,6 @@ public class Harness {
         Harness http = new Harness();
 
         System.out.println("Testing 1 - Send Http GET request");
-
-        //sendGet("");
-
-        //System.out.println("\nTesting 2 - Send Http POST request");
-        //http.sendPost();
-
     }
 
     // HTTP GET request

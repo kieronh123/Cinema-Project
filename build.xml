@@ -34,7 +34,19 @@
     </delete>
   </target>
 
+<<<<<<< HEAD
   <target name="testHarness" depends="compile" description="Run harness file to test connection">
+=======
+  <target name="testHarness" depends="compile" description="Run unit test for Harness">
+    <junit fork="true">
+      <classpath refid="project.classpath"/>
+      <formatter type="plain" usefile="false"/>
+      <test name="Tills.TillsSystem.sample.HarnessTest"/>
+    </junit>
+  </target>
+
+  <target name="Harness" depends="compile" description="Run harness file to test connection">
+>>>>>>> 7ddb7d136459d647cf6182d14323f5c4a4842b5e
     <java classname="Tills.filmTimesPage">
       <classpath refid="project.classpath"/>
     </java>
@@ -42,6 +54,15 @@
 
   <target name="testTills" depends="compile" description="Run Tills file to test connection">
     <java classname="Tills.Main" fork="true">
+<<<<<<< HEAD
+=======
+      <classpath refid="project.classpath"/>
+    </java>
+  </target>
+
+  <target name="testTicket" depends="compile" description="Run ticket page to test connection">
+    <java classname="Tills.LaunchTicketPage" fork="true">
+>>>>>>> 7ddb7d136459d647cf6182d14323f5c4a4842b5e
       <classpath refid="project.classpath"/>
     </java>
   </target>
