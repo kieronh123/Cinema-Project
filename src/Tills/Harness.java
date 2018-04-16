@@ -6,14 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-<<<<<<< HEAD:src/Tills/Harness.java
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-=======
 import JSON.JSON;
-
->>>>>>> 7ddb7d136459d647cf6182d14323f5c4a4842b5e:src/Tills/Harness.java
 
 import javax.net.ssl.HttpsURLConnection;
 
