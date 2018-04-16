@@ -14,13 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Created by sc16jsg on 16/04/18.
- */
 
-/**
- * Controller class for the PaymentPage.fxml page
- */
 public class PaymentPageController {
   //Set FXML variables that match those in ticketType.fxml
 
@@ -39,7 +33,7 @@ public class PaymentPageController {
   String time = null;
   String name = null;
   String seat = null;
-  boolean VIP = null;
+  boolean VIP;
 
 
 
@@ -71,3 +65,5 @@ public class PaymentPageController {
 
 
     });
+  }
+}
