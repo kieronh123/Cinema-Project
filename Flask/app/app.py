@@ -6,7 +6,6 @@ import json
 
 DATABASE = 'database/cinema.db'
 
-
 app = FlaskAPI(__name__)
 api = Api(app)
 
@@ -14,17 +13,19 @@ api = Api(app)
 def execute_query(query, method):
     conn = get_db()
     c = conn.cursor()
-    if method == 'GET':
-        c.execute(query)
-        r = [dict((c.description[i][0], value) \
-                   for i, value in enumerate(row)) for row in c.fetchall()]
-        json_output = json.dumps(r)
-        return json_output
-    elif method == 'POST':
-        c.execute(query)
-        conn.commit()
-        return "{Status: 200}"
-
+    try:
+        if method == 'GET':
+            c.execute(query)
+            r = [dict((c.description[i][0], value) \
+                       for i, value in enumerate(row)) for row in c.fetchall()]
+            json_output = json.dumps(r)
+            return json_output
+        elif method == 'POST' or method == 'DELETE':
+            c.execute(query)
+            conn.commit()
+            return "{Status: 200}"
+    except sqlite3.IntegrityError:
+        return "{Status:400}"
 
 ##Bookings
 #Function to get information on all bookings and add a booking
@@ -85,12 +86,13 @@ def particularMovie(key):
 @app.route('/whatson/', methods=['GET', 'POST'])
 def whatsOn():
     if request.method == 'GET':
+
         query = "SELECT * FROM Whats_On"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
     elif request.method == 'POST':
         conn = get_db()
         c = conn.cursor()
-        max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
+        max_id_list = c.execute("SELECT Max(Screening_ID) from Whats_On;").fetchall()
         max_id_list2 = max_id_list[0]
         number_of_rows = max_id_list2[0]
         data = str(request.data.get('data', ''))
