@@ -13,36 +13,40 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/**
+ * Created by sc16jsg on 14/04/18.
+ */
 
 public class PaymentPageController {
-  //Set FXML variables that match those in ticketType.fxml
+  //Set FXML variables that match those in PaymentPage.fxml
 
   @FXML
   Label FilmName;
   @FXML
   Label FilmTime;
   @FXML
-  GridPane ButtonsSeats;
-  @FXML
-  Button returnHome;
+  Label Date;
   @FXML
   Label PriceOfTicket;
+  @FXML
+  Label Seating;
+  @FXML
+  Button PayByCash;
+  @FXML
+  Label Screening;
 
 
   String time = null;
-  String name = null;
+  String filmName = null;
   String seat = null;
   boolean VIP;
 
+  public JTextArea area = new JTextArea();
 
-
-  public PaymentPageController(Label filmName, String time, String name, String seat, boolean VIP) {
-    FilmName = filmName;
+  public PaymentPageController( String time, String filmName, String seat) {
     this.time = time;
-    this.name = name;
+    this.name = filmName;
     this.seat = seat;
-    this.VIP = VIP;
   }
 
 
@@ -65,5 +69,36 @@ public class PaymentPageController {
 
 
     });
+  }
+
+/*
+The code below is used for printing the
+receipt.
+
+*/
+/*
+buttonOnPrint is for priting the ticket however a PDF will still be needed
+*/
+  @FXML
+  private void buttonOnPrint(ActionEvent event)throws PrintException{
+    area.setText("*********************************");
+    try{
+      area.print();
+    }catch(Exception e){
+      System.out.println("error in printing " + e.getMessage());
+    }
+  }
+
+/*
+This is used for generating the receipt from the ticket chosen.
+variables are still needed to update the fields
+*/
+  @FXML
+  private void showReceipt(){
+    Date object = new Date();
+    String date = object.toString();
+
+    area.setText("**********************************");
+    area.setText(area.getText()+"\n"+date+"\n");
   }
 }
