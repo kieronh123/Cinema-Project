@@ -16,6 +16,12 @@ public class JSON {
         return movies;
     }
 
+    public static Movie movieFromJson(String json){
+        Gson gson = new Gson();
+        Movie[] movie = moviesFromJson(json);
+        return movie[0];
+    }
+
     public static void moviesToJson(Movie[] movies){
         Gson gson = new Gson();
         String json =  gson.toJson(movies);
@@ -54,6 +60,18 @@ public class JSON {
     public static void usersToJson(User[] users){
         Gson gson = new Gson();
         String json =  gson.toJson(users);
+        System.out.println(json);
+    }
+
+    public static WhatsOn[] whatsOnFromJson(String json){
+        Gson gson = new Gson();
+        WhatsOn[]whatsOn = gson.fromJson(json, WhatsOn[].class);
+        return whatsOn;
+    }
+
+    public static void whatsOnToJson(WhatsOn[] whatsOn){
+        Gson gson = new Gson();
+        String json = gson.toJson(whatsOn);
         System.out.println(json);
     }
 }

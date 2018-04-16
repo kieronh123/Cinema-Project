@@ -1,9 +1,8 @@
 package Tills;
 
 public class Seat {
-    public int number;
-    public Boolean vip;
-    public boolean taken;
+    private String Column;
+    private String Row;
 
     public Seat(){}
 }
