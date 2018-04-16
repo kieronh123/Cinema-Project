@@ -37,19 +37,17 @@ public class MoviePageController {
 
     @FXML
     private void initialize() {
-        Harness harness = new Harness();
         String whatsOnString = null;
         Label[] labels = {movie1, movie2, movie3, movie4, movie5, movie6};
-        //get movies list from the database
         try {
-            whatsOnString = harness.sendGet("whatson").toString();
+            //get the list of screenings from the database
+            whatsOnString = Harness.sendGet("whatson").toString();
             WhatsOn[] whatsOn = JSON.whatsOnFromJson(whatsOnString);
 
             //set the text of each label to the title of the movie
             for (int i = 0; i < 6; i++) {
-                String movieString =  harness.sendGet("movies/" + whatsOn[i].getScreening_ID()).toString();
+                String movieString = Harness.sendGet("movies/" + whatsOn[i].getScreening_ID()).toString();
                 Movie movie = JSON.movieFromJson(movieString);
-                System.out.println(movie.getMovie_Name());
                 labels[i].setText(movie.getMovie_Name());
             }
         } catch (Exception e) {
@@ -80,6 +78,5 @@ public class MoviePageController {
         } catch (IOException e) {
             System.err.println("Could not load page");
         }
-
     }
 }

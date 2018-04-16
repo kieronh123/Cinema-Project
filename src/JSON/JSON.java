@@ -18,8 +18,8 @@ public class JSON {
 
     public static Movie movieFromJson(String json){
         Gson gson = new Gson();
-        Movie movie = gson.fromJson(json, Movie.class);
-        return movie;
+        Movie[] movie = moviesFromJson(json);
+        return movie[0];
     }
 
     public static void moviesToJson(Movie[] movies){
