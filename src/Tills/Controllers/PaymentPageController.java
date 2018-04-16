@@ -35,7 +35,7 @@ public class PaymentPageController {
   String time = null;
   String name = null;
   String seat = null;
-  boolean VIP;
+  boolean VIP = false;
 
 
   public PaymentPageController(Label filmName, String time, String name, String seat, boolean VIP) {
