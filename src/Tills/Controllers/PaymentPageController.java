@@ -39,8 +39,7 @@ public class PaymentPageController {
   String time = null;
   String name = null;
   String seat = null;
-  boolean VIP = null;
-
+  boolean VIP = false;
 
 
   public PaymentPageController(Label filmName, String time, String name, String seat, boolean VIP) {
@@ -53,21 +52,23 @@ public class PaymentPageController {
 
 
   @FXML
-  private void initialize(){
+  private void initialize() {
     FilmName.setText(name);
     FilmTime.setText(time);
 
-    returnHome.setOnAction((Event) ->{
+    returnHome.setOnAction((Event) -> {
       try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
 
-        Parent parent = (Parent)loader.load();
-        Stage window = (Stage)((Node)Event.getSource()).getScene().getWindow();
+        Parent parent = (Parent) loader.load();
+        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
         window.setScene(new Scene(parent));
         window.show();
-      }catch(IOException e){
+      } catch (IOException e) {
         System.err.println("Could not load page");
       }
 
 
     });
+  }
+}
