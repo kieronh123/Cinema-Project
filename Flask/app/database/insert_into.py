@@ -3,24 +3,26 @@ db = sqlite3.connect('cinema.db')
 cursor = db.cursor()
 id1 = 1
 username1 = 'calkey@hotmail.co.uk'
-password1 = 'password'
+#password
+password1 = '5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8'
 
 id2 = 2
 username2 = 'miniman@gmail.com'
-password2 = 'password2'
+#hunter2
+password2 = 'F52FBD32B2B3B86FF88EF6C490628285F482AF15DDCB29541F94BCF526A3F6C7'
 
 movieid1 = 1
-moviename1 = 'batman'
+moviename1 = 'Batman Begins'
 movierating1 = '12A'
 movieruntime1 = 7200
-movieinfo1 = 'Man dresses as bat and beats up the mentally ill'
+movieinfo1 = 'Man scared of bats dresses up to beat up people'
 movieimage1 = 'image_url1'
 
 movieid2 = 2
-moviename2 = 'superman'
+moviename2 = 'Superman: Man of Steel'
 movierating2 = '15'
 movieruntime2 = 8400
-movieinfo2 = 'is it a bird? is it a plane?'
+movieinfo2 = 'Is it a bird, is it a plane? No its superman!'
 movieimage2 = 'image_url2'
 
 screenid1 = 1

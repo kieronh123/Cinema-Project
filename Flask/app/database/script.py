@@ -25,8 +25,8 @@ cursor.execute('''
     CREATE TABLE Bookings(Screening_ID INTEGER,
                         Row_Num INTEGER,
                         Column_Num INTEGER,
-                        PRIMARY KEY(Screening_ID, Row_Num, Column_Num))
-                        FOREIGN KEY (Screening_ID) REFERENCES Whats_On(Screening_ID)
+                        PRIMARY KEY(Screening_ID, Row_Num, Column_Num),
+                        FOREIGN KEY (Screening_ID) REFERENCES Whats_On(Screening_ID))
 ''')
 
 
@@ -39,7 +39,6 @@ cursor.execute('''
                           PRIMARY KEY (Screen_ID, Start_Time),
                           FOREIGN KEY (Movie_ID) REFERENCES Movies(Movie_ID))
 ''')
-
 
 db.commit()
 
