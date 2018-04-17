@@ -63,11 +63,13 @@ public class MoviePageController {
         Label label = (Label)hbox.getChildren().get(0);
         name = label.getText();
 
-
+        //CALLUM THIS IS WHERE THE SCREENING IS NEEDED FOR PASSING THROUGH
+        int screeningID = 0;
+        int age = 0;
         try {
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
-            TicketPageController controller = new TicketPageController(button.getText(), name);
+            TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
             loader.setController(controller);
             Parent parent = loader.load();
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
