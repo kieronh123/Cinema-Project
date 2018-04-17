@@ -4,4 +4,8 @@
 #intellij files
 .idea/*
 
+#flask file containing virtualenv
 Flask/flask
+
+#.pyc files
+*.pyc
