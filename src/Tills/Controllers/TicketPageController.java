@@ -58,7 +58,7 @@ public class TicketPageController {
      * @param time The film time selected on the previous page
      * @param filmName
      */
-    public TicketPageController(String time, String filmName){
+    public TicketPageController(String time, String filmName, int screeningID, String rating){
         this.time = time;
         this.name = filmName;
     }
