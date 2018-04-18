@@ -1,6 +1,8 @@
 package Tills.Controllers;
 
 
+import Tills.Harness;
+import Tills.Seat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
+import JSON.JSON;
 import java.io.IOException;
 
 /**
@@ -42,11 +44,13 @@ public class TicketPageController {
     //Variables that will be used throughout this controller
     public String time = null;
     public String name = null;
+    public int screeningID = 0;
     private int Age = 0;
     public boolean VIP;
     public String column;
     public String row;
     public String ticket;
+    public int age;
 
 
     /**
@@ -54,9 +58,11 @@ public class TicketPageController {
      * @param time The film time selected on the previous page
      * @param filmName
      */
-    public TicketPageController(String time, String filmName){
+    public TicketPageController(String time, String filmName, int screeningID, int Age){
         this.time = time;
         this.name = filmName;
+        this.screeningID = screeningID;
+        this.age = Age;
     }
 
     /**
@@ -114,26 +120,30 @@ public class TicketPageController {
             String response = vipTicket.getValue();
             System.out.println(response);
             if(response.equals("Yes")){
-                VIP = true;
+                displaySeats(true);
             }else if(response.equals("No")){
-                VIP = false;
+                displaySeats(false);
             }
         });
         //Add the combobox to the fxml page
         vip.add(vipTicket,0,0);
 
 
+    }
 
-//        Harness harness = new Harness();
-//        StringBuffer response = null;
-//        try {
-//            //Try and send a get request to receive all information from movies table
-//            response = harness.sendGet("seats/");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        Seat[] seats = JSON.seatsFromJson(response.toString());
-//        for (Seat seat : seats) {
+    public void displaySeats(boolean VIPticket){
+
+        Harness harness = new Harness();
+        StringBuffer response = null;
+        try {
+            //Try and send a get request to receive all information from movies table
+            response = harness.sendGet("seats/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Seat[] seats = JSON.seatsFromJson(response.toString());
+
+
         for(int i =0; i<5; i++){
             for(int j=0; j<5; j++) {
                 Button buttonCreate = new Button();
@@ -147,23 +157,20 @@ public class TicketPageController {
 
                 });
                 buttonCreate.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-                //if(seat.taken == true){
-                //buttonCreate.setDisable(true);
-                //}else if(seat.vip == true && VIP==true){
+                if(VIPticket==true & (j!=2)){
+                    buttonCreate.setDisable(true);
+                }else if(VIPticket==false & (j==2)){
+                    buttonCreate.setDisable(true);
+                }
 
-                //}else if(seat.vip==true && VIP==false){
-                //buttonCreate.setDisable(true);
-
-                //}else if(seat.vip==false && VIP==true){
-                //buttonCreate.setDisable(true);
-
-                //}else{
-                //}
-
+                for(Seat seat: seats){
+                    if((seat.column == i) & (seat.row == j)){
+                        buttonCreate.setDisable(true);
+                    }
+                }
                 ButtonsSeats.add(buttonCreate, i, j);
+
             }
         }
-
     }
-
     }
