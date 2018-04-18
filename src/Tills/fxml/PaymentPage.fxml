@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" fx:controller="Tills.Controller">
-   <Label layoutX="235.0" layoutY="21.0" text="Quail Cinema"
-   style="-fx-border-color: blue; -fx-border-width: 1; -fx-border-style: dashed"/>
-   <Button layoutX="81.0" layoutY="300.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="175.0" text="Pay by Cash" />
-   <Button layoutX="370.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="199.0" text="Pay By Card" />
+<AnchorPane style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controller">
+   <Label layoutX="235.0" layoutY="21.0" style="-fx-border-color: blue; -fx-border-width: 1; -fx-border-style: dashed" text="Quail Cinema" />
+   <Button layoutX="205.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="199.0" text="Pay (Cash Only)" onAction="#receiptPage"/>
    <Label layoutX="81.0" layoutY="56.0" text="Film Name Here" />
-   <Label layoutX="81.0" layoutY="81.0" text="LocalDateTime" />
+   <Label layoutX="81.0" layoutY="81.0" text="Date" />
    <Label layoutX="81.0" layoutY="107.0" text="Screening:" />
    <Label layoutX="81.0" layoutY="139.0" text="Seating:" />
-   <CheckBox layoutX="81.0" layoutY="170.0" mnemonicParsing="false" text="VIP" />
+   <Label layoutX="81.0" layoutY="170.0" text="Total: " />
+   <CheckBox layoutX="81.0" layoutY="200.0" mnemonicParsing="false" text="VIP" />
    <Label layoutX="137.0" layoutY="258.0" text="12A and over(ID may be required)" />
    <Label layoutX="205.0" layoutY="235.0" text="BARCODE/QR" />
+   <TextArea layoutX="360.0" layoutY="7.0" prefHeight="240.0" prefWidth="220.0" />
 </AnchorPane>
