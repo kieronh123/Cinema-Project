@@ -37,11 +37,8 @@ def bookings():
     elif request.method == 'POST':
         conn = get_db()
         c = conn.cursor()
-        max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
-        max_id_list2 = max_id_list[0]
-        number_of_rows = max_id_list2[0]
         data = str(request.data.get('data', ''))
-        query = "INSERT INTO Bookings VALUES(" + str(number_of_rows  + 1) + ", " + data + ");"
+        query = "INSERT INTO Bookings VALUES(" + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
 #Function to get information about or remove a particular movie
@@ -64,7 +61,7 @@ def movies():
     elif request.method == 'POST':
         conn = get_db()
         c = conn.cursor()
-        max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
+        max_id_list = c.execute("SELECT Max(Movie_ID) from Movies;").fetchall()
         max_id_list2 = max_id_list[0]
         number_of_rows = max_id_list2[0]
         data = str(request.data.get('data', ''))
