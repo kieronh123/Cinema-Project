@@ -1,13 +1,12 @@
+from app import app
+
 from flask import Flask, g, request, url_for, Response
-from flask_restful import Api, Resource
-from flask_api import FlaskAPI, status, exceptions
+
 import sqlite3
 import json
 
-DATABASE = 'database/cinema.db'
+DATABASE = 'app/database/cinema.db'
 
-app = FlaskAPI(__name__)
-api = Api(app)
 
 ##Function to execute an SQL query
 def execute_query(query, method):

@@ -137,7 +137,7 @@ public class TicketPageController {
         StringBuffer response = null;
         try {
             //Try and send a get request to receive all information from movies table
-            response = harness.sendGet("seats/");
+            response = harness.sendGet("bookings/");
         } catch (Exception e) {
             e.printStackTrace();
         }

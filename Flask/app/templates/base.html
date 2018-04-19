@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Quail Cinema">
+    <meta name="keywords" content="Quail, Cinema, Movies, Films">
+    <meta name="author" content="Team Quail">
+    <title>Quail Cinema</title>
+    <link rel="stylesheet" href="{{url_for('static', filename="style.css")}}">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Quail</span> Cinema</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="home.html">Home</a></li>
+            <li class=><a href="login.html">Log In</a></li>
+            <li class=><a>Join</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="navbar">
+
+      <ul>
+
+        <li class="current"><a href="home.html">Today</a></li>
+        <li class=><a href="tomorrow.html">Tomorrow</a></li>
+        <li class=><a href="friday.html">Friday</a></li>
+
+        <li class=><a href="saturday.html">Saturday</a></li>
+
+      </ul>
+
+    </div>
+      <div class="container">
+          {% block content %}{% endblock %}
+      </div>
+<footer>
+      <p>Quail, Copyright &copy; 2018</p>
+    </footer>
+  </body>
+</html>
