@@ -45,12 +45,11 @@ public class TicketPageController {
     public String time = null;
     public String name = null;
     public int screeningID = 0;
-    private int Age = 0;
     public boolean VIP;
     public String column;
     public String row;
     public String ticket;
-    public int age;
+    public String age;
 
 
     /**
@@ -58,7 +57,7 @@ public class TicketPageController {
      * @param time The film time selected on the previous page
      * @param filmName
      */
-    public TicketPageController(String time, String filmName, int screeningID, int Age){
+    public TicketPageController(String time, String filmName, int screeningID, String Age){
         this.time = time;
         this.name = filmName;
         this.screeningID = screeningID;
@@ -93,7 +92,7 @@ public class TicketPageController {
         //Create a combo box that allows employee to select the age ticket
         final ComboBox<String> ticketType = new ComboBox<>();
         //If the age rating of the film is >16 then children can not go to watch it
-        if(Age >=16){
+        if(Integer.parseInt(age) >=16){
             ticketType.getItems().addAll("Adult", "Senior");
         //Otherwise allow children tickets to be purchased
         }else {

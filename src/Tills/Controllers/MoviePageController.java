@@ -118,7 +118,7 @@ public class MoviePageController {
         try {
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
-            TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, 0);
+            TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
             loader.setController(controller);
             Parent parent = loader.load();
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
