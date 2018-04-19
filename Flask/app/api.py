@@ -7,7 +7,6 @@ import json
 
 DATABASE = 'app/database/cinema.db'
 
-
 ##Function to execute an SQL query
 def execute_query(query, method):
     conn = get_db()

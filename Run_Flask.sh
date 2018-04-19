@@ -8,4 +8,5 @@ source bin/activate
 cd ../app
 echo $'Installing libraries from requirements.txt (this may take a minute!)'
 pip install -q -r requirements.txt
+cd ..
 python run.py
