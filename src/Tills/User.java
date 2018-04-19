@@ -7,7 +7,11 @@ public class User {
     public String Username;
     public String Password;
 
-    public User() {}
+    public User(int user_ID, String username, String password) {
+        User_ID = user_ID;
+        Username = username;
+        Password = password;
+    }
 
     public String hashPassword() {
         try {
@@ -29,16 +33,12 @@ public class User {
         }
     }
 
-    public static void main(String[] args) {
-        User user = new User();
-        user.Password = "Hello";
-        String hash = user.hashPassword();
-        System.out.println(hash);
-    }
-
     @Override
     public String toString() {
-        return User_ID + ", " + Username + ", " + Password;
-
+        return "User{" +
+                "User_ID=" + User_ID +
+                ", Username='" + Username + '\'' +
+                ", Password='" + Password + '\'' +
+                '}';
     }
 }
