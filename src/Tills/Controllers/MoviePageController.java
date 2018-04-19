@@ -105,7 +105,6 @@ public class MoviePageController {
         Label label = (Label) hbox.getChildren().get(0);
         name = label.getText();
 
-        //CALLUM THIS IS WHERE THE SCREENING IS NEEDED FOR PASSING THROUGH
         int screeningID = 0;
         String age = movies[Integer.parseInt(movie.getId().substring(movie.getId().length() - 1))].getMovie_Rating();
         System.out.println(age);

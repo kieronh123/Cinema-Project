@@ -17,15 +17,7 @@ public class Harness {
 
     private static final String USER_AGENT = "Mozilla/5.0";
 
-    public static void main(String[] args) throws Exception {
-
-        Harness http = new Harness();
-
-        System.out.println("Testing 1 - Send Http GET request");
-    }
-
     // HTTP GET request
-
     public static StringBuffer sendGet(String command) throws Exception {
         String url = "http://localhost:5000/" + command;
 
