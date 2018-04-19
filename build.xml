@@ -17,6 +17,7 @@
     <pathelement location="${lib.dir}/junit-4.12.jar"/>
     <pathelement location="${lib.dir}/hamcrest-core-1.3.jar"/>
     <pathelement location="${lib.dir}/jackson-all-1.9.0.jar"/>
+    <pathelement location="${lib.dir}/itextpdf-5.3.5.jar"/>
   </path>
 
   <target name="init">
@@ -78,11 +79,6 @@
       <classpath refid="project.classpath"/>
     </java>
   </target>
-
-  <target name="testTicket" depends="compile" description="Run ticket page to test connection">
-    <java classname="Tills.LaunchTicketPage" fork="true">
-      <classpath refid="project.classpath"/>
-    </java>
-  </target>
+  
 
 </project>
