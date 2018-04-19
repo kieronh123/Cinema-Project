@@ -1,5 +1,6 @@
 from app import app
 import sqlite3
+import json
 from flask import render_template, g
 
 DATABASE = 'app/database/cinema.db'
@@ -13,13 +14,14 @@ def execute_query(query, method):
             c.execute(query)
             r = [dict((c.description[i][0], value) \
                        for i, value in enumerate(row)) for row in c.fetchall()]
-            return r
+            json_output = json.dumps(r)
+            return json_output
         elif method == 'POST' or method == 'DELETE':
             c.execute(query)
             conn.commit()
-            return "Action successful"
+            return "{Status: 200}"
     except sqlite3.IntegrityError:
-        return "ERROR"
+        return "{Status:400}"
 
 ##Get the database
 def get_db():
