@@ -5,6 +5,5 @@ public class Seat {
     public int row;
     public Boolean vip;
     public boolean taken;
-
     public Seat(){}
 }

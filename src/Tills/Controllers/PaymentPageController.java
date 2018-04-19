@@ -15,10 +15,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Created by sc16jsg on 16/04/18.
- */
-
-/**
  * Controller class for the PaymentPage.fxml page
  */
 public class PaymentPageController {
