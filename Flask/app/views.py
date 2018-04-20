@@ -25,13 +25,20 @@ def execute_query(query, method):
     except sqlite3.IntegrityError:
         return "{Status:400}"
 
+def getMovies():
+    movies_db = execute_query("SELECT * FROM MOVIES;", "GET")
+    movies = []
+    for item in movies_db:
+        movies.append(Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"],item["Movie_Runtime"],item["Movie_Info"], item["Movie_Image"]))
+
+    return movies
+
 
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
     if movie:
         item = movie[0]
         return Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"],item["Movie_Runtime"],item["Movie_Info"], item["Movie_Image"])
-
 
 def getWhatsOn():
     screenings = execute_query("SELECT * FROM Whats_On;", "GET")
@@ -42,6 +49,13 @@ def getWhatsOn():
 
     return whatson
 
+def getWhatsOnByMovieID(id):
+    screenings = execute_query("SELECT * FROM Whats_On where Movie_ID=%s;"%id, "GET")
+    whatson = []
+
+    for idScreening in screenings:
+        whatson.append(getWhatsOnbyID(idScreening["Screening_ID"]))
+    return whatson
 
 def getWhatsOnbyID(id):
     whatson= execute_query("SELECT * FROM Whats_On where Screening_ID=%s;" % id, "GET")
@@ -80,15 +94,12 @@ def close_connection(exception):
 def index():
     number = []
     #input from screening table
+    movies = getMovies()
+    whatsons = []
+    for m in movies:
+        whatsons.append((m,getWhatsOnByMovieID(m.Movie_ID)))
 
-    whatsons = getWhatsOn()
-    print(whatsons)
-    lst = []
-    for whatson in whatsons:
-        movie = getMoviebyID(whatson.Movie_ID)
-        lst.append((whatson,movie))
 
-    print(lst)
 
     #screenings.append();
     #for i in range(0,len(screenings)):
@@ -98,11 +109,11 @@ def index():
         #screenings.append(movie)
 
     #return render_template('index.html');
-    return render_template('index_old.html',whatsons=lst);
+    return render_template('index.html',whatsons=whatsons);
 
 @app.route('/dank')
 def index2():
-    return render_template('index_old.html', msg=execute_query("SELECT * FROM Users;", "GET"), smell=True);
+    return render_template('index_old.html', msg=execute_query("SELECT * FROM Users;", "GET"), HERE=True);
 
 @app.route('/tickets')
 def tickets():
