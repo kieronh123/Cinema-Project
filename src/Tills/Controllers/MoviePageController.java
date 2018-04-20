@@ -71,13 +71,14 @@ public class MoviePageController {
             }
 
             int movieCount2 = 0;
+            int totalScreeningCount = 0;
             for(ArrayList<WhatsOn> list : movieMap.values()){
                 int screeningCount = 0;
                 setMovieLabel(movieCount2, list.get(0));
                 for (WhatsOn whatson : list){
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
 
-                    Label label = movieLabels[screeningCount/3];
+                    Label label = movieLabels[totalScreeningCount/3];
                     GridPane gridPane = (GridPane)label.getParent().getParent();
                     HBox hbox = (HBox)gridPane.getChildren().get(1);
                     VBox vBox = (VBox)hbox.getChildren().get(screeningCount);
@@ -86,7 +87,12 @@ public class MoviePageController {
                     screenLabel.setText("Screen " + whatson.getScreen_ID());
                     button.setText(whatson.getStart_Time().substring(11,16));
                     screeningCount++;
+
                 }
+
+                System.out.println("before: " + screeningCount);
+                totalScreeningCount = (int)(Math.ceil((double)screeningCount/3) * 3);
+                System.out.println("After: " + screeningCount);
                 movieCount2++;
             }
         } catch (Exception e) {
