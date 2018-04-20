@@ -4,10 +4,10 @@
  {{ msg }}
 
 
-     {% for i in number %}
+     {% for i in whatsons %}
      <div class="panel panel-default">
-       <div class="panel-heading"></div>
-       <div class="panel-body">Panel Content</div>
+       <div class="panel-heading">{{ i[1].Movie_Name}}</div>
+       <div class="panel-body">{{ i[1].Movie_Info}} <br> {{ i[0].Start_Time }}</div>
      </div>
      {% endfor %}
 

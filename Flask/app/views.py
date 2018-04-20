@@ -33,6 +33,16 @@ def getMoviebyID(id):
         return Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"],item["Movie_Runtime"],item["Movie_Info"], item["Movie_Image"])
 
 
+def getWhatsOn():
+    screenings = execute_query("SELECT * FROM Whats_On;", "GET")
+    whatson = []
+
+    for idScreening in screenings:
+        whatson.append(getWhatsOnbyID(idScreening["Screening_ID"]))
+
+    return whatson
+
+
 def getWhatsOnbyID(id):
     whatson= execute_query("SELECT * FROM Whats_On where Screening_ID=%s;" % id, "GET")
     if whatson:
@@ -68,20 +78,17 @@ def close_connection(exception):
 
 @app.route('/')
 def index():
-
     number = []
     #input from screening table
-    screenings = execute_query("SELECT * FROM Whats_On;", "GET")
-    movie = []
 
-    for idScreening in screenings:
-        movie.append(idScreening["Screening_ID"] & getMoviebyID(idScreening["Movie_ID"]))
+    whatsons = getWhatsOn()
+    print(whatsons)
+    lst = []
+    for whatson in whatsons:
+        movie = getMoviebyID(whatson.Movie_ID)
+        lst.append((whatson,movie))
 
-    screenings = []
-
-    for screening in movie:
-        print(screening)
-
+    print(lst)
 
     #screenings.append();
     #for i in range(0,len(screenings)):
@@ -91,7 +98,7 @@ def index():
         #screenings.append(movie)
 
     #return render_template('index.html');
-    return render_template('index_old.html', number=whatson, smell=False);
+    return render_template('index_old.html',whatsons=lst);
 
 @app.route('/dank')
 def index2():
