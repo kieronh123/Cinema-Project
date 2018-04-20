@@ -1,16 +1,20 @@
 <html>
 <head></head>
 <body>
+    <!-- LABEL -->
  {{ msg }}
 
- <ul>
-     {% for i in number %}
-        <li>{{ i }}</li>
-     {% endfor %}
- </ul>
 
- {% if smell %}
-        <strong>Katie smells!!!</strong>
+     {% for i in whatsons %}
+     <div class="panel panel-default">
+       <div class="panel-heading">{{ i[1].Movie_Name}}</div>
+       <div class="panel-body">{{ i[1].Movie_Info}} <br> {{ i[0].Start_Time }}</div>
+     </div>
+     {% endfor %}
+
+
+ {% if HERE %}
+    <strong>do something</strong>
  {% endif %}
 </body>
 </html>
