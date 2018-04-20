@@ -8,12 +8,17 @@ public class Movie {
     private String Movie_Name;
     private String Movie_Rating;
     private String Movie_Runtime;
-
-//    private String Movie_Director;
-//    private List<String> Movie_LeadActors;
-
     private String Movie_Info;
     private String Movie_Image;
+
+    public Movie(int movie_ID, String movie_Name, String movie_Rating, String movie_Runtime, String movie_Info, String movie_Image) {
+        Movie_ID = movie_ID;
+        Movie_Name = movie_Name;
+        Movie_Rating = movie_Rating;
+        Movie_Runtime = movie_Runtime;
+        Movie_Info = movie_Info;
+        Movie_Image = movie_Image;
+    }
 
     public int getMovie_ID() {
         return Movie_ID;
@@ -31,42 +36,15 @@ public class Movie {
         return Movie_Runtime;
     }
 
-//    public String getMovie_Director() {
-//        return Movie_Director;
-//    }
-//
-//    public List<String> getMovie_LeadActors() {
-//        return Movie_LeadActors;
-//    }
-//
-//    public String getMovie_Blurb() {
-//        return Movie_Blurb;
-//    }
-
-//    public String getMovie_ImageFilename() {
-//        return Movie_ImageFilename;
-//    }
-
-    public Movie(int ID, String name, String rating, String runtime, String director, List<String> leadActors, String blurb, String imageFilename) {
-        this.Movie_ID = ID;
-        this.Movie_Name = name;
-        this.Movie_Rating = rating;
-        this.Movie_Runtime = runtime;
-//        this.Movie_Director = director;
-//        this.Movie_LeadActors = leadActors;
-//        this.Movie_Blurb = blurb;
-//        this.Movie_ImageFilename = imageFilename;
-    }
-
     @Override
-    public String toString(){
-        return "ID: " + Movie_ID + "\n" +
-               "Name: " + Movie_Name  + "\n" +
-               "Rating: " + Movie_Rating  + "\n" +
-               "Runtime: " + Movie_Runtime  + "\n";
-//               "Director: " + Movie_Director  + "\n" +
-//               "Lead Actors: " + Movie_LeadActors + "\n" +
-//               "Blurb: " + Movie_Blurb  + "\n" +
-//               "Image filename: " + Movie_ImageFilename;
+    public String toString() {
+        return "Movie{" +
+                "Movie_ID=" + Movie_ID +
+                ", Movie_Name='" + Movie_Name + '\'' +
+                ", Movie_Rating='" + Movie_Rating + '\'' +
+                ", Movie_Runtime='" + Movie_Runtime + '\'' +
+                ", Movie_Info='" + Movie_Info + '\'' +
+                ", Movie_Image='" + Movie_Image + '\'' +
+                '}';
     }
 }
