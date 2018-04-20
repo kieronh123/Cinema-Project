@@ -2,7 +2,7 @@ from app import app
 import sqlite3
 from flask import render_template, g
 
-from .models import WhatsOn, Movie
+from .models import WhatsOn, Movie, Booking
 
 import json
 DATABASE = 'app/database/cinema.db'
@@ -71,9 +71,10 @@ def getUserbyID(id):
 
 def getBookingbyID(id):
     booking= execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
-    if booking:
-        item = booking[0]
-        return Booking(item["Screening_ID"], item["Row_Num"], item["Column_Num"])
+    bookings = []
+    for item in booking:
+        bookings.append(Booking(item["Screening_ID"], item["Row_Num"], item["Column_Num"]))
+    return bookings
 
 ##Get the database
 def get_db():
@@ -99,22 +100,20 @@ def index():
     for m in movies:
         whatsons.append((m,getWhatsOnByMovieID(m.Movie_ID)))
 
-
-
-    #screenings.append();
-    #for i in range(0,len(screenings)):
-        #Call movie information
-        #movie = []
-        #movie.append()
-        #screenings.append(movie)
-
-    #return render_template('index.html');
     return render_template('index.html',whatsons=whatsons);
 
-@app.route('/dank')
-def index2():
-    return render_template('index_old.html', msg=execute_query("SELECT * FROM Users;", "GET"), HERE=True);
+@app.route('/seatselect/<id>')
+def tickets(id):
+    seats = getBookingbyID(id)
+    allSeats = []
+    for i in range(1,6):
+        for j in range(1,6):
+            for seat in seats:
+                if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
+                    allSeats.append((i,j,True))
+                else:
+                    allSeats.append((i,j,False))
 
-@app.route('/tickets')
-def tickets():
-    return render_template('tickets.html');
+
+
+    return render_template('seatselect.html', allSeats = allSeats);
