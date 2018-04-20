@@ -1,5 +1,7 @@
 package Tills;
 
+/** Class representing a WhatsOn
+ */
 public class WhatsOn {
     private int Screening_ID;
     private int Movie_ID;

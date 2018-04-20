@@ -23,6 +23,9 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 
+/** Controller class for the moviesPage.fxml file
+ *
+ */
 public class MoviePageController {
 
     @FXML
@@ -38,12 +41,14 @@ public class MoviePageController {
     @FXML
     private Label movie6;
 
-    Movie[] movies;
-    Label[] movieLabels;
-    int[] screeningIDs;
+    private Movie[] movies;
+    private Label[] movieLabels;
+    private int[] screeningIDs;
 
 
     @FXML
+    /** This method is run when the moviesPage.fxml file is loaded. It sets the text of the buttons and labels.
+     */
     private void initialize() {
         Map<Integer, ArrayList<WhatsOn>> movieMap = new HashMap<>();
 
@@ -57,27 +62,32 @@ public class MoviePageController {
             whatsOnString = Harness.sendGet("whatson").toString();
             WhatsOn[] whatsOn = JSON.whatsOnFromJson(whatsOnString);
 
+            //loop through the WhatsOn objects adding them to the hashmap
             int moviecount1 = 0;
             for (int i = 0; i < whatsOn.length; i++) {
                 if(!movieMap.containsKey(whatsOn[i].getMovie_ID())){
                     movieMap.put(whatsOn[i].getMovie_ID(),new ArrayList<>(Arrays.asList(whatsOn[i])));
+                    //Store the different movies in an array
                     movies[moviecount1] = JSON.movieFromJson(Harness.sendGet("movies/" + whatsOn[i].getMovie_ID()).toString());
                     moviecount1++;
                 } else {
                     ArrayList<WhatsOn> list = movieMap.get(whatsOn[i].getMovie_ID());
                     list.add(whatsOn[i]);
-                    System.out.println(movieMap.get(whatsOn[i].getMovie_ID()));
                 }
             }
 
+            //Loop through the lists of WhatsOn objects for each movie
             int movieCount2 = 0;
             int totalScreeningCount = 0;
             for(ArrayList<WhatsOn> list : movieMap.values()){
                 int screeningCount = 0;
-                setMovieLabel(movieCount2, list.get(0));
+                setMovieLabel(movieCount2, movies[movieCount2]);
+                //Loop through each WhatsOn object
                 for (WhatsOn whatson : list){
+                    //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
 
+                    //Set the text of the labels and button
                     Label label = movieLabels[totalScreeningCount/3];
                     GridPane gridPane = (GridPane)label.getParent().getParent();
                     HBox hbox = (HBox)gridPane.getChildren().get(1);
@@ -90,9 +100,7 @@ public class MoviePageController {
 
                 }
 
-                System.out.println("before: " + screeningCount);
                 totalScreeningCount = (int)(Math.ceil((double)screeningCount/3) * 3);
-                System.out.println("After: " + screeningCount);
                 movieCount2++;
             }
         } catch (Exception e) {
@@ -101,20 +109,26 @@ public class MoviePageController {
         }
     }
 
+    /** Run when a button is pressed on the moviesPage. Works out which movie is being selected as well as the
+     * time and screen and passes this information to the ticket page controller
+     *
+     * @param event The event that took place
+     */
     public void submitMovieChoice(ActionEvent event) {
         Button button = (Button) event.getSource();
         GridPane movie = (GridPane) button.getParent().getParent().getParent();
         String name = null;
 
-//        retrieve the name of the selected movie
+        // retrieve the name of the selected movie
         HBox hbox = (HBox) movie.getChildren().get(0);
         Label label = (Label) hbox.getChildren().get(0);
         name = label.getText();
 
-        int screeningID = 0;
+        //Get the rating for the selected movie
         String age = movies[Integer.parseInt(movie.getId().substring(movie.getId().length() - 1))].getMovie_Rating();
-        System.out.println(age);
 
+        //Get the screening ID;
+        int screeningID;
         if(button.getId().length() == 7) {
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
         }
@@ -135,10 +149,13 @@ public class MoviePageController {
     }
 
 
-    public void setMovieLabel(int index, WhatsOn whatsOn){
+    /** Takes a given index and Movie object and sets the required label's text to the title of the movie
+     *
+     * @param index The index of the label that is to be set
+     * @param movie The Movie object that contains the title of the movie
+     */
+    public void setMovieLabel(int index, Movie movie){
         try {
-            String movieString = Harness.sendGet("movies/" + whatsOn.getMovie_ID()).toString();
-            Movie movie = JSON.movieFromJson(movieString);
             movieLabels[index].setText(movie.getMovie_Name());
         }catch (Exception e){
             System.err.println("Failed to retrieve movie");
