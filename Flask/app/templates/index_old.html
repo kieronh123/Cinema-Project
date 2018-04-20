@@ -3,11 +3,14 @@
 <body>
  {{ msg }}
 
- <ul>
+
      {% for i in number %}
-        <li>{{ i }}</li>
+     <div class="panel panel-default">
+       <div class="panel-heading"></div>
+       <div class="panel-body">Panel Content</div>
+     </div>
      {% endfor %}
- </ul>
+
 
  {% if smell %}
         <strong>Katie smells!!!</strong>

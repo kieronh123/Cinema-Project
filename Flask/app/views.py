@@ -1,8 +1,10 @@
 from app import app
 import sqlite3
-import json
 from flask import render_template, g
 
+from .models import WhatsOn, Movie
+
+import json
 DATABASE = 'app/database/cinema.db'
 
 ##Function to execute an SQL query
@@ -14,14 +16,40 @@ def execute_query(query, method):
             c.execute(query)
             r = [dict((c.description[i][0], value) \
                        for i, value in enumerate(row)) for row in c.fetchall()]
-            json_output = json.dumps(r)
-            return json_output
+            #json_output = json.dumps(r)
+            return r
         elif method == 'POST' or method == 'DELETE':
             c.execute(query)
             conn.commit()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         return "{Status:400}"
+
+
+def getMoviebyID(id):
+    movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
+    if movie:
+        item = movie[0]
+        return Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"],item["Movie_Runtime"],item["Movie_Info"], item["Movie_Image"])
+
+
+def getWhatsOnbyID(id):
+    whatson= execute_query("SELECT * FROM Whats_On where Screening_ID=%s;" % id, "GET")
+    if whatson:
+        item = whatson[0]
+        return WhatsOn(item["Screening_ID"], item["Movie_ID"], item["Screen_ID"], item["Start_Time"])
+
+def getUserbyID(id):
+    user= execute_query("SELECT * FROM Users where User_ID=%s;" % id, "GET")
+    if user:
+        item = user[0]
+        return User(item["User_ID"], item["Username"], item["Password"])
+
+def getBookingbyID(id):
+    booking= execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
+    if booking:
+        item = booking[0]
+        return Booking(item["Screening_ID"], item["Row_Num"], item["Column_Num"])
 
 ##Get the database
 def get_db():
@@ -37,12 +65,23 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+
 @app.route('/')
 def index():
 
     number = []
     #input from screening table
+    screenings = execute_query("SELECT * FROM Whats_On;", "GET")
+    movie = []
+
+    for idScreening in screenings:
+        movie.append(idScreening["Screening_ID"] & getMoviebyID(idScreening["Movie_ID"]))
+
     screenings = []
+
+    for screening in movie:
+        print(screening)
+
 
     #screenings.append();
     #for i in range(0,len(screenings)):
@@ -50,10 +89,9 @@ def index():
         #movie = []
         #movie.append()
         #screenings.append(movie)
-    for i in range(0,10):
-        number.append(i)
+
     #return render_template('index.html');
-    return render_template('index_old.html',msg="Hello Katie",number=number, smell=False);
+    return render_template('index_old.html', number=whatson, smell=False);
 
 @app.route('/dank')
 def index2():
