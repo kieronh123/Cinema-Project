@@ -41,6 +41,11 @@ wo_Screen = 2
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
 wo_Time = "1996-09-29T11:55:00"
 
+wo_Id2 = 2
+wo_Movie2 = 2
+wo_Screen = 1
+wo_Time2 = "1996-09-30T14:00:00"
+
 ##Initial bookings information
 b_Id = 1
 b_Col = 0 #Bookings column
@@ -65,6 +70,9 @@ cursor.execute('''INSERT INTO Movies(Movie_ID,Movie_Name,Movie_Rating,Movie_Runt
 
 cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
                                     Values(?,?,?,?)''',(wo_Id, wo_Movie, wo_Screen, wo_Time))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id2, wo_Movie2, wo_Screen2, wo_Time2))
 
 cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
                                     VALUES(?,?,?)''', (b_Id, b_Row, b_Col))
