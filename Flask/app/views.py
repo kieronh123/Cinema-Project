@@ -108,14 +108,19 @@ def index():
 def tickets(id):
     seats = getBookingbyID(id)
     allSeats = []
-    for i in range(1,6):
-        for j in range(1,6):
-            for seat in seats:
-                if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
-                    allSeats.append((i,j,True))
-                else:
-                    allSeats.append((i,j,False))
 
-
+    if not seats:
+        for i in range(1,6):
+            for j in range(1,6):
+                allSeats.append((i,j,False))
+    else:
+        for i in range(1,6):
+            for j in range(1,6):
+                for seat in seats:
+                    if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
+                        allSeats.append((i,j,True))
+                    else:
+                        allSeats.append((i,j,False))
+    
 
     return render_template('seatselect.html', allSeats = allSeats);
