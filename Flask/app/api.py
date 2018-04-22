@@ -1,7 +1,5 @@
 from app import app
-
 from flask import Flask, g, request, url_for, Response
-
 import sqlite3
 import json
 
