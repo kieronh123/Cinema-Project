@@ -1,8 +1,8 @@
 from app import app
 import sqlite3
-from flask import render_template, g
+from flask import render_template, g, redirect, request
 
-from .models import WhatsOn, Movie, Booking
+from .models import WhatsOn, Movie, Booking, User
 
 import json
 DATABASE = 'app/database/cinema.db'
@@ -69,6 +69,12 @@ def getUserbyID(id):
         item = user[0]
         return User(item["User_ID"], item["Username"], item["Password"])
 
+def getUserByUsername(username):
+    user = execute_query("SELECT * FROM Users where Username=%s;" % ("\"" + username + "\""), "GET")
+    if user:
+        item = user[0]
+        return User(item["User_ID"], item["Username"], item["Password"])
+
 def getBookingbyID(id):
     booking= execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
@@ -123,4 +129,24 @@ def tickets(id):
                         allSeats.append((i,j,False))
     
 
-    return render_template('seatselect.html', allSeats = allSeats);
+    return render_template('seatselect.html', allSeats = allSeats)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/loginrequest', methods=['POST'])
+def loginrequest():
+    username = request.form.get('Username')
+    password = request.form.get('Password')
+
+    # user = getUserbyID(5)
+    user = getUserByUsername(username)
+    if(user):
+        if(user.Password == password):
+            return redirect('/')
+        else:
+            return "", 204
+    else:
+        return "", 204
+
