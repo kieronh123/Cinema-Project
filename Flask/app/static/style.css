@@ -452,3 +452,8 @@ footer{
     padding-bottom:20px;
   }
 }
+
+.buttonForm{
+    float: left;
+    margin-right: 5px;
+}

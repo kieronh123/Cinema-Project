@@ -24,8 +24,11 @@
           <div class="col-sm-6">
             <h3>{{i[0].Movie_Name}}</h3>
             <p>{{i[0].Movie_Info}}</p>
+
             {% for j in i[1] %}
-                <button type="Time" class="btn"><a href="/seatselect/{{j.Screening_ID}}">{{j.Start_Time[11:16]}}</a></button>
+                <form class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
+                <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
+                </form>
             {% endfor %}
           </div>
           <div class="col-sm-4">
