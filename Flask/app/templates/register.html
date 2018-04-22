@@ -1,32 +1,5 @@
-<!doctype html>
-<html>
-
-<head>
-    <title>Quail Cinema</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-</head>
-
-<body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Quail Cinema</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Log In</a></li>
-            <li class="active"><a href="/join">Join</a></li>
-        </ul>
-    </div>
-</nav>
-
+{% extends "base.html" %}
+{% block content %}
 
 <section id="main">
     <div class="container">
@@ -51,9 +24,4 @@
         </aside>
     </div>
 </section>
-</body>
-
-<footer>
-    <p>Quail, Copyright &copy; 2018</p>
-</footer>
-</html>
+{% endblock %}
