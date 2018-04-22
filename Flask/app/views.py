@@ -75,6 +75,15 @@ def getUserByUsername(username):
         item = user[0]
         return User(item["User_ID"], item["Username"], item["Password"])
 
+def addUser(username, password):
+    conn = get_db()
+    c = conn.cursor()
+    max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
+    max_id_list2 = max_id_list[0]
+    number_of_rows = max_id_list2[0]
+    query = "INSERT INTO Users VALUES(" + str(number_of_rows + 1) + ", " + "\"" + username + "\"" + "," + "\"" + password + "\"" + ");"
+    execute_query(query, "POST")
+
 def getBookingbyID(id):
     booking= execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
@@ -129,12 +138,12 @@ def login():
     return render_template('login.html')
 
 @app.route('/loginrequest', methods=['POST'])
-def loginrequest():
+def loginRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
 
-    # user = getUserbyID(5)
     user = getUserByUsername(username)
+
     if(user):
         if(user.Password == password):
             return redirect('/')
@@ -143,3 +152,19 @@ def loginrequest():
     else:
         return "", 204
 
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/registerrequest', methods =['POST'])
+def registerRequest():
+    username = request.form.get('Username')
+    password = request.form.get('Password')
+
+    app.logger.info(username)
+    app.logger.info(password)
+
+    addUser(username, password)
+
+    return "", 204
