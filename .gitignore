@@ -9,3 +9,6 @@ Flask/flask
 
 #.pyc files
 *.pyc
+
+#None of this Mac business
+.DS_Store
