@@ -199,10 +199,10 @@ def registerRequest():
     passwordHashed = hashlib.sha256()
     passwordHashed.update(passwordEncoded)
 
-    addUser(username, passwordHashed)
+    addUser(username, passwordHashed.hexdigest())
 
     return "", 204
 
-@app.route('/payment')
-def payment():
-    return render_template('payment.html')
+@app.route('/payment/<ticketType>')
+def payment(ticketType):
+    return render_template('payment.html', ticketType=ticketType.title())
