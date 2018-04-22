@@ -13,19 +13,16 @@
               <ol class="theaterSeats">
 
                   {%for seat in allSeats%}
-                  <li class="row row--{{seat[1]}}">
+                  <li class="row row--1" >
                       <ol class="seats" type="A">
                           <li class="seat">
-                              <li class="seat">
                                   {% if seat[2] == True %}
-                                    <button type="Seat" class="btn" disabled=True><a href="/seatselect/{{j.Screening_ID}}">{{ seat[0] , seat[1] }}</a></button>
+                                    <input type="checkbox" id="1B" disabled></input>
+                                    <label for="1B">1B</label>
                                     {% elif seat[2] == False %}
-                                    <button type="Seat" class="btn" <a href="/seatselect/">{{ yes }}</a></button>
-
+                                    <input type="checkbox" id="{{seat[0] , seat[1]}}" ></input>
+                                    <label for="1B">{{seat[0] , seat[1]}}</label>
                                   {% endif %}
-                                <!-- <input type="checkbox" id="1A" />
-                                <label for="1A">1A</label> -->
-                              </li>
                           </li>
                       </ol>
 
@@ -38,8 +35,8 @@
                       {% endif %}
                   </li> -->
 
-                  {%endfor%}
               </li>
+                  {%endfor%}
                    <!-- <li class="row row--1">
                      <ol class="seats" type="A">
                        <li class="seat">
@@ -165,12 +162,10 @@
                          <label for="5E">5E</label>
                        </li> -->
                      </ol>
-                   </li>
 
                 <button type="Time" class="btnback"><a href="index.html">Back</a></button>
                 <button type="Time" class="btnconfirm"><a href="payment.html">Confirm</a></button>
 
-              </div>
           </div>
         </section>
 {% endblock %}

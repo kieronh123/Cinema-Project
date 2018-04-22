@@ -2,6 +2,7 @@
 package Tills.Controllers;
 
 
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -85,49 +86,49 @@ public class PaymentPageController {
   This is used for generating the receipt from the ticket chosen.
   Variables are still needed to update the fields.
   */
-//  @FXML
-//  public void PDF()throws IOException{
-//    Document document = new Document();
-//    try{
-//      PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
-//
-//      document.open();
-//      Paragraph ticketText = new Paragraph();
-//      ticketText.add("\n*********************************");
-//      ticketText.add("\n*           Ticket              *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*                               *");
-//      ticketText.add("\n*********************************");
-//      document.add(ticketText);
-//      document.close();
-//
-//    }catch (IOException e){
-//      e.printStackTrace();
-//    } catch (DocumentException e) {
-//      e.printStackTrace();
-//    }
-//  }
+  @FXML
+  public void PDF()throws IOException{
+    Document document = new Document();
+    try{
+      PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
+
+      document.open();
+      Paragraph ticketText = new Paragraph();
+      ticketText.add("\n*********************************");
+      ticketText.add("\n*           Ticket              *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*********************************");
+      document.add(ticketText);
+      document.close();
+
+    }catch (IOException e){
+      e.printStackTrace();
+    } catch (DocumentException e) {
+      e.printStackTrace();
+    }
+  }
 
 
 

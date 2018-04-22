@@ -121,6 +121,6 @@ def tickets(id):
                         allSeats.append((i,j,True))
                     else:
                         allSeats.append((i,j,False))
-    
+
 
     return render_template('seatselect.html', allSeats = allSeats);
