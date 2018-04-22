@@ -12,3 +12,12 @@ Flask/flask
 
 #None of this Mac business
 .DS_Store
+
+#Removing __pycache__
+__pycache__
+
+#Removing cinema.db
+cinema.db
+
+#Removing tmp
+tmp
