@@ -179,3 +179,4 @@ cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
 #Committing changes to cinema.db
 db.commit()
 db.close()
+

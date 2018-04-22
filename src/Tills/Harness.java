@@ -13,11 +13,19 @@ import JSON.JSON;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/** Class used to connect to and request data from the server
+ *
+ */
 public class Harness {
 
     private static final String USER_AGENT = "Mozilla/5.0";
 
-    // HTTP GET request
+    /** Used to send a get request to the server
+     *
+     * @param command The request that is being sent
+     * @return StringBuffer object with the json string
+     * @throws Exception Thrown if the connection fails
+     */
     public static StringBuffer sendGet(String command) throws Exception {
         String url = "http://localhost:5000/" + command;
 
