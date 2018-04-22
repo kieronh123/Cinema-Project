@@ -127,13 +127,14 @@ def tickets(id):
                         allSeats.append((i,j,True))
                     else:
                         allSeats.append((i,j,False))
-    
+
 
     return render_template('seatselect.html', allSeats = allSeats)
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
 
 @app.route('/loginrequest', methods=['POST'])
 def loginrequest():
@@ -149,4 +150,3 @@ def loginrequest():
             return "", 204
     else:
         return "", 204
-

@@ -76,7 +76,7 @@ wo_Movie6 = 1
 wo_Screen6 = 1
 wo_Time6 = "2018-04-27T16:30:00"
 #Movie 2
-#Information for movie 1 on one day
+#Information for movie 2 on one day
 wo_Id7 = 7
 wo_Movie7 = 2
 wo_Screen7 = 3
@@ -108,6 +108,40 @@ wo_Id12 = 12
 wo_Movie12 = 2
 wo_Screen12 = 2
 wo_Time12 = "2018-04-27T16:30:00"
+
+#Movie 3
+#Information for movie 3 on one day
+wo_Id13 = 13
+wo_Movie13 = 3
+wo_Screen13 = 4
+#Time must be in format 'YYYY-MM-DD:HH:MM:SS'
+wo_Time13 = "2018-04-26T09:00:00"
+
+wo_Id14 = 14
+wo_Movie14 = 3
+wo_Screen14 = 4
+wo_Time14 = "2018-04-26T12:00:00"
+
+wo_Id15 =15
+wo_Movie15 = 3
+wo_Screen15 = 4
+wo_Time15 = "2018-04-26T15:30:00"
+#Day 2
+wo_Id16 = 16
+wo_Movie16 = 3
+wo_Screen16 = 5
+#Time must be in format 'YYYY-MM-DD:HH:MM:SS'
+wo_Time16 = "2018-04-27T10:30:00"
+
+wo_Id17 = 17
+wo_Movie17 = 3
+wo_Screen17 = 4
+wo_Time17 = "2018-04-27T13:15:00"
+
+wo_Id18 = 18
+wo_Movie18 = 3
+wo_Screen18 = 4
+wo_Time18 = "2018-04-27T17:45:00"
 
 
 ##Initial bookings information
@@ -173,10 +207,27 @@ cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_
 cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
                                     Values(?,?,?,?)''',(wo_Id12, wo_Movie12, wo_Screen12, wo_Time12))
 
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id13, wo_Movie13, wo_Screen13, wo_Time13))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id14, wo_Movie14, wo_Screen14, wo_Time14))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id15, wo_Movie15, wo_Screen15, wo_Time15))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id16, wo_Movie16, wo_Screen16, wo_Time16))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id17, wo_Movie17, wo_Screen17, wo_Time17))
+
+cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                    Values(?,?,?,?)''',(wo_Id18, wo_Movie18, wo_Screen18, wo_Time18))
+
 cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
                                     VALUES(?,?,?)''', (b_Id, b_Row, b_Col))
 
 #Committing changes to cinema.db
 db.commit()
 db.close()
-

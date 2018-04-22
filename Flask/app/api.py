@@ -33,7 +33,7 @@ def bookings():
     elif request.method == 'POST':
         conn = get_db()
         c = conn.cursor()
-        data = str(request.data.get('data', ''))
+        data = str(request.form['data'])
         query = "INSERT INTO Bookings VALUES(" + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
@@ -60,7 +60,7 @@ def movies():
         max_id_list = c.execute("SELECT Max(Movie_ID) from Movies;").fetchall()
         max_id_list2 = max_id_list[0]
         number_of_rows = max_id_list2[0]
-        data = str(request.data.get('data', ''))
+        data = str(request.form['data'])
         query = "INSERT INTO Movies VALUES(" + str(number_of_rows + 1) + ", " + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
@@ -88,7 +88,7 @@ def whatsOn():
         max_id_list = c.execute("SELECT Max(Screening_ID) from Whats_On;").fetchall()
         max_id_list2 = max_id_list[0]
         number_of_rows = max_id_list2[0]
-        data = str(request.data.get('data', ''))
+        data = str(request.form['data'])
         query = "INSERT INTO Whats_On VALUES(" + str(number_of_rows + 1) + ", " + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
@@ -115,7 +115,7 @@ def get_and_add_Users():
         max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
         max_id_list2 = max_id_list[0]
         number_of_rows = max_id_list2[0]
-        data = str(request.data.get('data', ''))
+        data = str(request.form['data'])
         query = "INSERT INTO Users VALUES(" + str(number_of_rows + 1) + ", " + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 
@@ -134,7 +134,7 @@ def users(key):
 @app.route('/users/name/', methods=['GET'])
 def users_by_name():
     if request.method == 'GET':
-        data = str(request.data.get('data', ''))
+        data = str(request.form['data'])
         query = "SELECT * FROM Users WHERE Username = " + data + ";"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 

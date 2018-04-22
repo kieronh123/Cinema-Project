@@ -21,7 +21,7 @@ curl -X DELETE localhost:5000/movies/1
 echo $'\n\nGetting all bookings'
 curl -X GET localhost:5000/bookings/
 echo $'\n\nAdding a bookings'
-curl -X POST localhost:5000/bookings/ -d "data=0, 1"
+curl -X POST localhost:5000/bookings/ -d "data=1, 0, 1"
 echo $'\n\nGetting specific bookings'
 curl -X GET localhost:5000/bookings/1
 echo $'\n\nRemoving a booking'
