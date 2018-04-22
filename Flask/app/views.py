@@ -1,5 +1,6 @@
 from app import app
 import sqlite3
+import hashlib
 from flask import render_template, g, redirect, request
 
 from .models import WhatsOn, Movie, Booking, User
@@ -141,11 +142,18 @@ def login():
 def loginRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
+    password = password + "saltyquail"
+    passwordEncoded = str.encode(password)
+    passwordHashed = hashlib.sha256()
+    passwordHashed.update(passwordEncoded)
+
 
     user = getUserByUsername(username)
+    app.logger.info(user.Password)
+    app.logger.info(passwordHashed.hexdigest())
 
     if(user):
-        if(user.Password == password):
+        if(user.Password == passwordHashed.hexdigest()):
             return redirect('/')
         else:
             return "", 204
@@ -161,10 +169,11 @@ def register():
 def registerRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
+    password = password + "saltyquail"
+    passwordEncoded = str.encode(password)
+    passwordHashed = hashlib.sha256()
+    passwordHashed.update(passwordEncoded)
 
-    app.logger.info(username)
-    app.logger.info(password)
-
-    addUser(username, password)
+    addUser(username, passwordHashed)
 
     return "", 204
