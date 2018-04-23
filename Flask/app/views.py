@@ -1,6 +1,7 @@
 from app import app
 import sqlite3
 import hashlib
+import re
 from flask import render_template, g, redirect, request
 
 from .models import WhatsOn, Movie, Booking, User
@@ -209,4 +210,26 @@ def payment(ticketType):
         price = 8
     elif ticketType == "child" or ticketType == "senior":
         price = 5
-    return render_template('payment.html', ticketType=ticketType.title(), price=price)
+    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
+
+@app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
+def processPayment(ticketType, price):
+    name = request.form.get('Name')
+    cardNumber = request.form.get('Card Number')
+    expiryDate = request.form.get('Expiry Date')
+    securityCode = request.form.get('Security Code')
+
+    print(ticketType)
+
+    if name:
+        if len(cardNumber) <= 19:
+            if re.match('[0-9]{3,4}', securityCode):
+                if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Payment Confirmed")
+    else :
+        return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A Name must be entered")
+
+
+
+
+
