@@ -22,6 +22,8 @@ cursor.execute('''
                         Movie_Rating TEXT,
                         Movie_Runtime INTEGER,
                         Movie_Info TEXT,
+                        Movie_Director TEXT,
+                        Movie_Actors TEXT,
                         Movie_Image TEXT)
 ''')
 
