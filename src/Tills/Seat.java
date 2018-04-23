@@ -1,10 +1,18 @@
 package Tills;
 
 public class Seat {
-    public int screening_ID;
-    public int column;
-    public int row;
-    public Boolean vip;
-    public boolean taken;
+    public int Screening_ID;
+    public int Row_Num;
+    public int Column_Num;
+
     public Seat(){}
+
+
+    public String toString() {
+        return "Seats{" +
+                "Screening_ID=" + String.valueOf(Screening_ID) +
+                ", column=" + Column_Num +
+                ", row=" + Row_Num + '\'' +
+                '}';
+    }
 }

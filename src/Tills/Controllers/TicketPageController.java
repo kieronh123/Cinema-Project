@@ -3,6 +3,7 @@ package Tills.Controllers;
 
 import Tills.Harness;
 import Tills.Seat;
+import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,10 +54,13 @@ public class TicketPageController {
     public String time = null;
     public String name = null;
     public int screeningID = 0;
-    public boolean VIP = false;
+    public boolean selectedVIP = false;
+    public boolean selectedTicket = false;
+    public boolean selectedSeat = false;
+
     public String column = "7";
     public String row = "7";
-    public String ticket;
+    public String ticket = "none";
     public String age;
 
 
@@ -79,6 +83,7 @@ public class TicketPageController {
      */
     @FXML
     private void initialize() {
+        System.out.println(screeningID);
         //Set these labels to the film name and time previously selected
         FilmName.setText(name);
         FilmTime.setText(time);
@@ -100,25 +105,18 @@ public class TicketPageController {
         returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         returnHome.prefHeightProperty().bind(Home.heightProperty());
         returnHome.prefWidthProperty().bind(Home.widthProperty());
-        confirm.setOnAction((Event) -> {
 
-            if (ticket.isEmpty()) {
-                ticketBlank.setText("SELECT TICKET");
-            } else if (!VIP) {
-                ticketBlank.setText("SELECT VIP");
-            } else if(column.equals("7") || row.equals("7")){
-                ticketBlank.setText("SELECT SEAT");
-            }else{
-                payment();
-            }
-
-        });
 
         //Set button to maximum possible size
         confirm.prefHeightProperty().bind(Home.heightProperty());
         confirm.prefWidthProperty().bind(Home.widthProperty());
         confirm.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        confirm.setDisable(true);
+        confirm.setOnAction((Event ) -> {
 
+                payment(Event);
+
+        });
 
         //Create a combo box that allows employee to select the age ticket
         final ComboBox<String> ticketType = new ComboBox<>();
@@ -133,6 +131,10 @@ public class TicketPageController {
         ticketType.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         //When the employee selects the ticket type, set the variable ticket to the selection
         ticketType.setOnAction(e -> {
+            selectedTicket = true;
+            if(selectedTicket & selectedSeat & selectedVIP){
+                confirm.setDisable(false);
+            }
             ticket = ticketType.getValue();
             System.out.println(ticket);
         });
@@ -147,7 +149,10 @@ public class TicketPageController {
         vipTicket.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         //When the employee selects VIP or not set boolean variable to true or false respectively
         vipTicket.setOnAction(e -> {
-            VIP = true;
+            selectedVIP = true;
+            if(selectedTicket & selectedSeat & selectedVIP){
+                confirm.setDisable(false);
+            }
             String response = vipTicket.getValue();
             System.out.println(response);
             if (response.equals("Yes")) {
@@ -163,27 +168,34 @@ public class TicketPageController {
     }
 
     public void displaySeats(boolean VIPticket) {
-
+        Harness harness = new Harness();
         StringBuffer response = null;
         try {
             //Try and send a get request to receive all information from movies table
-            response = Harness.sendGet("bookings/");
+            response = harness.sendGet("bookings/");
         } catch (Exception e) {
             e.printStackTrace();
         }
         Seat[] seats = JSON.seatsFromJson(response.toString());
-
-
+        for(Seat seat: seats){
+            System.out.println(seat.toString());
+        }
+        //column
         for (int i = 1; i < 6; i++) {
+            //row
             for (int j = 1; j < 6; j++) {
                 Button buttonCreate = new Button();
                 buttonCreate.setText(j + "," + i);
                 buttonCreate.setOnAction((ActionEvent) -> {
                     String id = buttonCreate.getText();
                     String[] segmented = id.split(",");
-                    column = segmented[0];
-                    row = segmented[1];
-                    System.out.println(column + row);
+                    row = segmented[0];
+                    column = segmented[1];
+                    System.out.println(row + column);
+                    selectedSeat = true;
+                    if(selectedTicket & selectedSeat & selectedVIP){
+                        confirm.setDisable(false);
+                    }
 
                 });
                 buttonCreate.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -194,8 +206,16 @@ public class TicketPageController {
                 }
 
                 for (Seat seat : seats) {
-                    if ((seat.column == i) & (seat.row == j) & (seat.screening_ID == screeningID)) {
-                        buttonCreate.setDisable(true);
+                    if ((seat.Row_Num == j) ) {
+                        if((seat.Column_Num == i)){
+                            if((seat.Screening_ID == (screeningID-3))){
+                                buttonCreate.setDisable(true);
+                                System.out.println(j + " " + i);
+                            System.out.println(seat.Screening_ID);
+                            System.out.println(screeningID);
+                            }
+
+                        }
                     }
                 }
                 ButtonsSeats.add(buttonCreate, i - 1, j - 1);
@@ -205,14 +225,28 @@ public class TicketPageController {
     }
 
 
-    public void payment() {
-        String urlParameters = "data=" + String.valueOf(screeningID) + column + row;
+    public void payment(ActionEvent event) {
+        String urlParameters = "data=" + String.valueOf(screeningID -3) + " , " + row + " , " + column;
         StringBuffer reply = null;
         try {
             //Try and send a get request to receive all information from movies table
-            Harness.sendPost("bookings/", "data=1, 5, 4");
+            Harness.sendPost("bookings/", urlParameters);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        try {
+            //Load the ticket page with the selected name and time
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Receipt.fxml"));
+            PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column));
+            loader.setController(controller);
+            Parent parent = loader.load();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(parent);
+            window.setScene(scene);
+            window.show();
+        } catch (IOException e) {
+            System.err.println("Could not load page");
         }
 
     }

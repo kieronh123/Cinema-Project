@@ -8,7 +8,7 @@
 
 <AnchorPane style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" >
     <Label layoutX="367.0" layoutY="21.0" style="-fx-border-color: blue; -fx-border-width: 1; -fx-border-style: dashed" text="Quail Cinema" />
-    <Button layoutX="710.0" layoutY="350.0" mnemonicParsing="false" onAction="#PDF" prefHeight="26.0" prefWidth="175.0" text="Ticket to PDF" />
+    <Button layoutX="710.0" layoutY="350.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="175.0" text="Ticket to PDF" />
     <Button layoutX="710.0" layoutY="300.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="175.0" text="Display Receipt" />
     <TextArea layoutX="150.0" layoutY="45.0" prefHeight="540.0" prefWidth="520.0" />
 </AnchorPane>
