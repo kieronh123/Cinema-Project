@@ -12,6 +12,12 @@ body{
   overflow:hidden;
 }
 
+.center{
+    margin: auto;
+width: 60%;
+padding: 10px;
+}
+
 ul{
   margin:0;
   padding:0;
@@ -145,9 +151,9 @@ div .highlight, div .current a{
   text-decoration: none;
 }
 
+
+
 .btnback {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
   border-radius: 28px;
   font-family: Arial;
   color: #000000;
@@ -157,26 +163,6 @@ div .highlight, div .current a{
   border: solid #000000 2px;
   text-decoration: none;
 
-  position: absolute;
-  top: 320px;
-  left: 590px;
-}
-
-.btnconfirm {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #000000;
-  font-size: 14px;
-  background: #e6e6e6;
-  padding: 7px 10px 8px 10px;
-  border: solid #000000 2px;
-  text-decoration: none;
-
-  position: absolute;
-  top: 320px;
-  left: 735px;
 }
 
 
@@ -300,8 +286,8 @@ ol {
   margin-right: 14.28571428571429%;
 }
 .seat input[type="checkbox"] {
-  position: absolute;
   opacity: 0;
+  float: left;
 }
 .seat input[type="checkbox"]:checked + label {
   background: #013DF8;
@@ -451,4 +437,13 @@ footer{
   header{
     padding-bottom:20px;
   }
+}
+
+.buttonForm{
+    float: left;
+    margin-right: 5px;
+}
+
+.centerText{
+    text-align: :center;
 }

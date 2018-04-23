@@ -144,15 +144,15 @@ def tickets(id):
     if not seats:
         for i in range(1,6):
             for j in range(1,6):
-                allSeats.append((i,j,False))
+                allSeats.append((i,j,False, (i,j)))
     else:
         for i in range(1,6):
             for j in range(1,6):
                 for seat in seats:
                     if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
-                        allSeats.append((i,j,True))
+                        allSeats.append((i,j,True, (i,j)))
                     else:
-                        allSeats.append((i,j,False))
+                        allSeats.append((i,j,False, (i,j)))
 
 
     return render_template('seatselect.html', allSeats=allSeats)
