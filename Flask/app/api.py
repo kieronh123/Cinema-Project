@@ -21,6 +21,7 @@ def execute_query(query, method):
             conn.commit()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
+        print(sqlite3.IntegrityError)
         return "{Status:400}"
 
 ##Bookings
@@ -34,6 +35,9 @@ def bookings():
         conn = get_db()
         c = conn.cursor()
         data = str(request.form['data'])
+        print("---")
+        print(data)
+        print("---")
         query = "INSERT INTO Bookings VALUES(" + data + ");"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
 

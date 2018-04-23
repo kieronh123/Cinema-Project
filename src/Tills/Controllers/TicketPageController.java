@@ -112,17 +112,8 @@ public class TicketPageController {
                 payment();
             }
 
-            //Try and load the movie screen page
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
-                Parent parent = (Parent) loader.load();
-                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-                window.setScene(new Scene(parent));
-                window.show();
-            } catch (IOException e) {
-                System.err.println("Could not load page");
-            }
         });
+
         //Set button to maximum possible size
         confirm.prefHeightProperty().bind(Home.heightProperty());
         confirm.prefWidthProperty().bind(Home.widthProperty());
@@ -219,7 +210,7 @@ public class TicketPageController {
         StringBuffer reply = null;
         try {
             //Try and send a get request to receive all information from movies table
-            Harness.sendPost("bookings/", urlParameters);
+            Harness.sendPost("bookings/", "data=1, 5, 4");
         } catch (Exception e) {
             e.printStackTrace();
         }
