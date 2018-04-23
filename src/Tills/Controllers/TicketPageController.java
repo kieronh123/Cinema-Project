@@ -39,25 +39,34 @@ public class TicketPageController {
     Button returnHome;
     @FXML
     GridPane Ticket;
+    @FXML
+    Button confirm;
+    @FXML
+    Label ticketBlank;
+    @FXML
+    HBox Home;
+    @FXML
+    GridPane Main;
 
 
     //Variables that will be used throughout this controller
     public String time = null;
     public String name = null;
     public int screeningID = 0;
-    public boolean VIP;
-    public String column;
-    public String row;
+    public boolean VIP = false;
+    public String column = "7";
+    public String row = "7";
     public String ticket;
     public String age;
 
 
     /**
      * Constructor for this controller
-     * @param time The film time selected on the previous page
+     *
+     * @param time     The film time selected on the previous page
      * @param filmName
      */
-    public TicketPageController(String time, String filmName, int screeningID, String Age){
+    public TicketPageController(String time, String filmName, int screeningID, String Age) {
         this.time = time;
         this.name = filmName;
         this.screeningID = screeningID;
@@ -69,107 +78,151 @@ public class TicketPageController {
      * buttons to be displayed on the tickets and seating page.
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         //Set these labels to the film name and time previously selected
         FilmName.setText(name);
         FilmTime.setText(time);
         //Set action of the button return home
-        returnHome.setOnAction((Event) ->{
+        returnHome.setOnAction((Event) -> {
             //Try and load the movie screen page
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
-                Parent parent = (Parent)loader.load();
-                Stage window = (Stage)((Node)Event.getSource()).getScene().getWindow();
+                Parent parent = (Parent) loader.load();
+                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
                 window.setScene(new Scene(parent));
                 window.show();
-            }catch(IOException e){
+            } catch (IOException e) {
+                System.err.println("Could not load page");
+            }
+        });
+
+        //Set button to maximum possible size
+        returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        returnHome.prefHeightProperty().bind(Home.heightProperty());
+        returnHome.prefWidthProperty().bind(Home.widthProperty());
+        confirm.setOnAction((Event) -> {
+
+            if (ticket.isEmpty()) {
+                ticketBlank.setText("SELECT TICKET");
+            } else if (!VIP) {
+                ticketBlank.setText("SELECT VIP");
+            } else if(column.equals("7") || row.equals("7")){
+                ticketBlank.setText("SELECT SEAT");
+            }else{
+                payment();
+            }
+
+            //Try and load the movie screen page
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
+                Parent parent = (Parent) loader.load();
+                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                window.setScene(new Scene(parent));
+                window.show();
+            } catch (IOException e) {
                 System.err.println("Could not load page");
             }
         });
         //Set button to maximum possible size
-        returnHome.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        confirm.prefHeightProperty().bind(Home.heightProperty());
+        confirm.prefWidthProperty().bind(Home.widthProperty());
+        confirm.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
 
         //Create a combo box that allows employee to select the age ticket
         final ComboBox<String> ticketType = new ComboBox<>();
         //If the age rating of the film is >16 then children can not go to watch it
-        if(Integer.parseInt(age) >=16){
+        if (age.equals("18")) {
             ticketType.getItems().addAll("Adult", "Senior");
-        //Otherwise allow children tickets to be purchased
-        }else {
+            //Otherwise allow children tickets to be purchased
+        } else {
             ticketType.getItems().addAll("Adults", "Senior", "Child");
         }
         //Maximise size of combo box
         ticketType.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         //When the employee selects the ticket type, set the variable ticket to the selection
-        ticketType.setOnAction(e->{
+        ticketType.setOnAction(e -> {
             ticket = ticketType.getValue();
             System.out.println(ticket);
         });
         //Add the combobox to the fxml page
-        Ticket.add(ticketType,0,0);
+        Ticket.add(ticketType, 0, 0);
 
         //Create a combo box that allows employee to select the VIP or not
         final ComboBox<String> vipTicket = new ComboBox<>();
 
-            vipTicket.getItems().addAll("Yes", "No");
+        vipTicket.getItems().addAll("Yes", "No");
 
         vipTicket.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         //When the employee selects VIP or not set boolean variable to true or false respectively
-        vipTicket.setOnAction(e->{
+        vipTicket.setOnAction(e -> {
+            VIP = true;
             String response = vipTicket.getValue();
             System.out.println(response);
-            if(response.equals("Yes")){
+            if (response.equals("Yes")) {
                 displaySeats(true);
-            }else if(response.equals("No")){
+            } else if (response.equals("No")) {
                 displaySeats(false);
             }
         });
         //Add the combobox to the fxml page
-        vip.add(vipTicket,0,0);
+        vip.add(vipTicket, 0, 0);
 
 
     }
 
-    public void displaySeats(boolean VIPticket){
+    public void displaySeats(boolean VIPticket) {
 
-        Harness harness = new Harness();
         StringBuffer response = null;
         try {
             //Try and send a get request to receive all information from movies table
-            response = harness.sendGet("bookings/");
+            response = Harness.sendGet("bookings/");
         } catch (Exception e) {
             e.printStackTrace();
         }
         Seat[] seats = JSON.seatsFromJson(response.toString());
 
 
-        for(int i =0; i<5; i++){
-            for(int j=0; j<5; j++) {
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 6; j++) {
                 Button buttonCreate = new Button();
-                buttonCreate.setText(i+","+j);
-                buttonCreate.setOnAction((ActionEvent) ->{
+                buttonCreate.setText(j + "," + i);
+                buttonCreate.setOnAction((ActionEvent) -> {
                     String id = buttonCreate.getText();
                     String[] segmented = id.split(",");
                     column = segmented[0];
                     row = segmented[1];
-                    System.out.println(column+row);
+                    System.out.println(column + row);
 
                 });
                 buttonCreate.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-                if(VIPticket==true & (j!=2)){
+                if (VIPticket == true & (j != 3)) {
                     buttonCreate.setDisable(true);
-                }else if(VIPticket==false & (j==2)){
+                } else if (VIPticket == false & (j == 3)) {
                     buttonCreate.setDisable(true);
                 }
 
-                for(Seat seat: seats){
-                    if((seat.column == i) & (seat.row == j)){
+                for (Seat seat : seats) {
+                    if ((seat.column == i) & (seat.row == j) & (seat.screening_ID == screeningID)) {
                         buttonCreate.setDisable(true);
                     }
                 }
-                ButtonsSeats.add(buttonCreate, i, j);
+                ButtonsSeats.add(buttonCreate, i - 1, j - 1);
 
             }
         }
     }
+
+
+    public void payment() {
+        String urlParameters = "data=" + String.valueOf(screeningID) + column + row;
+        StringBuffer reply = null;
+        try {
+            //Try and send a get request to receive all information from movies table
+            Harness.sendPost("bookings/", urlParameters);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+}
