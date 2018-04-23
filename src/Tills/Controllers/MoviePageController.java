@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -51,6 +53,7 @@ public class MoviePageController {
      */
     private void initialize() {
         Map<Integer, ArrayList<WhatsOn>> movieMap = new HashMap<>();
+        System.out.println("Date: " + currentDate());
 
         String whatsOnString = null;
         movieLabels = new Label[]{movie1, movie2, movie3, movie4, movie5, movie6};
@@ -65,16 +68,19 @@ public class MoviePageController {
             //loop through the WhatsOn objects adding them to the hashmap
             int moviecount1 = 0;
             for (int i = 0; i < whatsOn.length; i++) {
-                if(!movieMap.containsKey(whatsOn[i].getMovie_ID())){
-                    movieMap.put(whatsOn[i].getMovie_ID(),new ArrayList<>(Arrays.asList(whatsOn[i])));
-                    //Store the different movies in an array
-                    movies[moviecount1] = JSON.movieFromJson(Harness.sendGet("movies/" + whatsOn[i].getMovie_ID()).toString());
-                    moviecount1++;
-                } else {
-                    ArrayList<WhatsOn> list = movieMap.get(whatsOn[i].getMovie_ID());
-                    list.add(whatsOn[i]);
+                if(whatsOn[i].getStart_Time().substring(0, 10).equals("2018-04-27")) {
+                    if (!movieMap.containsKey(whatsOn[i].getMovie_ID())) {
+                        movieMap.put(whatsOn[i].getMovie_ID(), new ArrayList<>(Arrays.asList(whatsOn[i])));
+                        //Store the different movies in an array
+                        movies[moviecount1] = JSON.movieFromJson(Harness.sendGet("movies/" + whatsOn[i].getMovie_ID()).toString());
+                        moviecount1++;
+                    } else {
+                        ArrayList<WhatsOn> list = movieMap.get(whatsOn[i].getMovie_ID());
+                        list.add(whatsOn[i]);
+                    }
                 }
             }
+
 
             //Loop through the lists of WhatsOn objects for each movie
             int movieCount2 = 0;
@@ -84,6 +90,7 @@ public class MoviePageController {
                 setMovieLabel(movieCount2, movies[movieCount2]);
                 //Loop through each WhatsOn object
                 for (WhatsOn whatson : list){
+                    System.out.println(whatson.toString());
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
 
@@ -100,7 +107,9 @@ public class MoviePageController {
 
                 }
 
-                totalScreeningCount = (int)(Math.ceil((double)screeningCount/3) * 3);
+
+                totalScreeningCount += (int)(Math.ceil((double)screeningCount/3) * 3);
+                System.out.println("screenings: " + totalScreeningCount);
                 movieCount2++;
             }
         } catch (Exception e) {
@@ -160,5 +169,11 @@ public class MoviePageController {
         }catch (Exception e){
             System.err.println("Failed to retrieve movie");
         }
+    }
+
+    public String currentDate(){
+        DateTimeFormatter dateFormatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime date = LocalDateTime.now();
+        return dateFormatter.format(date);
     }
 }

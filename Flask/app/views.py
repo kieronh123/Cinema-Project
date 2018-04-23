@@ -1,6 +1,7 @@
 from app import app
 import sqlite3
 import hashlib
+import re
 from flask import render_template, g, redirect, request
 
 from .models import WhatsOn, Movie, Booking, User
@@ -160,7 +161,7 @@ def tickets(id):
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', msg=None)
 
 
 @app.route('/loginrequest', methods=['POST'])
@@ -173,36 +174,80 @@ def loginRequest():
     passwordHashed.update(passwordEncoded)
 
     user = getUserByUsername(username)
-    app.logger.info(user.Password)
-    app.logger.info(passwordHashed.hexdigest())
+
 
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
             return redirect('/')
         else:
-            return "", 204
+            return render_template('login.html', msg="Incorrect Username/Password combination")
     else:
-        return "", 204
+        return render_template('login.html', msg="Username not recognised")
 
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    return render_template('register.html', msg=None)
 
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
+    passwordConfirm = request.form.get('Confirm Password')
+
+    if password != passwordConfirm:
+        return render_template('register.html', msg="Passwords do not match")
+
     password = password + "saltyquail"
     passwordEncoded = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(passwordEncoded)
 
-    addUser(username, passwordHashed)
+    addUser(username, passwordHashed.hexdigest())
 
-    return "", 204
+    return render_template('register.html', msg="Registration Successful")
 
-@app.route('/payment')
-def payment():
-    return render_template('payment.html')
+
+@app.route('/payment', methods=['POST'])
+def paymentNoType():
+    ticketType = request.form.get("selectTicket")
+    return redirect('/payment/' + ticketType.lower())
+
+@app.route('/payment/<ticketType>')
+def payment(ticketType):
+    if ticketType == "adult":
+        price = 8
+    elif ticketType == "child" or ticketType == "senior":
+        price = 5
+
+    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
+
+
+@app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
+def processPayment(ticketType, price):
+    name = request.form.get('Name')
+    cardNumber = request.form.get('Card Number')
+    expiryDate = request.form.get('Expiry Date')
+    securityCode = request.form.get('Security Code')
+
+    print(ticketType)
+
+    if name:
+        if cardNumber and len(cardNumber) <= 19:
+            if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
+                if re.match('[0-9]{3,4}', securityCode):
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Payment Confirmed")
+                else:
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Security code was not in the correct format")
+            else:
+                return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=" Expiry date was not in the correct format")
+        else:
+            return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Card number must be less than 19 digits")
+    else:
+        return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A Name must be entered")
+
+
+
+
+

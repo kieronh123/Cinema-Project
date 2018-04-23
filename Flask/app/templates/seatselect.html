@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<div class = "center">
-    <div class = "center">
+<div class="center">
+    <div class="center">
         <div class="centerText">
-            <div class = "row">
-                  <h1>Please Select A Seat</h1>
+            <div class="row">
+                <h1>Please Select A Seat</h1>
             </div>
         </div>
     </div>
 
     <div class="center">
-        <div class = "row">
+        <div class="row">
 
-        <ol class="theaterSeats">
-            {%for seat in allSeats%}
+            <ol class="theaterSeats">
+                {%for seat in allSeats%}
                 {%if seat[1] == 1%}
-                     <li class="row row--1">
-                {% endif %}
-                {% if seat[2] == True %}
+                <li class="row row--1">
+                    {% endif %}
+                    {% if seat[2] == True %}
                     <form class="buttonForm">
                         <ol class="seats" type="A">
                             <li class="seat">
@@ -26,9 +26,10 @@
                                 <!-- <input type="submit" id="{{seat[3]}}" ></input>
                                 <label for="{{seat[3]}}">{{seat[3]}}</label> -->
                             </li>
-                        </ol>                    </form>
-                {% elif seat[2] == False %}
-                    <form  class="buttonForm">
+                        </ol>
+                    </form>
+                    {% elif seat[2] == False %}
+                    <form class="buttonForm">
                         <ol class="seats" type="A">
                             <li class="seat">
                                 <button type="submit" class="btn"><a>{{seat[3]}}</a></button>
@@ -38,22 +39,31 @@
                             </li>
                         </ol>
                     </form>
-                {% endif %}
+                    {% endif %}
 
-            {%endfor%}
+                    {%endfor%}
 
-        </ol>
-    </div>
-    </div>
-
-    <div class = "center">
-        <div class = "row">
-
-        <form  class="buttonForm" action="/">
-            <button class="btnback"><a>Back</a></button>
-            <button class="btnback"><a href="payment.html">Confirm</a></button>
+            </ol>
+        </div>
+        <form id="selectTicket" action="/payment" method="post">
+            <select name="selectTicket">
+                <option value="Adult">Adult</option>
+                <option value="Child">Child</option>
+                <option value="Senior">Senior</option>
+            </select>
         </form>
     </div>
-</div>
+
+    <div class="center">
+        <div class="row">
+
+            <form class="buttonForm">
+                <button class="btnback">Back</button>
+                <button class="btnback" form="selectTicket">Confirm</a></button>
+            </form>
+            </form>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

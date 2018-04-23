@@ -16,11 +16,14 @@
                         <input type="Password" name="Password" placeholder="Password">
                     </div>
                     <div>
-                        <input type="checkbox"><label for="checkbox">Keep me logged in</label>
+                        <label>Confirm Password</label><br>
+                        <input type="Password" name="Confirm Password" placeholder="Password">
                     </div>
                     <input type="submit" value="Register">
                 </form>
             </div>
+
+            <label>{% if msg is not none%} {{msg}} {%endif%}</label>
         </aside>
     </div>
 </section>

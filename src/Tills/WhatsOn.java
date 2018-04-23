@@ -25,4 +25,13 @@ public class WhatsOn {
     public String getStart_Time() {
         return Start_Time;
     }
+
+    public String toString() {
+        return "WhatsOn{" +
+                "Screening_ID=" + Screening_ID +
+                ", Movie_ID=" + Movie_ID +
+                ", Screen_ID=" + Screen_ID +
+                ", Start_Time='" + Start_Time + '\'' +
+                '}';
+    }
 }
