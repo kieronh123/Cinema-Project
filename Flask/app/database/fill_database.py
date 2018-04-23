@@ -447,7 +447,7 @@ cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
                                     VALUES(?,?,?)''', (b_Id2, b_Row2, b_Col2))
 
 cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
-                                    VALUES(?,?,?)''', (b_Id2, b_Row2, b_Col2))
+                                    VALUES(?,?,?)''', (b_Id3, b_Row3, b_Col3))
 #Committing changes to cinema.db
 db.commit()
 db.close()
