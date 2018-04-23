@@ -9,7 +9,7 @@
             <div class="dark">
                 <h3>Purchase Details</h3>
                 <p>Ticket Type: {{ticketType}}</p>
-                <p>Total: £30</p>
+                <p>Total: £{{price}}</p>
             </div>
         </aside>
 
@@ -23,15 +23,15 @@
                     </div>
                     <div>
                         <label>Card Number</label><br>
-                        <input type="Card Details" placeholder="Card Number">
+                        <input type="text" placeholder="Card Number">
                     </div>
                     <div>
                         <label>Expiry Date</label><br>
-                        <textarea placeholder="MM/YY"></textarea>
+                        <input type="text" placeholder="MM/YY"/>
                     </div>
                     <div>
                         <label>Security Code</label><br>
-                        <textarea placeholder="Code"></textarea>
+                        <input type="text" placeholder="Code"/>
                     </div>
 
                     <button class="button_1" type="submit">Send</button>

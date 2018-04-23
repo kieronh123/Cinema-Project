@@ -205,4 +205,8 @@ def registerRequest():
 
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
-    return render_template('payment.html', ticketType=ticketType.title())
+    if ticketType == "adult":
+        price = 8
+    elif ticketType == "child" or ticketType == "senior":
+        price = 5
+    return render_template('payment.html', ticketType=ticketType.title(), price=price)
