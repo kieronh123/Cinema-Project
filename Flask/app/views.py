@@ -161,7 +161,7 @@ def tickets(id):
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', msg=None)
 
 
 @app.route('/loginrequest', methods=['POST'])
@@ -174,16 +174,15 @@ def loginRequest():
     passwordHashed.update(passwordEncoded)
 
     user = getUserByUsername(username)
-    app.logger.info(user.Password)
-    app.logger.info(passwordHashed.hexdigest())
+
 
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
             return redirect('/')
         else:
-            return "", 204
+            return render_template('login.html', msg="Incorrect Username/Password combination")
     else:
-        return "", 204
+        return render_template('login.html', msg="Username not recognised")
 
 
 @app.route('/register')
