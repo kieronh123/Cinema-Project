@@ -209,13 +209,20 @@ def registerRequest():
     return render_template('register.html', msg="Registration Successful")
 
 
+@app.route('/payment', methods=['POST'])
+def paymentNoType():
+    ticketType = request.form.get("selectTicket")
+    return redirect('/payment/' + ticketType.lower())
+
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
     if ticketType == "adult":
         price = 8
     elif ticketType == "child" or ticketType == "senior":
         price = 5
+
     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
+
 
 @app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
 def processPayment(ticketType, price):
