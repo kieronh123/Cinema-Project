@@ -188,13 +188,18 @@ def loginRequest():
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    return render_template('register.html', msg=None)
 
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
+    passwordConfirm = request.form.get('Confirm Password')
+
+    if password != passwordConfirm:
+        return render_template('register.html', msg="Passwords do not match")
+
     password = password + "saltyquail"
     passwordEncoded = str.encode(password)
     passwordHashed = hashlib.sha256()
@@ -202,7 +207,8 @@ def registerRequest():
 
     addUser(username, passwordHashed.hexdigest())
 
-    return "", 204
+    return render_template('register.html', msg="Registration Successful")
+
 
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
