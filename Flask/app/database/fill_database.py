@@ -281,8 +281,16 @@ wo_Time36 = "2018-04-27T19:45:00"
 
 ##Initial bookings information
 b_Id = 1
-b_Col = 0 #Bookings column
-b_Row = 0 #Bookings row
+b_Col = 1 #Bookings column
+b_Row = 1 #Bookings row
+
+b_Id2 = 1
+b_Col2 = 3 #Bookings column
+b_Row2 = 3 #Bookings row
+
+b_Id3 = 1
+b_Col3 = 5 #Bookings column
+b_Row3 = 5 #Bookings row
 
 #Entering values into cinema.db tables
 cursor.execute('''INSERT INTO Users(User_ID,Username,Password)
@@ -435,6 +443,11 @@ cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_
 cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
                                     VALUES(?,?,?)''', (b_Id, b_Row, b_Col))
 
+cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
+                                    VALUES(?,?,?)''', (b_Id2, b_Row2, b_Col2))
+
+cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
+                                    VALUES(?,?,?)''', (b_Id2, b_Row2, b_Col2))
 #Committing changes to cinema.db
 db.commit()
 db.close()
