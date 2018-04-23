@@ -145,15 +145,15 @@ def tickets(id):
     if not seats:
         for i in range(1,6):
             for j in range(1,6):
-                allSeats.append((i,j,False))
+                allSeats.append((i,j,False, (i,j)))
     else:
         for i in range(1,6):
             for j in range(1,6):
                 for seat in seats:
                     if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
-                        allSeats.append((i,j,True))
+                        allSeats.append((i,j,True, (i,j)))
                     else:
-                        allSeats.append((i,j,False))
+                        allSeats.append((i,j,False, (i,j)))
 
 
     return render_template('seatselect.html', allSeats=allSeats)
@@ -222,11 +222,17 @@ def processPayment(ticketType, price):
     print(ticketType)
 
     if name:
-        if len(cardNumber) <= 19:
-            if re.match('[0-9]{3,4}', securityCode):
-                if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
+        if cardNumber and len(cardNumber) <= 19:
+            if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
+                if re.match('[0-9]{3,4}', securityCode):
                     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Payment Confirmed")
-    else :
+                else:
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Security code was not in the correct format")
+            else:
+                return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=" Expiry date was not in the correct format")
+        else:
+            return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Card number must be less than 19 digits")
+    else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A Name must be entered")
 
 

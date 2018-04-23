@@ -68,7 +68,7 @@ public class MoviePageController {
             //loop through the WhatsOn objects adding them to the hashmap
             int moviecount1 = 0;
             for (int i = 0; i < whatsOn.length; i++) {
-                if(whatsOn[i].getStart_Time().substring(0, 10).equals("2018-04-26")) {
+                if(whatsOn[i].getStart_Time().substring(0, 10).equals("2018-04-27")) {
                     if (!movieMap.containsKey(whatsOn[i].getMovie_ID())) {
                         movieMap.put(whatsOn[i].getMovie_ID(), new ArrayList<>(Arrays.asList(whatsOn[i])));
                         //Store the different movies in an array
@@ -90,7 +90,7 @@ public class MoviePageController {
                 setMovieLabel(movieCount2, movies[movieCount2]);
                 //Loop through each WhatsOn object
                 for (WhatsOn whatson : list){
-
+                    System.out.println(whatson.toString());
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
 
