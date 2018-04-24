@@ -1,0 +1,277 @@
+1524566747743	geckodriver	INFO	geckodriver 0.18.0
+1524566747745	geckodriver	INFO	Listening on 127.0.0.1:41647
+1524566748876	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524566749576	Marionette	INFO	Listening on port 43466
+1524566749656	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524566774661	geckodriver	INFO	geckodriver 0.18.0
+1524566774664	geckodriver	INFO	Listening on 127.0.0.1:41474
+1524566775787	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524566776486	Marionette	INFO	Listening on port 33943
+1524566776564	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567529281	geckodriver	INFO	geckodriver 0.18.0
+1524567529283	geckodriver	INFO	Listening on 127.0.0.1:39663
+1524567530412	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567531138	Marionette	INFO	Listening on port 34660
+1524567531222	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567717616	geckodriver	INFO	geckodriver 0.18.0
+1524567717618	geckodriver	INFO	Listening on 127.0.0.1:60620
+1524567718746	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567719406	Marionette	INFO	Listening on port 37644
+1524567719486	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567798237	geckodriver	INFO	geckodriver 0.18.0
+1524567798240	geckodriver	INFO	Listening on 127.0.0.1:56843
+1524567799370	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567800092	Marionette	INFO	Listening on port 37032
+1524567800180	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567847044	geckodriver	INFO	geckodriver 0.18.0
+1524567847046	geckodriver	INFO	Listening on 127.0.0.1:55261
+1524567848172	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567848842	Marionette	INFO	Listening on port 36035
+1524567848922	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567943119	geckodriver	INFO	geckodriver 0.18.0
+1524567943122	geckodriver	INFO	Listening on 127.0.0.1:54342
+1524567944266	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567944948	Marionette	INFO	Listening on port 37553
+1524567945026	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567954003	geckodriver	INFO	geckodriver 0.18.0
+1524567954005	geckodriver	INFO	Listening on 127.0.0.1:51451
+1524567955132	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567955786	Marionette	INFO	Listening on port 38153
+1524567955864	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524567977730	geckodriver	INFO	geckodriver 0.18.0
+1524567977732	geckodriver	INFO	Listening on 127.0.0.1:46462
+1524567978865	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524567979544	Marionette	INFO	Listening on port 43921
+1524567979622	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568009853	geckodriver	INFO	geckodriver 0.18.0
+1524568009855	geckodriver	INFO	Listening on 127.0.0.1:55770
+1524568010984	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568011666	Marionette	INFO	Listening on port 40917
+1524568011744	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568031318	geckodriver	INFO	geckodriver 0.18.0
+1524568031321	geckodriver	INFO	Listening on 127.0.0.1:42762
+1524568032445	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568033100	Marionette	INFO	Listening on port 43087
+1524568033180	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568055962	geckodriver	INFO	geckodriver 0.18.0
+1524568055964	geckodriver	INFO	Listening on 127.0.0.1:36856
+1524568057092	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568057780	Marionette	INFO	Listening on port 40528
+1524568057858	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568078044	geckodriver	INFO	geckodriver 0.18.0
+1524568078046	geckodriver	INFO	Listening on 127.0.0.1:35611
+1524568079173	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568079832	Marionette	INFO	Listening on port 35928
+1524568079912	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568093525	geckodriver	INFO	geckodriver 0.18.0
+1524568093529	geckodriver	INFO	Listening on 127.0.0.1:60313
+1524568094665	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568095330	Marionette	INFO	Listening on port 43043
+1524568095410	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568099528	geckodriver	INFO	geckodriver 0.18.0
+1524568099530	geckodriver	INFO	Listening on 127.0.0.1:53221
+1524568100665	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568101324	Marionette	INFO	Listening on port 33078
+1524568101404	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568106038	geckodriver	INFO	geckodriver 0.18.0
+1524568106041	geckodriver	INFO	Listening on 127.0.0.1:35009
+1524568107167	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568107824	Marionette	INFO	Listening on port 37417
+1524568107902	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568142333	geckodriver	INFO	geckodriver 0.18.0
+1524568142336	geckodriver	INFO	Listening on 127.0.0.1:45675
+1524568143462	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568144134	Marionette	INFO	Listening on port 42741
+1524568144214	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524568454970	geckodriver	INFO	geckodriver 0.18.0
+1524568454973	geckodriver	INFO	Listening on 127.0.0.1:39915
+1524568456109	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524568456836	Marionette	INFO	Listening on port 38382
+1524568456922	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570318652	geckodriver	INFO	geckodriver 0.18.0
+1524570318655	geckodriver	INFO	Listening on 127.0.0.1:55926
+1524570319783	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570320522	Marionette	INFO	Listening on port 41188
+1524570320606	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570363275	geckodriver	INFO	geckodriver 0.18.0
+1524570363278	geckodriver	INFO	Listening on 127.0.0.1:43883
+1524570364403	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570365074	Marionette	INFO	Listening on port 42006
+1524570365156	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570380414	geckodriver	INFO	geckodriver 0.18.0
+1524570380416	geckodriver	INFO	Listening on 127.0.0.1:57575
+1524570381546	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570382218	Marionette	INFO	Listening on port 36709
+1524570382298	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570407425	geckodriver	INFO	geckodriver 0.18.0
+1524570407427	geckodriver	INFO	Listening on 127.0.0.1:54779
+1524570408553	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570409256	Marionette	INFO	Listening on port 34520
+1524570409372	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570666054	geckodriver	INFO	geckodriver 0.18.0
+1524570666056	geckodriver	INFO	Listening on 127.0.0.1:58732
+1524570667187	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570667918	Marionette	INFO	Listening on port 38414
+1524570668000	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570706988	geckodriver	INFO	geckodriver 0.18.0
+1524570706991	geckodriver	INFO	Listening on 127.0.0.1:48682
+1524570708126	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570708790	Marionette	INFO	Listening on port 33316
+1524570708872	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524570792421	geckodriver	INFO	geckodriver 0.18.0
+1524570792424	geckodriver	INFO	Listening on 127.0.0.1:46403
+1524570793556	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524570794264	Marionette	INFO	Listening on port 40984
+1524570794376	Marionette	WARN	TLS certificate errors will be ignored for this session
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
+1524571327305	geckodriver	INFO	geckodriver 0.18.0
+1524571327307	geckodriver	INFO	Listening on 127.0.0.1:55437
+1524571329010	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571329728	Marionette	INFO	Listening on port 44516
+1524571329818	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571344983	geckodriver	INFO	geckodriver 0.18.0
+1524571344985	geckodriver	INFO	Listening on 127.0.0.1:50657
+1524571346323	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571347042	Marionette	INFO	Listening on port 46080
+1524571347132	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571425904	geckodriver	INFO	geckodriver 0.18.0
+1524571425906	geckodriver	INFO	Listening on 127.0.0.1:45286
+1524571427045	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571427728	Marionette	INFO	Listening on port 36888
+1524571427808	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571562078	geckodriver	INFO	geckodriver 0.18.0
+1524571562080	geckodriver	INFO	Listening on 127.0.0.1:49445
+1524571563211	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571563884	Marionette	INFO	Listening on port 43206
+1524571563964	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571591240	geckodriver	INFO	geckodriver 0.18.0
+1524571591243	geckodriver	INFO	Listening on 127.0.0.1:40460
+1524571592381	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571593038	Marionette	INFO	Listening on port 33998
+1524571593118	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571637911	geckodriver	INFO	geckodriver 0.18.0
+1524571637913	geckodriver	INFO	Listening on 127.0.0.1:38153
+1524571639041	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571639714	Marionette	INFO	Listening on port 38057
+1524571639794	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571746441	geckodriver	INFO	geckodriver 0.18.0
+1524571746444	geckodriver	INFO	Listening on 127.0.0.1:44007
+1524571747599	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571748274	Marionette	INFO	Listening on port 33345
+1524571748354	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571753440	geckodriver	INFO	geckodriver 0.18.0
+1524571753442	geckodriver	INFO	Listening on 127.0.0.1:39125
+1524571754573	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571755226	Marionette	INFO	Listening on port 46373
+1524571755306	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571866377	geckodriver	INFO	geckodriver 0.18.0
+1524571866380	geckodriver	INFO	Listening on 127.0.0.1:58760
+1524571867611	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524571868286	Marionette	INFO	Listening on port 36635
+1524571868364	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524571998394	geckodriver	INFO	geckodriver 0.18.0
+1524571998397	geckodriver	INFO	Listening on 127.0.0.1:41683
+1524571999703	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572000396	Marionette	INFO	Listening on port 42099
+1524572000476	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572226258	geckodriver	INFO	geckodriver 0.18.0
+1524572226260	geckodriver	INFO	Listening on 127.0.0.1:38114
+1524572227391	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572228086	Marionette	INFO	Listening on port 45413
+1524572228164	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572252498	geckodriver	INFO	geckodriver 0.18.0
+1524572252500	geckodriver	INFO	Listening on 127.0.0.1:55121
+1524572253623	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572254286	Marionette	INFO	Listening on port 39454
+1524572254366	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572275125	geckodriver	INFO	geckodriver 0.18.0
+1524572275127	geckodriver	INFO	Listening on 127.0.0.1:39280
+1524572276267	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572277014	Marionette	INFO	Listening on port 45858
+1524572277094	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572353040	geckodriver	INFO	geckodriver 0.18.0
+1524572353043	geckodriver	INFO	Listening on 127.0.0.1:38488
+1524572354172	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572354896	Marionette	INFO	Listening on port 39754
+1524572354986	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572417214	geckodriver	INFO	geckodriver 0.18.0
+1524572417217	geckodriver	INFO	Listening on 127.0.0.1:46950
+1524572418350	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572419118	Marionette	INFO	Listening on port 43669
+1524572419198	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572436560	geckodriver	INFO	geckodriver 0.18.0
+1524572436563	geckodriver	INFO	Listening on 127.0.0.1:39775
+1524572437697	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572438386	Marionette	INFO	Listening on port 38856
+1524572438466	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572451742	geckodriver	INFO	geckodriver 0.18.0
+1524572451744	geckodriver	INFO	Listening on 127.0.0.1:45560
+1524572452890	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572453566	Marionette	INFO	Listening on port 44029
+1524572453644	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572462208	geckodriver	INFO	geckodriver 0.18.0
+1524572462211	geckodriver	INFO	Listening on 127.0.0.1:36419
+1524572463339	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572464018	Marionette	INFO	Listening on port 44484
+1524572464098	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572542534	geckodriver	INFO	geckodriver 0.18.0
+1524572542536	geckodriver	INFO	Listening on 127.0.0.1:39373
+1524572543856	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572544554	Marionette	INFO	Listening on port 33673
+1524572544632	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572561452	geckodriver	INFO	geckodriver 0.18.0
+1524572561455	geckodriver	INFO	Listening on 127.0.0.1:60410
+1524572562579	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572563238	Marionette	INFO	Listening on port 34426
+1524572563318	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572584185	geckodriver	INFO	geckodriver 0.18.0
+1524572584187	geckodriver	INFO	Listening on 127.0.0.1:54945
+1524572585360	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572586066	Marionette	INFO	Listening on port 45595
+1524572586178	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524572801260	geckodriver	INFO	geckodriver 0.18.0
+1524572801262	geckodriver	INFO	Listening on 127.0.0.1:46898
+1524572802392	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524572803106	Marionette	INFO	Listening on port 42127
+1524572803202	Marionette	WARN	TLS certificate errors will be ignored for this session
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
+1524573242648	geckodriver	INFO	geckodriver 0.18.0
+1524573242651	geckodriver	INFO	Listening on 127.0.0.1:32892
+1524573243785	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573244484	Marionette	INFO	Listening on port 40728
+1524573244562	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524573284520	geckodriver	INFO	geckodriver 0.18.0
+1524573284522	geckodriver	INFO	Listening on 127.0.0.1:42403
+1524573285657	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573286360	Marionette	INFO	Listening on port 34758
+1524573286472	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524573324088	geckodriver	INFO	geckodriver 0.18.0
+1524573324090	geckodriver	INFO	Listening on 127.0.0.1:38758
+1524573325219	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573325922	Marionette	INFO	Listening on port 40804
+1524573326000	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524573351287	geckodriver	INFO	geckodriver 0.18.0
+1524573351289	geckodriver	INFO	Listening on 127.0.0.1:58816
+1524573352426	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573353118	Marionette	INFO	Listening on port 36800
+1524573353204	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524573361583	geckodriver	INFO	geckodriver 0.18.0
+1524573361585	geckodriver	INFO	Listening on 127.0.0.1:55403
+1524573362713	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573363370	Marionette	INFO	Listening on port 35593
+1524573363450	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524573372131	geckodriver	INFO	geckodriver 0.18.0
+1524573372134	geckodriver	INFO	Listening on 127.0.0.1:43616
+1524573373260	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524573373924	Marionette	INFO	Listening on port 38049
+1524573374004	Marionette	WARN	TLS certificate errors will be ignored for this session
