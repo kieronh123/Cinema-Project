@@ -12,7 +12,7 @@ curl -X DELETE localhost:5000/users/1
 echo $'\n\nGetting all movies'
 curl -X GET localhost:5000/movies/
 echo $'\n\nAdding a movie'
-curl -X POST localhost:5000/movies/ -d "data='Batman Begins', '18+', 7200, 'Rich man beats up mentally ill', 'BATMAN.jpg'"
+curl -X POST localhost:5000/movies/ -d "data='Batman Begins', '18+', 7200, 'Rich man beats up mentally ill', 'Mike Nolan', 'Gary Oldman and the gang', 'BATMAN.jpg'"
 echo $'\n\nGetting specific movie'
 curl -X GET localhost:5000/movies/1
 echo $'\n\nRemoving a movie'
