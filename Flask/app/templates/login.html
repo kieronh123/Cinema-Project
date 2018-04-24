@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set title = "Log in" %}
 {% block content %}
 
 <section id="main">
@@ -6,7 +7,7 @@
         <aside id="sidebar2">
             <div class="dark">
                 <h3>Log In</h3>
-                <form action="/loginrequest" method="post">
+                <form name="login" action="/loginrequest" method="post">
                     <div>
                         <label>Username</label><br>
                         <input type="text" name="Username" placeholder="Username">

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="jumbotron text-center">
     <h1>Quail Cinema</h1>
     <p>Today's Movies</p>
@@ -26,7 +25,7 @@
             <p>{{i[0].Movie_Info}}</p>
 
             {% for j in i[1] %}
-                <form class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
+                <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
                 <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
                 </form>
             {% endfor %}
