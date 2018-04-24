@@ -31,7 +31,6 @@ def execute_query(query, method):
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         #If an error occurs return 400 in JSON
-        print(sqlite3.IntegrityError)
         return "{Status:400}"
 
 ##Bookings
@@ -75,17 +74,8 @@ def movies():
         #Return JSON response with pulled information
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
     elif request.method == 'POST':
-        #Fetch database
-        conn = get_db()
-        c = conn.cursor()
-        #Get the highest ID value in the database
-        max_id_list = c.execute("SELECT Max(Movie_ID) from Movies;").fetchall()
-        #Break down the tuple to get the highest value
-        max_id_list2 = max_id_list[0]
-        number_of_rows = max_id_list2[0]
-        #If nothing is in the database, set the number of rows to 0
-        if number_of_rows is None:
-            number_of_rows = 0
+        #Fetch highest row ID number
+        number_of_rows = fetch_highest_row("Movie_ID", "Movies")
         #Pull the parameters passed in the REST request
         data = str(request.form['data'])
         #Execute the query
@@ -114,17 +104,8 @@ def whatsOn():
         query = "SELECT * FROM Whats_On"
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
     elif request.method == 'POST':
-        #Fetch database
-        conn = get_db()
-        c = conn.cursor()
-        #Get the highest ID value in the database
-        max_id_list = c.execute("SELECT Max(Screening_ID) from Whats_On;").fetchall()
-        #Break down the tuple to get the highest value
-        max_id_list2 = max_id_list[0]
-        number_of_rows = max_id_list2[0]
-        #If nothing is in the database, set the number of rows to 0
-        if number_of_rows is None:
-            number_of_rows = 0
+        #Fetch highest row ID number
+        number_of_rows = fetch_highest_row("Screening_ID", "Whats_On")
         #Pull the parameters passed in the REST request
         data = str(request.form['data'])
         #Execute the query
@@ -154,17 +135,8 @@ def get_and_add_Users():
         #Return JSON response with pulled information
         return Response(execute_query(query, request.method), status=200, mimetype='application/json')
     elif request.method == 'POST':
-        #Fetch database
-        conn = get_db()
-        c = conn.cursor()
-        #Get the highest ID value in the database
-        max_id_list = c.execute("SELECT Max(User_ID) from Users;").fetchall()
-        #Break down the tuple to get the highest value
-        max_id_list2 = max_id_list[0]
-        number_of_rows = max_id_list2[0]
-        #If nothing is in the database, set the number of rows to 0
-        if number_of_rows is None:
-            number_of_rows = 0
+        #Fetch highest row ID number
+        number_of_rows = fetch_highest_row("User_ID", "Users")
         #Pull the parameters passed in the REST request
         data = str(request.form['data'])
         #Execute the query
@@ -202,6 +174,23 @@ def get_db():
     if db is None:
         db = g._database = sqlite3.connect(DATABASE, check_same_thread=False)
     return db
+
+##Fetch the highest row_id to add a new row_id
+#Parameters:        The attribute you want (e.g User_ID)
+#                   The name of the table (e.g Users)
+def fetch_highest_row(attribute, table):
+    #Fetch database
+    conn = get_db()
+    c = conn.cursor()
+    #Get the highest ID value in the database
+    max_id_list = c.execute("SELECT Max(" + attribute + ") from " + table + ";").fetchall()
+    #Break down the tuple to get the highest value
+    max_id_list2 = max_id_list[0]
+    number_of_rows = max_id_list2[0]
+    #If nothing is in the database, set the number of rows to 0
+    if number_of_rows is None:
+        number_of_rows = 0
+    return number_of_rows
 
 ##On program close, close db connection
 #Parameters:        The exception that occured
