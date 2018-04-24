@@ -11,6 +11,8 @@ import json
 DATABASE = 'app/database/cinema.db'
 
 
+
+
 ##Function to execute an SQL query
 def execute_query(query, method):
     conn = get_db()
@@ -126,6 +128,10 @@ def close_connection(exception):
 
 #####################################################################################################################
 
+# Global variables
+seat=(7,7)
+vip = False
+
 @app.route('/')
 def index():
     number = []
@@ -150,13 +156,24 @@ def tickets(id):
         for i in range(1,6):
             for j in range(1,6):
                 for seat in seats:
-                    if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
+                    if (int(seat.Row_Num) == i) and (int(seat.Column_Num) == j):
                         allSeats.append((i,j,True, (i,j)))
                     else:
                         allSeats.append((i,j,False, (i,j)))
 
 
     return render_template('seatselect.html', allSeats=allSeats)
+
+@app.route('/storeSeat/<id>/<row>')
+def storeSeats(id,row):
+    global seat
+    seat = id
+    global vip
+    if(seat[0] == 3):
+        vip=True
+        print(vip)
+
+    return "",204
 
 
 @app.route('/login')
@@ -246,8 +263,3 @@ def processPayment(ticketType, price):
             return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Card number must be less than 19 digits")
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A Name must be entered")
-
-
-
-
-

@@ -28,10 +28,6 @@ public class PaymentPageController {
   //Set FXML variables that match those in PaymentPage.fxml
 
   @FXML
-  Label FilmName;
-  @FXML
-  Label FilmTime;
-  @FXML
   Label Date;
   @FXML
   Label PriceOfTicket;
@@ -61,23 +57,21 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
-    FilmName.setText(name);
-    FilmTime.setText(time);
 
-    returnHome.setOnAction((Event) -> {
-      try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
-
-        Parent parent = (Parent) loader.load();
-        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(parent));
-        window.show();
-      } catch (IOException e) {
-        System.err.println("Could not load page");
-      }
-
-
-    });
+//    returnHome.setOnAction((Event) -> {
+//      try {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
+//
+//        Parent parent = (Parent) loader.load();
+//        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+//        window.setScene(new Scene(parent));
+//        window.show();
+//      } catch (IOException e) {
+//        System.err.println("Could not load page");
+//      }
+//
+//
+//    });
   }
 
 

@@ -88,7 +88,7 @@ public class TicketPageController {
         FilmName.setText(name);
         FilmTime.setText(time);
         //Set action of the button return home
-        returnHome.setOnAction((Event) -> {
+        returnHome.setOnAction((ActionEvent Event) -> {
             //Try and load the movie screen page
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
@@ -246,6 +246,7 @@ public class TicketPageController {
             window.setScene(scene);
             window.show();
         } catch (IOException e) {
+            e.printStackTrace();
             System.err.println("Could not load page");
         }
 
