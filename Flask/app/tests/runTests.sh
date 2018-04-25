@@ -1,3 +1,4 @@
-python navigation_bar.py
-python login_attempt.py
-python registration_attempt.py
+python navigation_bar_test.py
+python login_test.py
+python registration_test.py
+python payment_test.py
