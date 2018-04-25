@@ -1,4 +1,3 @@
-
 package Tills.Controllers;
 
 
@@ -20,7 +19,6 @@ import java.io.IOException;
 
 //
 /**
-
  * Controller class for the PaymentPage.fxml page
  */
 
@@ -42,7 +40,9 @@ public class PaymentPageController {
   @FXML
   Label Screening;
   @FXML
-  Button returnHome;
+  Button displayReceipt;
+  @FXML
+  Button cancelPayment;
 
   String time = null;
   String name = null;
@@ -64,9 +64,9 @@ public class PaymentPageController {
     FilmName.setText(name);
     FilmTime.setText(time);
 
-    returnHome.setOnAction((Event) -> {
+    cancelPayment.setOnAction((Event) -> {
       try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
 
         Parent parent = (Parent) loader.load();
         Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
@@ -75,11 +75,8 @@ public class PaymentPageController {
       } catch (IOException e) {
         System.err.println("Could not load page");
       }
-
-
     });
   }
-
 
   /*
   The code below is used for generating a PDF for the receipt.
@@ -95,30 +92,22 @@ public class PaymentPageController {
       document.open();
       Paragraph ticketText = new Paragraph();
       ticketText.add("\n*********************************");
-      ticketText.add("\n*           Ticket              *");
+      ticketText.add("\n*           Ticket               *");
       ticketText.add("\n*                               *");
       ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
+      ticketText.add("\n*                             *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                           *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                            *");
+      ticketText.add("\n*                                *");
+      ticketText.add("\n*                                *");
       ticketText.add("\n*********************************");
       document.add(ticketText);
       document.close();
@@ -128,6 +117,12 @@ public class PaymentPageController {
     } catch (DocumentException e) {
       e.printStackTrace();
     }
+
+  }
+
+  public void payByCash (){
+    //.sleep(seconds);
+
   }
 
 

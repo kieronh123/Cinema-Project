@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controller">
+<?import javafx.scene.control.CheckBox?>
+<AnchorPane style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.PaymentPageController">
     <Label layoutX="367.0" layoutY="21.0" style="-fx-border-color: blue; -fx-border-width: 1; -fx-border-style: dashed" text="Quail Cinema" />
-    <Button layoutX="710.0" layoutY="350.0" mnemonicParsing="false" onAction="#PDF" prefHeight="26.0" prefWidth="175.0" text="Ticket to PDF" />
-    <Button layoutX="710.0" layoutY="300.0" mnemonicParsing="false" onAction="#showReceipt" prefHeight="26.0" prefWidth="175.0" text="Display Receipt" />
-    <TextArea layoutX="150.0" layoutY="45.0" prefHeight="540.0" prefWidth="520.0" />
+    <Button layoutX="710.0" layoutY="350.0" mnemonicParsing="false" onAction="PDF" prefHeight="26.0" prefWidth="175.0" text="Ticket to PDF" />
+    <Button fx:id="cancelPayment" layoutX="710.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="175.0" text="Cancel Payment" />
+    <AnchorPane layoutX="150.0" layoutY="45.0" prefHeight="540.0" prefWidth="520.0">
+    <Label fx:id="filmName" layoutX="76.0" layoutY="32.0" text="Film Name:" />
+    <Label fx:id="Date" layoutX="76.0" layoutY="74.0" text="Date" />
+    <Label fx:id="filmTime" layoutX="367.0" layoutY="500.0" text="Film Time:"/>
+    <Label fx:id="VipSelected:" layoutX="367.0" layoutY="21.0" text="VIP: Yes/No"/>
+    <!--<Label fx:id="Seats" text=" Seat Names" layoutX="367.0" layoutY="21.0"/>-->
+    <!--<CheckBox fx:id="discount" layoutX="367.0" layoutY="21.0" text="Yes/No"/>-->
+    </AnchorPane>
 </AnchorPane>
