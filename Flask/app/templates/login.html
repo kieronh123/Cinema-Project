@@ -7,7 +7,7 @@
         <aside id="sidebar2">
             <div class="dark">
                 <h3>Log In</h3>
-                <form name="login" action="/loginrequest" method="post">
+                <form action="/loginrequest" method="post">
                     <div>
                         <label>Username</label><br>
                         <input type="text" name="Username" placeholder="Username">
@@ -16,10 +16,10 @@
                         <label>Password</label><br>
                         <input type="Password" name="Password" placeholder="Password">
                     </div>
-                    <input type="submit" value="Log In">
+                    <input name="login" type="submit" value="Log In">
                 </form>
             </div>
-            <label>{%if msg is not none%} {{msg}} {%endif%} </label>
+            <label name="message">{%if msg is not none%} {{msg}} {%endif%} </label>
         </aside>
     </div>
 </section>

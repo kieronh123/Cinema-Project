@@ -169,9 +169,10 @@ def loginRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
     password = password + "saltyquail"
-    passwordEncoded = str.encode(password)
+    if type(password) == str:
+        password = str.encode(password)
     passwordHashed = hashlib.sha256()
-    passwordHashed.update(passwordEncoded)
+    passwordHashed.update(password)
 
     user = getUserByUsername(username)
 
@@ -193,16 +194,22 @@ def register():
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     username = request.form.get('Username')
+    print username
     password = request.form.get('Password')
     passwordConfirm = request.form.get('Confirm Password')
+
+    if username == "":
+        return render_template('register.html', msg="No username entered")
+
 
     if password != passwordConfirm:
         return render_template('register.html', msg="Passwords do not match")
 
     password = password + "saltyquail"
-    passwordEncoded = str.encode(password)
+    if type(password) == str:
+        password = str.encode(password)
     passwordHashed = hashlib.sha256()
-    passwordHashed.update(passwordEncoded)
+    passwordHashed.update(password)
 
     addUser(username, passwordHashed.hexdigest())
 

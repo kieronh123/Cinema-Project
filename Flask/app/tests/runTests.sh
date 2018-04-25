@@ -1,0 +1,3 @@
+python navigation_bar.py
+python login_attempt.py
+python registration_attempt.py

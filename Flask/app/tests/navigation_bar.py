@@ -2,33 +2,26 @@ import time
 import unittest
 
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class NavBarTest(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
+        self.driver.get("http://localhost:5000")
 
     def testLogin(self):
-        self.driver.get("http://localhost:5000")
         # check login link
         self.driver.find_element_by_name("login").click()
         time.sleep(1)
         assert self.driver.title == "Quail Cinema - Log in"
 
     def testRegister(self):
-        self.driver.get("http://localhost:5000")
         # check login link
         self.driver.find_element_by_name("register").click()
         time.sleep(1)
         assert self.driver.title == "Quail Cinema - Register"
 
     def testHome(self):
-        self.driver.get("http://localhost:5000")
         # check login link
         self.driver.find_element_by_name("home").click()
         time.sleep(1)
