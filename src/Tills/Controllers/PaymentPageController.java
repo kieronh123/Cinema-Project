@@ -1,6 +1,5 @@
 package Tills.Controllers;
 
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -12,12 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.lang.*;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-//
 /**
 
  * Controller class for the PaymentPage.fxml page
@@ -26,30 +26,32 @@ import java.io.IOException;
 public class PaymentPageController {
   //Set FXML variables that match those in PaymentPage.fxml
 
+
   @FXML
   Label FilmName;
   @FXML
   Label FilmTime;
   @FXML
-  Label Date;
+  Label CashGiven;
   @FXML
-  Label PriceOfTicket;
+  Label amountDue;
   @FXML
-  Label Seating;
+  Label change;
   @FXML
-  Button PayByCash;
+  TextField cashGivenTF;
   @FXML
-  Label Screening;
+  TextField amountDueTF;
+  @FXML
+  TextField changeTF;
   @FXML
   Button returnHome;
   @FXML
   Button printPDF;
 
-  String time = null;
-  String name = null;
-  String seat = null;
-
-  boolean VIP;
+  public String time = null;
+  public String name = null;
+  public String seat = null;
+//  int total = Integer.parseInt(null);
 
 
 
@@ -82,7 +84,7 @@ public class PaymentPageController {
       try {
         PDF();
       } catch (IOException e) {
-        System.err.println("Could not load page");
+        e.printStackTrace();
       }
     });
   }
@@ -92,43 +94,27 @@ public class PaymentPageController {
   This is used for generating the receipt from the ticket chosen.
   Variables are still needed to update the fields.
   */
+
   @FXML
   public void PDF()throws IOException{
-    Document document = new Document
+    Document document = new Document();
     try{
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
-
       document.open();
       Paragraph ticketText = new Paragraph();
-      ticketText.add("\n*********************************");
-      ticketText.add("\n*           Ticket              *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*********************************");
+      ticketText.add("\n******************************************************");
+      ticketText.add("\n*                         Ticket                     *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add(String.format("\n*%s                                    *", time));
+      ticketText.add(String.format("\n*%s                                    *", seat));
+//      ticketText.add(String.format("\n*%s                                    *", total));
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n******************************************************");
       document.add(ticketText);
       document.close();
-
     }catch (IOException e){
       e.printStackTrace();
     } catch (DocumentException e) {
@@ -139,5 +125,3 @@ public class PaymentPageController {
 
 
 }
-
-
