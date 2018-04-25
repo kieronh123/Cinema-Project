@@ -19,6 +19,7 @@ import java.io.IOException;
 
 //
 /**
+
  * Controller class for the PaymentPage.fxml page
  */
 
@@ -40,9 +41,9 @@ public class PaymentPageController {
   @FXML
   Label Screening;
   @FXML
-  Button displayReceipt;
+  Button returnHome;
   @FXML
-  Button cancelPayment;
+  Button printPDF;
 
   String time = null;
   String name = null;
@@ -64,7 +65,7 @@ public class PaymentPageController {
     FilmName.setText(name);
     FilmTime.setText(time);
 
-    cancelPayment.setOnAction((Event) -> {
+    returnHome.setOnAction((Event) -> {
       try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
 
@@ -72,6 +73,14 @@ public class PaymentPageController {
         Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
         window.setScene(new Scene(parent));
         window.show();
+      } catch (IOException e) {
+        System.err.println("Could not load page");
+      }
+    });
+
+    printPDF.setOnAction((Event) -> {
+      try {
+        PDF();
       } catch (IOException e) {
         System.err.println("Could not load page");
       }
@@ -85,29 +94,37 @@ public class PaymentPageController {
   */
   @FXML
   public void PDF()throws IOException{
-    Document document = new Document();
+    Document document = new Document
     try{
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
 
       document.open();
       Paragraph ticketText = new Paragraph();
       ticketText.add("\n*********************************");
-      ticketText.add("\n*           Ticket               *");
+      ticketText.add("\n*           Ticket              *");
       ticketText.add("\n*                               *");
       ticketText.add("\n*                               *");
-      ticketText.add("\n*                             *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                           *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                            *");
-      ticketText.add("\n*                                *");
-      ticketText.add("\n*                                *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
+      ticketText.add("\n*                               *");
       ticketText.add("\n*********************************");
       document.add(ticketText);
       document.close();
@@ -117,12 +134,6 @@ public class PaymentPageController {
     } catch (DocumentException e) {
       e.printStackTrace();
     }
-
-  }
-
-  public void payByCash (){
-    //.sleep(seconds);
-
   }
 
 
