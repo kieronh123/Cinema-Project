@@ -143,10 +143,12 @@ def close_connection(exception):
 seat=(7,7)
 vip = False
 bookingID=0
+row = 7
+column = 7
 
 @app.route('/')
 def index():
-
+    number = []
 
     # input from screening table
     movies = getMovies()
@@ -155,7 +157,6 @@ def index():
         whatsons.append((m, getWhatsOnByMovieID(m.Movie_ID)))
 
     return render_template('index.html', whatsons=whatsons);
-
 
 @app.route('/seatselect/<id>')
 def tickets(id):
@@ -180,26 +181,24 @@ def tickets(id):
     bookingID=id
     return render_template('seatselect.html', allSeats=allSeats)
 
-@app.route('/storeSeat/<id>/<row>')
-def storeSeats(id,row):
+@app.route('/storeSeat/<id>/<Row>/<Column>')
+def storeSeats(id,Row,Column):
     global seat
     seat = id
-    global vip
-    if(seat[1] == 3):
+    global row
+    row = Row
+    global column
+    column = Column
+    print(Row)
+    if(int(Row) == 3):
+        global vip
         vip=True
-        print(vip)
     return "",204
 
-@app.route('/submitSeat/')
-def submitSeats():
-    if(bookingID!=0 and seat!=(7,7)):
-        addBooking(bookingID,seat[1],seat[4])
-    return "",204
 
 @app.route('/login')
 def login():
     return render_template('login.html', msg=None)
-
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
@@ -253,7 +252,12 @@ def registerRequest():
 @app.route('/payment', methods=['POST'])
 def paymentNoType():
     ticketType = request.form.get("selectTicket")
-    return redirect('/payment/' + ticketType.lower())
+    if(bookingID!=0 and seat!=(7,7)):
+        addBooking(bookingID,row,column)
+    if(seat == (7,7)):
+        return "",204
+    else:
+        return redirect('/payment/' + ticketType.lower())
 
 
 @app.route('/payment/<ticketType>')
@@ -261,7 +265,9 @@ def payment(ticketType):
     if ticketType == "adult":
         price = 8
     elif ticketType == "child" or ticketType == "senior":
-        price = 5
+        price = 4
+    if vip == True:
+        price = (price*1.5)
 
     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
 
