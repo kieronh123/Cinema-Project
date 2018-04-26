@@ -133,7 +133,7 @@ def index():
     whatsons = []
     for m in movies:
         whatsons.append((m, getWhatsOnByMovieID(m.Movie_ID)))
-
+    print(whatsons[0][0].Movie_Image)
     return render_template('index.html', whatsons=whatsons);
 
 
