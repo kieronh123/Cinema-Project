@@ -3,7 +3,7 @@
 <html>
 
       <head>
-          <title>Quail Cinema</title>
+          <title>Quail Cinema {% if title is defined %} - {% endif %} {{title}}</title>
           <link rel="stylesheet" href="/static/style.css">
           <!-- Latest compiled and minified CSS -->
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,9 +19,9 @@
               <a class="navbar-brand" href="#">Quail Cinema</a>
             </div>
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/login">Log In</a></li>
-              <li><a href="/register">Join</a></li>
+              <li class="active"><a href="/"  name="home">Home</a></li>
+              <li><a href="/login" name="login">Log In</a></li>
+              <li><a href="/register" name="register">Join</a></li>
             </ul>
           </div>
         </nav>
