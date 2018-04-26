@@ -1315,3 +1315,458 @@
 1524734615796	Marionette	WARN	TLS certificate errors will be ignored for this session
 [Child 31836] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
 [Child 31836] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736468354	geckodriver	INFO	geckodriver 0.18.0
+1524736468356	geckodriver	INFO	Listening on 127.0.0.1:52130
+1524736469517	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736470468	Marionette	INFO	Listening on port 33603
+1524736470548	Marionette	WARN	TLS certificate errors will be ignored for this session
+1524736600316	geckodriver	INFO	geckodriver 0.18.0
+1524736600318	geckodriver	INFO	Listening on 127.0.0.1:33329
+1524736601448	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736602122	Marionette	INFO	Listening on port 41792
+1524736602202	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 3378] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 3378] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736618887	geckodriver	INFO	geckodriver 0.18.0
+1524736618889	geckodriver	INFO	Listening on 127.0.0.1:43396
+1524736620194	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736621180	Marionette	INFO	Listening on port 32870
+1524736621262	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 3655] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 3655] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736636216	geckodriver	INFO	geckodriver 0.18.0
+1524736636218	geckodriver	INFO	Listening on 127.0.0.1:43648
+1524736636346	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736637004	Marionette	INFO	Listening on port 41544
+1524736637084	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 3904] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 3904] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736655393	geckodriver	INFO	geckodriver 0.18.0
+1524736655395	geckodriver	INFO	Listening on 127.0.0.1:32780
+1524736656521	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736657192	Marionette	INFO	Listening on port 33171
+1524736657270	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 4099] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 4099] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736822817	geckodriver	INFO	geckodriver 0.18.0
+1524736822819	geckodriver	INFO	Listening on 127.0.0.1:48566
+1524736824038	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736824748	Marionette	INFO	Listening on port 37591
+1524736824856	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 4664] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 4664] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736880911	geckodriver	INFO	geckodriver 0.18.0
+1524736880913	geckodriver	INFO	Listening on 127.0.0.1:60632
+1524736882047	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736882706	Marionette	INFO	Listening on port 32876
+1524736882784	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 5034] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 5034] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524736944296	geckodriver	INFO	geckodriver 0.18.0
+1524736944298	geckodriver	INFO	Listening on 127.0.0.1:60151
+1524736945430	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524736946102	Marionette	INFO	Listening on port 34367
+1524736946180	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 5399] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 5399] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737044815	geckodriver	INFO	geckodriver 0.18.0
+1524737044817	geckodriver	INFO	Listening on 127.0.0.1:38248
+1524737045947	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737046848	Marionette	INFO	Listening on port 34220
+1524737046930	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 5759] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 5759] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737085406	geckodriver	INFO	geckodriver 0.18.0
+1524737085408	geckodriver	INFO	Listening on 127.0.0.1:36902
+1524737086534	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737087242	Marionette	INFO	Listening on port 41678
+1524737087354	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 6079] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 6079] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737194375	geckodriver	INFO	geckodriver 0.18.0
+1524737194377	geckodriver	INFO	Listening on 127.0.0.1:33913
+1524737195545	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737196274	Marionette	INFO	Listening on port 33095
+1524737196358	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 6548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 6548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737222137	geckodriver	INFO	geckodriver 0.18.0
+1524737222139	geckodriver	INFO	Listening on 127.0.0.1:52403
+1524737223273	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737223930	Marionette	INFO	Listening on port 36258
+1524737224010	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 6835] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 6835] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737269642	geckodriver	INFO	geckodriver 0.18.0
+1524737269644	geckodriver	INFO	Listening on 127.0.0.1:58727
+1524737270864	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737271644	Marionette	INFO	Listening on port 41486
+1524737271724	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 7137] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 7137] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737381920	geckodriver	INFO	geckodriver 0.18.0
+1524737381922	geckodriver	INFO	Listening on 127.0.0.1:46921
+1524737383050	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737383710	Marionette	INFO	Listening on port 40332
+1524737383790	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 7545] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 7545] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737416984	geckodriver	INFO	geckodriver 0.18.0
+1524737416986	geckodriver	INFO	Listening on 127.0.0.1:59057
+1524737418111	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737418784	Marionette	INFO	Listening on port 42050
+1524737418864	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 7870] WARNING: pipe error (3): Connection reset by peer: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 322
+[Child 7870] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 7870] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737563066	geckodriver	INFO	geckodriver 0.18.0
+1524737563068	geckodriver	INFO	Listening on 127.0.0.1:36262
+1524737564195	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737564860	Marionette	INFO	Listening on port 46201
+1524737564940	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 8313] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 8313] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737578202	geckodriver	INFO	geckodriver 0.18.0
+1524737578204	geckodriver	INFO	Listening on 127.0.0.1:33520
+1524737579330	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737579990	Marionette	INFO	Listening on port 44906
+1524737580070	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 8580] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 8580] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737616547	geckodriver	INFO	geckodriver 0.18.0
+1524737616549	geckodriver	INFO	Listening on 127.0.0.1:49271
+1524737617674	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737618336	Marionette	INFO	Listening on port 42954
+1524737618414	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 8809] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 8809] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737786861	geckodriver	INFO	geckodriver 0.18.0
+1524737786864	geckodriver	INFO	Listening on 127.0.0.1:39844
+1524737787994	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737788674	Marionette	INFO	Listening on port 33897
+1524737788754	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 9332] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 9332] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737819465	geckodriver	INFO	geckodriver 0.18.0
+1524737819467	geckodriver	INFO	Listening on 127.0.0.1:50738
+1524737820593	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737821316	Marionette	INFO	Listening on port 45157
+1524737821402	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 9638] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 9638] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737885113	geckodriver	INFO	geckodriver 0.18.0
+1524737885115	geckodriver	INFO	Listening on 127.0.0.1:47027
+1524737886248	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737887080	Marionette	INFO	Listening on port 38650
+1524737887164	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 9986] WARNING: pipe error (3): Connection reset by peer: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 322
+[Child 9986] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 9986] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737928141	geckodriver	INFO	geckodriver 0.18.0
+1524737928143	geckodriver	INFO	Listening on 127.0.0.1:35320
+1524737929273	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737929938	Marionette	INFO	Listening on port 46533
+1524737930022	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 10287] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 10287] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524737993973	geckodriver	INFO	geckodriver 0.18.0
+1524737993975	geckodriver	INFO	Listening on 127.0.0.1:38641
+1524737995106	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524737995776	Marionette	INFO	Listening on port 34403
+1524737995856	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 10607] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 10607] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738107795	geckodriver	INFO	geckodriver 0.18.0
+1524738107797	geckodriver	INFO	Listening on 127.0.0.1:40714
+1524738108929	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738109602	Marionette	INFO	Listening on port 36730
+1524738109682	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 11052] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 11052] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738181772	geckodriver	INFO	geckodriver 0.18.0
+1524738181774	geckodriver	INFO	Listening on 127.0.0.1:34072
+1524738182903	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738183606	Marionette	INFO	Listening on port 35866
+1524738183686	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 11395] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 11395] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738185933	geckodriver	INFO	geckodriver 0.18.0
+1524738185935	geckodriver	INFO	Listening on 127.0.0.1:60952
+1524738187064	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738187826	Marionette	INFO	Listening on port 45174
+1524738187916	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 11586] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 11586] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738190340	geckodriver	INFO	geckodriver 0.18.0
+1524738190343	geckodriver	INFO	Listening on 127.0.0.1:36426
+1524738191468	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738192142	Marionette	INFO	Listening on port 44860
+1524738192220	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 11787] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 11787] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738233742	geckodriver	INFO	geckodriver 0.18.0
+1524738233744	geckodriver	INFO	Listening on 127.0.0.1:35017
+1524738234871	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738235552	Marionette	INFO	Listening on port 38482
+1524738235632	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12040] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12040] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738238106	geckodriver	INFO	geckodriver 0.18.0
+1524738238108	geckodriver	INFO	Listening on 127.0.0.1:44619
+1524738239232	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738239946	Marionette	INFO	Listening on port 43295
+1524738240046	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12232] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12232] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738242452	geckodriver	INFO	geckodriver 0.18.0
+1524738242454	geckodriver	INFO	Listening on 127.0.0.1:46264
+1524738243589	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738244282	Marionette	INFO	Listening on port 44295
+1524738244362	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12440] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12440] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738247165	geckodriver	INFO	geckodriver 0.18.0
+1524738247167	geckodriver	INFO	Listening on 127.0.0.1:53773
+1524738248294	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738248966	Marionette	INFO	Listening on port 45568
+1524738249044	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12619] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12619] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738251269	geckodriver	INFO	geckodriver 0.18.0
+1524738251271	geckodriver	INFO	Listening on 127.0.0.1:46548
+1524738252397	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738253768	Marionette	INFO	Listening on port 32768
+1524738253848	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12791] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12791] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738256483	geckodriver	INFO	geckodriver 0.18.0
+1524738256485	geckodriver	INFO	Listening on 127.0.0.1:57450
+1524738257611	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738258286	Marionette	INFO	Listening on port 34934
+1524738258364	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 12969] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 12969] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738260634	geckodriver	INFO	geckodriver 0.18.0
+1524738260636	geckodriver	INFO	Listening on 127.0.0.1:51561
+1524738261757	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738262526	Marionette	INFO	Listening on port 41102
+1524738262612	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 13158] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 13158] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738264984	geckodriver	INFO	geckodriver 0.18.0
+1524738264986	geckodriver	INFO	Listening on 127.0.0.1:41224
+1524738266112	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738266820	Marionette	INFO	Listening on port 46422
+1524738266922	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 13369] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 13369] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738269516	geckodriver	INFO	geckodriver 0.18.0
+1524738269518	geckodriver	INFO	Listening on 127.0.0.1:40760
+1524738270648	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738271328	Marionette	INFO	Listening on port 45985
+1524738271408	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 13548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 13548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738272909	geckodriver	INFO	geckodriver 0.18.0
+1524738272912	geckodriver	INFO	Listening on 127.0.0.1:39754
+1524738274033	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738274678	Marionette	INFO	Listening on port 39079
+1524738274758	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 13726] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 13726] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738276985	geckodriver	INFO	geckodriver 0.18.0
+1524738276988	geckodriver	INFO	Listening on 127.0.0.1:37460
+1524738278111	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738278816	Marionette	INFO	Listening on port 45348
+1524738278922	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 13900] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 13900] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738281176	geckodriver	INFO	geckodriver 0.18.0
+1524738281178	geckodriver	INFO	Listening on 127.0.0.1:41163
+1524738282306	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738283036	Marionette	INFO	Listening on port 40774
+1524738283124	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 14088] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 14088] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738355072	geckodriver	INFO	geckodriver 0.18.0
+1524738355074	geckodriver	INFO	Listening on 127.0.0.1:38934
+1524738356207	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738356878	Marionette	INFO	Listening on port 42699
+1524738356956	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 14465] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 14465] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738450853	geckodriver	INFO	geckodriver 0.18.0
+1524738450855	geckodriver	INFO	Listening on 127.0.0.1:39844
+1524738451980	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738452660	Marionette	INFO	Listening on port 46868
+1524738452740	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 14946] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 14946] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738462922	geckodriver	INFO	geckodriver 0.18.0
+1524738462925	geckodriver	INFO	Listening on 127.0.0.1:59813
+1524738464053	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738464706	Marionette	INFO	Listening on port 39678
+1524738464784	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15199] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 15199] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738467172	geckodriver	INFO	geckodriver 0.18.0
+1524738467174	geckodriver	INFO	Listening on 127.0.0.1:38284
+1524738468299	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738468958	Marionette	INFO	Listening on port 36504
+1524738469040	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15378] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 15378] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738471390	geckodriver	INFO	geckodriver 0.18.0
+1524738471392	geckodriver	INFO	Listening on 127.0.0.1:51150
+1524738472513	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738473184	Marionette	INFO	Listening on port 42701
+1524738473268	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 15548] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738476044	geckodriver	INFO	geckodriver 0.18.0
+1524738476046	geckodriver	INFO	Listening on 127.0.0.1:47482
+1524738477170	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738477836	Marionette	INFO	Listening on port 39032
+1524738477916	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15730] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 15730] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738480180	geckodriver	INFO	geckodriver 0.18.0
+1524738480182	geckodriver	INFO	Listening on 127.0.0.1:50190
+1524738481316	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738482074	Marionette	INFO	Listening on port 43187
+1524738482158	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15971] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 15971] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738484976	geckodriver	INFO	geckodriver 0.18.0
+1524738484978	geckodriver	INFO	Listening on 127.0.0.1:50368
+1524738486123	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738486784	Marionette	INFO	Listening on port 37710
+1524738486862	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16184] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 16184] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738489152	geckodriver	INFO	geckodriver 0.18.0
+1524738489154	geckodriver	INFO	Listening on 127.0.0.1:54321
+1524738490276	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738490960	Marionette	INFO	Listening on port 43087
+1524738491038	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16358] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 16358] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738493336	geckodriver	INFO	geckodriver 0.18.0
+1524738493338	geckodriver	INFO	Listening on 127.0.0.1:39569
+1524738494458	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738495136	Marionette	INFO	Listening on port 37110
+1524738495220	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16529] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 16529] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738497817	geckodriver	INFO	geckodriver 0.18.0
+1524738497819	geckodriver	INFO	Listening on 127.0.0.1:47573
+1524738499009	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738499682	Marionette	INFO	Listening on port 34973
+1524738499760	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16709] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 16709] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738502380	geckodriver	INFO	geckodriver 0.18.0
+1524738502382	geckodriver	INFO	Listening on 127.0.0.1:55205
+1524738503509	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738504202	Marionette	INFO	Listening on port 33199
+1524738504286	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16918] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 16918] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738506551	geckodriver	INFO	geckodriver 0.18.0
+1524738506553	geckodriver	INFO	Listening on 127.0.0.1:36289
+1524738507675	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738508388	Marionette	INFO	Listening on port 43327
+1524738508484	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 17110] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 17110] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738510682	geckodriver	INFO	geckodriver 0.18.0
+1524738510684	geckodriver	INFO	Listening on 127.0.0.1:56483
+1524738511807	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738512672	Marionette	INFO	Listening on port 42889
+1524738512750	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 17281] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 17281] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738607905	geckodriver	INFO	geckodriver 0.18.0
+1524738607907	geckodriver	INFO	Listening on 127.0.0.1:48303
+1524738609036	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738609714	Marionette	INFO	Listening on port 41455
+1524738609792	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 17693] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 17693] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738612135	geckodriver	INFO	geckodriver 0.18.0
+1524738612137	geckodriver	INFO	Listening on 127.0.0.1:42137
+1524738613269	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738614260	Marionette	INFO	Listening on port 44981
+1524738614344	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 17882] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 17882] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738616789	geckodriver	INFO	geckodriver 0.18.0
+1524738616791	geckodriver	INFO	Listening on 127.0.0.1:48008
+1524738617915	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738618594	Marionette	INFO	Listening on port 36556
+1524738618708	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 18099] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 18099] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738621428	geckodriver	INFO	geckodriver 0.18.0
+1524738621430	geckodriver	INFO	Listening on 127.0.0.1:50372
+1524738622553	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738623218	Marionette	INFO	Listening on port 35041
+1524738623298	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 18284] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 18284] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738625563	geckodriver	INFO	geckodriver 0.18.0
+1524738625565	geckodriver	INFO	Listening on 127.0.0.1:59992
+1524738626687	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738627382	Marionette	INFO	Listening on port 43093
+1524738627490	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 18475] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 18475] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738630036	geckodriver	INFO	geckodriver 0.18.0
+1524738630038	geckodriver	INFO	Listening on 127.0.0.1:39319
+1524738631163	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738631816	Marionette	INFO	Listening on port 40912
+1524738631894	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 18745] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 18745] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738634309	geckodriver	INFO	geckodriver 0.18.0
+1524738634311	geckodriver	INFO	Listening on 127.0.0.1:40811
+1524738635500	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738636186	Marionette	INFO	Listening on port 46383
+1524738636270	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 19015] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 19015] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738638683	geckodriver	INFO	geckodriver 0.18.0
+1524738638685	geckodriver	INFO	Listening on 127.0.0.1:56652
+1524738639808	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738640524	Marionette	INFO	Listening on port 41929
+1524738640616	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 19232] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 19232] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738643173	geckodriver	INFO	geckodriver 0.18.0
+1524738643175	geckodriver	INFO	Listening on 127.0.0.1:46492
+1524738644298	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738644948	Marionette	INFO	Listening on port 45424
+1524738645028	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 19450] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 19450] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738647548	geckodriver	INFO	geckodriver 0.18.0
+1524738647551	geckodriver	INFO	Listening on 127.0.0.1:58727
+1524738648674	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738649350	Marionette	INFO	Listening on port 44601
+1524738649428	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 19654] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 19654] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738651847	geckodriver	INFO	geckodriver 0.18.0
+1524738651851	geckodriver	INFO	Listening on 127.0.0.1:53352
+1524738652974	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738653654	Marionette	INFO	Listening on port 44812
+1524738653734	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 19851] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 19851] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+1524738656050	geckodriver	INFO	geckodriver 0.18.0
+1524738656052	geckodriver	INFO	Listening on 127.0.0.1:48845
+1524738657307	geckodriver::marionette	INFO	Starting browser /bin/firefox with args ["-marionette"]
+1524738658080	Marionette	INFO	Listening on port 43963
+1524738658166	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 20040] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 20040] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.7.2/firefox-52.7.2esr/ipc/glue/MessageChannel.cpp, line 2152
