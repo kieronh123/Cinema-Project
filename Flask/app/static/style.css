@@ -14,14 +14,11 @@ body{
 
 .center{
     margin: auto;
-width: 60%;
-padding: 10px;
+    width: 60%;
+    padding: 10px;
 }
 
-ul{
-  margin:0;
-  padding:0;
-}
+
 
 .button_1{
   height:38px;
@@ -70,10 +67,7 @@ header #branding h1{
   margin:0;
 }
 
-header nav{
-  float:right;
-  margin-top:10px;
-}
+
 
 header .highlight, header .current a{
   color:#;
@@ -85,28 +79,6 @@ header a:hover{
   font-weight:bold;
 }
 
-#navbar ul {
-  padding: 5px;
-  list-style: none;
-  text-align: left;
-  background-color: #000;
-  margin: 10px;
-  border-radius: 5px;
-
-}
-
-#navbar ul li {
-  display: inline;
-
-}
-
-#navbar ul li a{
-  text-decoration: none;
-  font: 15px/1.5 Arial, Helvetica,sans-serif;
-  padding: .2em 1em;
-  color: #fff;
-  background-color: #000
-}
 
 div .highlight, div .current a{
   color:#000;

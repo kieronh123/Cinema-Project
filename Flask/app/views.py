@@ -1,10 +1,12 @@
 from app import app
+from datetime import datetime
+from datetime import timedelta
 import sqlite3
 import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
 #import pdfkit
-import qrcode
+#import qrcode
 from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
@@ -148,15 +150,63 @@ column = 7
 
 @app.route('/')
 def index():
-    number = []
+    now = datetime.now()
+    days = []
+    days.append(("Today",now))
+    for i in range(1,7):
+        date = now + timedelta(days=i)
+        day = date.strftime("%A")
+        days.append((day, date))
 
     # input from screening table
     movies = getMovies()
     whatsons = []
+    present = False
     for m in movies:
-        whatsons.append((m, getWhatsOnByMovieID(m.Movie_ID)))
+        futureWhatsOn = []
+        whatsOn = getWhatsOnByMovieID(m.Movie_ID)
+        for w in whatsOn:
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
+            if(startTime > now):
+                present = True
+                futureWhatsOn.append(w)
+        if(present):
+            whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons);
+    return render_template('index.html', whatsons=whatsons, daysOfWeek = days, msg="Today", date=now.strftime("%Y-%m-%d %H:%M:%S"));
+
+
+@app.route('/day/<choice>')
+def day(choice):
+    now = datetime.now()
+    days = []
+    days.append(("Today",now))
+
+    for i in range(1,7):
+        date = now + timedelta(days=i)
+        day = date.strftime("%A")
+        days.append(day)
+
+    for d in days:
+        if( choice == d[0]):
+            chosenDate = day[1].strftime("%Y-%m-%d %H:%M:%S")
+
+    # input from screening table
+    movies = getMovies()
+    whatsons = []
+    futureWhatsOn = []
+    print(now)
+    for m in movies:
+        whatsOn = getWhatsOnByMovieID(m.Movie_ID)
+        for w in whatsOn:
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
+            if(startTime > chosenDate):
+                present = True
+                futureWhatsOn.append(w)
+        if(present):
+            whatsons.append((m, futureWhatsOn))
+
+    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek = days, date=chosenDate);
 
 @app.route('/seatselect/<id>')
 def tickets(id):
@@ -298,8 +348,8 @@ def processPayment(ticketType, price):
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
 
-@app.route('/<ticketType>/<price>/<name>')
-def qr_code(ticketType, price, name):
-    img = qrcode.make(name)
-    img.save('qr_codes/'+name+'.PNG')
-    return img
+# @app.route('/<ticketType>/<price>/<name>')
+# def qr_code(ticketType, price, name):
+#     img = qrcode.make(name)
+#     img.save('qr_codes/'+name+'.PNG')
+#     return img
