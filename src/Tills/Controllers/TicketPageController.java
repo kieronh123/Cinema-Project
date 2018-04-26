@@ -93,7 +93,10 @@ public class TicketPageController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
                 Parent parent = (Parent) loader.load();
-                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                Stage windowOld = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                windowOld.close();
+                Stage window = new Stage();
+                window.setMaximized(true);
                 window.setScene(new Scene(parent));
                 window.show();
             } catch (IOException e) {

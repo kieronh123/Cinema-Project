@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="Main" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" prefWidth="Infinity" prefHeight="Infinity" maxWidth="Infinity" maxHeight="Infinity">
+<?import javafx.scene.layout.VBox?>
+<!--<VBox>-->
+<GridPane fx:id="Main"  alignment="center" hgap="40" vgap="40"  xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <Label id="FilmName" fx:id="FilmName" text="Film name" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2">
       <font>
          <Font size="36.0" />
@@ -110,3 +112,4 @@
    </padding>
 
 </GridPane>
+<!--</VBox>-->

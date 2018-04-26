@@ -11,8 +11,6 @@ import json
 DATABASE = 'app/database/cinema.db'
 
 
-
-
 ##Function to execute an SQL query
 def execute_query(query, method):
     conn = get_db()
@@ -20,7 +18,7 @@ def execute_query(query, method):
     try:
         if method == 'GET':
             c.execute(query)
-            r = [dict((c.description[i][0], value) \
+            r = [dict((c.description[i][0], value)
                       for i, value in enumerate(row)) for row in c.fetchall()]
             # json_output = json.dumps(r)
             return r
@@ -41,6 +39,7 @@ def getMovies():
                   item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"]))
 
     return movies
+
 
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
@@ -100,6 +99,7 @@ def addUser(username, password):
         number_of_rows + 1) + ", " + "\"" + username + "\"" + "," + "\"" + password + "\"" + ");"
     execute_query(query, "POST")
 
+
 def getBookingbyID(id):
     booking = execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
@@ -113,9 +113,9 @@ def addBooking(screening, row, column):
     c = conn.cursor()
     print(str(row))
     print(str(column))
-    query = "INSERT INTO Bookings VALUES(" + str(screening) + ", " + "\"" + str(row) + "\"" + "," + "\"" + str(column) + "\"" + ");"
+    query = "INSERT INTO Bookings VALUES(" + str(screening) + ", " + "\"" + str(row) + "\"" + "," + "\"" + str(
+        column) + "\"" + ");"
     execute_query(query, "POST")
-
 
 
 ##Get the database
@@ -137,20 +137,18 @@ def close_connection(exception):
 #####################################################################################################################
 
 # Global variables
-seat=(7,7)
+seat = (7, 7)
 vip = False
-bookingID=0
+bookingID = 0
+
 
 @app.route('/')
 def index():
-    number = []>>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
-
     # input from screening table
     movies = getMovies()
     whatsons = []
     for m in movies:
         whatsons.append((m, getWhatsOnByMovieID(m.Movie_ID)))
-    print(whatsons[0][0].Movie_Image)
     return render_template('index.html', whatsons=whatsons);
 
 
@@ -159,39 +157,43 @@ def tickets(id):
     seats = getBookingbyID(id)
     allSeats = []
     if not seats:
-        for i in range(1,6):
-            for j in range(1,6):
-                allSeats.append((i,j,False, (i,j)))
+        for i in range(1, 6):
+            for j in range(1, 6):
+                allSeats.append((i, j, False, (i, j)))
                 print("problem")
     else:
-        for i in range(1,6):
-            for j in range(1,6):
-                booked=False
+        for i in range(1, 6):
+            for j in range(1, 6):
+                booked = False
                 for seat in seats:
                     if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
-                        allSeats.append((i,j,True, (i,j)))
+                        allSeats.append((i, j, True, (i, j)))
                         booked = True
-                if booked==False:
-                    allSeats.append((i,j,False, (i,j)))
+                if booked == False:
+                    allSeats.append((i, j, False, (i, j)))
     global bookingID
-    bookingID=id
+    bookingID = id
     return render_template('seatselect.html', allSeats=allSeats)
 
+
 @app.route('/storeSeat/<id>/<row>')
-def storeSeats(id,row):
+def storeSeats(id, row):
     global seat
     seat = id
     global vip
-    if(seat[1] == 3):
-        vip=True
+    # Check if a vip seat has been chosen
+    if (seat[1] == 3):
+        vip = True
         print(vip)
-    return "",204
+    return "", 204
+
 
 @app.route('/submitSeat/')
 def submitSeats():
-    if(bookingID!=0 and seat!=(7,7)):
-        addBooking(bookingID,seat[1],seat[4])
-    return "",204
+    if (bookingID != 0 and seat != (7, 7)):
+        addBooking(bookingID, seat[1], seat[4])
+    return "", 204
+
 
 @app.route('/login')
 def login():
@@ -200,6 +202,7 @@ def login():
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
+    # Get the details from the form
     username = request.form.get('Username')
     password = request.form.get('Password')
     password = password + "saltyquail"
@@ -210,6 +213,7 @@ def loginRequest():
 
     user = getUserByUsername(username)
 
+    # Check they are the details of a known user
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
             return redirect('/')
@@ -226,22 +230,26 @@ def register():
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
+    # Get the login details from the form
     username = request.form.get('Username')
     password = request.form.get('Password')
     passwordConfirm = request.form.get('Confirm Password')
 
+    # Check if the details are valid
     if username == "":
         return render_template('register.html', msg="No username entered")
 
     if password != passwordConfirm:
         return render_template('register.html', msg="Passwords do not match")
 
+    # Salt and hash the password
     password = password + "saltyquail"
     if type(password) == str:
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
 
+    # Add the details to the database
     addUser(username, passwordHashed.hexdigest())
 
     return render_template('register.html', msg="Registration Successful")
@@ -249,12 +257,14 @@ def registerRequest():
 
 @app.route('/payment', methods=['POST'])
 def paymentNoType():
+    # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
     return redirect('/payment/' + ticketType.lower())
 
 
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
+    # Set the price according to the ticket type
     if ticketType == "adult":
         price = 8
     elif ticketType == "child" or ticketType == "senior":
@@ -265,11 +275,13 @@ def payment(ticketType):
 
 @app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
 def processPayment(ticketType, price):
+    # Get card details from the form
     name = request.form.get('Name')
     cardNumber = request.form.get('Card Number')
     expiryDate = request.form.get('Expiry Date')
     securityCode = request.form.get('Security Code')
 
+    # Check the validity of the card details and return an appropriate message if any are wrong
     if name != "":
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):

@@ -99,7 +99,11 @@ public class MoviePageController {
                     HBox hbox = (HBox)gridPane.getChildren().get(1);
                     VBox vBox = (VBox)hbox.getChildren().get(screeningCount);
                     Label screenLabel = (Label)vBox.getChildren().get(1);
+                    screenLabel.prefWidthProperty().bind(hbox.widthProperty());
+                    screenLabel.prefHeightProperty().bind(hbox.heightProperty());
                     Button button = (Button)vBox.getChildren().get(0);
+                    button.prefHeightProperty().bind(hbox.heightProperty());
+                    button.prefWidthProperty().bind(hbox.widthProperty());
                     screenLabel.setText("Screen " + whatson.getScreen_ID());
                     button.setText(whatson.getStart_Time().substring(11,16));
                     screeningCount++;
@@ -153,8 +157,11 @@ public class MoviePageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
             TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
             loader.setController(controller);
-            Parent parent = loader.load();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent parent = (Parent)loader.load();
+            Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            windowOld.close();
+            Stage window = new Stage();
+            window.setMaximized(true);
             window.setScene(new Scene(parent));
             window.show();
         } catch (IOException e) {

@@ -6,17 +6,16 @@
 <?import javafx.scene.layout.HBox?>
 
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.MoviePageController">
+<GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="Tills.Controllers.MoviePageController">
     <GridPane fx:id="movieGrid0" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie1" alignment="center" text="Movie 1"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
             <VBox alignment="center">
-                <Button fx:id="button0" text="17:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
-                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS" />
+                <Button fx:id="button0" text="17:00" onAction="#submitMovieChoice"/>
+                <Label text="test screen"/>
             </VBox>
             <VBox alignment="center">
                 <Button fx:id="button1" text="13:15" onAction="#submitMovieChoice"/>
@@ -30,10 +29,10 @@
     </GridPane>
 
     <GridPane fx:id="movieGrid1" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Label fx:id="movie2" alignment="center" text="Movie 1"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
             <VBox alignment="center">
                 <Button fx:id="button3" text="13:00" onAction="#submitMovieChoice"/>
                 <Label text="test screen"/>
@@ -128,18 +127,4 @@
             </VBox>
         </HBox>
     </GridPane>
-
-    <columnConstraints>
-        <ColumnConstraints percentWidth="50"/>
-        <ColumnConstraints percentWidth="50"/>
-    </columnConstraints>
-
-    <rowConstraints>
-    <RowConstraints percentHeight="33.0" />
-    <RowConstraints percentHeight="33.0" />
-    <RowConstraints percentHeight="33.0" />
-        <RowConstraints percentHeight="1.0" />
-    </rowConstraints>
-
-
 </GridPane>

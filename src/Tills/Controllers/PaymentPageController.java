@@ -28,15 +28,13 @@ public class PaymentPageController {
 
 
   @FXML
-<<<<<<< HEAD
   Label Date;
-=======
+  @FXML
   Label FilmName;
   @FXML
   Label FilmTime;
   @FXML
   Label CashGiven;
->>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
   @FXML
   Label amountDue;
   @FXML
@@ -73,7 +71,6 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
-<<<<<<< HEAD
 
 //    returnHome.setOnAction((Event) -> {
 //      try {
@@ -89,37 +86,8 @@ public class PaymentPageController {
 //
 //
 //    });
-  }
-=======
-    FilmName.setText(name);
-    FilmTime.setText(time);
-    printPDF.setDisable(true);
-
-    returnHome.setOnAction((Event) -> {
-      try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
-
-        Parent parent = (Parent) loader.load();
-        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(parent));
-        window.show();
-      } catch (IOException e) {
-        System.err.println("Could not load page");
-      }
-    });
-
-    printPDF.setOnAction((Event) -> {
-      try {
-        keyReleased();
-        PDF();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    });
->>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
-
-  }
-
+//
+}
   /*
   The code below is used for generating a PDF for the receipt.
   This is used for generating the receipt from the ticket chosen.
