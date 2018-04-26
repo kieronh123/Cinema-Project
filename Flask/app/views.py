@@ -2,7 +2,10 @@ from app import app
 import sqlite3
 import hashlib
 import re
-from flask import render_template, g, redirect, request
+from flask import render_template, g, redirect, request, make_response
+#import pdfkit
+import qrcode
+from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
 
@@ -143,7 +146,7 @@ bookingID=0
 
 @app.route('/')
 def index():
-    number = []>>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
+
 
     # input from screening table
     movies = getMovies()
@@ -274,6 +277,7 @@ def processPayment(ticketType, price):
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
                 if re.match('^[0-9]{3,4}$', securityCode):
+                    img = qr_code(ticketType.title(), price, name)
                     return render_template('payment.html', ticketType=ticketType.title(), price=price,
                                            msg="Payment Confirmed")
                 else:
@@ -287,3 +291,9 @@ def processPayment(ticketType, price):
                                    msg="Card number must be less than 19 digits")
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
+
+@app.route('/<ticketType>/<price>/<name>')
+def qr_code(ticketType, price, name):
+    img = qrcode.make(name)
+    img.save('qr_codes/'+name+'.PNG')
+    return img
