@@ -101,13 +101,22 @@ def addUser(username, password):
         number_of_rows + 1) + ", " + "\"" + username + "\"" + "," + "\"" + password + "\"" + ");"
     execute_query(query, "POST")
 
-
 def getBookingbyID(id):
     booking = execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
     for item in booking:
         bookings.append(Booking(item["Screening_ID"], item["Row_Num"], item["Column_Num"]))
     return bookings
+
+
+def addBooking(screening, row, column):
+    conn = get_db()
+    c = conn.cursor()
+    print(str(row))
+    print(str(column))
+    query = "INSERT INTO Bookings VALUES(" + str(screening) + ", " + "\"" + str(row) + "\"" + "," + "\"" + str(column) + "\"" + ");"
+    execute_query(query, "POST")
+
 
 
 ##Get the database
@@ -131,6 +140,7 @@ def close_connection(exception):
 # Global variables
 seat=(7,7)
 vip = False
+bookingID=0
 
 @app.route('/')
 def index():
@@ -152,16 +162,19 @@ def tickets(id):
         for i in range(1,6):
             for j in range(1,6):
                 allSeats.append((i,j,False, (i,j)))
+                print("problem")
     else:
         for i in range(1,6):
             for j in range(1,6):
+                booked=False
                 for seat in seats:
-                    if (int(seat.Row_Num) == i) and (int(seat.Column_Num) == j):
+                    if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
                         allSeats.append((i,j,True, (i,j)))
-                    else:
-                        allSeats.append((i,j,False, (i,j)))
-
-
+                        booked = True
+                if booked==False:
+                    allSeats.append((i,j,False, (i,j)))
+    global bookingID
+    bookingID=id
     return render_template('seatselect.html', allSeats=allSeats)
 
 @app.route('/storeSeat/<id>/<row>')
@@ -169,12 +182,17 @@ def storeSeats(id,row):
     global seat
     seat = id
     global vip
-    if(seat[0] == 3):
+    if(seat[1] == 3):
         vip=True
         print(vip)
 
     return "",204
 
+@app.route('/submitSeat/')
+def submitSeats():
+    if(bookingID!=0 and seat!=(7,7)):
+        addBooking(bookingID,seat[1],seat[4])
+    return "",204
 
 @app.route('/login')
 def login():
