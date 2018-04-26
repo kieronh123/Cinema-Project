@@ -29,6 +29,11 @@
       includeantruntime="false" fork="true">
       <classpath refid="project.classpath"/>
     </javac>
+    <copy todir="${build.dir}">
+  <fileset dir="${src.dir}">
+    <include name="**/*.fxml"/>
+  </fileset>
+</copy>
   </target>
 
   <target name="compileTests" depends="compile" description="Compile unit tests">
@@ -79,6 +84,6 @@
       <classpath refid="project.classpath"/>
     </java>
   </target>
-  
+
 
 </project>

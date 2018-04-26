@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set title = "Register" %}
 {% block content %}
 
 <section id="main">
@@ -6,7 +7,7 @@
         <aside id="sidebar2">
             <div class="dark">
                 <h3>Register</h3>
-                <form action="/registerrequest" method="post">
+                <form name = "register" action="/registerrequest" method="post">
                     <div>
                         <label>Username</label><br>
                         <input type="text" name="Username" placeholder="Username">
@@ -23,7 +24,7 @@
                 </form>
             </div>
 
-            <label>{% if msg is not none%} {{msg}} {%endif%}</label>
+            <label name="message">{% if msg is not none%} {{msg}} {%endif%}</label>
         </aside>
     </div>
 </section>

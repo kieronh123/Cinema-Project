@@ -1,6 +1,4 @@
-
 package Tills.Controllers;
-
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -13,12 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.lang.*;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-//
 /**
 
  * Controller class for the PaymentPage.fxml page
@@ -27,25 +26,42 @@ import java.io.IOException;
 public class PaymentPageController {
   //Set FXML variables that match those in PaymentPage.fxml
 
+
   @FXML
+<<<<<<< HEAD
   Label Date;
+=======
+  Label FilmName;
   @FXML
-  Label PriceOfTicket;
+  Label FilmTime;
   @FXML
-  Label Seating;
+  Label CashGiven;
+>>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
   @FXML
-  Button PayByCash;
+  Label amountDue;
   @FXML
-  Label Screening;
+  Label change;
+  @FXML
+  TextField cashGivenTF;
+  @FXML
+  TextField amountDueTF;
+  @FXML
+  TextField changeTF;
   @FXML
   Button returnHome;
+  @FXML
+  private TextField cashGiven;
+  @FXML
+  private Button printPDF;
 
-  String time = null;
-  String name = null;
-  String seat = null;
+  public String time = null;
+  public String name = null;
+  public String seat = null;
+//  private String change;
+  double total = 50.00;
 
-  boolean VIP;
-
+  private double adultTicket = 8.00;
+  private double childTicket = 5.00;
 
 
   public PaymentPageController( String time, String filmName, String seat) {
@@ -57,6 +73,7 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
+<<<<<<< HEAD
 
 //    returnHome.setOnAction((Event) -> {
 //      try {
@@ -73,50 +90,62 @@ public class PaymentPageController {
 //
 //    });
   }
+=======
+    FilmName.setText(name);
+    FilmTime.setText(time);
+    printPDF.setDisable(true);
 
+    returnHome.setOnAction((Event) -> {
+      try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
+
+        Parent parent = (Parent) loader.load();
+        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(parent));
+        window.show();
+      } catch (IOException e) {
+        System.err.println("Could not load page");
+      }
+    });
+
+    printPDF.setOnAction((Event) -> {
+      try {
+        keyReleased();
+        PDF();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
+>>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
+
+  }
 
   /*
   The code below is used for generating a PDF for the receipt.
   This is used for generating the receipt from the ticket chosen.
   Variables are still needed to update the fields.
   */
+
   @FXML
   public void PDF()throws IOException{
     Document document = new Document();
     try{
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
-
       document.open();
       Paragraph ticketText = new Paragraph();
-      ticketText.add("\n*********************************");
-      ticketText.add("\n*           Ticket              *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*                               *");
-      ticketText.add("\n*********************************");
+      ticketText.add("\n******************************************************");
+      ticketText.add("\n*                         Ticket                     *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add(String.format("\n*%s                                    *", time));
+      ticketText.add(String.format("\n*%s                                    *", seat));
+      ticketText.add(String.format("\n*%s                                    *", total));
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n******************************************************");
       document.add(ticketText);
       document.close();
-
     }catch (IOException e){
       e.printStackTrace();
     } catch (DocumentException e) {
@@ -124,8 +153,20 @@ public class PaymentPageController {
     }
   }
 
+  @FXML
+  public void keyReleased(){
+    String text = cashGiven.getText();
+    boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
+    printPDF.setDisable(disableButtons);
+  }
+
+//    @FXML
+//    public void changeGiven(){
+//        change = cashGiven.getText();
+//        change -= (adultTicket * comboBox.getValue("whatever Needs To be taken"));
+//        amountDue = parseInt(cashGiven.getText());
+//        change =
+//    }
 
 
 }
-
-
