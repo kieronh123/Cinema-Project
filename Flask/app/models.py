@@ -10,13 +10,15 @@ class WhatsOn ():
         return "%s %s %s %s" % (self.Screening_ID,self.Movie_ID,self.Screen_ID,self.Start_Time)
 
 class Movie ():
-    def __init__(self, Movie_ID, Movie_Name, Movie_Rating, Movie_Runtime, Movie_Info, Movie_image):
+    def __init__(self, Movie_ID, Movie_Name, Movie_Rating, Movie_Runtime, Movie_Info, Movie_image, Movie_Director, Movie_Actors):
         self.Movie_ID = Movie_ID
         self.Movie_Name = Movie_Name
         self.Movie_Rating = Movie_Rating
         self.Movie_Runtime = Movie_Runtime
         self.Movie_Info = Movie_Info
         self.Movie_image = Movie_image
+        self.Movie_Director = Movie_Director
+        self.Movie_Actors = Movie_Actors
 
 
 class User ():

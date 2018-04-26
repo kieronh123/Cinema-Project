@@ -36,10 +36,9 @@ def getMovies():
     for item in movies_db:
         movies.append(
             Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"], item["Movie_Runtime"], item["Movie_Info"],
-                  item["Movie_Image"]))
+                  item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"]))
 
     return movies
-
 
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
@@ -143,18 +142,17 @@ def tickets(id):
     seats = getBookingbyID(id)
     allSeats = []
     if not seats:
-        for i in range(1,6):
-            for j in range(1,6):
-                allSeats.append((i,j,False, (i,j)))
+        for i in range(1, 6):
+            for j in range(1, 6):
+                allSeats.append((i, j, False, (i, j)))
     else:
-        for i in range(1,6):
-            for j in range(1,6):
+        for i in range(1, 6):
+            for j in range(1, 6):
                 for seat in seats:
                     if (int(seat.Column_Num) == i) and (int(seat.Row_Num) == j):
-                        allSeats.append((i,j,True, (i,j)))
+                        allSeats.append((i, j, True, (i, j)))
                     else:
-                        allSeats.append((i,j,False, (i,j)))
-
+                        allSeats.append((i, j, False, (i, j)))
 
     return render_template('seatselect.html', allSeats=allSeats)
 
@@ -176,7 +174,6 @@ def loginRequest():
 
     user = getUserByUsername(username)
 
-
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
             return redirect('/')
@@ -194,13 +191,11 @@ def register():
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     username = request.form.get('Username')
-    print(username)
     password = request.form.get('Password')
     passwordConfirm = request.form.get('Confirm Password')
 
     if username == "":
         return render_template('register.html', msg="No username entered")
-
 
     if password != passwordConfirm:
         return render_template('register.html', msg="Passwords do not match")
@@ -221,6 +216,7 @@ def paymentNoType():
     ticketType = request.form.get("selectTicket")
     return redirect('/payment/' + ticketType.lower())
 
+
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
     if ticketType == "adult":
@@ -238,23 +234,20 @@ def processPayment(ticketType, price):
     expiryDate = request.form.get('Expiry Date')
     securityCode = request.form.get('Security Code')
 
-    print(ticketType)
-
     if name != "":
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
                 if re.match('^[0-9]{3,4}$', securityCode):
-                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Payment Confirmed")
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price,
+                                           msg="Payment Confirmed")
                 else:
-                    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Security code was not in the correct format")
+                    return render_template('payment.html', ticketType=ticketType.title(), price=price,
+                                           msg="Security code was not in the correct format")
             else:
-                return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=" Expiry date was not in the correct format")
+                return render_template('payment.html', ticketType=ticketType.title(), price=price,
+                                       msg=" Expiry date was not in the correct format")
         else:
-            return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Card number must be less than 19 digits")
+            return render_template('payment.html', ticketType=ticketType.title(), price=price,
+                                   msg="Card number must be less than 19 digits")
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
-
-
-
-
-
