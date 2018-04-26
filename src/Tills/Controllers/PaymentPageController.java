@@ -33,7 +33,7 @@ public class PaymentPageController {
   @FXML
   Label FilmTime;
   @FXML
-  Label CashGiven;
+  Label cashGiven;
   @FXML
   Label amountDue;
   @FXML
@@ -46,33 +46,29 @@ public class PaymentPageController {
   TextField changeTF;
   @FXML
   Button returnHome;
-  @FXML
-  private TextField cashGiven;
+
   @FXML
   private Button printPDF;
 
   public String time = null;
   public String name = null;
   public String seat = null;
-//  private String change;
-  double total = 50.00;
-
-  private double adultTicket = 8.00;
-  private double childTicket = 5.00;
+  public double total = 0;
 
 
-  public PaymentPageController( String time, String filmName, String seat) {
+  public PaymentPageController( String time, String filmName, String seat, double price) {
     this.time = time;
     this.name = filmName;
     this.seat = seat;
+    this.total = price;
   }
 
 
   @FXML
   private void initialize() {
 
-    FilmName.setText(name);
-    FilmTime.setText(time);
+//    FilmName.setText(name);
+//    FilmTime.setText(time);
     printPDF.setDisable(true);
 
     returnHome.setOnAction((Event) -> {
