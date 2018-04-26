@@ -90,7 +90,6 @@ public class MoviePageController {
                 setMovieLabel(movieCount2, movies[movieCount2]);
                 //Loop through each WhatsOn object
                 for (WhatsOn whatson : list){
-                    System.out.println(whatson.toString());
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
 
@@ -107,11 +106,14 @@ public class MoviePageController {
 
                 }
 
-
+                for (int in : screeningIDs) {
+                    System.out.print(in + ", ");
+                }
                 totalScreeningCount += (int)(Math.ceil((double)screeningCount/3) * 3);
                 System.out.println("screenings: " + totalScreeningCount);
                 movieCount2++;
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Could not recieve data from database");
@@ -141,9 +143,12 @@ public class MoviePageController {
         if(button.getId().length() == 7) {
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
         }
-        else
-            screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2, button.getId().length() - 1 ))];
+        else {
+            System.out.println(Integer.parseInt(button.getId().substring(button.getId().length() - 2, button.getId().length() - 1 )));
+            screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2))];
+        }
         try {
+            System.out.println(screeningID);
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
             TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
