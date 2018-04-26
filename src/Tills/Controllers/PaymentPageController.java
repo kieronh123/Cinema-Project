@@ -46,13 +46,18 @@ public class PaymentPageController {
   @FXML
   Button returnHome;
   @FXML
-  Button printPDF;
+  private TextField cashGiven;
+  @FXML
+  private Button printPDF;
 
   public String time = null;
   public String name = null;
   public String seat = null;
-//  int total = Integer.parseInt(null);
+//  private String change;
+  double total = 50.00;
 
+  private double adultTicket = 8.00;
+  private double childTicket = 5.00;
 
 
   public PaymentPageController( String time, String filmName, String seat) {
@@ -66,6 +71,7 @@ public class PaymentPageController {
   private void initialize() {
     FilmName.setText(name);
     FilmTime.setText(time);
+    printPDF.setDisable(true);
 
     returnHome.setOnAction((Event) -> {
       try {
@@ -82,11 +88,13 @@ public class PaymentPageController {
 
     printPDF.setOnAction((Event) -> {
       try {
+        keyReleased();
         PDF();
       } catch (IOException e) {
         e.printStackTrace();
       }
     });
+
   }
 
   /*
@@ -107,7 +115,7 @@ public class PaymentPageController {
       ticketText.add("\n*                                                    *");
       ticketText.add(String.format("\n*%s                                    *", time));
       ticketText.add(String.format("\n*%s                                    *", seat));
-//      ticketText.add(String.format("\n*%s                                    *", total));
+      ticketText.add(String.format("\n*%s                                    *", total));
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
@@ -122,6 +130,20 @@ public class PaymentPageController {
     }
   }
 
+  @FXML
+  public void keyReleased(){
+    String text = cashGiven.getText();
+    boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
+    printPDF.setDisable(disableButtons);
+  }
+
+//    @FXML
+//    public void changeGiven(){
+//        change = cashGiven.getText();
+//        change -= (adultTicket * comboBox.getValue("whatever Needs To be taken"));
+//        amountDue = parseInt(cashGiven.getText());
+//        change =
+//    }
 
 
 }
