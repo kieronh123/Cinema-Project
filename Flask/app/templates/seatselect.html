@@ -18,7 +18,7 @@
                 <li class="row row--1">
                 {% endif %}
                     {% if seat[2] == True %}
-                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}">
+                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                         <ol class="seats" type="A">
                             <li class="seat">
                                 <button type="submit" disabled class="btn"><a>{{seat[3]}}</a></button>
@@ -26,7 +26,7 @@
                         </ol>
                     </form>
                     {% elif seat[2] == False %}
-                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}">
+                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                         <ol class="seats" type="A">
                             <li class="seat">
                                 <button type="submit" class="btn"><a>{{seat[3]}}</a></button>
@@ -53,9 +53,9 @@
     <div class="center">
         <div class="row">
 
-            <form class="buttonForm" action="/submitSeat/">
+            <form class="buttonForm">
                 <!-- <button class="btnback">Back</button> -->
-                <button type = "submit" class="btnback">Confirm</a></button>
+                <button type = "submit" class="btnback" form= "selectTicket">Confirm</a></button>
             </form>
             </form>
         </div>

@@ -28,15 +28,12 @@ public class PaymentPageController {
 
 
   @FXML
-<<<<<<< HEAD
-  Label Date;
-=======
+
   Label FilmName;
   @FXML
   Label FilmTime;
   @FXML
   Label CashGiven;
->>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
   @FXML
   Label amountDue;
   @FXML
@@ -73,24 +70,7 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
-<<<<<<< HEAD
 
-//    returnHome.setOnAction((Event) -> {
-//      try {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
-//
-//        Parent parent = (Parent) loader.load();
-//        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-//        window.setScene(new Scene(parent));
-//        window.show();
-//      } catch (IOException e) {
-//        System.err.println("Could not load page");
-//      }
-//
-//
-//    });
-  }
-=======
     FilmName.setText(name);
     FilmTime.setText(time);
     printPDF.setDisable(true);
@@ -116,7 +96,7 @@ public class PaymentPageController {
         e.printStackTrace();
       }
     });
->>>>>>> 98a27353b7d9be62874fb3b83ed80ae075270bff
+
 
   }
 
