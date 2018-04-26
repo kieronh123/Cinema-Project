@@ -194,7 +194,7 @@ def register():
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     username = request.form.get('Username')
-    print username
+    print(username)
     password = request.form.get('Password')
     passwordConfirm = request.form.get('Confirm Password')
 
@@ -240,10 +240,10 @@ def processPayment(ticketType, price):
 
     print(ticketType)
 
-    if name:
+    if name != "":
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
-                if re.match('[0-9]{3,4}', securityCode):
+                if re.match('^[0-9]{3,4}$', securityCode):
                     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Payment Confirmed")
                 else:
                     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Security code was not in the correct format")
@@ -252,7 +252,7 @@ def processPayment(ticketType, price):
         else:
             return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="Card number must be less than 19 digits")
     else:
-        return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A Name must be entered")
+        return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
 
 
 
