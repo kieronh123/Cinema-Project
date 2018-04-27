@@ -6,8 +6,7 @@ import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
 # import pdfkit
-# import qrcode
-from PIL import Image as pimg
+# import qrcqode
 
 from .models import WhatsOn, Movie, Booking, User
 

@@ -4,23 +4,23 @@
 
 <section id="main">
     <div class="container">
-        <aside id="sidebar2">
-            <div class="dark">
-                <h3>Log In</h3>
-                <form action="/loginrequest" method="post">
-                    <div>
-                        <label>Username</label><br>
-                        <input type="text" name="Username" placeholder="Username">
-                    </div>
-                    <div>
-                        <label>Password</label><br>
-                        <input type="Password" name="Password" placeholder="Password">
-                    </div>
-                    <input name="login" type="submit" value="Log In">
-                </form>
-            </div>
-            <label name="message">{%if msg is not none%} {{msg}} {%endif%} </label>
-        </aside>
+        <row>
+        <div class="dark">
+            <h3>Log In</h3>
+            <form action="/loginrequest" method="post">
+                <div>
+                    <label>Username</label><br>
+                    <input type="text" name="Username" placeholder="Username">
+                </div>
+                <div>
+                    <label>Password</label><br>
+                    <input type="Password" name="Password" placeholder="Password">
+                </div>
+                <input name="login" type="submit" value="Log In">
+            </form>
+        </div>
+        <label name="message">{%if msg is not none%} {{msg}} {%endif%} </label>
+        </row>
     </div>
 </section>
 {% endblock %}
