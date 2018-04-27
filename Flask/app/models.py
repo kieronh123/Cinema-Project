@@ -16,7 +16,7 @@ class Movie ():
         self.Movie_Rating = Movie_Rating
         self.Movie_Runtime = Movie_Runtime
         self.Movie_Info = Movie_Info
-        self.Movie_image = Movie_image
+        self.Movie_Image = Movie_image
         self.Movie_Director = Movie_Director
         self.Movie_Actors = Movie_Actors
 

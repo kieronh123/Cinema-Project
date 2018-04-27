@@ -5,8 +5,8 @@ import sqlite3
 import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
-#import pdfkit
-#import qrcode
+# import pdfkit
+# import qrcode
 from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
@@ -16,8 +16,6 @@ import json
 DATABASE = 'app/database/cinema.db'
 
 
-
-
 ##Function to execute an SQL query
 def execute_query(query, method):
     conn = get_db()
@@ -25,7 +23,7 @@ def execute_query(query, method):
     try:
         if method == 'GET':
             c.execute(query)
-            r = [dict((c.description[i][0], value) \
+            r = [dict((c.description[i][0], value)
                       for i, value in enumerate(row)) for row in c.fetchall()]
             # json_output = json.dumps(r)
             return r
@@ -46,6 +44,7 @@ def getMovies():
                   item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"]))
 
     return movies
+
 
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
@@ -105,6 +104,7 @@ def addUser(username, password):
         number_of_rows + 1) + ", " + "\"" + username + "\"" + "," + "\"" + password + "\"" + ");"
     execute_query(query, "POST")
 
+
 def getBookingbyID(id):
     booking = execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
@@ -118,9 +118,9 @@ def addBooking(screening, row, column):
     c = conn.cursor()
     print(str(row))
     print(str(column))
-    query = "INSERT INTO Bookings VALUES(" + str(screening) + ", " + "\"" + str(row) + "\"" + "," + "\"" + str(column) + "\"" + ");"
+    query = "INSERT INTO Bookings VALUES(" + str(screening) + ", " + "\"" + str(row) + "\"" + "," + "\"" + str(
+        column) + "\"" + ");"
     execute_query(query, "POST")
-
 
 
 ##Get the database
@@ -142,18 +142,19 @@ def close_connection(exception):
 #####################################################################################################################
 
 # Global variables
-seat=(7,7)
+seat = (7, 7)
 vip = False
-bookingID=0
+bookingID = 0
 row = 7
 column = 7
+
 
 @app.route('/')
 def index():
     now = datetime.now()
     days = []
-    days.append(("Today",now))
-    for i in range(1,7):
+    days.append(("Today", now))
+    for i in range(1, 7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
         days.append((day, date))
@@ -166,14 +167,15 @@ def index():
         futureWhatsOn = []
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
-            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
-            if(startTime > now):
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S")
+            if (startTime > now):
                 present = True
                 futureWhatsOn.append(w)
-        if(present):
+        if (present):
             whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons, daysOfWeek = days, msg="Today", date=now.strftime("%Y-%m-%d %H:%M:%S"));
+    return render_template('index.html', whatsons=whatsons, daysOfWeek=days, msg="Today",
+                           date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
 
 @app.route('/day/<choiceDay>/<choiceDate>')
@@ -181,17 +183,17 @@ def day(choiceDay, choiceDate):
     now = datetime.now()
     print(now)
     days = []
-    days.append(("Today",now))
+    days.append(("Today", now))
 
-    for i in range(1,7):
+    for i in range(1, 7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
         days.append((day,date))
 
     for d in days:
 
-         if( choiceDay == d[0]):
-             chosenDate = d[1]
+        if (choice == d[0]):
+            chosenDate = day[1].strftime("%Y-%m-%d %H:%M:%S")
 
     # input from screening table
     movies = getMovies()
@@ -202,40 +204,42 @@ def day(choiceDay, choiceDate):
     for m in movies:
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
-            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
-            if(startTime > chosenDate):
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S")
+            if (startTime > chosenDate):
                 present = True
                 futureWhatsOn.append(w)
-        if(present):
+        if (present):
             whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons, msg=choiceDay, daysOfWeek = days, date=chosenDate);
+    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek=days, date=chosenDate);
+
 
 @app.route('/seatselect/<id>')
 def tickets(id):
     seats = getBookingbyID(id)
     allSeats = []
     if not seats:
-        for i in range(1,6):
-            for j in range(1,6):
-                allSeats.append((i,j,False, (i,j)))
+        for i in range(1, 6):
+            for j in range(1, 6):
+                allSeats.append((i, j, False, (i, j)))
                 print("problem")
     else:
-        for i in range(1,6):
-            for j in range(1,6):
-                booked=False
+        for i in range(1, 6):
+            for j in range(1, 6):
+                booked = False
                 for seat in seats:
                     if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
-                        allSeats.append((i,j,True, (i,j)))
+                        allSeats.append((i, j, True, (i, j)))
                         booked = True
-                if booked==False:
-                    allSeats.append((i,j,False, (i,j)))
+                if booked == False:
+                    allSeats.append((i, j, False, (i, j)))
     global bookingID
-    bookingID=id
+    bookingID = id
     return render_template('seatselect.html', allSeats=allSeats)
 
+
 @app.route('/storeSeat/<id>/<Row>/<Column>')
-def storeSeats(id,Row,Column):
+def storeSeats(id, Row, Column):
     global seat
     seat = id
     global row
@@ -243,18 +247,20 @@ def storeSeats(id,Row,Column):
     global column
     column = Column
     print(Row)
-    if(int(Row) == 3):
+    if int(Row) == 3:
         global vip
-        vip=True
-    return "",204
+        vip = True
+    return "", 204
 
 
 @app.route('/login')
 def login():
     return render_template('login.html', msg=None)
 
+
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
+    # Get the details from the form
     username = request.form.get('Username')
     password = request.form.get('Password')
     password = password + "saltyquail"
@@ -265,6 +271,7 @@ def loginRequest():
 
     user = getUserByUsername(username)
 
+    # Check they are the details of a known user
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
             return redirect('/')
@@ -281,22 +288,26 @@ def register():
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
+    # Get the login details from the form
     username = request.form.get('Username')
     password = request.form.get('Password')
     passwordConfirm = request.form.get('Confirm Password')
 
+    # Check if the details are valid
     if username == "":
         return render_template('register.html', msg="No username entered")
 
     if password != passwordConfirm:
         return render_template('register.html', msg="Passwords do not match")
 
+    # Salt and hash the password
     password = password + "saltyquail"
     if type(password) == str:
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
 
+    # Add the details to the database
     addUser(username, passwordHashed.hexdigest())
 
     return render_template('register.html', msg="Registration Successful")
@@ -304,34 +315,38 @@ def registerRequest():
 
 @app.route('/payment', methods=['POST'])
 def paymentNoType():
+    # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
-    if(bookingID!=0 and seat!=(7,7)):
-        addBooking(bookingID,row,column)
-    if(seat == (7,7)):
-        return "",204
+    if (bookingID != 0 and seat != (7, 7)):
+        addBooking(bookingID, row, column)
+    if (seat == (7, 7)):
+        return "", 204
     else:
         return redirect('/payment/' + ticketType.lower())
 
 
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
+    # Set the price according to the ticket type
     if ticketType == "adult":
         price = 8
     elif ticketType == "child" or ticketType == "senior":
         price = 4
     if vip == True:
-        price = (price*1.5)
+        price *= 1.5
 
     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
 
 
 @app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
 def processPayment(ticketType, price):
+    # Get card details from the form
     name = request.form.get('Name')
     cardNumber = request.form.get('Card Number')
     expiryDate = request.form.get('Expiry Date')
     securityCode = request.form.get('Security Code')
 
+    # Check the validity of the card details and return an appropriate message if any are wrong
     if name != "":
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):

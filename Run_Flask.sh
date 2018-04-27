@@ -6,9 +6,10 @@ virtualenv flask
 cd flask
 source bin/activate
 cd ../app
-module add anaconda3
 echo $'Installing libraries from requirements.txt (this may take a minute!)'
-pip install --user -q -r requirements.txt
+module add anaconda3
+pip install -q -r requirements.txt
+pip install qrcode[pil]
 cd ..
-cp -r ../lib/geckodriver flask/bin
+cp ../lib/geckodriver flask/bin
 python3 run.py

@@ -211,11 +211,6 @@ input[type=text], input[type=password] {
     color:black;
 }
 
-img{
-    width:50%;
-    margin:5px 5px 5px 5px;
-}
-
 html {
   font-size: 16px;
 }
@@ -241,6 +236,8 @@ ol {
 
 
 }
+
+
 
 ol {
   list-style: none;
