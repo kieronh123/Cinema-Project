@@ -5,6 +5,10 @@
 import sqlite3
 #Importing random to create random test data
 import random
+
+from datetime import datetime
+from datetime import timedelta
+
 #Connecting to database
 db = sqlite3.connect('cinema.db')
 cursor = db.cursor()
@@ -295,9 +299,8 @@ b_Col3 = 5 #Bookings column
 b_Row3 = 5 #Bookings row
 
 day = 3
-time1 = "09:00:00"
-time2 = "13:00:00"
-time3 = "16:00:00"
+
+now = datetime.now()
 
 id_counter = 37
 for j in range(0, 12): #12 new days
@@ -306,20 +309,22 @@ for j in range(0, 12): #12 new days
             wo_ids = id_counter
             wo_movies = i + 1
             wo_screens = i + 2
-            if len(str(day)) == 1:
-                daystring = "0" + str(day)
-            else:
-                daystring = str(day)
             if y == 0:
-                wo_times = "2018-04-" + daystring + "T" + time1
+                now = now.replace(hour=9,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 1:
-                wo_times = "2018-04-" + daystring + "T" + time2
+                now = now.replace(hour=13,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 2:
-                wo_times = "2018-04-" + daystring + "T" + time3
+                now = now.replace(hour=17,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
                                                 Values(?,?,?,?)''',(wo_ids, wo_movies, wo_screens, wo_times))
             id_counter = id_counter + 1
-    day = day + 1
+    now = now + timedelta(days=1)
 
 
 #Entering values into cinema.db tables
