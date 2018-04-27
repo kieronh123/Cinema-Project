@@ -298,24 +298,6 @@ day = 3
 time1 = "09:00:00"
 time2 = "13:00:00"
 time3 = "16:00:00"
-#Creating
-# for i in range(37, 253):
-#     wo_ids.append(i)
-#     wo_movies.append(random.randint(1, 6))
-#     wo_screens.append(random.randint(1, 8))
-#     if counter == 36:
-#         counter = 0
-#         day = day + 1
-#     if counter2 == 0:
-#         wo_times.append("2018-04-" + str(day) + "T" + time1)
-#         counter2 = counter2 + 1
-#     elif counter2 == 1:
-#         wo_times.append("2018-04-" + str(day) + "T" + time2)
-#         counter2 = counter2 + 1
-#     elif counter2 == 2:
-#         wo_times.append("2018-04-" + str(day) + "T" + time3)
-#         counter2 = 0
-#     counter = counter + 1
 
 id_counter = 37
 for j in range(0, 12): #12 new days
