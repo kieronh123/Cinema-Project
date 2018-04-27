@@ -176,26 +176,29 @@ def index():
     return render_template('index.html', whatsons=whatsons, daysOfWeek = days, msg="Today", date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
 
-@app.route('/day/<choice>')
-def day(choice):
+@app.route('/day/<choiceDay>/<choiceDate>')
+def day(choiceDay, choiceDate):
     now = datetime.now()
+    print(now)
     days = []
     days.append(("Today",now))
 
     for i in range(1,7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
-        days.append(day)
+        days.append((day,date))
 
     for d in days:
-        if( choice == d[0]):
-            chosenDate = day[1].strftime("%Y-%m-%d %H:%M:%S")
+
+         if( choiceDay == d[0]):
+             chosenDate = d[1]
 
     # input from screening table
     movies = getMovies()
     whatsons = []
     futureWhatsOn = []
     print(now)
+    present=False
     for m in movies:
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
@@ -206,7 +209,7 @@ def day(choice):
         if(present):
             whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek = days, date=chosenDate);
+    return render_template('index.html', whatsons=whatsons, msg=choiceDay, daysOfWeek = days, date=chosenDate);
 
 @app.route('/seatselect/<id>')
 def tickets(id):

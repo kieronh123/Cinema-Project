@@ -10,9 +10,9 @@
     <ul class="nav navbar-nav">
         {%for day in daysOfWeek %}
             {% if day[0] == msg %}
-                <li class="active"><a href="{{ url_for('day', choice=day)}}">{{day[0]}}</a></li>
+                <li class="active"><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a></li>
             {%else%}
-                <li ><a href="{{ url_for('day', choice=day)}}" >{{day[0]}}</a></li>
+                <li ><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}" >{{day[0]}}</a></li>
             {%endif%}
         {% endfor %}
     </ul>
