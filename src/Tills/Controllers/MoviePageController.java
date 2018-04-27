@@ -16,6 +16,7 @@ import Tills.Movie;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,18 +47,18 @@ public class MoviePageController {
     private Movie[] movies;
     private Label[] movieLabels;
     private int[] screeningIDs;
-
+    private int[] screenIDs;
 
     @FXML
     /** This method is run when the moviesPage.fxml file is loaded. It sets the text of the buttons and labels.
      */
     private void initialize() {
         Map<Integer, ArrayList<WhatsOn>> movieMap = new HashMap<>();
-        System.out.println("Date: " + currentDate());
 
         String whatsOnString = null;
         movieLabels = new Label[]{movie1, movie2, movie3, movie4, movie5, movie6};
         screeningIDs = new int[18];
+        screenIDs = new int[18];
         movies = new Movie[6];
 
         try {
@@ -92,6 +93,7 @@ public class MoviePageController {
                 for (WhatsOn whatson : list){
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
+                    screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreen_ID();
 
                     //Set the text of the labels and button
                     Label label = movieLabels[totalScreeningCount/3];
@@ -104,17 +106,16 @@ public class MoviePageController {
                     Button button = (Button)vBox.getChildren().get(0);
                     button.prefHeightProperty().bind(hbox.heightProperty());
                     button.prefWidthProperty().bind(hbox.widthProperty());
+
+                    screenLabel.setFont(new Font(30));
                     screenLabel.setText("Screen " + whatson.getScreen_ID());
+
                     button.setText(whatson.getStart_Time().substring(11,16));
                     screeningCount++;
 
                 }
 
-                for (int in : screeningIDs) {
-                    System.out.print(in + ", ");
-                }
                 totalScreeningCount += (int)(Math.ceil((double)screeningCount/3) * 3);
-                System.out.println("screenings: " + totalScreeningCount);
                 movieCount2++;
             }
 
@@ -144,15 +145,20 @@ public class MoviePageController {
 
         //Get the screening ID;
         int screeningID;
+        int screenID;
         if(button.getId().length() == 7) {
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
+            screenID = screenIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
         }
         else {
-            System.out.println(Integer.parseInt(button.getId().substring(button.getId().length() - 2, button.getId().length() - 1 )));
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2))];
+            screenID = screenIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2))];
         }
+
+
+        System.out.println("Screen: " + screenID);
+
         try {
-            System.out.println(screeningID);
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
             TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
@@ -178,6 +184,7 @@ public class MoviePageController {
     public void setMovieLabel(int index, Movie movie){
         try {
             movieLabels[index].setText(movie.getMovie_Name());
+            movieLabels[index].setFont(new Font(40));
         }catch (Exception e){
             System.err.println("Failed to retrieve movie");
         }

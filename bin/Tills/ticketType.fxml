@@ -38,15 +38,15 @@
         </font></Label>
 
 
-    <HBox fx:id="Home" alignment="center" GridPane.columnIndex="3" GridPane.rowIndex="3" maxWidth="Infinity" maxHeight="Infinity" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-        <Button fx:id="returnHome" text="returnHome" />
+    <HBox fx:id="Home" alignment="center" GridPane.columnIndex="3" GridPane.rowIndex="3"  GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <Button fx:id="returnHome" text="returnHome" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"/>
 
     </HBox>
 
-    <HBox alignment="center" GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="Infinity" maxHeight="Infinity">
-        <Button fx:id="confirm" text="CONFIRM" />
+    <!--<HBox alignment="center" GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="Infinity" maxHeight="Infinity">-->
+        <Button fx:id="confirm" text="CONFIRM" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-    </HBox>
+    <!--</HBox>-->
 
 
     <GridPane fx:id="Ticket" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1">

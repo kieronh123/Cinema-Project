@@ -47,47 +47,55 @@ public class PaymentPageController {
   TextField changeTF;
   @FXML
   Button returnHome;
-  @FXML
-  private TextField cashGiven;
+
   @FXML
   private Button printPDF;
 
   public String time = null;
   public String name = null;
   public String seat = null;
-//  private String change;
-  double total = 50.00;
-
-  private double adultTicket = 8.00;
-  private double childTicket = 5.00;
+  public double total = 0;
 
 
-  public PaymentPageController( String time, String filmName, String seat) {
+  public PaymentPageController( String time, String filmName, String seat, double price) {
     this.time = time;
     this.name = filmName;
     this.seat = seat;
+    this.total = price;
   }
 
 
   @FXML
   private void initialize() {
+//    FilmName.setText(name);
+//    FilmTime.setText(time);
+    printPDF.setDisable(true);
 
-//    returnHome.setOnAction((Event) -> {
-//      try {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../PaymentPage.fxml"));
-//
-//        Parent parent = (Parent) loader.load();
-//        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-//        window.setScene(new Scene(parent));
-//        window.show();
-//      } catch (IOException e) {
-//        System.err.println("Could not load page");
-//      }
-//
-//
-//    });
-//
-}
+    returnHome.setOnAction((Event) -> {
+      try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
+
+        Parent parent = (Parent) loader.load();
+        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(parent));
+        window.show();
+      } catch (IOException e) {
+        System.err.println("Could not load page");
+      }
+    });
+
+    printPDF.setOnAction((Event) -> {
+      try {
+        keyReleased();
+        PDF();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
+
+
+  }
+
   /*
   The code below is used for generating a PDF for the receipt.
   This is used for generating the receipt from the ticket chosen.
@@ -123,7 +131,7 @@ public class PaymentPageController {
 
   @FXML
   public void keyReleased(){
-    String text = cashGiven.getText();
+    String text = cashGivenTF.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
   }

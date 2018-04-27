@@ -1,33 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="jumbotron text-center">
     <h1>Quail Cinema</h1>
     <p>Today's Movies</p>
 </div>
 
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Today</a></li>
-            <li><a href="tomorrow.html">Tomorrow</a></li>
-            <li><a href="monday.html">Monday</a></li>
-            <li><a href="tuesday.html">Tuesday</a></li>
-        </ul>
-    </div>
+    <ul class="nav navbar-nav">
+        {%for day in daysOfWeek %}
+            {% if day[0] == msg %}
+                <li class="active"><a href="{{ url_for('day', choice=day)}}">{{day[0]}}</a></li>
+            {%else%}
+                <li ><a href="{{ url_for('day', choice=day)}}" >{{day[0]}}</a></li>
+            {%endif%}
+        {% endfor %}
+    </ul>
 </nav>
 
 <div class="container">
     {%for i in whatsons%}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-8">
             <h3>{{i[0].Movie_Name}}</h3>
             <p>{{i[0].Movie_Info}}</p>
             <p>Director: {{i[0].Movie_Director}}</p>
             <p>Actors: {{i[0].Movie_Actors}}</p>
             {% for j in i[1] %}
                 <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
-                <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
+                    <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
                 </form>
             {% endfor %}
           </div>

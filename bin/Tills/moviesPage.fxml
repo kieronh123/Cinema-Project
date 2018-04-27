@@ -11,122 +11,152 @@
 <GridPane alignment="center" hgap="40" vgap="40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tills.Controllers.MoviePageController">
     <GridPane fx:id="movieGrid0" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-            <Label fx:id="movie1" alignment="center" text="Movie 1"/>
+            <Label fx:id="movie1" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-            <VBox alignment="center">
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
                 <Button fx:id="button0" text="17:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
                 <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS" />
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button1" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button1" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label  alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
             <VBox alignment="center">
-                <Button fx:id="button2" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+                <Button fx:id="button2" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label  alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <GridPane fx:id="movieGrid1" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-            <Label fx:id="movie2" alignment="center" text="Movie 1"/>
+            <Label fx:id="movie2" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
         <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-            <VBox alignment="center">
-                <Button fx:id="button3" text="13:00" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button3" text="13:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button4" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button4" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button5" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button5" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <GridPane fx:id="movieGrid2" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label fx:id="movie3" alignment="center" text="Movie 1"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <Label fx:id="movie3" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
-            <VBox alignment="center">
-                <Button fx:id="button6" text="13:00" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button6" text="13:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button7" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button7" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button8" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button8" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center"  text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <GridPane fx:id="movieGrid3" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label fx:id="movie4" alignment="center" text="Movie 1"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <Label fx:id="movie4" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
-            <VBox alignment="center">
-                <Button fx:id="button9" text="13:00" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button9" text="13:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button10" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button10" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button11" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button11" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <GridPane fx:id="movieGrid4" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label fx:id="movie5" alignment="center" text="Movie 1"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <Label fx:id="movie5" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
-            <VBox alignment="center">
-                <Button fx:id="button12" text="13:00" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button12" text="13:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button13" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button13" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button14" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button14" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <GridPane fx:id="movieGrid5" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Label fx:id="movie6" alignment="center" text="Movie 1"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <Label fx:id="movie6" alignment="center" text="Movie 1" HBox.hgrow="ALWAYS"/>
         </HBox>
-        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10">
-            <VBox alignment="center">
-                <Button fx:id="button15" text="13:00" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+        <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="10"  GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button15" text="13:00" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button16" text="13:15" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button16" text="13:15" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
-            <VBox alignment="center">
-                <Button fx:id="button17" text="13:30" onAction="#submitMovieChoice"/>
-                <Label text="test screen"/>
+            <VBox alignment="center" HBox.hgrow="ALWAYS">
+                <Button fx:id="button17" text="13:30" onAction="#submitMovieChoice" VBox.vgrow="ALWAYS"/>
+                <Label alignment="center" text="test screen" VBox.vgrow="ALWAYS"/>
             </VBox>
         </HBox>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
     </GridPane>
 
     <columnConstraints>
@@ -135,10 +165,9 @@
     </columnConstraints>
 
     <rowConstraints>
-    <RowConstraints percentHeight="33.0" />
-    <RowConstraints percentHeight="33.0" />
-    <RowConstraints percentHeight="33.0" />
-        <RowConstraints percentHeight="1.0" />
+    <RowConstraints percentHeight="33" />
+    <RowConstraints percentHeight="33" />
+    <RowConstraints percentHeight="33" />
     </rowConstraints>
 
 

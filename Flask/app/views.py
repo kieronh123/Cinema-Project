@@ -1,8 +1,13 @@
 from app import app
+from datetime import datetime
+from datetime import timedelta
 import sqlite3
 import hashlib
 import re
-from flask import render_template, g, redirect, request
+from flask import render_template, g, redirect, request, make_response
+#import pdfkit
+#import qrcode
+from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
 
@@ -139,18 +144,69 @@ def close_connection(exception):
 # Global variables
 seat = (7, 7)
 vip = False
-bookingID = 0
-
+bookingID=0
+row = 7
+column = 7
 
 @app.route('/')
 def index():
+    now = datetime.now()
+    days = []
+    days.append(("Today",now))
+    for i in range(1,7):
+        date = now + timedelta(days=i)
+        day = date.strftime("%A")
+        days.append((day, date))
+
     # input from screening table
     movies = getMovies()
     whatsons = []
+    present = False
     for m in movies:
-        whatsons.append((m, getWhatsOnByMovieID(m.Movie_ID)))
-    return render_template('index.html', whatsons=whatsons);
+        futureWhatsOn = []
+        whatsOn = getWhatsOnByMovieID(m.Movie_ID)
+        for w in whatsOn:
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
+            if(startTime > now):
+                present = True
+                futureWhatsOn.append(w)
+        if(present):
+            whatsons.append((m, futureWhatsOn))
 
+    return render_template('index.html', whatsons=whatsons, daysOfWeek = days, msg="Today", date=now.strftime("%Y-%m-%d %H:%M:%S"));
+
+
+@app.route('/day/<choice>')
+def day(choice):
+    now = datetime.now()
+    days = []
+    days.append(("Today",now))
+
+    for i in range(1,7):
+        date = now + timedelta(days=i)
+        day = date.strftime("%A")
+        days.append(day)
+
+    for d in days:
+        if( choice == d[0]):
+            chosenDate = day[1].strftime("%Y-%m-%d %H:%M:%S")
+
+    # input from screening table
+    movies = getMovies()
+    whatsons = []
+    futureWhatsOn = []
+    print(now)
+    for m in movies:
+        whatsOn = getWhatsOnByMovieID(m.Movie_ID)
+        for w in whatsOn:
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
+            if(startTime > chosenDate):
+                present = True
+                futureWhatsOn.append(w)
+        if(present):
+            whatsons.append((m, futureWhatsOn))
+
+    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek = days, date=chosenDate);
 
 @app.route('/seatselect/<id>')
 def tickets(id):
@@ -175,30 +231,24 @@ def tickets(id):
     bookingID = id
     return render_template('seatselect.html', allSeats=allSeats)
 
-
-@app.route('/storeSeat/<id>/<row>')
-def storeSeats(id, row):
+@app.route('/storeSeat/<id>/<Row>/<Column>')
+def storeSeats(id,Row,Column):
     global seat
     seat = id
-    global vip
-    # Check if a vip seat has been chosen
-    if (seat[1] == 3):
-        vip = True
-        print(vip)
-    return "", 204
-
-
-@app.route('/submitSeat/')
-def submitSeats():
-    if (bookingID != 0 and seat != (7, 7)):
-        addBooking(bookingID, seat[1], seat[4])
-    return "", 204
+    global row
+    row = Row
+    global column
+    column = Column
+    print(Row)
+    if(int(Row) == 3):
+        global vip
+        vip=True
+    return "",204
 
 
 @app.route('/login')
 def login():
     return render_template('login.html', msg=None)
-
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
@@ -259,7 +309,12 @@ def registerRequest():
 def paymentNoType():
     # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
-    return redirect('/payment/' + ticketType.lower())
+    if(bookingID!=0 and seat!=(7,7)):
+        addBooking(bookingID,row,column)
+    if(seat == (7,7)):
+        return "",204
+    else:
+        return redirect('/payment/' + ticketType.lower())
 
 
 @app.route('/payment/<ticketType>')
@@ -268,7 +323,9 @@ def payment(ticketType):
     if ticketType == "adult":
         price = 8
     elif ticketType == "child" or ticketType == "senior":
-        price = 5
+        price = 4
+    if vip == True:
+        price = (price*1.5)
 
     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
 
@@ -286,6 +343,7 @@ def processPayment(ticketType, price):
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
                 if re.match('^[0-9]{3,4}$', securityCode):
+                    img = qr_code(ticketType.title(), price, name)
                     return render_template('payment.html', ticketType=ticketType.title(), price=price,
                                            msg="Payment Confirmed")
                 else:
@@ -299,3 +357,9 @@ def processPayment(ticketType, price):
                                    msg="Card number must be less than 19 digits")
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
+
+# @app.route('/<ticketType>/<price>/<name>')
+# def qr_code(ticketType, price, name):
+#     img = qrcode.make(name)
+#     img.save('qr_codes/'+name+'.PNG')
+#     return img

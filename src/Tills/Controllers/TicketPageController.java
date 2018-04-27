@@ -3,6 +3,7 @@ package Tills.Controllers;
 
 import Tills.Harness;
 import Tills.Seat;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,22 +54,27 @@ public class TicketPageController {
     //Variables that will be used throughout this controller
     public String time = null;
     public String name = null;
+    public boolean VIP = false;
+    public String ticket = "";
+    public String column = "7";
+    public String row = "7";
+    public String age;
+
     public int screeningID = 0;
     public boolean selectedVIP = false;
     public boolean selectedTicket = false;
     public boolean selectedSeat = false;
 
-    public String column = "7";
-    public String row = "7";
-    public String ticket = "none";
-    public String age;
+
 
 
     /**
      * Constructor for this controller
      *
-     * @param time     The film time selected on the previous page
-     * @param filmName
+     * @param time          The film time selected on the previous page
+     * @param filmName      The film name selected on the previous page
+     * @param screeningID   The screening ID of the viewing selected
+     * @param Age           The age rating of the film
      */
     public TicketPageController(String time, String filmName, int screeningID, String Age) {
         this.time = time;
@@ -114,21 +120,22 @@ public class TicketPageController {
         confirm.prefHeightProperty().bind(Home.heightProperty());
         confirm.prefWidthProperty().bind(Home.widthProperty());
         confirm.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        //Disable this button until the employee has selected ticket type, VIP and seat
         confirm.setDisable(true);
+        //Call payment
         confirm.setOnAction((Event ) -> {
-
                 payment(Event);
-
         });
+
 
         //Create a combo box that allows employee to select the age ticket
         final ComboBox<String> ticketType = new ComboBox<>();
-        //If the age rating of the film is >16 then children can not go to watch it
+        //If the age rating of the film is 18 then children can not go to watch it
         if (age.equals("18")) {
             ticketType.getItems().addAll("Adult", "Senior");
             //Otherwise allow children tickets to be purchased
         } else {
-            ticketType.getItems().addAll("Adults", "Senior", "Child");
+            ticketType.getItems().addAll("Adult", "Senior", "Child");
         }
         //Maximise size of combo box
         ticketType.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -146,7 +153,6 @@ public class TicketPageController {
 
         //Create a combo box that allows employee to select the VIP or not
         final ComboBox<String> vipTicket = new ComboBox<>();
-
         vipTicket.getItems().addAll("Yes", "No");
 
         vipTicket.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -159,8 +165,10 @@ public class TicketPageController {
             String response = vipTicket.getValue();
             System.out.println(response);
             if (response.equals("Yes")) {
+                VIP = true;
                 displaySeats(true);
             } else if (response.equals("No")) {
+                VIP = false;
                 displaySeats(false);
             }
         });
@@ -170,7 +178,16 @@ public class TicketPageController {
 
     }
 
+    /**
+     * Method displays the seat layout and disables those unavailable for putchase
+     *
+     * @param VIPticket If the client wants a VIP ticket or not
+     */
     public void displaySeats(boolean VIPticket) {
+        //Clear the grid panel of buttons
+        ButtonsSeats.getChildren().clear();
+
+        //Send an API call to get all of the seats that have been booked
         Harness harness = new Harness();
         StringBuffer response = null;
         try {
@@ -179,22 +196,30 @@ public class TicketPageController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //Store all the seats that have been booked as an array of type Seat
         Seat[] seats = JSON.seatsFromJson(response.toString());
-        for(Seat seat: seats){
-            System.out.println(seat.toString());
-        }
-        //column
+
+        //Assign column numbers from database to letters as standard in cinema
+        String[] columnLetters = {"A", "B", "C", "D", "E"};
+
+        //Columns
         for (int i = 1; i < 6; i++) {
-            //row
+            //Rows
             for (int j = 1; j < 6; j++) {
+                //Create a new button
                 Button buttonCreate = new Button();
-                buttonCreate.setText(j + "," + i);
+                //Set the text to the row number and which seat in the row (labelled A-E)
+                buttonCreate.setText(j + "," + columnLetters[i-1]);
+                int finalI = i;
+                int finalJ = j;
+                //When the employee clicks the button to select the seat
                 buttonCreate.setOnAction((ActionEvent) -> {
-                    String id = buttonCreate.getText();
-                    String[] segmented = id.split(",");
-                    row = segmented[0];
-                    column = segmented[1];
-                    System.out.println(row + column);
+                    //Save the column and row of the seat selected
+                    row = Integer.toString(finalJ);
+                    column = Integer.toString(finalI);
+                    //If the employee has entered a ticket type, whether it is VIP or not
+                    //and selected a seat they can then confirm the purchase
                     selectedSeat = true;
                     if(selectedTicket & selectedSeat & selectedVIP){
                         confirm.setDisable(false);
@@ -202,34 +227,49 @@ public class TicketPageController {
 
                 });
                 buttonCreate.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                //If the ticket is VIP only allow row 3 to be selected
                 if (VIPticket == true & (j != 3)) {
                     buttonCreate.setDisable(true);
+                //If the ticket is not VIP do not allow row 3 to be selected
                 } else if (VIPticket == false & (j == 3)) {
                     buttonCreate.setDisable(true);
                 }
 
+                //Disable the buttons of the seats that have already been booked
+                //for this screening.
                 for (Seat seat : seats) {
                     if ((seat.Row_Num == j) ) {
                         if((seat.Column_Num == i)){
                             if((seat.Screening_ID == (screeningID-3))){
                                 buttonCreate.setDisable(true);
-                                System.out.println(j + " " + i);
-                            System.out.println(seat.Screening_ID);
-                            System.out.println(screeningID);
                             }
-
                         }
                     }
                 }
+                //Add the button to the seat selection grid
                 ButtonsSeats.add(buttonCreate, i - 1, j - 1);
-
             }
         }
     }
 
 
     public void payment(ActionEvent event) {
-        String urlParameters = "data=" + String.valueOf(screeningID -3) + " , " + row + " , " + column;
+        //Calculate the price of the ticket based on the type and if it is a VIP seat
+        double price = 0;
+        if(ticket.equals("Adult")){
+            price = 8.00;
+        }else if(ticket.equals("Senior") || ticket.equals("Child") ){
+            price = 4.00;
+        }
+
+        if (VIP == true){
+            price = (price*1.5);
+        }
+
+        System.out.println(price);
+
+        //Post the seat selected to the database
+        String urlParameters = "data=" + String.valueOf(screeningID) + " , " + row + " , " + column;
         StringBuffer reply = null;
         try {
             //Try and send a get request to receive all information from movies table
@@ -238,10 +278,12 @@ public class TicketPageController {
             e.printStackTrace();
         }
 
+
+
         try {
             //Load the ticket page with the selected name and time
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Receipt.fxml"));
-            PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Receipt.fxml"));
+            PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
             loader.setController(controller);
             Parent parent = loader.load();
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
