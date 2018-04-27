@@ -27,13 +27,15 @@
             <p>Director: {{i[0].Movie_Director}}</p>
             <p>Actors: {{i[0].Movie_Actors}}</p>
             {% for j in i[1] %}
-                <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
-                    <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
-                </form>
+                {% if j.Start_Time[0:10] == date[0:10]%}
+                    <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
+                        <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
+                    </form>
+                {%endif %}
             {% endfor %}
           </div>
           <div class="col-sm-4">
-            <img src={{i[0].Movie_Image}}>
+            <img src="/static/img/{{i[0].Movie_Image[14:]}}">
           </div>
 
         </div>

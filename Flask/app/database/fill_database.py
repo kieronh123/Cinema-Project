@@ -310,15 +310,18 @@ for j in range(0, 12): #12 new days
             wo_movies = i + 1
             wo_screens = i + 2
             if y == 0:
-                now = now.replace(hour=9,minute=0,second=0)
+                randhour = random.randint(6, 12)
+                now = now.replace(hour=randhour,minute=0,second=0)
                 newnow = str(now)
                 wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 1:
-                now = now.replace(hour=13,minute=0,second=0)
+                randhour = random.randint(15, 17)
+                now = now.replace(hour=randhour,minute=0,second=0)
                 newnow = str(now)
                 wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 2:
-                now = now.replace(hour=17,minute=0,second=0)
+                randhour = random.randint(19, 22)
+                now = now.replace(hour=randhour,minute=0,second=0)
                 newnow = str(now)
                 wo_times = newnow[:10] + "T" + newnow[11:-7]
             cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
