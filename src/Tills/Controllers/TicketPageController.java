@@ -99,7 +99,10 @@ public class TicketPageController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
                 Parent parent = (Parent) loader.load();
-                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                Stage windowOld = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                windowOld.close();
+                Stage window = new Stage();
+                window.setMaximized(true);
                 window.setScene(new Scene(parent));
                 window.show();
             } catch (IOException e) {
@@ -283,8 +286,11 @@ public class TicketPageController {
             PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
             loader.setController(controller);
             Parent parent = loader.load();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            windowOld.close();
             Scene scene = new Scene(parent);
+            Stage window = new Stage();
+            window.setMaximized(true);
             window.setScene(scene);
             window.show();
         } catch (IOException e) {

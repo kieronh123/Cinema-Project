@@ -28,12 +28,13 @@ public class PaymentPageController {
 
 
   @FXML
-
+  Label Date;
+  @FXML
   Label FilmName;
   @FXML
   Label FilmTime;
   @FXML
-  Label cashGiven;
+  Label CashGiven;
   @FXML
   Label amountDue;
   @FXML
@@ -66,7 +67,6 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
-
 //    FilmName.setText(name);
 //    FilmTime.setText(time);
     printPDF.setDisable(true);
@@ -131,7 +131,7 @@ public class PaymentPageController {
 
   @FXML
   public void keyReleased(){
-    String text = cashGiven.getText();
+    String text = cashGivenTF.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
   }
