@@ -286,8 +286,11 @@ public class TicketPageController {
             PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
             loader.setController(controller);
             Parent parent = loader.load();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            windowOld.close();
             Scene scene = new Scene(parent);
+            Stage window = new Stage();
+            window.setMaximized(true);
             window.setScene(scene);
             window.show();
         } catch (IOException e) {

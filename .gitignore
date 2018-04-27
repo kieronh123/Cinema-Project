@@ -21,3 +21,6 @@ cinema.db
 
 #Removing tmp
 tmp
+
+#log file from website tests
+geckodriver.log

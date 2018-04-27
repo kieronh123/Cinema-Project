@@ -69,7 +69,7 @@ public class MoviePageController {
             //loop through the WhatsOn objects adding them to the hashmap
             int moviecount1 = 0;
             for (int i = 0; i < whatsOn.length; i++) {
-                if(whatsOn[i].getStart_Time().substring(0, 10).equals("2018-04-27")) {
+                if(whatsOn[i].getStart_Time().substring(0, 10).equals(currentDate())) {
                     if (!movieMap.containsKey(whatsOn[i].getMovie_ID())) {
                         movieMap.put(whatsOn[i].getMovie_ID(), new ArrayList<>(Arrays.asList(whatsOn[i])));
                         //Store the different movies in an array
@@ -143,7 +143,7 @@ public class MoviePageController {
         //Get the rating for the selected movie
         String age = movies[Integer.parseInt(movie.getId().substring(movie.getId().length() - 1))].getMovie_Rating();
 
-        //Get the screening ID;
+        //Get the screening ID and screen ID;
         int screeningID;
         int screenID;
         if(button.getId().length() == 7) {

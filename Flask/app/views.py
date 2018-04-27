@@ -5,8 +5,8 @@ import sqlite3
 import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
-#import pdfkit
-#import qrcode
+# import pdfkit
+# import qrcode
 from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
@@ -144,16 +144,17 @@ def close_connection(exception):
 # Global variables
 seat = (7, 7)
 vip = False
-bookingID=0
+bookingID = 0
 row = 7
 column = 7
+
 
 @app.route('/')
 def index():
     now = datetime.now()
     days = []
-    days.append(("Today",now))
-    for i in range(1,7):
+    days.append(("Today", now))
+    for i in range(1, 7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
         days.append((day, date))
@@ -166,29 +167,30 @@ def index():
         futureWhatsOn = []
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
-            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
-            if(startTime > now):
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S")
+            if (startTime > now):
                 present = True
                 futureWhatsOn.append(w)
-        if(present):
+        if (present):
             whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons, daysOfWeek = days, msg="Today", date=now.strftime("%Y-%m-%d %H:%M:%S"));
+    return render_template('index.html', whatsons=whatsons, daysOfWeek=days, msg="Today",
+                           date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
 
 @app.route('/day/<choice>')
 def day(choice):
     now = datetime.now()
     days = []
-    days.append(("Today",now))
+    days.append(("Today", now))
 
-    for i in range(1,7):
+    for i in range(1, 7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
         days.append(day)
 
     for d in days:
-        if( choice == d[0]):
+        if (choice == d[0]):
             chosenDate = day[1].strftime("%Y-%m-%d %H:%M:%S")
 
     # input from screening table
@@ -199,14 +201,15 @@ def day(choice):
     for m in movies:
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
-            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S" )
-            if(startTime > chosenDate):
+            startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S")
+            if (startTime > chosenDate):
                 present = True
                 futureWhatsOn.append(w)
-        if(present):
+        if (present):
             whatsons.append((m, futureWhatsOn))
 
-    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek = days, date=chosenDate);
+    return render_template('index.html', whatsons=whatsons, msg=choice, daysOfWeek=days, date=chosenDate);
+
 
 @app.route('/seatselect/<id>')
 def tickets(id):
@@ -231,8 +234,9 @@ def tickets(id):
     bookingID = id
     return render_template('seatselect.html', allSeats=allSeats)
 
+
 @app.route('/storeSeat/<id>/<Row>/<Column>')
-def storeSeats(id,Row,Column):
+def storeSeats(id, Row, Column):
     global seat
     seat = id
     global row
@@ -240,15 +244,16 @@ def storeSeats(id,Row,Column):
     global column
     column = Column
     print(Row)
-    if(int(Row) == 3):
+    if int(Row) == 3:
         global vip
-        vip=True
-    return "",204
+        vip = True
+    return "", 204
 
 
 @app.route('/login')
 def login():
     return render_template('login.html', msg=None)
+
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
@@ -309,10 +314,10 @@ def registerRequest():
 def paymentNoType():
     # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
-    if(bookingID!=0 and seat!=(7,7)):
-        addBooking(bookingID,row,column)
-    if(seat == (7,7)):
-        return "",204
+    if (bookingID != 0 and seat != (7, 7)):
+        addBooking(bookingID, row, column)
+    if (seat == (7, 7)):
+        return "", 204
     else:
         return redirect('/payment/' + ticketType.lower())
 
@@ -325,7 +330,7 @@ def payment(ticketType):
     elif ticketType == "child" or ticketType == "senior":
         price = 4
     if vip == True:
-        price = (price*1.5)
+        price *= 1.5
 
     return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
 
