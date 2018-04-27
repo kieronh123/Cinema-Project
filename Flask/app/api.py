@@ -21,15 +21,13 @@ def send_ticket():
     who_to, u_id, t_id = data.split(",")
     #Forming filename
     file_name = u_id + "_" + t_id
-    #Convert pdf into png
-    os.system("source app/convert_to_png.sh " + file_name + ".pdf "  + file_name + ".png")
     #Constructing basics of email
     msg = EmailMessage()
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = who_to
     # Open the new image to send
-    with open("app/static/tickets/" + file_name + ".png", 'rb') as fp:
+    with open("qr_codes" + file_name + ".PNG", 'rb') as fp:
         img_data = fp.read()
         msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
     # Send the email via our own SMTP server.

@@ -3,7 +3,8 @@
 
 #Importing sqlite3
 import sqlite3
-
+#Importing random to create random test data
+import random
 #Connecting to database
 db = sqlite3.connect('cinema.db')
 cursor = db.cursor()
@@ -82,66 +83,66 @@ wo_Id = 1
 wo_Movie = 1
 wo_Screen = 1
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time = "2018-04-26T11:55:00"
+wo_Time = "2018-04-01T11:55:00"
 
 wo_Id2 = 2
 wo_Movie2 = 1
 wo_Screen2 = 1
-wo_Time2 = "2018-04-26T14:00:00"
+wo_Time2 = "2018-04-01T14:00:00"
 
 wo_Id3 = 3
 wo_Movie3 = 1
 wo_Screen3 = 1
-wo_Time3 = "2018-04-26T16:30:00"
+wo_Time3 = "2018-04-01T16:30:00"
 #Day 2
 wo_Id4 = 4
 wo_Movie4 = 1
 wo_Screen4 = 1
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time4 = "2018-04-27T11:55:00"
+wo_Time4 = "2018-04-02T11:55:00"
 
 wo_Id5 = 5
 wo_Movie5 = 1
 wo_Screen5 = 1
-wo_Time5 = "2018-04-27T14:00:00"
+wo_Time5 = "2018-04-02T14:00:00"
 
 wo_Id6 = 6
 wo_Movie6 = 1
 wo_Screen6 = 1
-wo_Time6 = "2018-04-27T16:30:00"
+wo_Time6 = "2018-04-02T16:30:00"
 #Movie 2
 #Information for movie 2 on one day
 wo_Id7 = 7
 wo_Movie7 = 2
 wo_Screen7 = 3
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time7 = "2018-04-26T09:00:00"
+wo_Time7 = "2018-04-01T09:00:00"
 
 wo_Id8 = 8
 wo_Movie8 = 2
 wo_Screen8 = 3
-wo_Time8 = "2018-04-26T12:00:00"
+wo_Time8 = "2018-04-01T12:00:00"
 
 wo_Id9 =9
 wo_Movie9 = 2
 wo_Screen9 = 3
-wo_Time9 = "2018-04-26T15:30:00"
+wo_Time9 = "2018-04-01T15:30:00"
 #Day 2
 wo_Id10 = 10
 wo_Movie10 = 2
 wo_Screen10 = 2
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time10 = "2018-04-27T10:30:00"
+wo_Time10 = "2018-04-02T10:30:00"
 
 wo_Id11 = 11
 wo_Movie11 = 2
 wo_Screen11 = 2
-wo_Time11 = "2018-04-27T13:00:00"
+wo_Time11 = "2018-04-02T13:00:00"
 
 wo_Id12 = 12
 wo_Movie12 = 2
 wo_Screen12 = 2
-wo_Time12 = "2018-04-27T16:30:00"
+wo_Time12 = "2018-04-02T16:30:00"
 
 #Movie 3
 #Information for movie 3 on one day
@@ -149,33 +150,33 @@ wo_Id13 = 13
 wo_Movie13 = 3
 wo_Screen13 = 4
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time13 = "2018-04-26T09:00:00"
+wo_Time13 = "2018-04-01T09:00:00"
 
 wo_Id14 = 14
 wo_Movie14 = 3
 wo_Screen14 = 4
-wo_Time14 = "2018-04-26T12:00:00"
+wo_Time14 = "2018-04-01T12:00:00"
 
 wo_Id15 =15
 wo_Movie15 = 3
 wo_Screen15 = 4
-wo_Time15 = "2018-04-26T15:30:00"
+wo_Time15 = "2018-04-01T15:30:00"
 #Day 2
 wo_Id16 = 16
 wo_Movie16 = 3
 wo_Screen16 = 5
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time16 = "2018-04-27T10:30:00"
+wo_Time16 = "2018-04-02T10:30:00"
 
 wo_Id17 = 17
 wo_Movie17 = 3
 wo_Screen17 = 4
-wo_Time17 = "2018-04-27T13:15:00"
+wo_Time17 = "2018-04-02T13:15:00"
 
 wo_Id18 = 18
 wo_Movie18 = 3
 wo_Screen18 = 4
-wo_Time18 = "2018-04-27T17:45:00"
+wo_Time18 = "2018-04-02T17:45:00"
 
 #Movie 4
 #Information for movie 4 on one day
@@ -183,33 +184,33 @@ wo_Id19 = 19
 wo_Movie19 = 4
 wo_Screen19 = 6
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time19 = "2018-04-26T10:00:00"
+wo_Time19 = "2018-04-01T10:00:00"
 
 wo_Id20 = 20
 wo_Movie20 = 4
 wo_Screen20 = 6
-wo_Time20 = "2018-04-26T12:30:00"
+wo_Time20 = "2018-04-01T12:30:00"
 
 wo_Id21 = 21
 wo_Movie21 = 4
 wo_Screen21 = 6
-wo_Time21 = "2018-04-26T16:30:00"
+wo_Time21 = "2018-04-01T16:30:00"
 #Day 2
 wo_Id22 = 22
 wo_Movie22 = 4
 wo_Screen22 = 6
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time22 = "2018-04-27T8:30:00"
+wo_Time22 = "2018-04-02T8:30:00"
 
 wo_Id23 = 23
 wo_Movie23 = 4
 wo_Screen23 = 6
-wo_Time23 = "2018-04-27T11:15:00"
+wo_Time23 = "2018-04-02T11:15:00"
 
 wo_Id24 = 24
 wo_Movie24 = 4
 wo_Screen24 = 6
-wo_Time24 = "2018-04-27T17:45:00"
+wo_Time24 = "2018-04-02T17:45:00"
 
 #Movie 5
 #Information for movie 5 on one day
@@ -217,33 +218,33 @@ wo_Id25 = 25
 wo_Movie25 = 5
 wo_Screen25 = 7
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time25 = "2018-04-26T09:00:00"
+wo_Time25 = "2018-04-01T09:00:00"
 
 wo_Id26 = 26
 wo_Movie26 = 5
 wo_Screen26 = 7
-wo_Time26 = "2018-04-26T12:00:00"
+wo_Time26 = "2018-04-01T12:00:00"
 
 wo_Id27 = 27
 wo_Movie27 = 5
 wo_Screen27 = 7
-wo_Time27 = "2018-04-26T17:30:00"
+wo_Time27 = "2018-04-01T17:30:00"
 #Day 2
 wo_Id28 = 28
 wo_Movie28 = 5
 wo_Screen28 = 7
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time28 = "2018-04-27T10:30:00"
+wo_Time28 = "2018-04-02T10:30:00"
 
 wo_Id29 = 29
 wo_Movie29 = 5
 wo_Screen29 = 7
-wo_Time29 = "2018-04-27T15:15:00"
+wo_Time29 = "2018-04-02T15:15:00"
 
 wo_Id30 = 30
 wo_Movie30 = 5
 wo_Screen30 = 7
-wo_Time30 = "2018-04-27T20:45:00"
+wo_Time30 = "2018-04-02T20:45:00"
 
 #Movie 6
 #Information for movie 3 on one day
@@ -251,34 +252,34 @@ wo_Id31 = 31
 wo_Movie31 = 6
 wo_Screen31 = 8
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time31 = "2018-04-26T09:15:00"
+wo_Time31 = "2018-04-01T09:15:00"
 
 wo_Id32 = 32
 wo_Movie32 = 6
 wo_Screen32 = 8
-wo_Time32 = "2018-04-26T13:00:00"
+wo_Time32 = "2018-04-01T13:00:00"
 
 wo_Id33 = 33
 wo_Movie33 = 6
 wo_Screen33 = 8
-wo_Time33 = "2018-04-26T18:30:00"
+wo_Time33 = "2018-04-01T18:30:00"
 
 #Day 2
 wo_Id34 = 34
 wo_Movie34 = 6
 wo_Screen34 = 8
 #Time must be in format 'YYYY-MM-DD:HH:MM:SS'
-wo_Time34 = "2018-04-27T10:15:00"
+wo_Time34 = "2018-04-02T10:15:00"
 
 wo_Id35 = 35
 wo_Movie35 = 6
 wo_Screen35 = 8
-wo_Time35 = "2018-04-27T14:15:00"
+wo_Time35 = "2018-04-02T14:15:00"
 
 wo_Id36 = 36
 wo_Movie36 = 6
 wo_Screen36 = 8
-wo_Time36 = "2018-04-27T19:45:00"
+wo_Time36 = "2018-04-02T19:45:00"
 
 ##Initial bookings information
 b_Id = 1
@@ -292,6 +293,52 @@ b_Row2 = 3 #Bookings row
 b_Id3 = 1
 b_Col3 = 5 #Bookings column
 b_Row3 = 5 #Bookings row
+
+day = 3
+time1 = "09:00:00"
+time2 = "13:00:00"
+time3 = "16:00:00"
+#Creating
+# for i in range(37, 253):
+#     wo_ids.append(i)
+#     wo_movies.append(random.randint(1, 6))
+#     wo_screens.append(random.randint(1, 8))
+#     if counter == 36:
+#         counter = 0
+#         day = day + 1
+#     if counter2 == 0:
+#         wo_times.append("2018-04-" + str(day) + "T" + time1)
+#         counter2 = counter2 + 1
+#     elif counter2 == 1:
+#         wo_times.append("2018-04-" + str(day) + "T" + time2)
+#         counter2 = counter2 + 1
+#     elif counter2 == 2:
+#         wo_times.append("2018-04-" + str(day) + "T" + time3)
+#         counter2 = 0
+#     counter = counter + 1
+
+id_counter = 37
+for j in range(0, 12): #12 new days
+    for i in range(0, 6): #Six movies
+        for y in range(0, 3): #Three screenings each
+            wo_ids = id_counter
+            wo_movies = i + 1
+            wo_screens = i + 2
+            if len(str(day)) == 1:
+                daystring = "0" + str(day)
+            else:
+                daystring = str(day)
+            if y == 0:
+                wo_times = "2018-04-" + daystring + "T" + time1
+            elif y == 1:
+                wo_times = "2018-04-" + daystring + "T" + time2
+            elif y == 2:
+                wo_times = "2018-04-" + daystring + "T" + time3
+            cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
+                                                Values(?,?,?,?)''',(wo_ids, wo_movies, wo_screens, wo_times))
+            id_counter = id_counter + 1
+    day = day + 1
+
 
 #Entering values into cinema.db tables
 cursor.execute('''INSERT INTO Users(User_ID,Username,Password)
