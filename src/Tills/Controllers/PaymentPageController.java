@@ -114,7 +114,7 @@ public class PaymentPageController {
       ticketText.add("\n*                                                    *");
       ticketText.add(String.format("\n*%s                                    *", time));
       ticketText.add(String.format("\n*%s                                    *", seat));
-      ticketText.add(String.format("\n*%s                                    *", total));
+      ticketText.add(String.format("\n*%s                                    *", price));
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
@@ -135,14 +135,5 @@ public class PaymentPageController {
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
   }
-
-//    @FXML
-//    public void changeGiven(){
-//        change = cashGiven.getText();
-//        change -= (adultTicket * comboBox.getValue("whatever Needs To be taken"));
-//        amountDue = parseInt(cashGiven.getText());
-//        change =
-//    }
-
 
 }
