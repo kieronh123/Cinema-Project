@@ -81,6 +81,7 @@ public class TicketPageController {
         this.name = filmName;
         this.screeningID = screeningID;
         this.age = Age;
+
     }
 
     /**
@@ -89,7 +90,6 @@ public class TicketPageController {
      */
     @FXML
     private void initialize() {
-        System.out.println(screeningID);
         //Set these labels to the film name and time previously selected
         FilmName.setText(name);
         FilmTime.setText(time);
@@ -97,7 +97,7 @@ public class TicketPageController {
         returnHome.setOnAction((ActionEvent Event) -> {
             //Try and load the movie screen page
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/moviesPage.fxml"));
                 Parent parent = (Parent) loader.load();
                 Stage windowOld = (Stage) ((Node) Event.getSource()).getScene().getWindow();
                 windowOld.close();
@@ -174,8 +174,6 @@ public class TicketPageController {
         });
         //Add the combobox to the fxml page
         vip.add(vipTicket, 0, 0);
-
-
     }
 
     /**
