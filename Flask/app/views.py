@@ -6,7 +6,8 @@ import hashlib
 import re
 import os
 from flask import render_template, g, redirect, request, make_response
-# import pdfkit
+from api.py import send_ticket
+
 import qrcode
 from PIL import Image as pimg
 
@@ -279,9 +280,11 @@ def storeSeats(id, Row, Column):
 
 @app.route('/login')
 def login():
-    return render_template('login.html', msg=None)
-
-
+    global LOGIN
+    if(LOGIN == False):
+        return render_template('login.html', msg=None)
+    else:
+        return render_template('error.html', error="ALREADY LOGGED IN")
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
     # Get the details from the form
@@ -300,6 +303,8 @@ def loginRequest():
         global USER
         USER = username
         if (user.Password == passwordHashed.hexdigest()):
+            global LOGIN
+            LOGIN = True
             return redirect('/')
         else:
             return render_template('login.html', msg="Incorrect Username/Password combination")
@@ -309,8 +314,11 @@ def loginRequest():
 
 @app.route('/register')
 def register():
-    return render_template('register.html', msg=None)
-
+    global LOGIN
+    if(LOGIN == False):
+        return render_template('register.html', msg=None)
+    else:
+        return render_template('error.html', error="ALREADY LOGGED IN")
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
@@ -332,7 +340,8 @@ def registerRequest():
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
-
+    global LOGIN
+    LOGIN = True
     # Add the details to the database
     addUser(username, passwordHashed.hexdigest())
 
