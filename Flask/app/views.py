@@ -4,6 +4,7 @@ from datetime import timedelta
 import sqlite3
 import hashlib
 import re
+import os
 from flask import render_template, g, redirect, request, make_response
 import qrcode
 from PIL import Image as pimg
@@ -12,7 +13,38 @@ from .models import WhatsOn, Movie, Booking, User
 
 import json
 
+import time
+
+import smtplib
+import imghdr
+from email.message import EmailMessage
+
 DATABASE = 'app/database/cinema.db'
+
+##Function to email ticket to user
+#Parameters:    <NONE>
+def send_ticket(email_address, file_name):
+    #Fetch and parse data sent by POST request
+
+    #Forming filename
+
+    #Constructing basics of email
+    msg = EmailMessage()
+    msg['Subject'] = "Your Team Quail Cinema Ticket"
+    msg['From'] = "Team_Quail"
+    msg['To'] = email_address
+    # Open the new image to send
+    #os.chdir("app/static/qr_codes")
+    cwd = os.getcwd()
+    with open(cwd + "/app/static/qr_codes/" + file_name +".png", 'rb') as fp:
+        img_data = fp.read()
+        msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
+    #os.chdir("../..")
+    # Send the email via our own SMTP server.
+    with smtplib.SMTP('localhost') as s:
+        s.send_message(msg)
+    return "{Status: 200}"
+
 
 
 ##Function to execute an SQL query
@@ -146,7 +178,6 @@ vip = False
 bookingID = 0
 row = 7
 column = 7
-
 LOGIN = False
 
 USER =""
@@ -374,6 +405,11 @@ def processPayment(ticketType, price):
 
 @app.route('/<ticketType>/<price>/<name>')
 def qr_code(ticketType, price, name):
-    img = qrcode.make(USER+ " "+str(bookingID) + " " +str(seat) +str(price))
-    img.save('app/static/qr_codes/'+name+" "+str(bookingID) + " " +str(seat) +" "+str(price)+'.PNG')
+    global USER
+    global seat
+    img = qrcode.make(USER + " "+str(bookingID) + " " +str(seat) +str(price))
+    file_name = "ticket" + str(bookingID) + seat[1] + seat[4]
+    img.save('app/static/qr_codes/'+file_name+'.png')
+    img.close()
+    send_ticket(USER, file_name)
     return img
