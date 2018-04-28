@@ -181,6 +181,7 @@ bookingID = 0
 row = 7
 column = 7
 USER =""
+LOGIN = False
 
 @app.route('/')
 def index():
