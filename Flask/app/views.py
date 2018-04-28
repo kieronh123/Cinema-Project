@@ -10,7 +10,7 @@ from flask import render_template, g, redirect, request, make_response
 import qrcode
 from PIL import Image as pimg
 
-from .models import WhatsOn, Movie, Booking, User
+from .models import WhatsOn, Movie, Booking, User, CardDetails
 
 import json
 
@@ -142,6 +142,33 @@ def addUser(username, password):
     query = "INSERT INTO Users VALUES(" + str(
         number_of_rows + 1) + ", " + "\"" + username + "\"" + "," + "\"" + password + "\"" + ");"
     execute_query(query, "POST")
+
+def saveCardDetails(user_id, name, cardNumber, sortCode, securityCode):
+    conn = get_db()
+    c = conn.cursor()
+    query = "INSERT INTO Card_Details VALUES(" + str(user_id) + ", '" + str(name) + "','" + encyptInt(cardNumber) + "', '" + str(sortCode) + "', '" + encyptInt(securityCode) + "');"
+    execute_query(query, "POST")
+
+def getCardDetails(id):
+    carddetail = execute_query("SELECT * FROM Card_Details where User_ID=%s;" % id, "GET")
+    carddetails = []
+    for item in carddetail:
+        carddetails.append(CardDetails(item["User_ID"], item["Card_Name"], decryptInt(item["Card_Number"]), item["Card_SortCode"], decryptInt(item["Card_SecurityCode"])))
+    return carddetails
+
+#Simple caesarcypher
+def encyptInt(string):
+    string = str(string)
+    cypher = ""
+    for c in string:
+        cypher = cypher + str(chr(int(c) + 65))
+    return cypher
+
+def decryptInt(string):
+    decypher = ""
+    for c in string:
+        decypher = decypher + str((ord(c) - 65))
+    return decypher
 
 
 def getBookingbyID(id):
@@ -415,7 +442,7 @@ def processPayment(ticketType, price):
 def qr_code(ticketType, price, name):
     global USER
     global seat
-    img = qrcode.make(USER + " "+str(bookingID) + " " +str(seat) +str(price))
+    img = qrcode.make(str(bookingID) + " " +str(seat) + " "+str(price))
     file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()

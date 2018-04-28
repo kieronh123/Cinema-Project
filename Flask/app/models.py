@@ -32,3 +32,13 @@ class Booking ():
         self.Screening_ID = Screening_ID
         self.Row_Num = Row_Num
         self.Column_Num = Column_Num
+
+class CardDetails ():
+    def __init__(self, User_ID,Card_Name,Card_Number,Card_SortCode,Card_SecurityCode):
+        self.User_ID = User_ID
+        self.Card_Name = Card_Name
+        self.Card_Number = Card_Number
+        self.Card_SortCode = Card_SortCode
+        self.Card_SecurityCode = Card_SecurityCode
+    def __str__(self):
+        return "%s %s %s %s %s" % (self.User_ID,self.Card_Name,self.Card_Number,self.Card_SortCode, self.Card_SecurityCode)
