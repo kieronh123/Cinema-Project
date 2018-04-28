@@ -414,7 +414,7 @@ def processPayment(ticketType, price):
 def qr_code(ticketType, price, name):
     global USER
     global seat
-    img = qrcode.make(USER + " "+str(bookingID) + " " +str(seat) +str(price))
+    img = qrcode.make(str(bookingID) + " " +str(seat) + " "+str(price))
     file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()
