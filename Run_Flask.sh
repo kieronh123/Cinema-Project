@@ -1,5 +1,4 @@
 #!/bin/sh
-
 cd Flask
 rm -r flask
 virtualenv flask

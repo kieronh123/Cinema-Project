@@ -15,20 +15,18 @@ DATABASE = 'app/database/cinema.db'
 
 ##Function to email ticket to user
 #Parameters:    <NONE>
-@app.route("/sendticket", methods=['POST'])
-def send_ticket():
+def send_ticket(email_address, file_name):
     #Fetch and parse data sent by POST request
-    data = str(request.form['data'])
-    who_to, u_id, t_id = data.split(",")
+
     #Forming filename
-    file_name = u_id + "_" + t_id
+
     #Constructing basics of email
     msg = EmailMessage()
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = who_to
     # Open the new image to send
-    with open("qr_codes" + file_name + ".PNG", 'rb') as fp:
+    with open("app/static/qr_codes/" + file_name + ".PNG", 'rb') as fp:
         img_data = fp.read()
         msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
     # Send the email via our own SMTP server.

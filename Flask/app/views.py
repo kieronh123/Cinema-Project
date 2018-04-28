@@ -5,8 +5,10 @@ import sqlite3
 import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
-# import pdfkit
-# import qrcqode
+from api.py import send_ticket
+
+import qrcode
+from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User
 
@@ -146,7 +148,11 @@ vip = False
 bookingID = 0
 row = 7
 column = 7
+<<<<<<< HEAD
 LOGIN = False
+=======
+USER =""
+>>>>>>> 62b914bbe931ef5d4193c96e4c742c47e15d4ad2
 
 @app.route('/')
 def index():
@@ -266,6 +272,8 @@ def loginRequest():
 
     # Check they are the details of a known user
     if (user):
+        global USER
+        USER = username
         if (user.Password == passwordHashed.hexdigest()):
             global LOGIN
             LOGIN = True
@@ -366,8 +374,8 @@ def processPayment(ticketType, price):
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
 
-# @app.route('/<ticketType>/<price>/<name>')
-# def qr_code(ticketType, price, name):
-#     img = qrcode.make(name)
-#     img.save('qr_codes/'+name+'.PNG')
-#     return img
+@app.route('/<ticketType>/<price>/<name>')
+def qr_code(ticketType, price, name):
+    img = qrcode.make(USER+ " "+str(bookingID) + " " +str(seat) +str(price))
+    img.save('app/static/qr_codes/'+name+" "+str(bookingID) + " " +str(seat) +" "+str(price)+'.PNG')
+    return img
