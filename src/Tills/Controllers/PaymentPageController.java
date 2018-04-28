@@ -28,7 +28,6 @@ public class PaymentPageController {
 
 
   @FXML
-
   Label FilmName;
   @FXML
   Label FilmTime;
@@ -46,9 +45,10 @@ public class PaymentPageController {
   TextField changeTF;
   @FXML
   Button returnHome;
-
   @FXML
-  private Button printPDF;
+  Button getChange;
+  @FXML
+  Button printPDF;
 
   public String time = null;
   public String name = null;
@@ -93,7 +93,10 @@ public class PaymentPageController {
       }
     });
 
-
+    getChange.setOnAction((Event) -> {
+      showChange();
+      keyReleased();
+    });
   }
 
   /*
@@ -101,7 +104,6 @@ public class PaymentPageController {
   This is used for generating the receipt from the ticket chosen.
   Variables are still needed to update the fields.
   */
-
   @FXML
   public void PDF()throws IOException{
     Document document = new Document();
@@ -113,8 +115,9 @@ public class PaymentPageController {
       ticketText.add("\n*                         Ticket                     *");
       ticketText.add("\n*                                                    *");
       ticketText.add(String.format("\n*%s                                    *", time));
+      ticketText.add(String.format("\n*%s                                    *", name));
       ticketText.add(String.format("\n*%s                                    *", seat));
-      ticketText.add(String.format("\n*%s                                    *", price));
+      ticketText.add(String.format("\n*%s                                    *", total));
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
@@ -129,11 +132,25 @@ public class PaymentPageController {
     }
   }
 
+
+  //Disables the use of a button to be clicked on.
+  // The Print PDF button is only visible when the Produce Change button has been clicked on.
   @FXML
   public void keyReleased(){
     String text = cashGiven.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
+  }
+
+  //Allows the change to be viewable in Textfields after purchasing a ticket.
+  //(Cash Simulation).
+  public void showChange(){
+    double holdPayment = Double.valueOf(cashGivenTF.getText().toString());
+    double holdingChange = holdPayment - total;
+    String holdCash = new Double(holdingChange).toString();
+    String amount =  new Double(total).toString();
+    changeTF.setText(holdCash);
+    amountDueTF.setText(amount);
   }
 
 }
