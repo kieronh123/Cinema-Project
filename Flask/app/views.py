@@ -7,7 +7,6 @@ import re
 import os
 from flask import render_template, g, redirect, request, make_response
 
-
 import qrcode
 from PIL import Image as pimg
 
@@ -187,8 +186,10 @@ vip = False
 bookingID = 0
 row = 7
 column = 7
-USER =""
 LOGIN = False
+
+USER =""
+
 
 @app.route('/')
 def index():

@@ -10,7 +10,6 @@ function searchFunction() {
         if(h3.innerHTML.toUpperCase().indexOf(filter) > -1){
             li[i].style.display = "";
         }
-
         else{
             li[i].style.display = 'none';
         }
