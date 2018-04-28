@@ -147,7 +147,7 @@ vip = False
 bookingID = 0
 row = 7
 column = 7
-
+LOGIN = False
 
 @app.route('/')
 def index():
@@ -247,9 +247,11 @@ def storeSeats(id, Row, Column):
 
 @app.route('/login')
 def login():
-    return render_template('login.html', msg=None)
-
-
+    global LOGIN
+    if(LOGIN == False):
+        return render_template('login.html', msg=None)
+    else:
+        return render_template('error.html', error="ALREADY LOGGED IN")
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
     # Get the details from the form
@@ -266,6 +268,8 @@ def loginRequest():
     # Check they are the details of a known user
     if (user):
         if (user.Password == passwordHashed.hexdigest()):
+            global LOGIN
+            LOGIN = True
             return redirect('/')
         else:
             return render_template('login.html', msg="Incorrect Username/Password combination")
@@ -275,8 +279,11 @@ def loginRequest():
 
 @app.route('/register')
 def register():
-    return render_template('register.html', msg=None)
-
+    global LOGIN
+    if(LOGIN == False):
+        return render_template('register.html', msg=None)
+    else:
+        return render_template('error.html', error="ALREADY LOGGED IN")
 
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
@@ -298,7 +305,8 @@ def registerRequest():
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
-
+    global LOGIN
+    LOGIN = True
     # Add the details to the database
     addUser(username, passwordHashed.hexdigest())
 
@@ -309,6 +317,7 @@ def registerRequest():
 def paymentNoType():
     # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
+    global seat
     if (bookingID != 0 and seat != (7, 7)):
         addBooking(bookingID, row, column)
     if (seat == (7, 7)):
