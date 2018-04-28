@@ -5,8 +5,6 @@ import sqlite3
 import hashlib
 import re
 from flask import render_template, g, redirect, request, make_response
-from api.py import send_ticket
-
 import qrcode
 from PIL import Image as pimg
 
@@ -148,11 +146,11 @@ vip = False
 bookingID = 0
 row = 7
 column = 7
-<<<<<<< HEAD
+
 LOGIN = False
-=======
+
 USER =""
->>>>>>> 62b914bbe931ef5d4193c96e4c742c47e15d4ad2
+
 
 @app.route('/')
 def index():
