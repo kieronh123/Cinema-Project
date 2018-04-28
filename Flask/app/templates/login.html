@@ -3,6 +3,12 @@
 {% block content %}
 
 <section id="main">
+    {%if header is not none%}
+        <div class="jumbotron text-center">
+            <h3> {{header}}</h3>
+        </div>
+     {%endif%}
+
     <div class="container">
         <row>
         <div class="dark">
@@ -18,10 +24,12 @@
                 </div>
                 <input name="login" type="submit" value="Log In">
             </form>
+            <form action="/register">
+                <input name="join" type="submit" value ="join">
+            </form>
         </div>
         <label name="message">{%if msg is not none%} {{msg}} {%endif%} </label>
         </row>
     </div>
 </section>
 {% endblock %}
-

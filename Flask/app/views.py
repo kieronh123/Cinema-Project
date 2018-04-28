@@ -53,8 +53,6 @@ def send_ticket(email_address, file_name, name):
         s.send_message(msg)
     return "{Status: 200}"
 
-
-
 ##Function to execute an SQL query
 def execute_query(query, method):
     conn = get_db()
@@ -73,7 +71,6 @@ def execute_query(query, method):
     except sqlite3.IntegrityError:
         return "{Status:400}"
 
-
 def getMovies():
     movies_db = execute_query("SELECT * FROM MOVIES;", "GET")
     movies = []
@@ -84,14 +81,12 @@ def getMovies():
 
     return movies
 
-
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
     if movie:
         item = movie[0]
         return Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"], item["Movie_Runtime"],
                      item["Movie_Info"], item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"])
-
 
 def getWhatsOn():
     screenings = execute_query("SELECT * FROM Whats_On;", "GET")
@@ -102,7 +97,6 @@ def getWhatsOn():
 
     return whatson
 
-
 def getWhatsOnByMovieID(id):
     screenings = execute_query("SELECT * FROM Whats_On where Movie_ID=%s;" % id, "GET")
     whatson = []
@@ -111,13 +105,11 @@ def getWhatsOnByMovieID(id):
         whatson.append(getWhatsOnbyID(idScreening["Screening_ID"]))
     return whatson
 
-
 def getWhatsOnbyID(id):
     whatson = execute_query("SELECT * FROM Whats_On where Screening_ID=%s;" % id, "GET")
     if whatson:
         item = whatson[0]
         return WhatsOn(item["Screening_ID"], item["Movie_ID"], item["Screen_ID"], item["Start_Time"])
-
 
 def getUserbyID(id):
     user = execute_query("SELECT * FROM Users where User_ID=%s;" % id, "GET")
@@ -125,13 +117,11 @@ def getUserbyID(id):
         item = user[0]
         return User(item["User_ID"], item["Username"], item["Password"])
 
-
 def getUserByUsername(username):
     user = execute_query("SELECT * FROM Users where Username=%s;" % ("\"" + username + "\""), "GET")
     if user:
         item = user[0]
         return User(item["User_ID"], item["Username"], item["Password"])
-
 
 def addUser(username, password):
     conn = get_db()
@@ -170,14 +160,12 @@ def decryptInt(string):
         decypher = decypher + str((ord(c) - 65))
     return decypher
 
-
 def getBookingbyID(id):
     booking = execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
     for item in booking:
         bookings.append(Booking(item["Screening_ID"], item["Row_Num"], item["Column_Num"]))
     return bookings
-
 
 def addBooking(screening, row, column):
     conn = get_db()
@@ -188,14 +176,12 @@ def addBooking(screening, row, column):
         column) + "\"" + ");"
     execute_query(query, "POST")
 
-
 ##Get the database
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE, check_same_thread=False)
     return db
-
 
 ##On program close, close db connection
 @app.teardown_appcontext
@@ -214,9 +200,9 @@ bookingID = 0
 row = 7
 column = 7
 LOGIN = False
-
+REGISTER = False
 USER =""
-
+USER_ID = 0
 
 @app.route('/')
 def index():
@@ -246,7 +232,6 @@ def index():
     return render_template('index.html', whatsons=whatsons, daysOfWeek=days, msg="Today",
                            date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
-
 @app.route('/day/<choiceDay>/<choiceDate>')
 def day(choiceDay, choiceDate):
     print(choiceDate)
@@ -274,16 +259,19 @@ def day(choiceDay, choiceDate):
 
     return render_template('index.html', whatsons=whatsons, msg=choiceDay, daysOfWeek=days, date=chosenDate.strftime("%Y-%m-%d %H:%M:%S"));
 
-
 @app.route('/seatselect/<id>')
 def tickets(id):
+    global bookingID
+    bookingID = id
+    # if(LOGIN == False):
+    #     return render_template('login.html', msg=None, header="Please login or join before select seat")
+    # else:
     seats = getBookingbyID(id)
     allSeats = []
     if not seats:
         for i in range(1, 6):
             for j in range(1, 6):
                 allSeats.append((i, j, False, (i, j)))
-                print("problem")
     else:
         for i in range(1, 6):
             for j in range(1, 6):
@@ -294,10 +282,8 @@ def tickets(id):
                         booked = True
                 if booked == False:
                     allSeats.append((i, j, False, (i, j)))
-    global bookingID
-    bookingID = id
-    return render_template('seatselect.html', allSeats=allSeats)
 
+    return render_template('seatselect.html', allSeats=allSeats)
 
 @app.route('/storeSeat/<id>/<Row>/<Column>')
 def storeSeats(id, Row, Column):
@@ -313,14 +299,14 @@ def storeSeats(id, Row, Column):
         vip = True
     return "", 204
 
-
 @app.route('/login')
 def login():
     global LOGIN
     if(LOGIN == False):
-        return render_template('login.html', msg=None)
+        return render_template('login.html', msg=None, header=None)
     else:
         return render_template('error.html', error="ALREADY LOGGED IN")
+
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
     # Get the details from the form
@@ -338,15 +324,16 @@ def loginRequest():
     if (user):
         global USER
         USER = username
+        global USER_ID
+        USER_ID = user.User_ID
         if (user.Password == passwordHashed.hexdigest()):
             global LOGIN
             LOGIN = True
             return redirect('/')
         else:
-            return render_template('login.html', msg="Incorrect Username/Password combination")
+            return render_template('login.html', msg="Incorrect Username/Password combination", header=None)
     else:
-        return render_template('login.html', msg="Username not recognised")
-
+        return render_template('login.html', msg="Username not recognised", header=None)
 
 @app.route('/register')
 def register():
@@ -378,11 +365,14 @@ def registerRequest():
     passwordHashed.update(password)
     global LOGIN
     LOGIN = True
+    global REGISTER
+    REGISTER = True
+    global USER
+    USER = username
     # Add the details to the database
     addUser(username, passwordHashed.hexdigest())
 
     return render_template('register.html', msg="Registration Successful")
-
 
 @app.route('/payment', methods=['POST'])
 def paymentNoType():
@@ -396,7 +386,6 @@ def paymentNoType():
     else:
         return redirect('/payment/' + ticketType.lower())
 
-
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
     # Set the price according to the ticket type
@@ -407,11 +396,19 @@ def payment(ticketType):
     if vip == True:
         price *= 1.5
 
-    return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None)
-
+    global REGISTER
+    if(REGISTER == True):
+        return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None, Login=False)
+    else:
+        global USER_ID
+        card = getCardDetails(USER_ID)
+        print(len(card))
+        return render_template('payment.html', ticketType=ticketType.title(), price=price,
+            msg=None, Login=True, Name=card[0].Card_Name, CardNumber=card[0].Card_Number, ExpiryDate =card[0].Card_SortCode, SecurityCode = card[0].Card_SecurityCode )
 
 @app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
 def processPayment(ticketType, price):
+
     # Get card details from the form
     name = request.form.get('Name')
     cardNumber = request.form.get('Card Number')
@@ -424,6 +421,11 @@ def processPayment(ticketType, price):
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
                 if re.match('^[0-9]{3,4}$', securityCode):
                     img = qr_code(ticketType.title(), price, name)
+                    global REGISTER
+                    if REGISTER==True:
+                        user = getUserByUsername(USER)
+                        saveCardDetails(user.User_ID, name, cardNumber, expiryDate, securityCode)
+                        REGISTER=False
                     return render_template('payment.html', ticketType=ticketType.title(), price=price,
                                            msg="Payment Confirmed")
                 else:
