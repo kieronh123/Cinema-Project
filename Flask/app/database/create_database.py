@@ -36,6 +36,16 @@ cursor.execute('''
                         FOREIGN KEY (Screening_ID) REFERENCES Whats_On(Screening_ID))
 ''')
 
+#Creating Card details table
+cursor.execute('''
+    CREATE TABLE Card_Details(User_ID INTEGER PRIMARY KEY,
+                        Card_Name TEXT,
+                        Card_Number TEXT,
+                        Card_SortCode TEXT,
+                        Card_SecurityCode TEXT,
+                        FOREIGN KEY (User_ID) REFERENCES Users(User_ID))
+''')
+
 #Creating Whats_On table
 cursor.execute('''
     CREATE TABLE Whats_On(Screening_ID INTEGER UNIQUE,
