@@ -6,6 +6,7 @@ import hashlib
 import re
 import os
 from flask import render_template, g, redirect, request, make_response
+
 import qrcode
 from PIL import Image as pimg
 
@@ -23,16 +24,23 @@ DATABASE = 'app/database/cinema.db'
 
 ##Function to email ticket to user
 #Parameters:    <NONE>
-def send_ticket(email_address, file_name):
+def send_ticket(email_address, file_name, name):
     #Fetch and parse data sent by POST request
 
     #Forming filename
-
+    split_string = file_name.split("_")
+    screening_id_for_api = int(split_string[0])
+    info_for_email = getWhatsOnbyID(screening_id_for_api)
+    print(info_for_email)
+    movie_of_purchase = getMoviebyID(int(info_for_email.Movie_ID))
+    date_and_time = info_for_email.Start_Time.split("T")
     #Constructing basics of email
     msg = EmailMessage()
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = email_address
+    msg.set_content("Hi "+name+" , \n You are seeing "+ movie_of_purchase.Movie_Name+" on "+str(date_and_time[0])+" at "+str(date_and_time[1])+ " in screen "+ str(info_for_email.Screen_ID)+ " in seat "+str(seat)+
+                    "\n Your ticket is attatched below, thank you for using Quail Cinemas.")
     # Open the new image to send
     #os.chdir("app/static/qr_codes")
     cwd = os.getcwd()
@@ -82,7 +90,7 @@ def getMoviebyID(id):
     if movie:
         item = movie[0]
         return Movie(item["Movie_ID"], item["Movie_Name"], item["Movie_Rating"], item["Movie_Runtime"],
-                     item["Movie_Info"], item["Movie_Image"])
+                     item["Movie_Info"], item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"])
 
 
 def getWhatsOn():
@@ -408,8 +416,8 @@ def qr_code(ticketType, price, name):
     global USER
     global seat
     img = qrcode.make(USER + " "+str(bookingID) + " " +str(seat) +str(price))
-    file_name = "ticket" + str(bookingID) + seat[1] + seat[4]
+    file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()
-    send_ticket(USER, file_name)
+    send_ticket(USER, file_name, name)
     return img
