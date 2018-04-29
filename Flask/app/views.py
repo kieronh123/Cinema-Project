@@ -185,6 +185,9 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, check_same_thread=False)
     return db
 
+
+
+
 ##On program close, close db connection
 @app.teardown_appcontext
 def close_connection(exception):
@@ -263,7 +266,6 @@ def day(choiceDay, choiceDate):
 
 @app.route('/seatselect/<id>')
 def tickets(id):
-    print("help")
     global bookingID
     bookingID = id
     if(LOGIN == False):
@@ -437,7 +439,7 @@ def processPayment(ticketType, price):
                         saveCardDetails(user.User_ID, name, cardNumber, expiryDate, securityCode)
                         REGISTER=False
                     return render_template('payment.html', ticketType=ticketType.title(), price=price,
-                                           msg="Payment Confirmed")
+                                           msg="Payment Confirmed, Your ticket will arrive via email shortly")
                 else:
                     return render_template('payment.html', ticketType=ticketType.title(), price=price,
                                            msg="Security code was not in the correct format")
