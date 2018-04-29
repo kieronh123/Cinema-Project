@@ -188,6 +188,7 @@ public class RobotTest
   }
 
   private void receiptPageTest(float xpos, float ypos, String input){
+    robot.delay(500);
     type(input);
     robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.749));
     leftClick();
