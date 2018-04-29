@@ -2,7 +2,8 @@ package Tills;
 
 import java.util.List;
 
-/** Class to represent a movie
+/**
+ * Class to represent a movie
  */
 public class Movie {
     //fields

@@ -9,72 +9,104 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER"
+          style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed"
+          xmlns="http://javafx.com/javafx/8.0.112"
+          xmlns:fx="http://javafx.com/fxml/1">
     <GridPane prefHeight="640.0" prefWidth="820.0">
         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         <ColumnConstraints maxWidth="18.0" minWidth="6.0" prefWidth="18.0" />
-         <ColumnConstraints maxWidth="404.0" minWidth="392.0" prefWidth="392.0" />
+            <ColumnConstraints/>
+            <ColumnConstraints/>
+            <ColumnConstraints maxWidth="18.0" minWidth="6.0" prefWidth="18.0"/>
+            <ColumnConstraints maxWidth="404.0" minWidth="392.0"
+                               prefWidth="392.0"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
+            <RowConstraints/>
+            <RowConstraints/>
+            <RowConstraints/>
+            <RowConstraints/>
+            <RowConstraints/>
         </rowConstraints>
         <children>
             <VBox prefHeight="394.0" prefWidth="520.0">
                 <children>
-                    <Label fx:id="cashGiven" prefHeight="63.0" prefWidth="227.0" text="Cash Given:" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                  <font>
-                     <Font size="36.0" />
-                  </font></Label>
-                    <Label fx:id="amountDue" prefHeight="81.0" prefWidth="241.0" text="Amount due:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                  <font>
-                     <Font size="36.0" />
-                  </font></Label>
-                    <Label fx:id="change" prefHeight="60.0" prefWidth="251.0" text="Change:" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                  <font>
-                     <Font size="36.0" />
-                  </font></Label>
+                    <Label fx:id="cashGiven" prefHeight="63.0" prefWidth="227.0"
+                           text="Cash Given:" GridPane.columnIndex="1"
+                           GridPane.rowIndex="0">
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="amountDue" prefHeight="81.0" prefWidth="241.0"
+                           text="Amount due:" GridPane.columnIndex="1"
+                           GridPane.rowIndex="1">
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="change" prefHeight="60.0" prefWidth="251.0"
+                           text="Change:" GridPane.columnIndex="1"
+                           GridPane.rowIndex="2">
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Label>
                 </children>
             </VBox>
             <VBox prefHeight="394.0" prefWidth="520.0" GridPane.columnIndex="3">
-                    <TextField fx:id="cashGivenTF" prefHeight="68.0" prefWidth="261.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                  <font>
-                     <Font size="36.0" />
-                  </font></TextField>
-                    <TextField fx:id="amountDueTF" prefHeight="68.0" prefWidth="249.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                  <font>
-                     <Font size="36.0" />
-                  </font></TextField>
-                    <TextField fx:id="changeTF" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                  <font>
-                     <Font size="36.0" />
-                  </font></TextField>
+                <TextField fx:id="cashGivenTF" prefHeight="68.0"
+                           prefWidth="261.0" GridPane.columnIndex="0"
+                           GridPane.rowIndex="0">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="amountDueTF" prefHeight="68.0"
+                           prefWidth="249.0" GridPane.columnIndex="0"
+                           GridPane.rowIndex="1">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="changeTF" prefHeight="68.0" prefWidth="250.0"
+                           GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </TextField>
                 <!--</children>-->
             </VBox>
-         <VBox prefHeight="252.0" prefWidth="447.0" GridPane.rowIndex="4">
-             <Button fx:id="returnHome" mnemonicParsing="false" prefHeight="26.0" prefWidth="500" text="     Cancel Payment" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-                 <font>
-                     <Font size="36.0" />
-                 </font></Button>
-             <Button fx:id="printPDF" mnemonicParsing="false" prefHeight="26.0" prefWidth="500.0" text="Ticket to PDF">
-             <font>
-             <Font size="36.0" />
-             </font></Button>
-             <Button fx:id="getChange" mnemonicParsing="false" prefHeight="26.0" prefWidth="500.0" text="      Produce Change">
-             <font>
-             <Font size="36.0" />
-             </font></Button>
-         </VBox>
-        </children></GridPane>
+            <VBox prefHeight="252.0" prefWidth="447.0" GridPane.rowIndex="4">
+                <Button fx:id="returnHome" mnemonicParsing="false"
+                        prefHeight="26.0" prefWidth="500"
+                        text="     Cancel Payment" GridPane.columnIndex="0"
+                        GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="printPDF" mnemonicParsing="false"
+                        prefHeight="26.0" prefWidth="500.0"
+                        text="Ticket to PDF">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="getChange" mnemonicParsing="false"
+                        prefHeight="26.0" prefWidth="500.0"
+                        text="      Produce Change">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </Button>
+            </VBox>
+        </children>
+    </GridPane>
     <columnConstraints>
-        <ColumnConstraints />
+        <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>

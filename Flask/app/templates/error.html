@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% set title = "Log In" %}
 {% block content %}
-    <div class="dark">
-        <h1>{{error}}</h1>
-    </div>
+<div class="dark">
+    <h1>{{error}}</h1>
+</div>
 
-    <div class="container">
-        <form name="seatselect" class="buttonForm" action ="/">
-            <button type = "submit"  class="btn-logout">RETURN HOME </button>
-        </form>
-        <form name="seatselect" class="buttonForm" action ="/logout">
-            <button name="logout" type = "submit" class="btn-logout">LOG OUT </button>
-        </form>
-    </div>
+<div class="container">
+    <form name="seatselect" class="buttonForm" action="/">
+        <button type="submit" class="btn-logout">RETURN HOME</button>
+    </form>
+    <form name="seatselect" class="buttonForm" action="/logout">
+        <button name="logout" type="submit" class="btn-logout">LOG OUT</button>
+    </form>
+</div>
 {% endblock %}

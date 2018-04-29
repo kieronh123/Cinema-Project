@@ -2,84 +2,81 @@
 {% block content %}
 
 <div id="main">
-    <!--<div class="container">-->
-        <!--<div class="col-sm-4">-->
-            <!--<aside id="sidebar">-->
-                <!--<div class="dark">-->
-                    <!--<h3>Purchase Details</h3>-->
-                    <!--<p id="Ticket Type">Ticket Type: {{ticketType}}</p>-->
-                    <!--<p id="Price">Total: £{{price}}</p>-->
-                <!--</div>-->
-            <!--</aside>-->
-        <!--</div>-->
-    <!--</div>-->
 
     <div class="row" id="payment"></div>
-        <div class="col-sm-1" id="bufferLeft">
+    <div class="col-sm-1" id="bufferLeft">
 
-        </div>
-        <div class="col-sm-3" id="card">
-            <div class="dark">
-                    <h3>Payment</h3>
-                    <form action="/processPayment/{{ticketType}}/{{price}}" method="post">
-                        <div>
-                            <label>Name</label><br>
-                            {%if Login %}
-                                <input type="text" name="Name" placeholder="Name" value="{{Name}}">
-                            {% else %}
-                                <input type="text" name="Name" placeholder="Name">
-                            {% endif %}
-                        </div>
-                        <div>
-                            <label>Card Number</label><br>
-                            {%if Login %}
-                                <input type="text" name="Card Number" value="{{CardNumber}}">
-                            {% else %}
-                                <input type="text" name="Card Number" placeholder="Card Number">
-                            {% endif %}
-                        </div>
-                        <div>
-                            <label>Expiry Date</label><br>
-                            {%if Login %}
-                                <input type="text" name="Expiry Date" value="{{ExpiryDate}}"/>
-                            {% else %}
-                                <input type="text" name="Expiry Date" placeholder="MM/YY" />
-                            {% endif %}
-                        </div>
-                        <div>
-                            <label>Security Code</label><br>
-                            {%if Login %}
-                                <input type="text" name="Security Code" value="{{SecurityCode}}"/>
-                            {% else %}
-                                <input type="text" name="Security Code" placeholder="Code" "/>
-                            {% endif %}
-                        </div>
-                        <button class="button_1" type="submit">Confirm</button>
-                    </form>
+    </div>
+    <div class="col-sm-3" id="card">
+        <div class="dark">
+            <h3>Payment</h3>
+            <form action="/processPayment/{{ticketType}}/{{price}}"
+                  method="post">
+                <div>
+                    <label>Name</label><br>
+                    {%if Login %}
+                    <input type="text" name="Name" placeholder="Name"
+                           value="{{Name}}">
+                    {% else %}
+                    <input type="text" name="Name" placeholder="Name">
+                    {% endif %}
                 </div>
+                <div>
+                    <label>Card Number</label><br>
+                    {%if Login %}
+                    <input type="text" name="Card Number"
+                           value="{{CardNumber}}">
+                    {% else %}
+                    <input type="text" name="Card Number"
+                           placeholder="Card Number">
+                    {% endif %}
+                </div>
+                <div>
+                    <label>Expiry Date</label><br>
+                    {%if Login %}
+                    <input type="text" name="Expiry Date"
+                           value="{{ExpiryDate}}"/>
+                    {% else %}
+                    <input type="text" name="Expiry Date" placeholder="MM/YY"/>
+                    {% endif %}
+                </div>
+                <div>
+                    <label>Security Code</label><br>
+                    {%if Login %}
+                    <input type="text" name="Security Code"
+                           value="{{SecurityCode}}"/>
+                    {% else %}
+                    <input type="text" name="Security Code" placeholder="Code"
+                    "/>
+                    {% endif %}
+                </div>
+                <button class="button_1" type="submit">Confirm</button>
+            </form>
         </div>
-         <div class="col-sm-2" id="bufferCenter">
-
-        </div>
-
-        <div class="col-sm-4" id="purchaseDetails">
-
-            <div class="dark">
-                <h3>Purchase Details</h3>
-                <p id="Ticket Type">Ticket Type: {{ticketType}}</p>
-                <p id="Price">Total: £{{price}}</p>
-            </div>
-        </div>
-
-        <div class="col-sm-2" id="bufferRight">
-
-        </div>
+    </div>
+    <div class="col-sm-2" id="bufferCenter">
 
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <label name="message">{% if msg is none %} {%else%}{{msg}}{%endif%}</label>
+    <div class="col-sm-4" id="purchaseDetails">
+
+        <div class="dark">
+            <h3>Purchase Details</h3>
+            <p id="Ticket Type">Ticket Type: {{ticketType}}</p>
+            <p id="Price">Total: £{{price}}</p>
         </div>
     </div>
+
+    <div class="col-sm-2" id="bufferRight">
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label name="message">{% if msg is none %}
+            {%else%}{{msg}}{%endif%}</label>
+    </div>
+</div>
 {% endblock %}

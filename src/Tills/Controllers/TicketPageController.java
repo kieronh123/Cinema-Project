@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import JSON.JSON;
+
 import java.io.IOException;
 
 /**
@@ -66,15 +67,13 @@ public class TicketPageController {
     public boolean selectedSeat = false;
 
 
-
-
     /**
      * Constructor for this controller
      *
-     * @param time          The film time selected on the previous page
-     * @param filmName      The film name selected on the previous page
-     * @param screeningID   The screening ID of the viewing selected
-     * @param Age           The age rating of the film
+     * @param time        The film time selected on the previous page
+     * @param filmName    The film name selected on the previous page
+     * @param screeningID The screening ID of the viewing selected
+     * @param Age         The age rating of the film
      */
     public TicketPageController(String time, String filmName, int screeningID, String Age) {
         this.time = time;
@@ -123,8 +122,8 @@ public class TicketPageController {
         //Disable this button until the employee has selected ticket type, VIP and seat
         confirm.setDisable(true);
         //Call payment
-        confirm.setOnAction((Event ) -> {
-                payment(Event);
+        confirm.setOnAction((Event) -> {
+            payment(Event);
         });
 
 
@@ -142,7 +141,7 @@ public class TicketPageController {
         //When the employee selects the ticket type, set the variable ticket to the selection
         ticketType.setOnAction(e -> {
             selectedTicket = true;
-            if(selectedTicket & selectedSeat & selectedVIP){
+            if (selectedTicket & selectedSeat & selectedVIP) {
                 confirm.setDisable(false);
             }
             ticket = ticketType.getValue();
@@ -159,7 +158,7 @@ public class TicketPageController {
         //When the employee selects VIP or not set boolean variable to true or false respectively
         vipTicket.setOnAction(e -> {
             selectedVIP = true;
-            if(selectedTicket & selectedSeat & selectedVIP){
+            if (selectedTicket & selectedSeat & selectedVIP) {
                 confirm.setDisable(false);
             }
             String response = vipTicket.getValue();
@@ -219,7 +218,7 @@ public class TicketPageController {
                     //If the employee has entered a ticket type, whether it is VIP or not
                     //and selected a seat they can then confirm the purchase
                     selectedSeat = true;
-                    if(selectedTicket & selectedSeat & selectedVIP){
+                    if (selectedTicket & selectedSeat & selectedVIP) {
                         confirm.setDisable(false);
                     }
 
@@ -228,7 +227,7 @@ public class TicketPageController {
                 //If the ticket is VIP only allow row 3 to be selected
                 if (VIPticket == true & (j != 3)) {
                     buttonCreate.setDisable(true);
-                //If the ticket is not VIP do not allow row 3 to be selected
+                    //If the ticket is not VIP do not allow row 3 to be selected
                 } else if (VIPticket == false & (j == 3)) {
                     buttonCreate.setDisable(true);
                 }
@@ -236,9 +235,9 @@ public class TicketPageController {
                 //Disable the buttons of the seats that have already been booked
                 //for this screening.
                 for (Seat seat : seats) {
-                    if ((seat.Row_Num == j) ) {
-                        if((seat.Column_Num == i)){
-                            if((seat.Screening_ID == (screeningID))){
+                    if ((seat.Row_Num == j)) {
+                        if ((seat.Column_Num == i)) {
+                            if ((seat.Screening_ID == (screeningID))) {
                                 buttonCreate.setDisable(true);
                             }
                         }
@@ -251,21 +250,21 @@ public class TicketPageController {
     }
 
     /**
-     * Method processes the 
+     * Method processes the payment
      *
-     * @param event If the client wants a VIP ticket or not
+     * @param event button clicked
      */
     public void payment(ActionEvent event) {
         //Calculate the price of the ticket based on the type and if it is a VIP seat
         double price = 0;
-        if(ticket.equals("Adult")){
+        if (ticket.equals("Adult")) {
             price = 8.00;
-        }else if(ticket.equals("Senior") || ticket.equals("Child") ){
+        } else if (ticket.equals("Senior") || ticket.equals("Child")) {
             price = 4.00;
         }
 
-        if (VIP == true){
-            price = (price*1.5);
+        if (VIP == true) {
+            price = (price * 1.5);
         }
 
         System.out.println(price);
@@ -281,12 +280,11 @@ public class TicketPageController {
         }
 
 
-
         try {
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Receipt.fxml"));
             PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price, row, column, screeningID);
-            String filename = screeningID+"_"+row+"_"+column;
+            String filename = screeningID + "_" + row + "_" + column;
             controller.generateQRCodeImage(filename);
             loader.setController(controller);
             Parent parent = loader.load();

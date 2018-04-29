@@ -26,8 +26,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-/** Controller class for the moviesPage.fxml file
- *
+/**
+ * Controller class for the moviesPage.fxml file
  */
 public class MoviePageController {
 
@@ -69,7 +69,7 @@ public class MoviePageController {
             //loop through the WhatsOn objects adding them to the hashmap
             int moviecount1 = 0;
             for (int i = 0; i < whatsOn.length; i++) {
-                if(whatsOn[i].getStart_Time().substring(0, 10).equals(currentDate())) {
+                if (whatsOn[i].getStart_Time().substring(0, 10).equals(currentDate())) {
                     if (!movieMap.containsKey(whatsOn[i].getMovie_ID())) {
                         movieMap.put(whatsOn[i].getMovie_ID(), new ArrayList<>(Arrays.asList(whatsOn[i])));
                         //Store the different movies in an array
@@ -86,36 +86,36 @@ public class MoviePageController {
             //Loop through the lists of WhatsOn objects for each movie
             int movieCount2 = 0;
             int totalScreeningCount = 0;
-            for(ArrayList<WhatsOn> list : movieMap.values()){
+            for (ArrayList<WhatsOn> list : movieMap.values()) {
                 int screeningCount = 0;
                 setMovieLabel(movieCount2, movies[movieCount2]);
                 //Loop through each WhatsOn object
-                for (WhatsOn whatson : list){
+                for (WhatsOn whatson : list) {
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
                     screenIDs[movieCount2 * 3 + screeningCount] = whatson.getScreen_ID();
 
                     //Set the text of the labels and button
-                    Label label = movieLabels[totalScreeningCount/3];
-                    GridPane gridPane = (GridPane)label.getParent().getParent();
-                    HBox hbox = (HBox)gridPane.getChildren().get(1);
-                    VBox vBox = (VBox)hbox.getChildren().get(screeningCount);
-                    Label screenLabel = (Label)vBox.getChildren().get(1);
+                    Label label = movieLabels[totalScreeningCount / 3];
+                    GridPane gridPane = (GridPane) label.getParent().getParent();
+                    HBox hbox = (HBox) gridPane.getChildren().get(1);
+                    VBox vBox = (VBox) hbox.getChildren().get(screeningCount);
+                    Label screenLabel = (Label) vBox.getChildren().get(1);
                     screenLabel.prefWidthProperty().bind(hbox.widthProperty());
                     screenLabel.prefHeightProperty().bind(hbox.heightProperty());
-                    Button button = (Button)vBox.getChildren().get(0);
+                    Button button = (Button) vBox.getChildren().get(0);
                     button.prefHeightProperty().bind(hbox.heightProperty());
                     button.prefWidthProperty().bind(hbox.widthProperty());
 
                     screenLabel.setFont(new Font(30));
                     screenLabel.setText("Screen " + whatson.getScreen_ID());
 
-                    button.setText(whatson.getStart_Time().substring(11,16));
+                    button.setText(whatson.getStart_Time().substring(11, 16));
                     screeningCount++;
 
                 }
 
-                totalScreeningCount += (int)(Math.ceil((double)screeningCount/3) * 3);
+                totalScreeningCount += (int) (Math.ceil((double) screeningCount / 3) * 3);
                 movieCount2++;
             }
 
@@ -125,7 +125,8 @@ public class MoviePageController {
         }
     }
 
-    /** Run when a button is pressed on the moviesPage. Works out which movie is being selected as well as the
+    /**
+     * Run when a button is pressed on the moviesPage. Works out which movie is being selected as well as the
      * time and screen and passes this information to the ticket page controller
      *
      * @param event The event that took place
@@ -146,11 +147,10 @@ public class MoviePageController {
         //Get the screening ID and screen ID;
         int screeningID;
         int screenID;
-        if(button.getId().length() == 7) {
+        if (button.getId().length() == 7) {
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
             screenID = screenIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 1))];
-        }
-        else {
+        } else {
             screeningID = screeningIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2))];
             screenID = screenIDs[Integer.parseInt(button.getId().substring(button.getId().length() - 2))];
         }
@@ -164,7 +164,7 @@ public class MoviePageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ticketType.fxml"));
             TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
             loader.setController(controller);
-            Parent parent = (Parent)loader.load();
+            Parent parent = (Parent) loader.load();
             Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
             windowOld.close();
             Stage window = new Stage();
@@ -178,22 +178,23 @@ public class MoviePageController {
     }
 
 
-    /** Takes a given index and Movie object and sets the required label's text to the title of the movie
+    /**
+     * Takes a given index and Movie object and sets the required label's text to the title of the movie
      *
      * @param index The index of the label that is to be set
      * @param movie The Movie object that contains the title of the movie
      */
-    public void setMovieLabel(int index, Movie movie){
+    public void setMovieLabel(int index, Movie movie) {
         try {
             movieLabels[index].setText(movie.getMovie_Name());
             movieLabels[index].setFont(new Font(40));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println("Failed to retrieve movie");
         }
     }
 
-    public String currentDate(){
-        DateTimeFormatter dateFormatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public String currentDate() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime date = LocalDateTime.now();
         return dateFormatter.format(date);
     }

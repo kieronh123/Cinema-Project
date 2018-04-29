@@ -1,4 +1,3 @@
-##Classes that provide objects for the SQL tables to access
 #WhatsOn table
 class WhatsOn ():
     def __init__(self, Screening_ID, Movie_ID, Screen_ID, Start_Time,):

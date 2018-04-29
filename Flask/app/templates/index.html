@@ -12,15 +12,20 @@
             {%for day in daysOfWeek %}
             {% if day[0] == "Today"%}
             {% if day[0] == msg %}
-            <li class="active"><a href="{{ url_for('index')}}">{{day[0]}}</a></li>
+            <li class="active"><a href="{{ url_for('index')}}">{{day[0]}}</a>
+            </li>
             {%else%}
             <li><a href="{{ url_for('index')}}">{{day[0]}}</a></li>
             {%endif%}
             {% else %}
             {% if day[0] == msg %}
-            <li class="active"><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a></li>
+            <li class="active"><a
+                    href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a>
+            </li>
             {%else%}
-            <li><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a></li>
+            <li>
+                <a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a>
+            </li>
             {%endif%}
             {% endif %}
             {% endfor %}
@@ -32,7 +37,8 @@
     </div>
     <div class="col-sm-6">
         <div class="search-bar">
-            <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()"
+            <input type="text" name="search" value="" autocomplete="off"
+                   id="myinput" onkeyup="searchFunction()"
                    placeholder="Search">
         </div>
     </div>
@@ -52,8 +58,11 @@
                     <p>Actors: {{i[0].Movie_Actors}}</p>
                     {% for j in i[1] %}
                     {% if j.Start_Time[0:10] == date[0:10]%}
-                    <form name="seatselect" class="buttonForm" action="/seatselect/{{j.Screening_ID}}">
-                        <button type="submit" class="btn-time">{{j.Start_Time[11:16]}}</button>
+                    <form name="seatselect" class="buttonForm"
+                          action="/seatselect/{{j.Screening_ID}}">
+                        <button type="submit" class="btn-time">
+                            {{j.Start_Time[11:16]}}
+                        </button>
                     </form>
                     {%endif %}
                     {% endfor %}

@@ -1,6 +1,7 @@
 package Tills;
 
-/** Class representing a WhatsOn
+/**
+ * Class representing a WhatsOn
  */
 public class WhatsOn {
     private int Screening_ID;
@@ -15,8 +16,8 @@ public class WhatsOn {
         Start_Time = start_Time;
     }
 
-    public int getScreening_ID(){
-      return Screening_ID;
+    public int getScreening_ID() {
+        return Screening_ID;
     }
 
     public int getMovie_ID() {
