@@ -28,14 +28,14 @@
             {%for i in whatsons%}
             <li>
                   <div class="col-sm-8">
-                    <h3>{{i[0].Movie_Name}}</h3>
+                    <h3 id="{{i[0].Movie_Name}}">{{i[0].Movie_Name}}</h3>
                     <p>{{i[0].Movie_Info}}</p>
                     <p>Director: {{i[0].Movie_Director}}</p>
                     <p>Actors: {{i[0].Movie_Actors}}</p>
                     {% for j in i[1] %}
                         {% if j.Start_Time[0:10] == date[0:10]%}
                             <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
-                                <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
+                                <button name="time" type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
                             </form>
                         {%endif %}
                     {% endfor %}
