@@ -21,8 +21,6 @@ public class RobotTest
     double height = screenSize.getHeight();
     float xpos = (float)width;
     float ypos = (float)height;
-    System.out.println(width);
-    System.out.println(height);
     robot.setAutoDelay(40);
     robot.setAutoWaitForIdle(true);
     //140 first X
@@ -82,9 +80,9 @@ public class RobotTest
     //after confirm
     //Typing a negative
     type("-50");
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.749));
     leftClick();
-    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    robot.mouseMove((int)(xpos * 0.614), (int)(ypos* 0.25833));
     leftClick();
     for (int i = 0; i < 6; i++){
       robot.keyPress(KeyEvent.VK_BACK_SPACE);
@@ -92,9 +90,9 @@ public class RobotTest
     }
     //Typing a String
     type("abc");
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.749));
     leftClick();
-    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    robot.mouseMove((int)(xpos * 0.614), (int)(ypos* 0.25833));
     leftClick();
     for (int i = 0; i < 6; i++){
       robot.keyPress(KeyEvent.VK_BACK_SPACE);
@@ -102,13 +100,13 @@ public class RobotTest
     }
     //Typing a value that is lower than the amount due
     type("1");
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.749));
     leftClick();
-    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    robot.mouseMove((int)(xpos * 0.614), (int)(ypos* 0.25833));
     leftClick();
 
     //Returning to home
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.6379));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.619));
     leftClick();
 
     // robot.mouseMove(40, 160);
@@ -191,13 +189,13 @@ public class RobotTest
 
   private void receiptPageTest(float xpos, float ypos, String input){
     type(input);
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.749));
     leftClick();
     //Creating the PDF
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.66));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.688));
     leftClick();
     //Returning to home
-    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.6379));
+    robot.mouseMove((int)(xpos * 0.411), (int)(ypos* 0.619));
     leftClick();
   }
 }
