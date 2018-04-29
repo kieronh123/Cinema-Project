@@ -282,6 +282,8 @@ public class TicketPageController {
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Receipt.fxml"));
             PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
+            String filename = screeningID+"_"+row+"_"+column;
+            controller.generateQRCodeImage(filename);
             loader.setController(controller);
             Parent parent = loader.load();
             Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -22,7 +22,22 @@ import java.lang.*;
 import java.io.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import java.net.MalformedURLException;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.util.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
@@ -173,6 +188,46 @@ public class PaymentPageController {
     String amount =  new Double(total).toString();
     changeTF.setText(holdCash);
     amountDueTF.setText(amount);
+  }
+
+
+  public void generateQRCodeImage(String filename){
+    String filePath = "Flask/app/static/qr_codes/"+filename+".png";
+    int size = 290;
+    String fileType = "png";
+    File myFile = new File(filePath);
+    Hashtable hash = new Hashtable();
+    hash.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+    try {
+
+
+      QRCodeWriter qrCodeWriter = new QRCodeWriter();
+      BitMatrix byteMatrix = qrCodeWriter.encode(filename, BarcodeFormat.QR_CODE, size,
+      size, hash);
+
+      BufferedImage image = new BufferedImage(size, size,
+      BufferedImage.TYPE_INT_RGB);
+      image.createGraphics();
+
+      Graphics2D graphics = (Graphics2D) image.getGraphics();
+      graphics.setColor(Color.WHITE);
+      graphics.fillRect(0, 0, size, size);
+      graphics.setColor(Color.BLACK);
+
+      for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+          if (byteMatrix.get(i, j)) {
+            graphics.fillRect(i, j, 1, 1);
+          }
+        }
+      }
+      ImageIO.write(image, fileType, myFile);
+    } catch (WriterException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    System.out.println("\n\nYou have successfully created QR Code.");
   }
 
 }
