@@ -373,7 +373,11 @@ def tickets(id):
                     if booked == False:
                         #Add this seat with value False for the booked element
                         allSeats.append((i, j, False, (i, j)))
+
+
+
         #Display seat select page with the seats array of available/booked seats
+
         return render_template('seatselect.html', allSeats=allSeats)
 
 ##Function to store the seat the user has selected
@@ -431,6 +435,7 @@ def loginRequest():
     password = request.form.get('Password')
     password = password + "saltyquail"
     #If the password is of correct format then encode it with a hash
+
     if type(password) == str:
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
@@ -547,6 +552,12 @@ def payment(ticketType):
         return render_template('payment.html', ticketType=ticketType.title(), price=price,
             msg=None, Login=True, Name=card[0].Card_Name, CardNumber=card[0].Card_Number, ExpiryDate =card[0].Card_SortCode, SecurityCode = card[0].Card_SecurityCode )
 
+
+
+##Function to process payment on the webpage
+##Parameters: ticketType - the ticketype that the user is purchasing
+#             price - the price of the ticket
+#Returns - a render template depending on what happens with the payment.
 @app.route('/processPayment/<ticketType>/<price>', methods=['POST'])
 def processPayment(ticketType, price):
 
@@ -561,9 +572,11 @@ def processPayment(ticketType, price):
         if cardNumber and len(cardNumber) <= 19:
             if re.match('[0-9]{2}/[0-9]{2}', expiryDate):
                 if re.match('^[0-9]{3,4}$', securityCode):
+                    ## If payment is accepted, create qr code (which then sends it to the users email)
                     img = qr_code(ticketType.title(), price, name)
                     global REGISTER
                     if REGISTER==True:
+                        ## Save the card details
                         user = getUserByUsername(USER)
                         saveCardDetails(user.User_ID, name, cardNumber, expiryDate, securityCode)
                         REGISTER=False

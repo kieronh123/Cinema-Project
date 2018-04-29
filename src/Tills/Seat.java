@@ -5,8 +5,11 @@ public class Seat {
     public int Row_Num;
     public int Column_Num;
 
-    public Seat(){}
-
+    public Seat(int screening_ID, int row_Num, int column_Num) {
+        Screening_ID = screening_ID;
+        Row_Num = row_Num;
+        Column_Num = column_Num;
+    }
 
     public String toString() {
         return "Seats{" +
