@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 769px) {
     .dark{
       padding:15px;
       background:#35424a;
@@ -90,6 +90,7 @@
         font-size: 30px;
         box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
         overflow: hidden;
+
     }
 
     ul#wrapper{
@@ -109,7 +110,19 @@
       padding: 5px 10px 5px 10px;
       text-decoration: none;
     }
-
+    .btn-login {
+        width:80px;
+        height:45px;
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #000000;
+      font-size: 15px;
+      background: #ffffff;
+      padding: 5px 10px 5px 10px;
+      text-decoration: none;
+    }
     .btn-disable-seat {
         width:95px;
         height:55px;
@@ -182,21 +195,85 @@
       background: #3cb0fd;
     }
 
+    #PleaseSelectSeat h1{
+        text-align: center;
+    }
+    #CinemaScreen h1{
+        text-align: center;
+        background-color: #808080
+        color: #ffffff
+
+    }
+
+    .colored-block {
+           width: 100%;
+           padding: 30px 0px;
+           color: #fff;
+       }
+       .grey { background: grey; }
+
+}
+@media (max-width: 768px) {
+    footer{
+      padding:20px;
+      margin-top:20px;
+      color:#ffffff;
+      background-color:#000000;
+      text-align: center;
+    }
+
+    footer{
+      padding:20px;
+      margin-top:20px;
+      color:#ffffff;
+      background-color:#000000;
+      text-align: center;
+    }
+
+    header{
+        padding-bottom:20px;
+    }
 
     #PleaseSelectSeat h1{
         text-align: center;
     }
-
-    #selectTicket form{
+    #CinemaScreen h1{
+        text-align: center;
+        background-color: #808080
+        color: #ffffff
 
     }
-}
-@media (max-width: 767) {
+
+    ul#wrapper{
+        list-style: none;
+        margin-top: 100px
+    }
+
+    .colored-block {
+           width: 100%;
+           padding: 30px 0px;
+           color: #fff;
+       }
+       .grey { background: grey; }
+
+    input[type=text], input[type=password] {
+        color:black;
+    }
+    img{
+        width:50%;
+        margin:5px 5px 5px 5px;
+    }
+
+    .buttonForm{
+        float: left;
+        margin-right: 5px;
+    }
     .btn{
         width:50px;
         height:40px;
         text-align: center;
     }
+
     .btn-disable-seat {
         width:50px;
         height:40px;
@@ -237,6 +314,7 @@
       padding: 1px 2px 1px 2px;
       text-decoration: none;
     }
+
     .btn-time {
         width:50px;
         height:40px;
@@ -250,4 +328,21 @@
       padding: 1px 2px 1px 2px;
       text-decoration: none;
     }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .seat {
+      display: flex;
+      flex: 0 0 14.28571428571429%;
+      padding: 5px;
+      position: relative;
+    }
+
 }
