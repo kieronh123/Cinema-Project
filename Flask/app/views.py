@@ -314,7 +314,7 @@ def login():
 @app.route('/logout')
 def logout():
     global LOGIN
-    LOGIN == False
+    LOGIN = False
     return render_template('login.html', msg=None, header=False)
 
 
