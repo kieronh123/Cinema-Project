@@ -93,7 +93,7 @@ public class MoviePageController {
                 for (WhatsOn whatson : list){
                     //set the screening id
                     screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreening_ID();
-                    screeningIDs[movieCount2 * 3 + screeningCount] = whatson.getScreen_ID();
+                    screenIDs[movieCount2 * 3 + screeningCount] = whatson.getScreen_ID();
 
                     //Set the text of the labels and button
                     Label label = movieLabels[totalScreeningCount/3];
