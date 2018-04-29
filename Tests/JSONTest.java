@@ -24,14 +24,5 @@ public class JSONTest {
 
         assertThat(string, is((new Movie(1, "Batman Begins", "12A", "7200", "Man scared of bats dresses up to beat up people", "image_url1")).toString()));
     }
-
-    @Test
-    public void usersJsonTest(){
-        String usersString = "[{\"Username\": \"kieron.hushon@gmail.com\", \"Password\": \"5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8\", \"User_ID\": 1}, {\"Username\": \"alexander_hoare@homail.co.uk\", \"Password\": \"F52FBD32B2B3B86FF88EF6C490628285F482AF15DDCB29541F94BCF526A3F6C7\", \"User_ID\": 2}]";
-        User[] users = JSON.usersFromJson(usersString);
-        String[] stringArray = {users[0].toString(), users[1].toString()};
-
-        assertThat(stringArray[0], is((new User(1, "kieron.hushon@gmail.com", "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8")).toString()));
-        assertThat(stringArray[1], is((new User(2, "alexander_hoare@homail.co.uk", "F52FBD32B2B3B86FF88EF6C490628285F482AF15DDCB29541F94BCF526A3F6C7")).toString()));
-    }
+    
 }
