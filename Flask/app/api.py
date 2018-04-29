@@ -1,6 +1,4 @@
 from app import app
-import os
-import sys
 #Importing libraries used for database management, SQL and sending of data
 from flask import Flask, g, request, Response
 import sqlite3
