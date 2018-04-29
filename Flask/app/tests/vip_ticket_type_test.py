@@ -6,17 +6,16 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
 
-class TicketTypeTest(unittest.TestCase):
+class VipTicketTypeTest(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.driver.get("http://localhost:5000/seatselect/38")
+        self.driver.get("http://localhost:5000/seatselect/1")
 
     def tearDown(self):
         self.driver.close()
 
-
     def testSenior(self):
-        self.driver.find_element_by_name("(1, 1)").click()
+        self.driver.find_element_by_name("(3, 1)").click()
         ticketType = Select(self.driver.find_element_by_name("selectTicket"))
         ticketType.select_by_value("Senior")
 
@@ -24,10 +23,10 @@ class TicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Senior"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £4"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £6"
 
     def testChild(self):
-        self.driver.find_element_by_name("(1, 2)").click()
+        self.driver.find_element_by_name("(3, 1)").click()
         ticketType = Select(self.driver.find_element_by_name("selectTicket"))
         ticketType.select_by_value("Child")
 
@@ -35,10 +34,10 @@ class TicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Child"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £4"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £6"
 
     def testAdult(self):
-        self.driver.find_element_by_name("(1, 3)").click()
+        self.driver.find_element_by_name("(3, 1)").click()
         ticketType = Select(self.driver.find_element_by_name("selectTicket"))
         ticketType.select_by_value("Adult")
 
@@ -46,7 +45,7 @@ class TicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Adult"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £8"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £12"
 
 if __name__ == "__main__":
     unittest.main()
