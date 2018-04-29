@@ -250,7 +250,11 @@ public class TicketPageController {
         }
     }
 
-
+    /**
+     * Method processes the 
+     *
+     * @param event If the client wants a VIP ticket or not
+     */
     public void payment(ActionEvent event) {
         //Calculate the price of the ticket based on the type and if it is a VIP seat
         double price = 0;

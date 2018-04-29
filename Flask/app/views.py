@@ -417,17 +417,20 @@ def login():
 ##return: the login page
 @app.route('/logout')
 def logout():
+    #Set the global login variable to false and return them to login page
     global LOGIN
     LOGIN = False
     return render_template('login.html', msg=None, header=False)
 
-
+##Function to check if someone can be logged in
+##return: the index page if successful or the login page if there is an error
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
     # Get the details from the form
     username = request.form.get('Username')
     password = request.form.get('Password')
     password = password + "saltyquail"
+    
     if type(password) == str:
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
