@@ -53,7 +53,7 @@
                     {% for j in i[1] %}
                     {% if j.Start_Time[0:10] == date[0:10]%}
                     <form name="seatselect" class="buttonForm" action="/seatselect/{{j.Screening_ID}}">
-                        <button type="submit" class="btn-time"><a>{{j.Start_Time[11:16]}}</a></button>
+                        <button type="submit" class="btn-time">{{j.Start_Time[11:16]}}</button>
                     </form>
                     {%endif %}
                     {% endfor %}
