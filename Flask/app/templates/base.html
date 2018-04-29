@@ -2,40 +2,48 @@
 <!doctype html>
 <html>
 
-      <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Quail Cinema {% if title is defined %} - {% endif %} {{title}}</title>
-          <link rel="stylesheet" href="/static/style.css">
-          <!-- Latest compiled and minified CSS -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quail Cinema {% if title is defined %} - {% endif %} {{title}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-                <!-- Optional theme -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-                <script type="text/javascript" src=/static/functions/index.js></script>
-      </head>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src=/static/functions/index.js></script>
+</head>
 
-      <body>
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
+<body>
+<div class="row">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">Quail Cinema</a>
+                <a class="navbar-brand" href="#">Quail Cinema</a>
             </div>
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/"  name="home">Home</a></li>
-              <li><a href="/login" name="login">Log In</a></li>
-              <li><a href="/register" name="register">Join</a></li>
+                <li class="active"><a href="/" name="home">Home</a></li>
+                <li><a href="/login" name="login">Log In</a></li>
+                <li><a href="/register" name="register">Join</a></li>
             </ul>
-          </div>
-        </nav>
+        </div>
+    </nav>
+</div>
 
+<div class="row">
+    <div class="container">
+        {% block content %}{% endblock %}
     </div>
-      <div class="container">
-          {% block content %}{% endblock %}
-      </div>
+</div>
 
-  <footer>
-    <p>Quail, Copyright &copy; 2018</p>
-  </footer>
+<div class="row">
+    <footer>
+        <p>Quail, Copyright &copy; 2018</p>
+    </footer>
+</div>
+
 </body>
 </html>

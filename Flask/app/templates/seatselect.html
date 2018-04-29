@@ -2,11 +2,18 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1>Please Select A Seat</h1>
+        <div class="col-sm-4" id="leftBuffer1"></div>
+        <div class="col-sm-4">
+            <h1>Please Select A Seat</h1>
+        </div>
+        <div class="col-sm-4" id="rightBuffer"></div>
+
     </div>
 
+    <div class="col-sm-4" id="leftBuffer2"></div>
+
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-4" style="text-align=center;" id="seats">
             <ol class="theaterSeats">
                 {%for seat in allSeats%}
                 {%if seat[1] == 1%}
@@ -40,7 +47,7 @@
             </div>
         </div>
 
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <form id="selectTicket" action="/payment" method="post">
                 <select name="selectTicket">
                     <option value="Adult">Adult</option>

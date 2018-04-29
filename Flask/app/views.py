@@ -7,7 +7,7 @@ import re
 import os
 from flask import render_template, g, redirect, request, make_response
 
-import qrcode
+# import qrcode
 from PIL import Image as pimg
 
 from .models import WhatsOn, Movie, Booking, User, CardDetails
@@ -184,7 +184,8 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, check_same_thread=False)
     return db
 
-##On program close, close db connection
+##On program close, close dispatch_request
+
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
