@@ -3,7 +3,7 @@
 
 <div class="jumbotron text-center">
     <h1>Quail Cinema</h1>
-    <p>{{msg}}'s Movies</p>
+    <p id="name">{{msg}}'s Movies</p>
 </div>
 
 <nav class="navbar navbar-inverse">
@@ -12,15 +12,15 @@
         {%for day in daysOfWeek %}
             {% if day[0] == "Today"%}
                 {% if day[0] == msg %}
-                    <li class="active"><a href="{{ url_for('index')}}">{{day[0]}}</a></li>
+                    <li  class="active"><a href="{{ url_for('index')}}">{{day[0]}}</a></li>
                 {%else%}
-                    <li ><a href="{{ url_for('index')}}" >{{day[0]}}</a></li>
+                    <li><a href="{{ url_for('index')}}" >{{day[0]}}</a></li>
                 {%endif%}
             {% else %}
                 {% if day[0] == msg %}
                     <li class="active"><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a></li>
                 {%else%}
-                    <li ><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}" >{{day[0]}}</a></li>
+                    <li><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}" >{{day[0]}}</a></li>
                 {%endif%}
             {% endif %}
         {% endfor %}

@@ -84,21 +84,21 @@ public class testFields {
 //    });
 //  }
 
-  @Test
-  public void testMain() {
-    new Thread(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          // Do something
-          Thread.sleep(3000);
-        }
-        catch (InterruptedException e) {
-        }
-        System.exit(0);
-      }
-    }).start();
-
+//  @Test
+//  public void testMain() {
+//    new Thread(new Runnable() {
+//      @Override
+//      public void run() {
+//        try {
+//          // Do something
+//          Thread.sleep(3000);
+//        }
+//        catch (InterruptedException e) {
+//        }
+//        System.exit(0);
+//      }
+//    }).start();
+//
 //    Main.main();
-  }
+//  }
   }
