@@ -1,5 +1,6 @@
 package Tills.Controllers;
 
+import java.awt.image.BufferedImage;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -14,10 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.lang.*;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.io.*;
 /**
 
  * Controller class for the PaymentPage.fxml page
@@ -27,8 +27,6 @@ public class PaymentPageController {
   //Set FXML variables that match those in PaymentPage.fxml
 
 
-  @FXML
-  Label Date;
   @FXML
   Label FilmName;
   @FXML
@@ -47,9 +45,10 @@ public class PaymentPageController {
   TextField changeTF;
   @FXML
   Button returnHome;
-
   @FXML
-  private Button printPDF;
+  Button getChange;
+  @FXML
+  Button printPDF;
 
   public String time = null;
   public String name = null;
@@ -93,6 +92,11 @@ public class PaymentPageController {
       }
     });
 
+    getChange.setOnAction((Event) -> {
+      showChange();
+      keyReleased();
+    });
+
 
   }
 
@@ -102,9 +106,13 @@ public class PaymentPageController {
   Variables are still needed to update the fields.
   */
 
+
   @FXML
   public void PDF()throws IOException{
+    Image image1 = new Image(new FileInputStream("images/bird.jpg"));
+
     Document document = new Document();
+   // byte[] res  = image1.toByteArray();
     try{
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
       document.open();
@@ -129,11 +137,25 @@ public class PaymentPageController {
     }
   }
 
+
+  //Disables the use of a button to be clicked on.
+  // The Print PDF button is only visible when the Produce Change button has been clicked on.
   @FXML
   public void keyReleased(){
     String text = cashGivenTF.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
+  }
+
+  //Allows the change to be viewable in Textfields after purchasing a ticket.
+  //(Cash Simulation).
+  public void showChange(){
+    double holdPayment = Double.valueOf(cashGivenTF.getText().toString());
+    double holdingChange = holdPayment - total;
+    String holdCash = new Double(holdingChange).toString();
+    String amount =  new Double(total).toString();
+    changeTF.setText(holdCash);
+    amountDueTF.setText(amount);
   }
 
 }
