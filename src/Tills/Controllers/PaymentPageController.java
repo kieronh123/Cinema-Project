@@ -262,6 +262,29 @@ public class PaymentPageController {
     return total;
   }
 
+  /**
+   * Fetches the row as a string
+   * @return String row - the row
+   */
+  public String getRow(){
+    return row;
+  }
+
+  /**
+   * Fetches the column as a string
+   * @return String column - the column
+   */
+  public String getColumn(){
+    return column;
+  }
+
+  /**
+   * Fetches the screeningID as a string
+   * @return int screeningID - the screeningID
+   */
+  public int getScreeningID(){
+    return screeningID;
+  }
 
 /**
  * Function to generate qr code and save in qr_codes folder
