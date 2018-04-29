@@ -23,7 +23,7 @@ class VipTicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Senior"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £6"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £6.0"
 
     def testChild(self):
         self.driver.find_element_by_name("(3, 2)").click()
@@ -34,7 +34,7 @@ class VipTicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Child"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £6"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £6.0"
 
     def testAdult(self):
         self.driver.find_element_by_name("(3, 3)").click()
@@ -45,7 +45,7 @@ class VipTicketTypeTest(unittest.TestCase):
         time.sleep(1)
 
         assert self.driver.find_element_by_id("Ticket Type").text == "Ticket Type: Adult"
-        assert self.driver.find_element_by_id("Price").text == u"Total: £12"
+        assert self.driver.find_element_by_id("Price").text == u"Total: £12.0"
 
 if __name__ == "__main__":
     unittest.main()
