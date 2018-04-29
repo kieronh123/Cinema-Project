@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set title = "Select Seat" %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -17,14 +18,15 @@
         <div class="col-sm-3">
         </div>
             <div class="col-sm-6">
-                <section id="PleaseSelectSeat">
-                    <h1>Please Select A Seat</h1>
+                <section id="CinemaScreen">
+                    <div class="colored-block grey">
+                        <h1 class="Screen">Screen</h1>
+                    </div>
                 </section>
             </div>
         <div class="col-sm-3">
         </div>
     </div>
-
 
     <div class="col-sm-3">
     </div>
@@ -40,7 +42,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -48,7 +50,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="submit" class="btn-vip-seats btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" class="btn-vip-seats btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -58,7 +60,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -66,7 +68,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="submit" class="btn-seats btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" class="btn-seats btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>

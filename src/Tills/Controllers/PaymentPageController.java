@@ -39,7 +39,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
-
+import javafx.beans.value.ChangeListener;
 
 
 /**
@@ -128,9 +128,16 @@ public class PaymentPageController {
     });
 
     getChange.setOnAction((Event) -> {
-      showChange();
-      keyReleased();
+      if(isNumeric(new Double(total).toString(),cashGivenTF.getText())) {
+        showChange();
+        keyReleased();
+      }
     });
+
+    amountDueTF.setOnAction((Event) -> {
+
+    });
+
 
 
   }
@@ -257,4 +264,24 @@ public class PaymentPageController {
     System.out.println("\n\nYou have successfully created QR Code.");
   }
 
+
+  public static boolean isNumeric(String amountdue, String amountgiven)
+  {
+    double d;
+    double f;
+    try {
+      d = Double.parseDouble(amountdue);
+      f = Double.parseDouble(amountgiven);
+    }
+    catch(NumberFormatException nfe) {
+      return false;
+    }
+
+    if (d > f) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
 }

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set title = "Log In" %}
 {% block content %}
     <div class="jumbotron text-center">
         <h1>{{error}}</h1>
@@ -9,15 +10,7 @@
             <button type = "submit"><a>RETURN HOME</a> </button>
         </form>
         <form name="seatselect" class="buttonForm" action ="/logout">
-            <button type = "submit"><a>LOGOUT</a> </button>
+            <button name="logout" type = "submit"><a>LOG OUT</a> </button>
         </form>
     </div>
-
-    <div class="container">
-        <form name="seatselect" class="buttonForm" action ="/logout">
-            <button type = "submit"><a>LOG OUT</a> </button>
-        </form>
-    </div>
-
-
 {% endblock %}

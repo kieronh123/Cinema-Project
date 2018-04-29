@@ -27,11 +27,15 @@
     </ul>
 </nav>
 
-
-<div class="col-sm-12">
-    <div class="search-bar">
-        <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search">
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+        <div class="col-sm-6">
+            <div class="search-bar">
+                <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search">
+                </div>
         </div>
+    <div class="col-sm-3">
     </div>
 </div>
 
@@ -48,7 +52,8 @@
                     {% for j in i[1] %}
                         {% if j.Start_Time[0:10] == date[0:10]%}
                             <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
-                                <button type="submit" class="btn-time"><a>{{j.Start_Time[11:16]}}</a></button>
+
+                                <button type="submit" class="btn-time"><a>{{j.Start_Time[11:16]}}</a></input>
                             </form>
                         {%endif %}
                     {% endfor %}
@@ -62,5 +67,5 @@
             </li>
             {% endfor %}
 
-
+</ul>
 {% endblock %}

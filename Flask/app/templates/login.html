@@ -22,10 +22,10 @@
                     <label>Password</label><br>
                     <input type="Password" name="Password" placeholder="Password">
                 </div>
-                <input name="login" type="submit" value="Log In">
+                <button name="login" class="btn-login" type="submit" value="Log In">
             </form>
             <form action="/register">
-                <input name="join" type="submit" value ="join">
+                <button name="join" class="btn-login" type="submit" value ="join"><a>Join</a></button>
             </form>
         </div>
         <label name="message">{%if msg is not none%} {{msg}} {%endif%} </label>

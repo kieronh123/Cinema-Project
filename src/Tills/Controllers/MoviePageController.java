@@ -157,7 +157,7 @@ public class MoviePageController {
 
 
         System.out.println("Screen: " + screenID);
-        System.out.println("Screening ID" + screeningID);
+        System.out.println("Screening ID: " + screeningID);
 
         try {
             //Load the ticket page with the selected name and time
