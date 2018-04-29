@@ -230,6 +230,16 @@ public class PaymentPageController {
     return total;
   }
 
+
+/**
+ * Function to generate qr code and save in qr_codes folder
+ *
+ * The data that the qr code holds is: scrreningID, row, column of the seat booked
+ *
+ * @param filename - the filename of the qr code
+ *
+ *
+ */
   public void generateQRCodeImage(String filename){
     String filePath = "Flask/app/static/qr_codes/"+filename+".png";
     int size = 290;
