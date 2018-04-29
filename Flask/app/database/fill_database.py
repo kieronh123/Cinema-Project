@@ -5,6 +5,10 @@
 import sqlite3
 #Importing random to create random test data
 import random
+
+from datetime import datetime
+from datetime import timedelta
+
 #Connecting to database
 db = sqlite3.connect('cinema.db')
 cursor = db.cursor()
@@ -13,7 +17,7 @@ cursor = db.cursor()
 id1 = 1
 username1 = 'kieron.hushon@gmail.com'
 #SHA256 hash of 'password'
-password1 = '5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8'
+password1 = '56564387AE573084485D94C7BEBF8907BABF4EAA5B409C0A9C9C23F24D5C848E'
 
 id2 = 2
 username2 = 'alexander_hoare@homail.co.uk'
@@ -29,7 +33,7 @@ movie_Runtime1 = 7200
 movie_Info1 = 'Man scared of bats dresses up to beat up people'
 movie_Director1 = 'Christopher Nolan'
 movie_Actors1 = 'Christian Bale, Danny Nay, Natalie Portman'
-movie_Image1 = 'image_url1'
+movie_Image1 = '../static/img/Batman_Begins.jpg'
 
 movie_Id2 = 2
 movie_Name2 = 'Superman: Man of Steel'
@@ -38,7 +42,7 @@ movie_Runtime2 = 8400
 movie_Info2 = 'Is it a bird, is it a plane? No its Superman!'
 movie_Director2 = 'Michael Bay'
 movie_Actors2 = 'Gary Oldman, Gary Coleman, Gary Newman'
-movie_Image2 = 'image_url2'
+movie_Image2 = '../static/img/Man_Of_Steel.jpg'
 
 movie_Id3 = 3
 movie_Name3 = 'Frozen'
@@ -47,7 +51,7 @@ movie_Runtime3 = 7200
 movie_Info3 = 'Princess with hypothermia estranges her family'
 movie_Director3 = 'M. Night Shamalamalan'
 movie_Actors3 = 'Beneictus Chrimblesnatch, Sting, Dimitri Popov'
-movie_Image3 = 'image_url3'
+movie_Image3 = '../static/img/Frozen.jpg'
 
 movie_Id4 = 4
 movie_Name4 = 'The Great Escape'
@@ -56,7 +60,7 @@ movie_Runtime4 = 5400
 movie_Info4 = 'Man who loves tunnels digs out of camp'
 movie_Director4 = 'Alfred Hitchcock'
 movie_Actors4 = 'Steve McQueen, Killian Reestein'
-movie_Image4 = 'image_url4'
+movie_Image4 = '../static/img/The_Great_Escape.jpg'
 
 movie_Id5 = 5
 movie_Name5 = 'Pirates of the Carribean: The Black Pearl'
@@ -65,7 +69,7 @@ movie_Runtime5 = 9000
 movie_Info5 = 'Man with alcohol problem steals ships and pretends to be a captain'
 movie_Director5 = 'Stephen Spielberg'
 movie_Actors5 = 'Johnny Depp, Kiera Knightly, Legolas'
-movie_Image5 = 'image_url5'
+movie_Image5 = '../static/img/Curse_Of_The_Black_Pearl.jpg'
 
 movie_Id6 = 6
 movie_Name6 = 'Scary Movie III'
@@ -74,7 +78,7 @@ movie_Runtime6 = 7800
 movie_Info6 = 'Spooky stuff occurs in this spooky movie'
 movie_Director6 = 'Quentin Tarentino'
 movie_Actors6 = 'Danny Dyer, Ray Winston'
-movie_Image6 = 'image_url6'
+movie_Image6 = '../static/img/Scary_Movie3.jpg'
 
 
 ##Initial whats on movie information
@@ -295,9 +299,8 @@ b_Col3 = 5 #Bookings column
 b_Row3 = 5 #Bookings row
 
 day = 3
-time1 = "09:00:00"
-time2 = "13:00:00"
-time3 = "16:00:00"
+
+now = datetime.now()
 
 id_counter = 37
 for j in range(0, 12): #12 new days
@@ -306,20 +309,25 @@ for j in range(0, 12): #12 new days
             wo_ids = id_counter
             wo_movies = i + 1
             wo_screens = i + 2
-            if len(str(day)) == 1:
-                daystring = "0" + str(day)
-            else:
-                daystring = str(day)
             if y == 0:
-                wo_times = "2018-04-" + daystring + "T" + time1
+                randhour = random.randint(6, 12)
+                now = now.replace(hour=randhour,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 1:
-                wo_times = "2018-04-" + daystring + "T" + time2
+                randhour = random.randint(15, 17)
+                now = now.replace(hour=randhour,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             elif y == 2:
-                wo_times = "2018-04-" + daystring + "T" + time3
+                randhour = random.randint(19, 22)
+                now = now.replace(hour=randhour,minute=0,second=0)
+                newnow = str(now)
+                wo_times = newnow[:10] + "T" + newnow[11:-7]
             cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
                                                 Values(?,?,?,?)''',(wo_ids, wo_movies, wo_screens, wo_times))
             id_counter = id_counter + 1
-    day = day + 1
+    now = now + timedelta(days=1)
 
 
 #Entering values into cinema.db tables

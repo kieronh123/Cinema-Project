@@ -6,34 +6,11 @@ from flask import Flask, g, request, Response
 import sqlite3
 import json
 
-import smtplib
-import imghdr
-from email.message import EmailMessage
+
+
 
 DATABASE = 'app/database/cinema.db'
 
-##Function to email ticket to user
-#Parameters:    <NONE>
-@app.route("/sendticket", methods=['POST'])
-def send_ticket():
-    #Fetch and parse data sent by POST request
-    data = str(request.form['data'])
-    who_to, u_id, t_id = data.split(",")
-    #Forming filename
-    file_name = u_id + "_" + t_id
-    #Constructing basics of email
-    msg = EmailMessage()
-    msg['Subject'] = "Your Team Quail Cinema Ticket"
-    msg['From'] = "Team_Quail"
-    msg['To'] = who_to
-    # Open the new image to send
-    with open("qr_codes" + file_name + ".PNG", 'rb') as fp:
-        img_data = fp.read()
-        msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
-    # Send the email via our own SMTP server.
-    with smtplib.SMTP('localhost') as s:
-        s.send_message(msg)
-    return "{Status: 200}"
 
 ##Function to execute an SQL query
 #Parameters:    SQL query as string
@@ -50,12 +27,14 @@ def execute_query(query, method):
                        for i, value in enumerate(row)) for row in c.fetchall()]
             json_output = json.dumps(r)
             #Place data in JSON and return
+            conn.close()
             return json_output
         elif method == 'POST' or method == 'DELETE':
             #Run the query
             c.execute(query)
             #Commit the changes
             conn.commit()
+            conn.close()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         #If an error occurs return 400 in JSON

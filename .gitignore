@@ -21,3 +21,9 @@ cinema.db
 
 #Removing tmp
 tmp
+
+#log file from website tests
+geckodriver.log
+
+#Stop tracking of generated Qr codes
+Flask/app/static/qr_codes/*

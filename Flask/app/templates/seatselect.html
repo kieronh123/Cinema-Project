@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="center">
-    <div class="center">
-        <div class="centerText">
-            <div class="row">
-                <h1>Please Select A Seat</h1>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <h1>Please Select A Seat</h1>
     </div>
 
-    <div class="center">
-        <div class="row">
+    <div class="row">
+        <div class="col-sm-7">
             <ol class="theaterSeats">
                 {%for seat in allSeats%}
                 {%if seat[1] == 1%}
                 <li class="row row--1">
-                {% endif %}
+                    {% endif %}
                     {% if seat[2] == True %}
                     <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                         <ol class="seats" type="A">
@@ -28,37 +24,31 @@
                     <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                         <ol class="seats" type="A">
                             <li class="seat">
-                                <button type="submit" class="btn"><a>{{seat[3]}}</a></button>
-                                <!-- <input type="checkbox" id="{{seat[3]}}" ></input>
-                                <label for="{{seat[3]}}">{{seat[3]}}</label> -->
+                                <button type="submit" class="btn btncenter">{{seat[3]}}</button>
                             </li>
                         </ol>
                     </form>
                     {% endif %}
-
                     {%endfor%}
-
             </ol>
+
+
+            <div class="row">
+                <form class="buttonForm">
+                    <button name="Confirm" type="submit" class="btnback" form="selectTicket">Confirm</button>
+                </form>
+            </div>
         </div>
-        <form id="selectTicket" action="/payment" method="post">
-            <select name="selectTicket">
-                <option value="Adult">Adult</option>
-                <option value="Child">Child</option>
-                <option value="Senior">Senior</option>
-            </select>
-        </form>
-    </div>
 
-    <div class="center">
-        <div class="row">
-
-            <form class="buttonForm">
-                <!-- <button class="btnback">Back</button> -->
-                <button type = "submit" class="btnback" form= "selectTicket">Confirm</a></button>
-            </form>
+        <div class="col-sm-5">
+            <form id="selectTicket" action="/payment" method="post">
+                <select name="selectTicket">
+                    <option value="Adult">Adult</option>
+                    <option value="Child">Child</option>
+                    <option value="Senior">Senior</option>
+                </select>
             </form>
         </div>
     </div>
-
 </div>
 {% endblock %}

@@ -10,34 +10,43 @@
     <ul class="nav navbar-nav">
         {%for day in daysOfWeek %}
             {% if day[0] == msg %}
-                <li class="active"><a href="{{ url_for('day', choice=day)}}">{{day[0]}}</a></li>
+                <li class="active"><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}">{{day[0]}}</a></li>
             {%else%}
-                <li ><a href="{{ url_for('day', choice=day)}}" >{{day[0]}}</a></li>
+                <li ><a href="{{ url_for('day', choiceDay=day[0], choiceDate=day[1])}}" >{{day[0]}}</a></li>
             {%endif%}
         {% endfor %}
+        <li>
+          <div class="pull-right search-bar">
+              <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search">
+          </div>
+      </li>
     </ul>
 </nav>
 
-<div class="container">
-    {%for i in whatsons%}
-        <div class="row">
-          <div class="col-sm-8">
-            <h3>{{i[0].Movie_Name}}</h3>
-            <p>{{i[0].Movie_Info}}</p>
-            <p>Director: {{i[0].Movie_Director}}</p>
-            <p>Actors: {{i[0].Movie_Actors}}</p>
-            {% for j in i[1] %}
-                <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
-                    <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
-                </form>
+<ul id = "wrapper">
+        <div class="container">
+            {%for i in whatsons%}
+            <li>
+                  <div class="col-sm-8">
+                    <h3>{{i[0].Movie_Name}}</h3>
+                    <p>{{i[0].Movie_Info}}</p>
+                    <p>Director: {{i[0].Movie_Director}}</p>
+                    <p>Actors: {{i[0].Movie_Actors}}</p>
+                    {% for j in i[1] %}
+                        {% if j.Start_Time[0:10] == date[0:10]%}
+                            <form name="seatselect" class="buttonForm" action ="/seatselect/{{j.Screening_ID}}">
+                                <button type="submit" class="btn"><a>{{j.Start_Time[11:16]}}</a></button>
+                            </form>
+                        {%endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col-sm-4">
+
+                    <img src="/static/img/{{i[0].Movie_Image[14:]}}">
+                  </div>
+            </li>
             {% endfor %}
-          </div>
-          <div class="col-sm-4">
-            <img src="img/cacw.jpg">
-          </div>
-
         </div>
-    {% endfor %}
-</div>
 
+</ul>
 {% endblock %}
