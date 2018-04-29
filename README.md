@@ -11,9 +11,9 @@ The system also provides:
 
  	A website allowing for customers to book tickets and manage their booking online
 
- 	A SQLite3 Server run on Flask using the REST API to allow for simple requests to be made by the 	above systems about movie information using a custom API.
+ 	A SQLite3 Server run on Flask using the REST API to allow for simple requests to be made by the above systems about movie information using a custom API.
 
- 	Account login system to allow for customers to manage bookings securely with SHA256 hashing and 	salting.
+ 	Account login system to allow for customers to manage bookings securely with SHA256 hashing and salting.
 
  	Printable dynamic tickets for customer's use both in the cinema and at home.
 
