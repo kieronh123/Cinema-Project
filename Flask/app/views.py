@@ -26,6 +26,7 @@ DATABASE = 'app/database/cinema.db'
 #Parameters: email_address - the email address that we are sending to
 #            file_name - the file name of the stored qr code to be sent
 #            name - the name of the reciever of the email.
+#Return: status code
 def send_ticket(email_address, file_name, name):
     #Fetch and parse data sent by POST request
 
@@ -36,6 +37,7 @@ def send_ticket(email_address, file_name, name):
     print(info_for_email)
     movie_of_purchase = getMoviebyID(int(info_for_email.Movie_ID))
     date_and_time = info_for_email.Start_Time.split("T")
+
     #Constructing basics of email
     msg = EmailMessage()
     msg['Subject'] = "Your Team Quail Cinema Ticket"
@@ -44,12 +46,11 @@ def send_ticket(email_address, file_name, name):
     msg.set_content("Hi "+name+" , \n You are seeing "+ movie_of_purchase.Movie_Name+" on "+str(date_and_time[0])+" at "+str(date_and_time[1])+ " in screen "+ str(info_for_email.Screen_ID)+ " in seat "+str(seat)+
                     "\n Your ticket is attatched below, thank you for using Quail Cinemas.")
     # Open the new image to send
-    #os.chdir("app/static/qr_codes")
     cwd = os.getcwd()
     with open(cwd + "/app/static/qr_codes/" + file_name +".png", 'rb') as fp:
         img_data = fp.read()
         msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
-    #os.chdir("../..")
+
     # Send the email via our own SMTP server.
     with smtplib.SMTP('localhost') as s:
         s.send_message(msg)
@@ -58,7 +59,9 @@ def send_ticket(email_address, file_name, name):
 ##Function to execute an SQL query
 ##Parameters: query - the sql query
 #             method - the type of request e.g. get, post etc.
+#Return: status code
 def execute_query(query, method):
+    #open connection
     conn = get_db()
     c = conn.cursor()
     try:
@@ -66,8 +69,6 @@ def execute_query(query, method):
             c.execute(query)
             r = [dict((c.description[i][0], value)
                       for i, value in enumerate(row)) for row in c.fetchall()]
-            # json_output = json.dumps(r)
-            # conn.close()
             return r
         elif method == 'POST' or method == 'DELETE':
             c.execute(query)
@@ -79,6 +80,7 @@ def execute_query(query, method):
 
 ##function to get all the movies in the database
 ## returns a list of each movie and it's attributes
+#Return: array of movies
 def getMovies():
     movies_db = execute_query("SELECT * FROM MOVIES;", "GET")
     movies = []
@@ -90,6 +92,7 @@ def getMovies():
     return movies
 
 ##Function to get a specific movie by it's ID
+##Parameters: id - the movie ID
 def getMoviebyID(id):
     movie = execute_query("SELECT * FROM MOVIES where Movie_ID=%s" % id, "GET")
     if movie:
@@ -98,6 +101,7 @@ def getMoviebyID(id):
                      item["Movie_Info"], item["Movie_Image"], item["Movie_Director"], item["Movie_Actors"])
 
 ##Function to get all of the whats on table
+#Return: array of whats on's
 def getWhatsOn():
     screenings = execute_query("SELECT * FROM Whats_On;", "GET")
     whatson = []
@@ -108,6 +112,8 @@ def getWhatsOn():
     return whatson
 
 ##Get a specific whats on based on a given movie ID
+##Parameters: id - the movie ID
+##Return: whatson - a specific whats on in the table
 def getWhatsOnByMovieID(id):
     screenings = execute_query("SELECT * FROM Whats_On where Movie_ID=%s;" % id, "GET")
     whatson = []
@@ -116,6 +122,10 @@ def getWhatsOnByMovieID(id):
         whatson.append(getWhatsOnbyID(idScreening["Screening_ID"]))
     return whatson
 
+
+##Get a specific whats on via it's screening ID
+##parameters: id - the screening ID
+##Return: specific whatson
 def getWhatsOnbyID(id):
     whatson = execute_query("SELECT * FROM Whats_On where Screening_ID=%s;" % id, "GET")
     if whatson:
@@ -123,12 +133,17 @@ def getWhatsOnbyID(id):
         return WhatsOn(item["Screening_ID"], item["Movie_ID"], item["Screen_ID"], item["Start_Time"])
 
 ##Get a specific user by their ID
+##Parameters: id - the users ID
+##Return: user - the specific users information from the database
 def getUserbyID(id):
     user = execute_query("SELECT * FROM Users where User_ID=%s;" % id, "GET")
     if user:
         item = user[0]
         return User(item["User_ID"], item["Username"], item["Password"])
 
+##Get a users infomration by their username
+##Parameters: Username - the username of the user
+##Return: specific users information
 def getUserByUsername(username):
     user = execute_query("SELECT * FROM Users where Username=%s;" % ("\"" + username + "\""), "GET")
     if user:
@@ -136,6 +151,8 @@ def getUserByUsername(username):
         return User(item["User_ID"], item["Username"], item["Password"])
 
 ##Add a user to the database, with their username (email) and password
+##Parameters: username - the username
+#            password - the users password
 def addUser(username, password):
     conn = get_db()
     c = conn.cursor()
@@ -160,6 +177,8 @@ def saveCardDetails(user_id, name, cardNumber, sortCode, securityCode):
     execute_query(query, "POST")
 
 ##Function to get a users card details based on their ID
+##Parameters: id - the user ID
+##return - specific users card details from database
 def getCardDetails(id):
     carddetail = execute_query("SELECT * FROM Card_Details where User_ID=%s;" % id, "GET")
     carddetails = []
@@ -168,6 +187,8 @@ def getCardDetails(id):
     return carddetails
 
 #Simple caesarcypher
+##Parameters: string - the int to be converted to string, then encrypted
+##return: cypher
 def encyptInt(string):
     string = str(string)
     cypher = ""
@@ -176,6 +197,8 @@ def encyptInt(string):
     return cypher
 
 ##Simple decryption
+##Parameters: String - the string to be decrypted
+#Return: the decyphered string
 def decryptInt(string):
     decypher = ""
     for c in string:
@@ -184,6 +207,8 @@ def decryptInt(string):
 
 
 ##Get a specific Screening (booking) by screening ID
+##Parameters: id - the screening ID
+##return: all of the bookings that are in the specified screening ID
 def getBookingbyID(id):
     booking = execute_query("SELECT * FROM Bookings where Screening_ID=%s;" % id, "GET")
     bookings = []
@@ -192,6 +217,9 @@ def getBookingbyID(id):
     return bookings
 
 ##Function to add a booking, takes in the screening, row and column
+##Parameters: screening - the screening ID
+#             row - the row of the seat booked
+#             column - the column of the seat booked
 def addBooking(screening, row, column):
     conn = get_db()
     c = conn.cursor()
@@ -202,6 +230,7 @@ def addBooking(screening, row, column):
     execute_query(query, "POST")
 
 ##Get the database
+#return - the databse
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
