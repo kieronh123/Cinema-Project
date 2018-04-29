@@ -77,13 +77,20 @@ public class PaymentPageController {
   public String name = null;
   public String seat = null;
   public double total = 0;
+  public String row = null;
+  public String column = null;
+  public int screeningID = 0;
 
 
-  public PaymentPageController( String time, String filmName, String seat, double price) {
+
+  public PaymentPageController( String time, String filmName, String seat, double price, String row, String column, int screeningID) {
     this.time = time;
     this.name = filmName;
     this.seat = seat;
     this.total = price;
+    this.row = row;
+    this.column = column;
+    this.screeningID = screeningID;
   }
 
 
@@ -109,7 +116,8 @@ public class PaymentPageController {
     printPDF.setOnAction((Event) -> {
       try {
         keyReleased();
-        PDF("38_4_2");
+
+        PDF(screeningID+"_"+row+"_"+column);
       } catch (Exception e) {
         e.printStackTrace();
       }
