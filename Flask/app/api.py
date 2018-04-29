@@ -7,32 +7,10 @@ import sqlite3
 import json
 
 
-import smtplib
-import imghdr
-from email.message import EmailMessage
+
 
 DATABASE = 'app/database/cinema.db'
 
-##Function to email ticket to user
-#Parameters:    <NONE>
-def send_ticket(email_address, file_name):
-    #Fetch and parse data sent by POST request
-
-    #Forming filename
-
-    #Constructing basics of email
-    msg = EmailMessage()
-    msg['Subject'] = "Your Team Quail Cinema Ticket"
-    msg['From'] = "Team_Quail"
-    msg['To'] = who_to
-    # Open the new image to send
-    with open("app/static/qr_codes/" + file_name + ".PNG", 'rb') as fp:
-        img_data = fp.read()
-        msg.add_attachment(img_data, maintype='image', subtype=imghdr.what(None, img_data))
-    # Send the email via our own SMTP server.
-    with smtplib.SMTP('localhost') as s:
-        s.send_message(msg)
-    return "{Status: 200}"
 
 ##Function to execute an SQL query
 #Parameters:    SQL query as string

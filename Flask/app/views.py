@@ -63,10 +63,12 @@ def execute_query(query, method):
             r = [dict((c.description[i][0], value)
                       for i, value in enumerate(row)) for row in c.fetchall()]
             # json_output = json.dumps(r)
+            conn.close()
             return r
         elif method == 'POST' or method == 'DELETE':
             c.execute(query)
             conn.commit()
+            conn.close()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         return "{Status:400}"
