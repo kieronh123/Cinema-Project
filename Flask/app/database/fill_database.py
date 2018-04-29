@@ -13,17 +13,32 @@ from datetime import timedelta
 db = sqlite3.connect('cinema.db')
 cursor = db.cursor()
 
+
 ##Initial user information
 id1 = 1
 username1 = 'kieron.hushon@gmail.com'
 #SHA256 hash of 'password'
-password1 = '5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8'
+password1 = '56564387AE573084485D94C7BEBF8907BABF4EAA5B409C0A9C9C23F24D5C848E'
 
 id2 = 2
 username2 = 'alexander_hoare@homail.co.uk'
 #SHA256 hash of 'hunter2'
 #password2 = 'F52FBD32B2B3B86FF88EF6C490628285F482AF15DDCB29541F94BCF526A3F6C7'
 password2 = 'e85c15f396d69cbe9f6d080dae41f7b512223b8a4ab32c162ca296cc5a3dd931'
+
+
+##Card details
+c_uid1 = 1
+c_n1 = "Alexander Hoare"
+c_num1 = "BBBBCCCCDDDDEEEE"
+ce1 = "02/20"
+c_s1 = "BBE"
+
+c_uid2 = 2
+c_n2 = "Kieron Hushon"
+c_num2 = "FFFFGGGGHHHHIIII"
+ce2 = "05/21"
+c_s2 = "FFF"
 
 ##Initial movie information
 movie_Id1 = 1
@@ -486,6 +501,19 @@ cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
 
 cursor.execute('''INSERT INTO Bookings(Screening_ID, Row_Num, Column_Num)
                                     VALUES(?,?,?)''', (b_Id3, b_Row3, b_Col3))
+
+cursor.execute('''INSERT INTO Card_Details(User_ID, Card_Name, Card_Number, Card_SortCode, Card_SecurityCode)
+                                    VALUES(?,?,?,?,?)''', (c_uid1, c_n1, c_num1, ce1, c_s1))
+
+cursor.execute('''INSERT INTO Card_Details(User_ID, Card_Name, Card_Number, Card_SortCode, Card_SecurityCode)
+                                    VALUES(?,?,?,?,?)''', (c_uid2, c_n2, c_num2, ce2, c_s2))
+
+# c_uid2 = 2
+# c_n2 = "Kieron Hushon"
+# c_num2 = "FFFFGGGGHHHHIIII"
+# ce2 = "05/21"
+# c_s2 = "FFF"
+
 #Committing changes to cinema.db
 db.commit()
 db.close()

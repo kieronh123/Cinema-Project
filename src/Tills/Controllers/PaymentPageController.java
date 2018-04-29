@@ -1,9 +1,12 @@
 package Tills.Controllers;
+//package com.concretepage; //Alex
 
+//import java.awt.image.BufferedImage;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,9 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.lang.*;
-
+// import javafx.scene.image.Image;
+// import javafx.scene.image.ImageView;
+import java.io.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+
+
 
 /**
 
@@ -27,8 +35,6 @@ public class PaymentPageController {
   //Set FXML variables that match those in PaymentPage.fxml
 
 
-  @FXML
-  Label Date;
   @FXML
   Label FilmName;
   @FXML
@@ -47,9 +53,10 @@ public class PaymentPageController {
   TextField changeTF;
   @FXML
   Button returnHome;
-
   @FXML
-  private Button printPDF;
+  Button getChange;
+  @FXML
+  Button printPDF;
 
   public String time = null;
   public String name = null;
@@ -87,10 +94,15 @@ public class PaymentPageController {
     printPDF.setOnAction((Event) -> {
       try {
         keyReleased();
-        PDF();
-      } catch (IOException e) {
+        PDF("38_4_2");
+      } catch (Exception e) {
         e.printStackTrace();
       }
+    });
+
+    getChange.setOnAction((Event) -> {
+      showChange();
+      keyReleased();
     });
 
 
@@ -102,25 +114,38 @@ public class PaymentPageController {
   Variables are still needed to update the fields.
   */
 
+
   @FXML
-  public void PDF()throws IOException{
+  public void PDF(String qr_code_file) throws Exception{
+    Image img = Image.getInstance("Flask/app/static/qr_codes/" + qr_code_file + ".png");
+    img.setAbsolutePosition(300, 500);
     Document document = new Document();
+   // byte[] res  = image1.toByteArray();
     try{
-      PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
+      PdfWriter.getInstance(document, new FileOutputStream("Flask/app/static/pdf_tickets/" + qr_code_file + ".pdf"));
       document.open();
       Paragraph ticketText = new Paragraph();
-      ticketText.add("\n******************************************************");
-      ticketText.add("\n*                         Ticket                     *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add(String.format("\n*%s                                    *", time));
-      ticketText.add(String.format("\n*%s                                    *", seat));
-      ticketText.add(String.format("\n*%s                                    *", total));
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n******************************************************");
+
+      ticketText.add("\n****************************************************************************************************************");
+      ticketText.add("\n                                              QUAIL CINEMA                                                      ");
+      ticketText.add("\n                                                                                                                ");
+      ticketText.add(String.format("\nMovie:                       %s", name));
+      ticketText.add(String.format("\nTime:                         %s", time));
+      ticketText.add(String.format("\nSeat (Row/Column):  %s", seat));
+      ticketText.add(String.format("\nTotal:                         %s", total));
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n****************************************************************************************************************");
       document.add(ticketText);
+      document.add(img);
       document.close();
     }catch (IOException e){
       e.printStackTrace();
@@ -129,11 +154,25 @@ public class PaymentPageController {
     }
   }
 
+
+  //Disables the use of a button to be clicked on.
+  // The Print PDF button is only visible when the Produce Change button has been clicked on.
   @FXML
   public void keyReleased(){
     String text = cashGivenTF.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
+  }
+
+  //Allows the change to be viewable in Textfields after purchasing a ticket.
+  //(Cash Simulation).
+  public void showChange(){
+    double holdPayment = Double.valueOf(cashGivenTF.getText().toString());
+    double holdingChange = holdPayment - total;
+    String holdCash = new Double(holdingChange).toString();
+    String amount =  new Double(total).toString();
+    changeTF.setText(holdCash);
+    amountDueTF.setText(amount);
   }
 
 }

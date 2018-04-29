@@ -39,9 +39,8 @@ def send_ticket(email_address, file_name, name):
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = email_address
-    msg.set_content("Hi "+name+",\nThank you for using Quail Cinemas!\nHere is your ticket information:\nMovie:     "+ movie_of_purchase.Movie_Name+
-                    "\nDate:      "+str(date_and_time[0])+"\nTime:      "+str(date_and_time[1])+ "\nScreen:    "+ str(info_for_email.Screen_ID)+ "\nSeat:      "+str(seat)+
-                    "\nPlease find attatched your QR code ticket\nBest regards,\nTeam Quail\nQuail Cinemas")
+    msg.set_content("Hi "+name+" , \n You are seeing "+ movie_of_purchase.Movie_Name+" on "+str(date_and_time[0])+" at "+str(date_and_time[1])+ " in screen "+ str(info_for_email.Screen_ID)+ " in seat "+str(seat)+
+                    "\n Your ticket is attatched below, thank you for using Quail Cinemas.")
     # Open the new image to send
     #os.chdir("app/static/qr_codes")
     cwd = os.getcwd()
@@ -64,10 +63,12 @@ def execute_query(query, method):
             r = [dict((c.description[i][0], value)
                       for i, value in enumerate(row)) for row in c.fetchall()]
             # json_output = json.dumps(r)
+            # conn.close()
             return r
         elif method == 'POST' or method == 'DELETE':
             c.execute(query)
             conn.commit()
+            conn.close()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         return "{Status:400}"
@@ -265,27 +266,27 @@ def day(choiceDay, choiceDate):
 def tickets(id):
     global bookingID
     bookingID = id
-    # if(LOGIN == False):
-    #     return render_template('login.html', msg=None, header="Please login or join before select seat")
-    # else:
-    seats = getBookingbyID(id)
-    allSeats = []
-    if not seats:
-        for i in range(1, 6):
-            for j in range(1, 6):
-                allSeats.append((i, j, False, (i, j)))
+    if(LOGIN == False):
+        return render_template('login.html', msg=None, header="Please login or join before select seat")
     else:
-        for i in range(1, 6):
-            for j in range(1, 6):
-                booked = False
-                for seat in seats:
-                    if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
-                        allSeats.append((i, j, True, (i, j)))
-                        booked = True
-                if booked == False:
+        seats = getBookingbyID(id)
+        allSeats = []
+        if not seats:
+            for i in range(1, 6):
+                for j in range(1, 6):
                     allSeats.append((i, j, False, (i, j)))
+        else:
+            for i in range(1, 6):
+                for j in range(1, 6):
+                    booked = False
+                    for seat in seats:
+                        if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
+                            allSeats.append((i, j, True, (i, j)))
+                            booked = True
+                    if booked == False:
+                        allSeats.append((i, j, False, (i, j)))
 
-    return render_template('seatselect.html', allSeats=allSeats)
+        return render_template('seatselect.html', allSeats=allSeats)
 
 @app.route('/storeSeat/<id>/<Row>/<Column>')
 def storeSeats(id, Row, Column):
@@ -305,9 +306,16 @@ def storeSeats(id, Row, Column):
 def login():
     global LOGIN
     if(LOGIN == False):
-        return render_template('login.html', msg=None, header=None)
+        return render_template('login.html', msg=None, header=False)
     else:
         return render_template('error.html', error="ALREADY LOGGED IN")
+
+@app.route('/logout')
+def logout():
+    global LOGIN
+    LOGIN == False
+    return render_template('login.html', msg=None, header=False)
+
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
@@ -333,15 +341,9 @@ def loginRequest():
             LOGIN = True
             return redirect('/')
         else:
-            return render_template('login.html', msg="Incorrect Username/Password combination", header=None)
+            return render_template('login.html', msg="Incorrect Username/Password combination", header=False)
     else:
-        return render_template('login.html', msg="Username not recognised")
-
-@app.route('/logout')
-def logout():
-    global LOGIN
-    LOGIN = False
-    return render_template('login.html', msg=None)
+        return render_template('login.html', msg="Username not recognised", header=False)
 
 @app.route('/register')
 def register():
@@ -453,7 +455,7 @@ def qr_code(ticketType, price, name):
     global USER
     global seat
     img = qrcode.make(str(bookingID) + " " +str(seat) + " "+str(price))
-    file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
+    file_name = str(bookingID) +"_"+ str(seat[1]) +"_"+ str(seat[4])
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()
     send_ticket(USER, file_name, name)
