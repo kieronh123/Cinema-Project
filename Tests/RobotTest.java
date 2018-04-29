@@ -71,7 +71,45 @@ public class RobotTest
     //840 X
 
     //TESTING Amount Given Inputs
+    //PURCHASING PURCHASING NON VIP ADULT
+    robot.mouseMove((int)(xpos * 0.59), (int)(ypos* 0.249));
+    leftClick();
+    ticketSelect(xpos, ypos, 0, 0);
+    robot.mouseMove((int)(xpos * 0.104), (int)(ypos* 0.324));
+    leftClick();
+    robot.mouseMove((int)(xpos * 0.125), (int)(ypos* 0.915));
+    leftClick();
+    //after confirm
+    //Typing a negative
+    type("-50");
+    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    leftClick();
+    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    leftClick();
+    for (int i = 0; i < 6; i++){
+      robot.keyPress(KeyEvent.VK_BACK_SPACE);
+      robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+    }
+    //Typing a String
+    type("abc");
+    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    leftClick();
+    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    leftClick();
+    for (int i = 0; i < 6; i++){
+      robot.keyPress(KeyEvent.VK_BACK_SPACE);
+      robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+    }
+    //Typing a value that is lower than the amount due
+    type("1");
+    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.684));
+    leftClick();
+    robot.mouseMove((int)(xpos * 0.5364), (int)(ypos* 0.3333));
+    leftClick();
 
+    //Returning to home
+    robot.mouseMove((int)(xpos * 0.4375), (int)(ypos* 0.6379));
+    leftClick();
 
     // robot.mouseMove(40, 160);
     // robot.delay(500);
@@ -82,7 +120,7 @@ public class RobotTest
     //
     // //robot.delay(500);
     // //type("This is a test of the Java Robot class");
-    // //type(KeyEvent.VK_DOWN);
+
     System.exit(0);
   }
 
