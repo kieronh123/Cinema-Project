@@ -26,4 +26,4 @@ tmp
 geckodriver.log
 
 #Stop tracking of generated Qr codes
-Flask/app/qr_codes/*
+Flask/app/static/qr_codes/*
