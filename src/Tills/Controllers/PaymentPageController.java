@@ -100,6 +100,9 @@ public class PaymentPageController {
 //    FilmName.setText(name);
 //    FilmTime.setText(time);
     printPDF.setDisable(true);
+    String amount =  new Double(total).toString();
+    amountDueTF.setText(amount);
+    amountDueTF.setEditable(false);
 
     returnHome.setOnAction((ActionEvent Event) -> {
         //Try and load the movie screen page
@@ -112,6 +115,7 @@ public class PaymentPageController {
             window.setMaximized(true);
             window.setScene(new Scene(parent));
             window.show();
+
         } catch (IOException e) {
             System.err.println("Could not load page");
         }
@@ -207,9 +211,9 @@ public class PaymentPageController {
     double holdPayment = Double.valueOf(cashGivenTF.getText().toString());
     double holdingChange = holdPayment - total;
     String holdCash = new Double(holdingChange).toString();
-    String amount =  new Double(total).toString();
+
     changeTF.setText(holdCash);
-    amountDueTF.setText(amount);
+
   }
 
   public String getTime(){
