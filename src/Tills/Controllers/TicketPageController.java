@@ -1,10 +1,9 @@
 package Tills.Controllers;
 
 
+import JSON.JSON;
 import Tills.Harness;
 import Tills.Seat;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import JSON.JSON;
+
 import java.io.IOException;
 
 /**
@@ -281,7 +280,7 @@ public class TicketPageController {
         try {
             //Load the ticket page with the selected name and time
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Receipt.fxml"));
-            PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
+            Tills.Controllers.PaymentPageController controller = new Tills.Controllers.PaymentPageController(time, name, (row + " , " + column), price);
             loader.setController(controller);
             Parent parent = loader.load();
             Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -297,4 +296,13 @@ public class TicketPageController {
         }
 
     }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getFilmName() {
+        return name;
+    }
+
 }
