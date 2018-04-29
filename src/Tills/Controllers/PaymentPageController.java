@@ -103,6 +103,7 @@ public class PaymentPageController {
     String amount =  new Double(total).toString();
     amountDueTF.setText(amount);
     amountDueTF.setEditable(false);
+    changeTF.setEditable(false);
 
     returnHome.setOnAction((ActionEvent Event) -> {
         //Try and load the movie screen page
