@@ -208,7 +208,7 @@ public class TicketPageController {
                 //Create a new button
                 Button buttonCreate = new Button();
                 //Set the text to the row number and which seat in the row (labelled A-E)
-                buttonCreate.setText(j + "," + columnLetters[i-1]);
+                buttonCreate.setText(j + "," + i);
                 int finalI = i;
                 int finalJ = j;
                 //When the employee clicks the button to select the seat

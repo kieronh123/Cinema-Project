@@ -169,6 +169,7 @@ def addUser(username, password):
 #             cardNumber - the card number
 #             sortCode - the expiryDate
 #             securityCode - the three digit security code
+
 def saveCardDetails(user_id, name, cardNumber, sortCode, securityCode):
     conn = get_db()
     c = conn.cursor()
@@ -259,86 +260,121 @@ REGISTER = False
 USER =""
 USER_ID = 0
 
-##
+
+##Function to launch index.html page of website.
+##This is the first page containing the list of movies on today.
+##return: the index page with today
 @app.route('/')
 def index():
+    #Use today's date to get the next week of days.
     now = datetime.now()
     days = []
     days.append(("Today", now))
     for i in range(1, 7):
         date = now + timedelta(days=i)
+        #Convert date time object to string of the day.
         day = date.strftime("%A")
         days.append((day, date))
 
-    # input from screening table
+    #Get all available movies.
     movies = getMovies()
     whatsons = []
     present = False
+    #Get all screenings of each movie that are playing in the future from the current time.
     for m in movies:
         futureWhatsOn = []
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         for w in whatsOn:
+            #Convert string to date time object
             startTime = datetime.strptime(w.Start_Time, "%Y-%m-%dT%H:%M:%S")
+            #Only append the movies after the current time, do not want ones in the past today
             if (startTime > now):
                 present = True
                 futureWhatsOn.append(w)
+        #If the movie has viewings in the future append to whatsons.
         if (present):
             whatsons.append((m, futureWhatsOn))
-
+    #Display index.html page with the days of the upcoming week and the current date.
     return render_template('index.html', whatsons=whatsons, daysOfWeek=days, msg="Today",
                            date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
+
+##Function to display web page with movies on the selected day from nav bar
+##parameters: choiceDay - the day that the user clicked on
+#             choiceDate - the date corresponding to the day the user chose.
+##return: the index page with the movies for the selected day.
 @app.route('/day/<choiceDay>/<choiceDate>')
 def day(choiceDay, choiceDate):
-    print(choiceDate)
+    #Use today's date to get the next week of days.
     now = datetime.now()
     days = []
     days.append(("Today", now))
-
     for i in range(1, 7):
         date = now + timedelta(days=i)
         day = date.strftime("%A")
         days.append((day,date))
 
     for d in days:
-
+        #If the day chosen is equal to one of the days available set the date.
         if (choiceDay == d[0]):
             chosenDate = d[1]
 
-    # input from screening table
+    #Get all movies
     movies = getMovies()
     whatsons = []
     present=False
+    #Append all screenings of each movie
     for m in movies:
         whatsOn = getWhatsOnByMovieID(m.Movie_ID)
         whatsons.append((m, whatsOn))
-
+    #Display index.html page with the days of the upcoming week and the current date.
     return render_template('index.html', whatsons=whatsons, msg=choiceDay, daysOfWeek=days, date=chosenDate.strftime("%Y-%m-%d %H:%M:%S"));
 
+##Function to display seats layout with seats available and not available on the selected Screening
+##parameters: id- the screening id of the timing of the movie they selected.
+##return: The seats page with the layout of available/booked seats
 @app.route('/seatselect/<id>')
 def tickets(id):
+    #Set the booking id to the screening id selected
     global bookingID
     bookingID = id
+    #If the person is not logged in/has not joined they can not book a seat
     if(LOGIN == False):
-        return render_template('login.html', msg=None, header="Please login or join before select seat")
+        #Redirect to the login page and ask them to login or join
+        return render_template('login.html', msg=None, header=True)
+
+    #If they are logged in
     else:
+        #Get all seats booked in the cinema
         seats = getBookingbyID(id)
         allSeats = []
+        #If there are no seats booked
         if not seats:
+            #5 rows
             for i in range(1, 6):
+                #5 columns
                 for j in range(1, 6):
+                    #Create all 25 seats with False value for booked
                     allSeats.append((i, j, False, (i, j)))
+        #If there are some seats booked
         else:
+            #5 rows
             for i in range(1, 6):
+                #5 columns
                 for j in range(1, 6):
                     booked = False
+                    #For each booked seat
                     for seat in seats:
+                        #Check if the row and column number match the seat being created and if it is the same screening id
                         if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
+                            #Add this seat with value True for the booked element
                             allSeats.append((i, j, True, (i, j)))
                             booked = True
+                    #If the current seat being generated was not booked
                     if booked == False:
+                        #Add this seat with value False for the booked element
                         allSeats.append((i, j, False, (i, j)))
-
+        #Display seat select page 
         return render_template('seatselect.html', allSeats=allSeats)
 
 @app.route('/storeSeat/<id>/<Row>/<Column>')
@@ -366,7 +402,7 @@ def login():
 @app.route('/logout')
 def logout():
     global LOGIN
-    LOGIN == False
+    LOGIN = False
     return render_template('login.html', msg=None, header=False)
 
 

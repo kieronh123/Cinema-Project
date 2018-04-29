@@ -21,7 +21,7 @@ username1 = 'kieron.hushon@gmail.com'
 password1 = '56564387AE573084485D94C7BEBF8907BABF4EAA5B409C0A9C9C23F24D5C848E'
 
 id2 = 2
-username2 = 'alexander_hoare@homail.co.uk'
+username2 = 'alexander_hoare@hotmail.co.uk'
 #SHA256 hash of 'hunter2'
 #password2 = 'F52FBD32B2B3B86FF88EF6C490628285F482AF15DDCB29541F94BCF526A3F6C7'
 password2 = 'e85c15f396d69cbe9f6d080dae41f7b512223b8a4ab32c162ca296cc5a3dd931'
@@ -312,38 +312,6 @@ b_Row2 = 3 #Bookings row
 b_Id3 = 1
 b_Col3 = 5 #Bookings column
 b_Row3 = 5 #Bookings row
-
-day = 3
-
-now = datetime.now()
-
-id_counter = 37
-for j in range(0, 12): #12 new days
-    for i in range(0, 6): #Six movies
-        for y in range(0, 3): #Three screenings each
-            wo_ids = id_counter
-            wo_movies = i + 1
-            wo_screens = i + 2
-            if y == 0:
-                randhour = random.randint(6, 12)
-                now = now.replace(hour=randhour,minute=0,second=0)
-                newnow = str(now)
-                wo_times = newnow[:10] + "T" + newnow[11:-7]
-            elif y == 1:
-                randhour = random.randint(15, 17)
-                now = now.replace(hour=randhour,minute=0,second=0)
-                newnow = str(now)
-                wo_times = newnow[:10] + "T" + newnow[11:-7]
-            elif y == 2:
-                randhour = random.randint(19, 22)
-                now = now.replace(hour=randhour,minute=0,second=0)
-                newnow = str(now)
-                wo_times = newnow[:10] + "T" + newnow[11:-7]
-            cursor.execute('''INSERT INTO Whats_On(Screening_ID, Movie_ID, Screen_ID, Start_Time)
-                                                Values(?,?,?,?)''',(wo_ids, wo_movies, wo_screens, wo_times))
-            id_counter = id_counter + 1
-    now = now + timedelta(days=1)
-
 
 #Entering values into cinema.db tables
 cursor.execute('''INSERT INTO Users(User_ID,Username,Password)
