@@ -11,7 +11,7 @@ class RegistrationAttempt(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-    def testCorrectAttempt(self):
+    def testZCorrectAttempt(self):
         username = self.driver.find_element_by_name("Username")
         username.send_keys("filmcritic101@gmail.co.uk")
         password = self.driver.find_element_by_name("Password")
