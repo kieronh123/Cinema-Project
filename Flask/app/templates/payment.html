@@ -24,19 +24,35 @@
                     <form action="/processPayment/{{ticketType}}/{{price}}" method="post">
                         <div>
                             <label>Name</label><br>
-                            <input type="text" name="Name" placeholder="Name">
+                            {%if Login %}
+                                <input type="text" name="Name" placeholder="Name" value="{{Name}}">
+                            {% else %}
+                                <input type="text" name="Name" placeholder="Name">
+                            {% endif %}
                         </div>
                         <div>
                             <label>Card Number</label><br>
-                            <input type="text" name="Card Number" placeholder="Card Number">
+                            {%if Login %}
+                                <input type="text" name="Card Number" value="{{CardNumber}}">
+                            {% else %}
+                                <input type="text" name="Card Number" placeholder="Card Number">
+                            {% endif %}
                         </div>
                         <div>
                             <label>Expiry Date</label><br>
-                            <input type="text" name="Expiry Date" placeholder="MM/YY"/>
+                            {%if Login %}
+                                <input type="text" name="Expiry Date" value="{{ExpiryDate}}"/>
+                            {% else %}
+                                <input type="text" name="Expiry Date" placeholder="MM/YY" />
+                            {% endif %}
                         </div>
                         <div>
                             <label>Security Code</label><br>
-                            <input type="text" name="Security Code" placeholder="Code"/>
+                            {%if Login %}
+                                <input type="text" name="Security Code" value="{{SecurityCode}}"/>
+                            {% else %}
+                                <input type="text" name="Security Code" placeholder="Code" "/>
+                            {% endif %}
                         </div>
                         <button class="button_1" type="submit">Confirm</button>
                     </form>

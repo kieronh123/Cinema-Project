@@ -114,7 +114,7 @@ public class PaymentPageController {
       ticketText.add("\n*                                                    *");
       ticketText.add(String.format("\n*%s                                    *", time));
       ticketText.add(String.format("\n*%s                                    *", seat));
-      ticketText.add(String.format("\n*%s                                    *", price));
+      ticketText.add(String.format("\n*%s                                    *", total));
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");
       ticketText.add("\n*                                                    *");

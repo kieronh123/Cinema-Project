@@ -157,10 +157,11 @@ public class MoviePageController {
 
 
         System.out.println("Screen: " + screenID);
+        System.out.println("Screening ID" + screeningID);
 
         try {
             //Load the ticket page with the selected name and time
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ticketType.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ticketType.fxml"));
             TicketPageController controller = new TicketPageController(button.getText(), name, screeningID, age);
             loader.setController(controller);
             Parent parent = (Parent)loader.load();
@@ -171,6 +172,7 @@ public class MoviePageController {
             window.setScene(new Scene(parent));
             window.show();
         } catch (IOException e) {
+            e.printStackTrace();
             System.err.println("Could not load page");
         }
     }
