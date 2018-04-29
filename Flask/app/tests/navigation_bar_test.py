@@ -13,13 +13,13 @@ class NavBarTest(unittest.TestCase):
         # check login link
         self.driver.find_element_by_name("login").click()
         time.sleep(1)
-        assert self.driver.title == "Quail Cinema - Log in"
+        assert self.driver.title == "Quail Cinema - Log In"
 
     def testRegister(self):
         # check login link
         self.driver.find_element_by_name("register").click()
         time.sleep(1)
-        assert self.driver.title == "Quail Cinema - Log in"
+        assert self.driver.title == "Quail Cinema - Log In"
 
     def testHome(self):
         # check login link

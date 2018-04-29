@@ -454,7 +454,7 @@ def qr_code(ticketType, price, name):
     global USER
     global seat
     img = qrcode.make(str(bookingID) + " " +str(seat) + " "+str(price))
-    file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
+    file_name = str(bookingID) +"_"+ str(seat[1]) +"_"+ str(seat[4])
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()
     send_ticket(USER, file_name, name)
