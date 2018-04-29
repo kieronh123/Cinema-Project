@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source Setup_Base_Test.sh
+source Setup_Database_Test.sh
 cd ../../..
 source Run_Flask.sh
 python3 registration_test.py
