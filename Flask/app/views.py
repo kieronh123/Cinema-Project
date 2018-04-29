@@ -39,8 +39,9 @@ def send_ticket(email_address, file_name, name):
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = email_address
-    msg.set_content("Hi "+name+" , \n You are seeing "+ movie_of_purchase.Movie_Name+" on "+str(date_and_time[0])+" at "+str(date_and_time[1])+ " in screen "+ str(info_for_email.Screen_ID)+ " in seat "+str(seat)+
-                    "\n Your ticket is attatched below, thank you for using Quail Cinemas.")
+    msg.set_content("Hi "+name+",\nThank you for using Quail Cinemas!\nHere is your ticket information:\nMovie:     "+ movie_of_purchase.Movie_Name+
+                    "\nDate:      "+str(date_and_time[0])+"\nTime:      "+str(date_and_time[1])+ "\nScreen:    "+ str(info_for_email.Screen_ID)+ "\nSeat:      "+str(seat)+
+                    "\nPlease find attatched your QR code ticket\nBest regards,\nTeam Quail\nQuail Cinemas")
     # Open the new image to send
     #os.chdir("app/static/qr_codes")
     cwd = os.getcwd()
@@ -294,6 +295,7 @@ def login():
         return render_template('login.html', msg=None)
     else:
         return render_template('error.html', error="ALREADY LOGGED IN")
+
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
     # Get the details from the form
@@ -320,6 +322,11 @@ def loginRequest():
     else:
         return render_template('login.html', msg="Username not recognised")
 
+@app.route('/logout')
+def logout():
+    global LOGIN
+    LOGIN = False
+    return render_template('login.html', msg=None)
 
 @app.route('/register')
 def register():
