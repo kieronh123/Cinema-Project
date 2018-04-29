@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.lang.*;
 // import javafx.scene.image.Image;
 // import javafx.scene.image.ImageView;
+import javafx.event.ActionEvent;
 import java.io.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -213,7 +214,7 @@ public class PaymentPageController {
   public Double getTotal(){
     return total;
   }
-  
+
   public void generateQRCodeImage(String filename){
     String filePath = "Flask/app/static/qr_codes/"+filename+".png";
     int size = 290;
