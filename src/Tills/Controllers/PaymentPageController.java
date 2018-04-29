@@ -175,4 +175,17 @@ public class PaymentPageController {
     amountDueTF.setText(amount);
   }
 
+  public String getTime(){
+    return time;
+  }
+  public String getName(){
+    return name;
+  }
+  public String getSeat(){
+    return seat;
+  }
+  public Double getTotal(){
+    return total;
+  }
+
 }
