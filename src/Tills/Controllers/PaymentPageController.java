@@ -1,10 +1,12 @@
 package Tills.Controllers;
+//package com.concretepage; //Alex
 
-import java.awt.image.BufferedImage;
+//import java.awt.image.BufferedImage;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,9 +17,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.lang.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+// import javafx.scene.image.Image;
+// import javafx.scene.image.ImageView;
 import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+
+
 /**
 
  * Controller class for the PaymentPage.fxml page
@@ -86,8 +94,8 @@ public class PaymentPageController {
     printPDF.setOnAction((Event) -> {
       try {
         keyReleased();
-        PDF();
-      } catch (IOException e) {
+        PDF("38_4_2");
+      } catch (Exception e) {
         e.printStackTrace();
       }
     });
@@ -108,30 +116,36 @@ public class PaymentPageController {
 
 
   @FXML
-  public void PDF()throws IOException{
-    Image image1 = new Image(new FileInputStream("images/bird.jpg"));
-
+  public void PDF(String qr_code_file) throws Exception{
+    Image img = Image.getInstance("Flask/app/static/qr_codes/" + qr_code_file + ".png");
+    img.setAbsolutePosition(300, 500);
     Document document = new Document();
    // byte[] res  = image1.toByteArray();
     try{
-      PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
+      PdfWriter.getInstance(document, new FileOutputStream("Flask/app/static/pdf_tickets/" + qr_code_file + ".pdf"));
       document.open();
       Paragraph ticketText = new Paragraph();
 
-      ticketText.add("\n***************************************************");
-      ticketText.add("\n*                         Quail Cinema Ticket           *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add(String.format("\n*%s                                                              *", time));
-      ticketText.add(String.format("\n*%s                                                            *", name));
-      ticketText.add(String.format("\n*%s                                                              *", seat));
-      ticketText.add(String.format("\n*%s                                                              *", total));
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add(String.format("\n*%s        *", image1));
-      ticketText.add("\n***************************************************");
+      ticketText.add("\n****************************************************************************************************************");
+      ticketText.add("\n                                              QUAIL CINEMA                                                      ");
+      ticketText.add("\n                                                                                                                ");
+      ticketText.add(String.format("\nMovie:                       %s", name));
+      ticketText.add(String.format("\nTime:                         %s", time));
+      ticketText.add(String.format("\nSeat (Row/Column):  %s", seat));
+      ticketText.add(String.format("\nTotal:                         %s", total));
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n****************************************************************************************************************");
       document.add(ticketText);
+      document.add(img);
       document.close();
     }catch (IOException e){
       e.printStackTrace();
