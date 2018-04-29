@@ -57,6 +57,9 @@
 
 
   <target name="runTests" depends="compileTests">
+    <java classname="RobotTest" fork="true">
+      <classpath refid="project.classpath"/>
+    </java>
     <junit printsummary="yes">
       <classpath refid="project.classpath"/>
       <batchtest fork="yes">

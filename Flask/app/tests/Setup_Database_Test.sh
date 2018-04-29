@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ../Flask/app/database
+cd ../database
 rm cinema.db
 python create_database.py
 python fill_database_test.py

@@ -2,8 +2,7 @@ package JSON;
 
 import Tills.Movie;
 import Tills.Seat;
-import Tills.Ticket;
-import Tills.User;
+
 import com.google.gson.*;
 
 
@@ -66,52 +65,6 @@ public class JSON {
     public static String seatsToJson(Seat[] seats){
         Gson gson = new Gson();
         String json =  gson.toJson(seats);
-        return json;
-    }
-
-
-    /** Converts a json string in to an array of Ticket objects
-     *
-     * @param json The json string to be converted
-     * @return The array of Ticket objects
-     */
-    public static Ticket[] ticketsFromJson(String json){
-        Gson gson = new Gson();
-        Ticket[] tickets = gson.fromJson(json, Ticket[].class);
-        return tickets;
-    }
-
-    /** Converts an array of Ticket objects to a json string
-     *
-     * @param tickets The array to be convetred
-     * @return The json String
-     */
-    public static String ticketsToJson(Ticket[] tickets){
-        Gson gson = new Gson();
-        String json =  gson.toJson(tickets);
-        return json;
-    }
-
-
-    /** Converts a json string in to an array of Ticket objects
-     *
-     * @param json The json string to be converted
-     * @return The array of Ticket objects
-     */
-    public static User[] usersFromJson(String json){
-        Gson gson = new Gson();
-        User[] users = gson.fromJson(json, User[].class);
-        return users;
-    }
-
-    /** Converts an array of User objects to a json string
-     *
-     * @param users The array to be convetred
-     * @return The json String
-     */
-    public static String usersToJson(User[] users){
-        Gson gson = new Gson();
-        String json =  gson.toJson(users);
         return json;
     }
 

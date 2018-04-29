@@ -43,8 +43,8 @@ def send_ticket(email_address, file_name, name):
     msg['Subject'] = "Your Team Quail Cinema Ticket"
     msg['From'] = "Team_Quail"
     msg['To'] = email_address
-    msg.set_content("Hi "+name+" , \n You are seeing "+ movie_of_purchase.Movie_Name+" on "+str(date_and_time[0])+" at "+str(date_and_time[1])+ " in screen "+ str(info_for_email.Screen_ID)+ " in seat "+str(seat)+
-                    "\n Your ticket is attatched below, thank you for using Quail Cinemas.")
+    msg.set_content("Hi "+name+" , \n You are seeing: "+ movie_of_purchase.Movie_Name+"\n on: "+str(date_and_time[0])+"\n at "+str(date_and_time[1])+ "\n in screen: "+ str(info_for_email.Screen_ID)+ "\n in seat: Row "+str(seat[1])+
+                    " Column "+str(seat[4])+"\n Your ticket is attatched below,\n Thank you for using Quail Cinemas.")
     # Open the new image to send
     cwd = os.getcwd()
     with open(cwd + "/app/static/qr_codes/" + file_name +".png", 'rb') as fp:

@@ -2,9 +2,8 @@ import unittest
 import time
 
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 
-class TimeSelect(unittest.TestCase):
+class DaySelectTest(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.get("http://localhost:5000")
@@ -12,10 +11,12 @@ class TimeSelect(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-    def testTimeSelect(self):
-        self.driver.find_element_by_name("time").click()
+    def testSelectDay(self):
+        self.driver.find_element_by_id("Wednesday").click()
         time.sleep(1)
-        assert self.driver.title == "Quail Cinema - Select Seat"
+        assert self.driver.find_element_by_id("Wednesday") != None
+
 
 if __name__ == "__main__":
     unittest.main()
+
