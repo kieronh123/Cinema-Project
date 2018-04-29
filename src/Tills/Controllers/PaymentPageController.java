@@ -32,7 +32,7 @@ public class PaymentPageController {
   @FXML
   Label FilmTime;
   @FXML
-  Label cashGiven;
+  Label CashGiven;
   @FXML
   Label amountDue;
   @FXML
@@ -66,7 +66,6 @@ public class PaymentPageController {
 
   @FXML
   private void initialize() {
-
 //    FilmName.setText(name);
 //    FilmTime.setText(time);
     printPDF.setDisable(true);
@@ -118,19 +117,17 @@ public class PaymentPageController {
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
       document.open();
       Paragraph ticketText = new Paragraph();
-      ticketText.add("\n***************************************************");
-      ticketText.add("\n*                         Quail Cinema Ticket           *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add(String.format("\n*%s                                                              *", time));
-      ticketText.add(String.format("\n*%s                                                            *", name));
-      ticketText.add(String.format("\n*%s                                                              *", seat));
-      ticketText.add(String.format("\n*%s                                                              *", total));
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add("\n*                                                                     *");
-      ticketText.add(String.format("\n*%s        *", image1));
-      ticketText.add("\n***************************************************");
+      ticketText.add("\n******************************************************");
+      ticketText.add("\n*                         Ticket                     *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add(String.format("\n*%s                                    *", time));
+      ticketText.add(String.format("\n*%s                                    *", seat));
+      ticketText.add(String.format("\n*%s                                    *", total));
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n*                                                    *");
+      ticketText.add("\n******************************************************");
       document.add(ticketText);
       document.close();
     }catch (IOException e){
@@ -145,7 +142,7 @@ public class PaymentPageController {
   // The Print PDF button is only visible when the Produce Change button has been clicked on.
   @FXML
   public void keyReleased(){
-    String text = cashGiven.getText();
+    String text = cashGivenTF.getText();
     boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
     printPDF.setDisable(disableButtons);
   }

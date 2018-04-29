@@ -10,4 +10,3 @@ pytz==2018.4
 selenium==3.11.0
 six==1.11.0
 Werkzeug==0.14.1
-qrcode==6.0

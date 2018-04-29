@@ -81,6 +81,7 @@ public class TicketPageController {
         this.name = filmName;
         this.screeningID = screeningID;
         this.age = Age;
+
     }
 
     /**
@@ -89,7 +90,6 @@ public class TicketPageController {
      */
     @FXML
     private void initialize() {
-        System.out.println(screeningID);
         //Set these labels to the film name and time previously selected
         FilmName.setText(name);
         FilmTime.setText(time);
@@ -97,9 +97,12 @@ public class TicketPageController {
         returnHome.setOnAction((ActionEvent Event) -> {
             //Try and load the movie screen page
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/moviesPage.fxml"));
                 Parent parent = (Parent) loader.load();
-                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                Stage windowOld = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+                windowOld.close();
+                Stage window = new Stage();
+                window.setMaximized(true);
                 window.setScene(new Scene(parent));
                 window.show();
             } catch (IOException e) {
@@ -171,8 +174,6 @@ public class TicketPageController {
         });
         //Add the combobox to the fxml page
         vip.add(vipTicket, 0, 0);
-
-
     }
 
     /**
@@ -283,8 +284,11 @@ public class TicketPageController {
             PaymentPageController controller = new PaymentPageController(time, name, (row + " , " + column), price);
             loader.setController(controller);
             Parent parent = loader.load();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage windowOld = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            windowOld.close();
             Scene scene = new Scene(parent);
+            Stage window = new Stage();
+            window.setMaximized(true);
             window.setScene(scene);
             window.show();
         } catch (IOException e) {
