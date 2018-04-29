@@ -238,7 +238,7 @@ public class TicketPageController {
                 for (Seat seat : seats) {
                     if ((seat.Row_Num == j) ) {
                         if((seat.Column_Num == i)){
-                            if((seat.Screening_ID == (screeningID-3))){
+                            if((seat.Screening_ID == (screeningID))){
                                 buttonCreate.setDisable(true);
                             }
                         }
