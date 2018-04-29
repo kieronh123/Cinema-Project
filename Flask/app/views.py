@@ -430,37 +430,49 @@ def loginRequest():
     username = request.form.get('Username')
     password = request.form.get('Password')
     password = password + "saltyquail"
-    
+    #If the password is of correct format then encode it with a hash
     if type(password) == str:
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
-
+    #Try and get the details of the username
     user = getUserByUsername(username)
 
     # Check they are the details of a known user
     if (user):
+        #If the user exists set the global user and user id properties
         global USER
         USER = username
         global USER_ID
         USER_ID = user.User_ID
+        #Check if the password is correct
         if (user.Password == passwordHashed.hexdigest()):
             global LOGIN
             LOGIN = True
+            #Send home
             return redirect('/')
+        #If the password is incorrect display error message
         else:
             return render_template('login.html', msg="Incorrect Username/Password combination", header=False)
+    #If user is not a username display error message
     else:
         return render_template('login.html', msg="Username not recognised", header=False)
 
+##Function to let user register
+##return: The log-in page without the login functionality.
 @app.route('/register')
 def register():
     global LOGIN
+    #Check if user is logged in
     if(LOGIN == False):
+        #Allow the user to register
         return render_template('register.html', msg=None)
     else:
+        #Show "ALREADY LOGGED IN" error
         return render_template('error.html', error="ALREADY LOGGED IN")
 
+##Function to show page is user is already logged in
+##return:       The successful registration page
 @app.route('/registerrequest', methods=['POST'])
 def registerRequest():
     # Get the login details from the form
@@ -481,6 +493,7 @@ def registerRequest():
         password = str.encode(password)
     passwordHashed = hashlib.sha256()
     passwordHashed.update(password)
+    #Set that the user has logged in and registered and the username
     global LOGIN
     LOGIN = True
     global REGISTER
@@ -492,18 +505,26 @@ def registerRequest():
 
     return render_template('register.html', msg="Registration Successful")
 
+##Function      Send user to payment page if they have entered all required details
+##return:       The payment page or keep them on seats page
 @app.route('/payment', methods=['POST'])
 def paymentNoType():
     # Get the ticket type from the drop down box
     ticketType = request.form.get("selectTicket")
     global seat
+    #If they have selected a seat save it to the bookings table
     if (bookingID != 0 and seat != (7, 7)):
         addBooking(bookingID, row, column)
+    #If they have not selected a seat do not send to payment
     if (seat == (7, 7)):
         return "", 204
+    #If they have selected a seat send to payment method with the ticket type
     else:
         return redirect('/payment/' + ticketType.lower())
 
+##Function to handle payment method
+##parameters: ticketType - adult or senior or child
+##return: payment page
 @app.route('/payment/<ticketType>')
 def payment(ticketType):
     # Set the price according to the ticket type
@@ -513,14 +534,16 @@ def payment(ticketType):
         price = 4
     if vip == True:
         price *= 1.5
-
+    #If they have just joined their card details are not stored so do not fill
     global REGISTER
     if(REGISTER == True):
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg=None, Login=False)
+    #If they have are logged in then their card details are stored so auto fill
     else:
+        #Get card details of the user
         global USER_ID
         card = getCardDetails(USER_ID)
-        print(len(card))
+        #Return payment page with the card details
         return render_template('payment.html', ticketType=ticketType.title(), price=price,
             msg=None, Login=True, Name=card[0].Card_Name, CardNumber=card[0].Card_Number, ExpiryDate =card[0].Card_SortCode, SecurityCode = card[0].Card_SecurityCode )
 
@@ -558,13 +581,22 @@ def processPayment(ticketType, price):
     else:
         return render_template('payment.html', ticketType=ticketType.title(), price=price, msg="A name must be entered")
 
+##Function to generate qr code
+##parameters: ticketType - adult or senior or child
+#             price - price of ticketType
+#             name - from card name
+##return: payment page
 @app.route('/<ticketType>/<price>/<name>')
 def qr_code(ticketType, price, name):
     global USER
     global seat
+    #create the QR code
     img = qrcode.make(str(bookingID) + " " +str(seat) + " "+str(price))
+    #createthe file name
     file_name = str(bookingID) +"_"+ seat[1] +"_"+ seat[4]
+    #save the image
     img.save('app/static/qr_codes/'+file_name+'.png')
     img.close()
+    #send the ticket to the user
     send_ticket(USER, file_name, name)
     return img
