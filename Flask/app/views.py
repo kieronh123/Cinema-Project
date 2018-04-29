@@ -298,7 +298,6 @@ def index():
     return render_template('index.html', whatsons=whatsons, daysOfWeek=days, msg="Today",
                            date=now.strftime("%Y-%m-%d %H:%M:%S"));
 
-
 ##Function to display web page with movies on the selected day from nav bar
 ##parameters: choiceDay - the day that the user clicked on
 #             choiceDate - the date corresponding to the day the user chose.
@@ -374,31 +373,48 @@ def tickets(id):
                     if booked == False:
                         #Add this seat with value False for the booked element
                         allSeats.append((i, j, False, (i, j)))
-        #Display seat select page 
+        #Display seat select page with the seats array of available/booked seats
         return render_template('seatselect.html', allSeats=allSeats)
 
-@app.route('/storeSeat/<id>/<Row>/<Column>')
-def storeSeats(id, Row, Column):
+##Function to store the seat the user has selected
+##This is updated whenever the user clicks a button so they can change their mind.
+##parameters: seatSelected - the seat the user chose
+#             Row - the row the user chose to sit on
+#             Column - the column the user chose to sit on
+##return: the same page
+@app.route('/storeSeat/<seatSelected>/<Row>/<Column>')
+def storeSeats(seatSelected, Row, Column):
+    #Set global variables of seat, row and column
     global seat
-    seat = id
+    seat = seatSelected
     global row
     row = Row
     global column
     column = Column
-    print(Row)
+    #If the user selects a VIP seat
     if int(Row) == 3:
+        #Set global variable of vip to true
         global vip
         vip = True
+    #Return to same page in case they want to change the seat
     return "", 204
 
+##Function to go to login page
+##return: either the login page or the error page
 @app.route('/login')
 def login():
     global LOGIN
+    #If the user is not already logged in/joined
     if(LOGIN == False):
+        #Display login page as is
         return render_template('login.html', msg=None, header=False)
+    #If the user has already logged in
     else:
+        #Display error message telling them they have already logged in
         return render_template('error.html', error="ALREADY LOGGED IN")
 
+##Function to go to log the person out
+##return: the login page
 @app.route('/logout')
 def logout():
     global LOGIN
