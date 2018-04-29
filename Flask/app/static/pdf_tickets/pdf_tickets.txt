@@ -1,0 +1,1 @@
+File used to ensure pdf_tickets directory is never empty.
