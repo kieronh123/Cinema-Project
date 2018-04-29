@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -7,8 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
 <GridPane alignment="CENTER" style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: dashed" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane prefHeight="540.0" prefWidth="520.0">
         <columnConstraints>
@@ -31,9 +32,18 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <children>
-                    <Label fx:id="cashGiven" text="Cash Given:" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <Label fx:id="amountDue" text="Amount due:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Label fx:id="change" text="Change:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label fx:id="cashGiven" text="Cash Given:" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Label>
+                    <Label fx:id="amountDue" text="Amount due:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Label>
+                    <Label fx:id="change" text="Change:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="36.0" />
+                  </font></Label>
                 </children>
             </GridPane>
             <GridPane prefHeight="394.0" prefWidth="520.0" GridPane.columnIndex="1">
@@ -47,14 +57,23 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <children>
-                    <TextField fx:id="cashGivenTF" promptText="Cash Amount" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <TextField fx:id="amountDueTF" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <TextField fx:id="changeTF" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="cashGivenTF" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <font>
+                     <Font size="36.0" />
+                  </font></TextField>
+                    <TextField fx:id="amountDueTF" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="36.0" />
+                  </font></TextField>
+                    <TextField fx:id="changeTF" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="36.0" />
+                  </font></TextField>
                 </children>
             </GridPane>
             <HBox prefHeight="173.0" prefWidth="520.0" GridPane.rowIndex="1">
                 <children>
-                    <VBox prefHeight="200.0" prefWidth="500.0" >
+                    <VBox prefHeight="200.0" prefWidth="500.0">
                         <Button fx:id="returnHome" mnemonicParsing="false" prefHeight="26.0" prefWidth="500" text="     Cancel Payment" GridPane.halignment="CENTER" />
                         <Button fx:id="printPDF" mnemonicParsing="false" prefHeight="26.0" prefWidth="500.0" text="Ticket to PDF" />
                         <Button fx:id="getChange" mnemonicParsing="false" prefHeight="26.0" prefWidth="500.0" text="      Produce Change" />
