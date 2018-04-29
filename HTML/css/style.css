@@ -516,6 +516,19 @@ ul#wrapper {
     margin-top: 100px;
 }
 
+.payment-dropdown {
+   background: #ffffff;
+   height: 34px;
+   width: 240px;
+}
+
+.payment-dropdown select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+}
+
 
 footer{
   padding:20px;
