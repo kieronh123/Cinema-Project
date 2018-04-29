@@ -145,7 +145,7 @@ public class PaymentPageController {
   @FXML
   public void PDF(String qr_code_file) throws Exception{
     Image img = Image.getInstance("Flask/app/static/qr_codes/" + qr_code_file + ".png");
-    img.setAbsolutePosition(300, 500);
+    img.setAbsolutePosition(300, 450);
     Document document = new Document();
    // byte[] res  = image1.toByteArray();
     try{
@@ -160,6 +160,9 @@ public class PaymentPageController {
       ticketText.add(String.format("\nTime:                         %s", time));
       ticketText.add(String.format("\nSeat (Row/Column):  %s", seat));
       ticketText.add(String.format("\nTotal:                         %s", total));
+      ticketText.add("\n");
+      ticketText.add("\n");
+      ticketText.add("\n");
       ticketText.add("\n");
       ticketText.add("\n");
       ticketText.add("\n");

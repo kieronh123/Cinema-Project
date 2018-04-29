@@ -88,6 +88,7 @@ public class RobotTest
 
   private void leftClick()
   {
+    robot.delay(100);
     robot.mousePress(InputEvent.BUTTON1_MASK);
     robot.delay(200);
     robot.mouseRelease(InputEvent.BUTTON1_MASK);
