@@ -23,6 +23,7 @@ import java.io.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import javafx.event.ActionEvent;
 
 
 
@@ -78,17 +79,20 @@ public class PaymentPageController {
 //    FilmTime.setText(time);
     printPDF.setDisable(true);
 
-    returnHome.setOnAction((Event) -> {
-      try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../moviesPage.fxml"));
-
-        Parent parent = (Parent) loader.load();
-        Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(parent));
-        window.show();
-      } catch (IOException e) {
-        System.err.println("Could not load page");
-      }
+    returnHome.setOnAction((ActionEvent Event) -> {
+        //Try and load the movie screen page
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/moviesPage.fxml"));
+            Parent parent = (Parent) loader.load();
+            Stage windowOld = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+            windowOld.close();
+            Stage window = new Stage();
+            window.setMaximized(true);
+            window.setScene(new Scene(parent));
+            window.show();
+        } catch (IOException e) {
+            System.err.println("Could not load page");
+        }
     });
 
     printPDF.setOnAction((Event) -> {
