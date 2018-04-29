@@ -303,9 +303,16 @@ def storeSeats(id, Row, Column):
 def login():
     global LOGIN
     if(LOGIN == False):
-        return render_template('login.html', msg=None, header=None)
+        return render_template('login.html', msg=None, header=False)
     else:
         return render_template('error.html', error="ALREADY LOGGED IN")
+
+@app.route('/logout')
+def logout():
+    global LOGIN
+    LOGIN == False
+    return render_template('login.html', msg=None, header=False)
+
 
 @app.route('/loginrequest', methods=['POST'])
 def loginRequest():
@@ -331,9 +338,9 @@ def loginRequest():
             LOGIN = True
             return redirect('/')
         else:
-            return render_template('login.html', msg="Incorrect Username/Password combination", header=None)
+            return render_template('login.html', msg="Incorrect Username/Password combination", header=False)
     else:
-        return render_template('login.html', msg="Username not recognised", header=None)
+        return render_template('login.html', msg="Username not recognised", header=False)
 
 @app.route('/register')
 def register():
