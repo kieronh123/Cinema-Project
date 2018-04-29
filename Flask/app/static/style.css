@@ -5,6 +5,7 @@
       color:#ffffff;
       margin-top:10px;
       margin-bottom:10px;
+      text-align: center;
     }
 
     .btnback {
@@ -27,8 +28,18 @@
       text-decoration: none;
     }
 
-    .btn-login{
-        color:#000000
+    .btn-logout {
+        width:150px;
+        height:40px;
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #000000;
+      font-size: 16px;
+      background: #ffffff;
+      padding: 1px 2px 1px 2px;
+      text-decoration: none;
     }
 
     input[type=text], input[type=password] {
@@ -156,6 +167,24 @@
       text-decoration: none;
     }
 
+
+    .btn-standard-seats {
+        width:95px;
+        height:55px;
+      padding: 5px 10px 5px 10px;
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 15px;
+      background: #0e0f0f;
+      text-decoration: none;
+    }
+
+
+
+
     .btn-seats:hover {
       background: #3cb0fd;
       background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
@@ -178,6 +207,37 @@
       color: #ffffff;
       font-size: 15px;
       background: #f5cc00;
+      text-decoration: none;
+    }
+
+    .btn-vip-seats-key {
+        width:95px;
+        height:55px;
+      padding: 5px 10px 5px 10px;
+
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 15px;
+      background: #f5cc00;
+      text-decoration: none;
+    }
+
+
+    .btn-taken-seats {
+        width:95px;
+        height:55px;
+      padding: 5px 10px 5px 10px;
+
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 15px;
+      background: #808080;
       text-decoration: none;
     }
 
@@ -217,6 +277,7 @@
        .grey { background: grey; }
 
 }
+/*This is for small devices*/
 @media (max-width: 768px) {
     footer{
       padding:20px;
@@ -279,7 +340,7 @@
     }
 
     .btn-disable-seat {
-        width:50px;
+        width:45px;
         height:40px;
       -webkit-border-radius: 12;
       -moz-border-radius: 12;
@@ -293,7 +354,7 @@
     }
 
     .btn-seats {
-        width:50px;
+        width:45px;
         height:40px;
       -webkit-border-radius: 12;
       -moz-border-radius: 12;
@@ -306,7 +367,7 @@
       text-decoration: none;
     }
     .btn-vip-seats {
-        width:50px;
+        width:45px;
         height:40px;
       -webkit-border-radius: 12;
       -moz-border-radius: 12;
@@ -332,6 +393,35 @@
       padding: 1px 2px 1px 2px;
       text-decoration: none;
     }
+
+    .btn-logout {
+        width:50px;
+        height:40px;
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #000000;
+      font-size: 12px;
+      background: #ffffff;
+      padding: 1px 2px 1px 2px;
+      text-decoration: none;
+    }
+
+    .btn-login {
+        width:80px;
+        height:45px;
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #000000;
+      font-size: 15px;
+      background: #ffffff;
+      padding: 5px 10px 5px 10px;
+      text-decoration: none;
+    }
+
     *, *:before, *:after {
       box-sizing: border-box;
     }
