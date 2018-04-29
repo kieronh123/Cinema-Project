@@ -212,7 +212,8 @@ public class PaymentPageController {
   }
   public Double getTotal(){
     return total;
-
+  }
+  
   public void generateQRCodeImage(String filename){
     String filePath = "Flask/app/static/qr_codes/"+filename+".png";
     int size = 290;
