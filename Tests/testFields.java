@@ -1,108 +1,73 @@
 import org.junit.Test;
 import Tills.*;
-
 import java.util.ArrayList;
-
 import org.junit.*;
-
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-
+import org.junit.Before;
+import org.junit.Test;
 import Tills.Controllers.*;
-
 
 /**
  * Test class used for JUnit testing of the Tills System.
+ * @param time          time is used from PaymentPageController for Testing
+ * @param name          name is used from PaymentPageController for Testing
+ * @param seat          seat is used from PaymentPageController for Testing
+ * @param total         total is used from PaymentPageController for Testing
+ * @param row           row is used from PaymentPageController for Testing
+ * @param column        column is used from PaymentPageController for Testing
+ * @param screeningID   screeningID is used from PaymentPageController for Testing
  */
 public class testFields {
-
-    //Fields from controller pages
+    //
+    //Fields used for testing
     public PaymentPageController name;
     public PaymentPageController time;
     public PaymentPageController seat;
     public PaymentPageController total;
+    public PaymentPageController row;
+    public PaymentPageController column;
+    public PaymentPageController screeningID;
 
+//    public TicketPageController name;
+//    public TicketPageController time;
+//    public TicketPageController screeningID;
+//    public TicketPageController age;
 
-    //  /**
-//   * Testing fields
-//   */
-//  //Cannot have negative or over bounded fields
-    @Test
-    public void testFields() {
-        PaymentPageController fields = new PaymentPageController("13:00", "Batman", "25", 10.00, "5", "7", 6);
-        assertThat(fields.getTime(), is("13:00"));
-        assertThat(fields.getName(), is("Batman"));
-        assertThat(fields.getSeat(), is("25"));
-        assertThat(fields.getTotal(), is(10.00));
-
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void invalidPayment() {
-        new PaymentPageController("13:00", "Batman", "25", -5.00, "5", "7", 6);
-    }
-
-    // Testing that fields are what it is meant to be
-    @Test
-    public void equality() {
-        PaymentPageController fields = new PaymentPageController("13:00", "Batman", "25", 10.00, "2", "3", 7);
-        assertTrue(fields.equals(fields));
-        assertFalse(fields.equals(new PaymentPageController("13:43", "SuperMan", "32", 10.00, "2", "3", 7)));
-        assertTrue(fields.equals(new PaymentPageController("13:00", "Batman", "25", 10.00, "2", "3", 7)));
-    }
 
     private ArrayList testList;
 
     @BeforeClass
     public static void onceExecutedBeforeAll() {
-        System.out.println("@BeforeClass: onceExecutedBeforeAll");
+        System.out.println("@BeforeClass: Execute One at a time");
     }
 
-    @Before
-    public void executedBeforeEach() {
-        testList = new ArrayList();
-        System.out.println("@Before: executedBeforeEach");
+
+    /**
+     * TestsBelow Will test that the infomration entered into fields are of correct
+     * Type
+     */
+    @Test
+    public void testFields() {
+        PaymentPageController fields = new PaymentPageController("13:00", "Batman", "25", 10.00, "2", "2", 15);
+        assertThat(fields.getTime(), is("13:00"));
+        assertThat(fields.getName(), is("Batman"));
+        assertThat(fields.getSeat(), is("25"));
+        assertThat(fields.getTotal(), is(10.00));
+        assertThat(fields.getRow(), is("2"));
+        assertThat(fields.getColumn(), is("2"));
+        assertThat(fields.getScreeningID(), is(15));
+
     }
 
     @Test
-    public void EmptyCollection() {
-        assertTrue(testList.isEmpty());
-        System.out.println("@Test: EmptyArrayList");
-
+    public void testMoreFields() {
+        TicketPageController fields = new TicketPageController("13:00", "Batman", 25, "10");
+        assertThat(fields.getTime(), is("13:00"));
+        assertThat(fields.getName(), is("Batman"));
+        assertThat(fields.getAge(), is("10"));
+        assertThat(fields.getScreeningID(), is(25));
     }
 
-    //  @Test
-//  public void testA() throws InterruptedException {
-//    Thread thread = new Thread(new Runnable() {
-//      @Override
-//      public void run() {
-//        new JFXPanel(); // Initializes the JavaFx Platform
-//        Platform.runLater(new Runnable() {
-//          @Override
-//          public void run() {
-//            new Main().start(new Stage()); // Create and
-//
-//          }
-//        });
-//      }
-//    });
-//  }
 
-//  @Test
-//  public void testMain() {
-//    new Thread(new Runnable() {
-//      @Override
-//      public void run() {
-//        try {
-//          // Do something
-//          Thread.sleep(3000);
-//        }
-//        catch (InterruptedException e) {
-//        }
-//        System.exit(0);
-//      }
-//    }).start();
-//
-//    Main.main();
-//  }
 }

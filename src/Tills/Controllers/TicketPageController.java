@@ -80,7 +80,6 @@ public class TicketPageController {
         this.name = filmName;
         this.screeningID = screeningID;
         this.age = Age;
-
     }
 
     /**
@@ -300,5 +299,23 @@ public class TicketPageController {
             System.err.println("Could not load page");
         }
 
+    }
+
+
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public int getScreeningID() {
+        return screeningID;
     }
 }
