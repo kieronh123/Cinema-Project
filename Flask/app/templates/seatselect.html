@@ -13,6 +13,18 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+            <div class="col-sm-6">
+                <section id="PleaseSelectSeat">
+                    <h1>Please Select A Seat</h1>
+                </section>
+            </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+
 
     <div class="col-sm-3">
     </div>
@@ -28,7 +40,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -36,7 +48,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="button" class="btn-vip-seats btncenter">{{seat[3]}}</button>
+                                    <button type="submit" class="btn-vip-seats btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -46,7 +58,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -65,7 +77,7 @@
 
 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <form id="selectTicket" action="/payment" method="post">
                         <select name="selectTicket">
                             <option value="Adult">Adult</option>

@@ -33,7 +33,7 @@ movie_Runtime1 = 7200
 movie_Info1 = 'Man scared of bats dresses up to beat up people'
 movie_Director1 = 'Christopher Nolan'
 movie_Actors1 = 'Christian Bale, Danny Nay, Natalie Portman'
-movie_Image1 = '../static/img/Batman_Begins.jpg'
+movie_Image1 = '../static/img/batman_begins.jpg'
 
 movie_Id2 = 2
 movie_Name2 = 'Superman: Man of Steel'
@@ -42,7 +42,7 @@ movie_Runtime2 = 8400
 movie_Info2 = 'Is it a bird, is it a plane? No its Superman!'
 movie_Director2 = 'Michael Bay'
 movie_Actors2 = 'Gary Oldman, Gary Coleman, Gary Newman'
-movie_Image2 = '../static/img/Man_Of_Steel.jpg'
+movie_Image2 = '../static/img/superman.jpg'
 
 movie_Id3 = 3
 movie_Name3 = 'Frozen'
@@ -51,7 +51,7 @@ movie_Runtime3 = 7200
 movie_Info3 = 'Princess with hypothermia estranges her family'
 movie_Director3 = 'M. Night Shamalamalan'
 movie_Actors3 = 'Beneictus Chrimblesnatch, Sting, Dimitri Popov'
-movie_Image3 = '../static/img/Frozen.jpg'
+movie_Image3 = '../static/img/frozen.jpg'
 
 movie_Id4 = 4
 movie_Name4 = 'The Great Escape'
@@ -60,7 +60,7 @@ movie_Runtime4 = 5400
 movie_Info4 = 'Man who loves tunnels digs out of camp'
 movie_Director4 = 'Alfred Hitchcock'
 movie_Actors4 = 'Steve McQueen, Killian Reestein'
-movie_Image4 = '../static/img/The_Great_Escape.jpg'
+movie_Image4 = '../static/img/great_escape.jpg'
 
 movie_Id5 = 5
 movie_Name5 = 'Pirates of the Carribean: The Black Pearl'
@@ -69,7 +69,7 @@ movie_Runtime5 = 9000
 movie_Info5 = 'Man with alcohol problem steals ships and pretends to be a captain'
 movie_Director5 = 'Stephen Spielberg'
 movie_Actors5 = 'Johnny Depp, Kiera Knightly, Legolas'
-movie_Image5 = '../static/img/Curse_Of_The_Black_Pearl.jpg'
+movie_Image5 = '../static/img/pirates_of_the_caribbean_one.jpg'
 
 movie_Id6 = 6
 movie_Name6 = 'Scary Movie III'
@@ -78,7 +78,7 @@ movie_Runtime6 = 7800
 movie_Info6 = 'Spooky stuff occurs in this spooky movie'
 movie_Director6 = 'Quentin Tarentino'
 movie_Actors6 = 'Danny Dyer, Ray Winston'
-movie_Image6 = '../static/img/Scary_Movie3.jpg'
+movie_Image6 = '../static/img/scary_movie_3.jpg'
 
 
 ##Initial whats on movie information
