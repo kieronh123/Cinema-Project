@@ -1,5 +1,6 @@
 package Tills.Controllers;
 
+import java.awt.image.BufferedImage;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -14,10 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.lang.*;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.io.*;
 /**
 
  * Controller class for the PaymentPage.fxml page
@@ -97,6 +97,8 @@ public class PaymentPageController {
       showChange();
       keyReleased();
     });
+
+
   }
 
   /*
@@ -104,25 +106,31 @@ public class PaymentPageController {
   This is used for generating the receipt from the ticket chosen.
   Variables are still needed to update the fields.
   */
+
+
   @FXML
   public void PDF()throws IOException{
+    Image image1 = new Image(new FileInputStream("images/bird.jpg"));
+
     Document document = new Document();
+   // byte[] res  = image1.toByteArray();
     try{
       PdfWriter.getInstance(document, new FileOutputStream("Ticket.pdf"));
       document.open();
       Paragraph ticketText = new Paragraph();
-      ticketText.add("\n******************************************************");
-      ticketText.add("\n*                         Ticket                     *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add(String.format("\n*%s                                    *", time));
-      ticketText.add(String.format("\n*%s                                    *", name));
-      ticketText.add(String.format("\n*%s                                    *", seat));
-      ticketText.add(String.format("\n*%s                                    *", total));
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n*                                                    *");
-      ticketText.add("\n******************************************************");
+      ticketText.add("\n***************************************************");
+      ticketText.add("\n*                         Quail Cinema Ticket           *");
+      ticketText.add("\n*                                                                     *");
+      ticketText.add(String.format("\n*%s                                                              *", time));
+      ticketText.add(String.format("\n*%s                                                            *", name));
+      ticketText.add(String.format("\n*%s                                                              *", seat));
+      ticketText.add(String.format("\n*%s                                                              *", total));
+      ticketText.add("\n*                                                                     *");
+      ticketText.add("\n*                                                                     *");
+      ticketText.add("\n*                                                                     *");
+      ticketText.add("\n*                                                                     *");
+      ticketText.add(String.format("\n*%s        *", image1));
+      ticketText.add("\n***************************************************");
       document.add(ticketText);
       document.close();
     }catch (IOException e){
