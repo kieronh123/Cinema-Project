@@ -25,8 +25,9 @@ tmp
 #log file from website tests
 geckodriver.log
 
-#Stop tracking of generated Qr codes
+#Stop tracking of generated Qr codes.
 Flask/app/static/qr_codes/*.png
+!Flask/app/static/qr_codes/.gitkeep
 
 #stop tracking of pdf tickets
 Flask/app/static/pdf_tickets/*.pdf

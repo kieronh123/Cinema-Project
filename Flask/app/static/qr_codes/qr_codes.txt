@@ -1,0 +1,1 @@
+File used to ensure qr_codes is never empty.
