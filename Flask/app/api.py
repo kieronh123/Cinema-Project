@@ -25,12 +25,14 @@ def execute_query(query, method):
                        for i, value in enumerate(row)) for row in c.fetchall()]
             json_output = json.dumps(r)
             #Place data in JSON and return
+            conn.close()
             return json_output
         elif method == 'POST' or method == 'DELETE':
             #Run the query
             c.execute(query)
             #Commit the changes
             conn.commit()
+            conn.close()
             return "{Status: 200}"
     except sqlite3.IntegrityError:
         #If an error occurs return 400 in JSON
