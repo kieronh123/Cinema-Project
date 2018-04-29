@@ -17,7 +17,7 @@ cursor = db.cursor()
 id1 = 1
 username1 = 'kieron.hushon@gmail.com'
 #SHA256 hash of 'password'
-password1 = '5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8'
+password1 = '56564387AE573084485D94C7BEBF8907BABF4EAA5B409C0A9C9C23F24D5C848E'
 
 id2 = 2
 username2 = 'alexander_hoare@homail.co.uk'
