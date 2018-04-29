@@ -3,19 +3,22 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-4" id="leftBuffer1"></div>
-        <div class="col-sm-4">
-            <h1>Please Select A Seat</h1>
+        <div class="col-sm-3">
         </div>
-        <div class="col-sm-4" id="rightBuffer"></div>
-
+            <div class="col-sm-6">
+                <section id="PleaseSelectSeat">
+                    <h1>Please Select A Seat</h1>
+                </section>
+            </div>
+        <div class="col-sm-3">
+        </div>
     </div>
 
-    <div class="col-sm-4" id="leftBuffer2"></div>
 
+    <div class="col-sm-3">
+    </div>
     <div class="row">
-        <div class="col-sm-4" style="text-align=center;" id="seats">
-
+        <div class="col-sm-6">
             <ol class="theaterSeats">
                 {%for seat in allSeats%}
                     {%if seat[1] == 1%}
@@ -26,7 +29,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button name="{{seat[3]}}" type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -34,7 +37,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button name="{{seat[3]}}" type="button" class="btn-vip-seats btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" class="btn-vip-seats btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -44,7 +47,7 @@
                         <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
                             <ol class="seats" type="A">
                                 <li class="seat">
-                                    <button name="{{seat[3]}}" type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                    <button name="{{seat[3]}}" type="submit" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
                                 </li>
                             </ol>
                         </form>
@@ -60,14 +63,25 @@
                     {% endif %}
                 {%endfor%}
             </ol>
-        <div class="col-sm-4">
-            <form id="selectTicket" action="/payment" method="post">
-                <select name="selectTicket">
-                    <option value="Adult">Adult</option>
-                    <option value="Child">Child</option>
-                    <option value="Senior">Senior</option>
-                </select>
-            </form>
+
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <form id="selectTicket" action="/payment" method="post">
+                        <select name="selectTicket">
+                            <option value="Adult">Adult</option>
+                            <option value="Child">Child</option>
+                            <option value="Senior">Senior</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <form class="buttonForm">
+                        <button name="Confirm" type="submit" class="btnback" form="selectTicket">Confirm</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

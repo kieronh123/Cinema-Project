@@ -264,6 +264,7 @@ def day(choiceDay, choiceDate):
 
 @app.route('/seatselect/<id>')
 def tickets(id):
+    print("help")
     global bookingID
     bookingID = id
     if(LOGIN == False):
