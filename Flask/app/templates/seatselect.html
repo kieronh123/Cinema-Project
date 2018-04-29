@@ -2,52 +2,85 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1>Please Select A Seat</h1>
+        <div class="col-sm-3">
+        </div>
+            <div class="col-sm-6">
+                <section id="PleaseSelectSeat">
+                    <h1>Please Select A Seat</h1>
+                </section>
+            </div>
+        <div class="col-sm-3">
+        </div>
     </div>
 
+
+    <div class="col-sm-3">
+    </div>
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <ol class="theaterSeats">
                 {%for seat in allSeats%}
-                {%if seat[1] == 1%}
-                <li class="row row--1">
+                    {%if seat[1] == 1%}
+                        <li class="row row--1">
                     {% endif %}
-                    {% if seat[2] == True %}
-                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
-                        <ol class="seats" type="A">
-                            <li class="seat">
-                                <button type="submit" disabled class="btn"><a>{{seat[3]}}</a></button>
-                            </li>
-                        </ol>
-                    </form>
-                    {% elif seat[2] == False %}
-                    <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
-                        <ol class="seats" type="A">
-                            <li class="seat">
-                                <button type="submit" class="btn btncenter">{{seat[3]}}</button>
-                            </li>
-                        </ol>
-                    </form>
+                    {% if seat[0] == 3 %}
+                        {% if seat[2] == True %}
+                        <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <button type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                </li>
+                            </ol>
+                        </form>
+                        {% elif seat[2] == False %}
+                        <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <button type="button" class="btn-vip-seats btncenter">{{seat[3]}}</button>
+                                </li>
+                            </ol>
+                        </form>
+                        {% endif %}
+                    {% else %}
+                        {% if seat[2] == True %}
+                        <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <button type="button" disabled class="btn-disable-seat btncenter">{{seat[3]}}</button>
+                                </li>
+                            </ol>
+                        </form>
+                        {% elif seat[2] == False %}
+                        <form class="buttonForm" action="/storeSeat/{{seat[3]}}/{{seat[0]}}/{{seat[1]}}">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <button type="submit" class="btn-seats btncenter">{{seat[3]}}</button>
+                                </li>
+                            </ol>
+                        </form>
+                        {% endif %}
                     {% endif %}
-                    {%endfor%}
+                {%endfor%}
             </ol>
 
 
             <div class="row">
-                <form class="buttonForm">
-                    <button name="Confirm" type="submit" class="btnback" form="selectTicket">Confirm</button>
-                </form>
+                <div class="col-sm-6">
+                    <form id="selectTicket" action="/payment" method="post">
+                        <select name="selectTicket">
+                            <option value="Adult">Adult</option>
+                            <option value="Child">Child</option>
+                            <option value="Senior">Senior</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <form class="buttonForm">
+                        <button name="Confirm" type="submit" class="btnback" form="selectTicket">Confirm</button>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <div class="col-sm-5">
-            <form id="selectTicket" action="/payment" method="post">
-                <select name="selectTicket">
-                    <option value="Adult">Adult</option>
-                    <option value="Child">Child</option>
-                    <option value="Senior">Senior</option>
-                </select>
-            </form>
         </div>
     </div>
 </div>

@@ -265,27 +265,27 @@ def day(choiceDay, choiceDate):
 def tickets(id):
     global bookingID
     bookingID = id
-    # if(LOGIN == False):
-    #     return render_template('login.html', msg=None, header="Please login or join before select seat")
-    # else:
-    seats = getBookingbyID(id)
-    allSeats = []
-    if not seats:
-        for i in range(1, 6):
-            for j in range(1, 6):
-                allSeats.append((i, j, False, (i, j)))
+    if(LOGIN == False):
+        return render_template('login.html', msg=None, header="Please login or join before select seat")
     else:
-        for i in range(1, 6):
-            for j in range(1, 6):
-                booked = False
-                for seat in seats:
-                    if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
-                        allSeats.append((i, j, True, (i, j)))
-                        booked = True
-                if booked == False:
+        seats = getBookingbyID(id)
+        allSeats = []
+        if not seats:
+            for i in range(1, 6):
+                for j in range(1, 6):
                     allSeats.append((i, j, False, (i, j)))
+        else:
+            for i in range(1, 6):
+                for j in range(1, 6):
+                    booked = False
+                    for seat in seats:
+                        if ((int(seat.Row_Num) == i) and (int(seat.Column_Num) == j) and (int(seat.Screening_ID) == int(id))):
+                            allSeats.append((i, j, True, (i, j)))
+                            booked = True
+                    if booked == False:
+                        allSeats.append((i, j, False, (i, j)))
 
-    return render_template('seatselect.html', allSeats=allSeats)
+        return render_template('seatselect.html', allSeats=allSeats)
 
 @app.route('/storeSeat/<id>/<Row>/<Column>')
 def storeSeats(id, Row, Column):
