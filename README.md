@@ -1,21 +1,73 @@
-TEAM QUAIL
 
-CINEMA BOOKING SYSTEM SOLUTION
+# Generic Build and Test Instructions
 
-The Cinema Booking System is a collection of programs that allows for the interaction between a Cinema and a Customer to allow for customers to book tickets to view a movie.
+## Setup
 
-The system also provides:
+To setup, pull the GitLab files from
 
+	git@gitlab.com:comp2931/18/quail.git
 
- 	A Point-Of-Sale (POS) system for use by staff on-site at the cinema to allow for ticket bookings
+and change directory to quail/ using:
 
- 	A website allowing for customers to book tickets and manage their booking online
+	cd quail
 
- 	A SQLite3 Server run on Flask using the REST API to allow for simple requests to be made by the above systems about movie information using a custom API.
+## Build
 
- 	Account login system to allow for customers to manage bookings securely with SHA256 hashing and salting.
+### Setting up Flask and database
 
- 	Printable dynamic tickets for customer's use both in the cinema and at home.
+In order to setup the Flask environment run
 
+	source Run_Flask.sh
 
-The Cinema Booking System was created by Alexander Hoare, Callum Perkins, Joshua Steele-Gomes, Katie Mitchell, Liam Peel and Kieron Hushon.
+The flask environment will then proceed to setup a virtual environment, install the required libraries, set it up in anaconda3 to run in python3 and finally run the Flask application. If an error occurs regarding the absence of 'qr_code', run the script again in the flask virtual environment and this problem will no longer occur.
+
+The database will then need to be created in order to be accessed by the Tills system and the website. Open up a new terminal and type for the production database:
+
+	source Setup_Database.sh
+
+or for the test database type:
+
+	cd Flask/app/tests
+	source Setup_Database_Test.sh
+	cd ../../..
+
+This will delete any existing database and recreate it filling it in with the correct data.
+
+### Setting up till system
+
+To build and run the Tills system back in the quail/ directory and with flask running, type:
+
+	ant testTills
+
+This will run the tills system.
+
+### Accessing the website
+
+To run the Website enter localhost:5000/ as the URL in a browser with flask running.
+
+## Testing
+
+### Testing Till System
+
+In order to run the Java testing, in the quail directory, run on a fresh database with a test folder to hold the .class files:
+	
+	mkdir testBin
+	ant runTests
+
+Please ensure that your machine is not running any background programs, as this will slow down the running of the Till System, resulting in the robot being too quick.
+
+Please be aware than the Robot Java test will return as a failure, due to the fact that it is merely testing UI by moving the mouse and clicking and not testing data itself.
+
+### Testing Website
+
+In order to test the website, navigate to the tests directory and run the Flask virtual environment:
+
+	module add anaconda3
+	source Flask/flask/bin/activate
+
+Then run the corresponding tests in the flask virtual environment
+
+	cd Flask/app/tests
+	./runTests.sh
+
+	
